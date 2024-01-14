@@ -5,6 +5,7 @@ import Register from './pages/Register'
 import Footer from './components/Footer'
 import Properties from './pages/Properties'
 import About from './pages/About'
+import NotFound from './pages/NotFound'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <Route path='/register' element={<Register />} />    
       <Route path='/properties' element={<Properties />} />    
       <Route path='/about' element={<About />} />    
+      <Route path="/*" element={<NotFound />} />
     </Routes>
     <Footer />
 
