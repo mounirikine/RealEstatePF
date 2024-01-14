@@ -1,11 +1,20 @@
 import { Link } from 'react-router-dom';
+import {motion} from 'framer-motion'
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { SlSizeFullscreen } from 'react-icons/sl';
 import { FaBed, FaBath } from 'react-icons/fa';
 
 const ResidentCard = () => {
   return (
-    <Link to="/property-details" className="flex flex-col p-1 rounded-xl border shadow-xl">
+    <motion.Link to="/property-details" className="flex flex-col p-1 rounded-xl border shadow-xl"
+    variants={{
+      hidden:{opacity:0 },
+      visible:{opacity:1 }
+    }}
+    initial='hidden'
+    animate='visible'
+    transition={{duration:0.8 ,delay:0.75}}
+    >
       <div className="relative flex items-center justify-center">
         <img
           className="rounded-xl w-full"
@@ -40,7 +49,7 @@ const ResidentCard = () => {
           <FaBath className="text-violet-500" /> 2 Bath
         </span>
       </div>
-    </Link>
+    </motion.Link>
   );
 };
 
