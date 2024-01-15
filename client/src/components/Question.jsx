@@ -4,11 +4,11 @@ import {motion} from 'framer-motion'
 const Question = () => {
   return (
     <div className=" px-2 lg:px-20 sm:px-20 py-14">
-      <h1 className="text-white font-bold text-4xl text-center pb-5 ">
+      <h1 className="font-bold text-4xl text-center pb-5 ">
         Frequently asked questions
       </h1>
       <div className="flex items-center justify-center">
-        <p className="w-12/12  lg:w-8/12 sm:w-11/12 font-semibold text-lg text-center py-5 text-gray-200">
+        <p className="w-12/12  lg:w-8/12 sm:w-11/12 font-semibold text-lg text-center py-5 ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
           necessitatibus eum magnam atque repellendus quibusdam suscipit debitis
           

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 const Hero = () => {
   return (
-    <main className="py-20 px-4  md:px-10 lg:px-20 xl:px-32 primary">
+    <main className="py-20 px-4  md:px-10 lg:px-20 xl:px-32 ">
       <div className="flex flex-col md:flex-row justify-between items-center py-10 px-4 md:px-14">
         <div className="w-full md:w-6/12 lg:w-7/12 xl:w-6/12 mb-10 md:mb-0">
           <motion.h1
@@ -14,7 +14,7 @@ const Hero = () => {
             animate='visible'
             transition={{duration:0.5 ,delay:0.25}}
            
-            className="text-5xl md:text-6xl font-bold mb-6 md:mb-10"
+            className="text-5xl md:text-6xl font-bold mb-6 md:mb-10 text_primary"
           >
             The best place to find your dream house
           </motion.h1>
@@ -24,7 +24,7 @@ const Hero = () => {
             }}
             initial='hidden'
             animate='visible'
-            transition={{duration:0.5 ,delay:0.50}} className=" text-base md:text-lg font-medium mb-6">
+            transition={{duration:0.5 ,delay:0.50}} className=" text-base font-semibold md:text-lg  mb-6 text_secondary">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit nibh
             pretium nunc mauris sed adipiscing. Lorem ipsum dolor sit amet
           </motion.p>

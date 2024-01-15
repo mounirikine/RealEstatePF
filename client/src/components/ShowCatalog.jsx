@@ -3,7 +3,7 @@ import {motion} from 'framer-motion'
 const ShowCatalog = () => {
   return (
     <>
-      <section className="flex items-center gap-8 lg:gap-1 bg-white py-5 px-5 sm:px-0 lg:px-10">
+      <section className="flex items-center gap-8 lg:gap-1  py-5 px-5 sm:px-0 lg:px-10">
         <motion.div 
         
           initial={{x:0 ,opacity:0}}
@@ -23,7 +23,7 @@ const ShowCatalog = () => {
         whileInView={{x:0,opacity:1 }}
         transition={{duration:0.8 ,delay:0.75}} 
         
-        className="w-full lg:w-1/2 text-black px-5">
+        className="w-full lg:w-1/2  px-5">
           <h1 className="font-bold text-3xl sm:text-5xl py-5 sm:py-10">
             Discover properties that will improve your{" "}
             <span className="text-violet-500">life and that of your family</span>

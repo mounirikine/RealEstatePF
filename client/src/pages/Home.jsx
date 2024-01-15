@@ -9,7 +9,7 @@ import Contact from "../components/Contact";
 const Home = () => {
   return (
     <>
-      <Header />
+      
 
       <section className="py-10 ">
         <Hero />

@@ -1,15 +1,9 @@
-import { useScroll, motion, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import Header from "../components/Header";
 import Residential from "../components/Residential";
 
 const Properties = () => {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
-
+ 
   return (
     <>
       <Header />
@@ -291,82 +285,82 @@ const Properties = () => {
             </span>
           </div>
         </div>
-        <div className=" px-6 lg:flex sm:flex lg:px-20 gap-1">
-          <div className="lg:w-4/12">
-            <div className="bg-white rounded-xl py-10">
-              <h1 className="text-black text-center font-bold text-2xl py-5">
-                Filter Property
-              </h1>
-              <form className="px-3">
-                <select
-                  id="countries"
-                  className="bg-gray-50 border py-5  border-gray-300 mb-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  <option selected disabled>
-                    Location
-                  </option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="FR">France</option>
-                  <option value="DE">Germany</option>
-                </select>
-                <select
-                  id="countries"
-                  className="bg-gray-50 border py-5 border-gray-300 mb-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  <option selected disabled>
-                    Type
-                  </option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="FR">France</option>
-                  <option value="DE">Germany</option>
-                </select>
-                <select
-                  id="countries"
-                  className="bg-gray-50 border py-5 border-gray-300 mb-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  <option selected disabled>
-                    Transaction
-                  </option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="FR">France</option>
-                  <option value="DE">Germany</option>
-                </select>
-                <select
-                  id="countries"
-                  className="bg-gray-50 border py-5 border-gray-300 mb-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                >
-                  <option selected disabled>
-                    Facility
-                  </option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="FR">France</option>
-                  <option value="DE">Germany</option>
-                </select>
+        <div className="px-6 lg:flex sm:flex lg:px-20 gap-1">
+  <div className="lg:w-4/12 sticky">
+    <div className="bg-white rounded-xl py-10">
+      <h1 className="text-black text-center font-bold text-2xl py-5">
+        Filter Property
+      </h1>
+      <form className="px-3">
+        <select
+          id="location"
+          className="bg-gray-50 border py-2.5 border-gray-300 mb-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option disabled>
+            Location
+          </option>
+          <option value="US">United States</option>
+          <option value="CA">Canada</option>
+          <option value="FR">France</option>
+          <option value="DE">Germany</option>
+        </select>
+        <select
+          id="type"
+          className="bg-gray-50 border py-2.5 border-gray-300 mb-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option disabled>
+            Type
+          </option>
+          <option value="US">United States</option>
+          <option value="CA">Canada</option>
+          <option value="FR">France</option>
+          <option value="DE">Germany</option>
+        </select>
+        <select
+          id="transaction"
+          className="bg-gray-50 border py-2.5 border-gray-300 mb-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option disabled>
+            Transaction
+          </option>
+          <option value="US">United States</option>
+          <option value="CA">Canada</option>
+          <option value="FR">France</option>
+          <option value="DE">Germany</option>
+        </select>
+        <select
+          id="facility"
+          className="bg-gray-50 border py-2.5 border-gray-300 mb-4 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option disabled>
+            Facility
+          </option>
+          <option value="US">United States</option>
+          <option value="CA">Canada</option>
+          <option value="FR">France</option>
+          <option value="DE">Germany</option>
+        </select>
 
-                <button
-                  type="reset"
-                  className="text-black px-10 py-3 rounded-xl secondary_color"
-                >
-                  Reset Filter{" "}
-                </button>
-              </form>
-            </div>
-          </div>
-          <motion.div className="w-9/12">
-            <Residential />
-            <div className="py-10">
-          <div className="join grid grid-cols-2 w-4/12 mx-auto  ">
-            <button className="join-item btn btn-primary">Previous page</button>
-            <button className="join-item btn btn-primary">Next</button>
-          </div>
-        </div>
-          </motion.div>
-          
-        </div>
+        <button
+          type="reset"
+          className="text-black px-10 py-3 rounded-xl secondary_color"
+        >
+          Reset Filter{" "}
+        </button>
+      </form>
+    </div>
+  </div>
+  <motion.div className="w-9/12">
+    <Residential />
+    <div className="py-10">
+      <div className="join grid grid-cols-2 w-4/12 mx-auto">
+        <button className="join-item btn btn-primary">Previous page</button>
+        <button className="join-item btn btn-primary">Next</button>
+      </div>
+    </div>
+  </motion.div>
+</div>
+
     
       </section>
     </>

@@ -35,7 +35,7 @@ const FirstSection = () => {
 
   return (
     <>
-      <motion.section className="bg-white text-black py-10">
+      <motion.section className=" py-10">
         <div className="flex item-center ">
           <h1 className="text-center mx-auto font-bold text-5xl">
             Find the category for you
