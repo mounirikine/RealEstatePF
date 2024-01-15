@@ -31,7 +31,7 @@ console.log('connected');
    
     throw error  
 }
-}
+} 
 
 app.use("/api/auth",authRouter)
 
