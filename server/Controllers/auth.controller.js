@@ -47,3 +47,7 @@ export const signOut =async(req, res, next)=>{
       next(error)
     }
   }
+// khli hadi db !! hadi katdkhl les donnes ldatabase
+export const google = async (req,res, next)=>{
+    
+}  
