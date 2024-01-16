@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link} from "react-router-dom"
 import logo1 from '../assets/logo3.png'
 import { useState } from "react"
 
@@ -23,8 +23,9 @@ const Login = () => {
             },
             body: JSON.stringify(formData),
         });
+        const data = await res.json()
 
-        console.log(res);
+        console.log(data);
     } catch (error) {
         console.error('Error Login user:', error);
     }
