@@ -1,12 +1,14 @@
-import { Link} from "react-router-dom"
+import { Link, useNavigate} from "react-router-dom"
 import logo1 from '../assets/logo3.png'
 import { useState } from "react"
-
+import {useCookies} from 'react-cookie'
 const Login = () => {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
+  const navigate = useNavigate()
 
   const [loading ,setLoading] = useState(false)
+  const [_,setCookies]=useCookies(["access_token"])
 
 // const navigate = useNavigate();
   const handleLogin = async (e) => {
@@ -24,8 +26,13 @@ const Login = () => {
             body: JSON.stringify(formData),
         });
         const data = await res.json()
-
-        console.log(data);
+       
+       
+        setCookies('access_token',data.token)
+        window.localStorage.setItem('userID',data.rest._id )
+        navigate('/')
+        window.location.reload(false)
+        
     } catch (error) {
         console.error('Error Login user:', error);
     }
@@ -33,9 +40,9 @@ const Login = () => {
 };
 
   return (
-    <div className="font-sans text-[#333] ">
-      <div className="min-h-screen flex flex-col items-center px-5 bg-white justify-center">
-        <div className="grid md:grid-cols-2 items-center gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
+    <div className="font-sans text-[#333] py-20">
+      <div className="min-h-screen flex flex-col items-center px-5  justify-center">
+        <div className="grid md:grid-cols-2 items-center gap-4 bg-white max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
           <div className="md:max-w-md w-full sm:px-6 py-4">
             <form onSubmit={handleLogin}>
               <div className="mb-12">

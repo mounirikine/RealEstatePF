@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import logo1 from '../assets/logo3.png'
 import { useEffect, useState } from "react"
 const Register = () => {
@@ -7,7 +7,7 @@ const Register = () => {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [loading ,setLoading] = useState(false)
-
+  const navigate = useNavigate()
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -23,8 +23,8 @@ const Register = () => {
             },
             body: JSON.stringify(formData),
         });
-
-        console.log(res);
+        navigate('/login')
+        
     } catch (error) {
         console.error('Error creating user:', error);
     }
@@ -38,7 +38,7 @@ const Register = () => {
 
   return (
     <>
-        <div className=" text-[#333] ">
+        <div className=" text-[#333] py-20">
       <div className="min-h-screen flex flex-col items-center bg-white px-5 justify-center">
         <div className="grid md:grid-cols-2 items-center gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
           <div className="md:max-w-md w-full sm:px-6 py-4">
