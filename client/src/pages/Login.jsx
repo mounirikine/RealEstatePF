@@ -1,13 +1,42 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import logo1 from '../assets/logo3.png'
+import { useState } from "react"
 
 const Login = () => {
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
+
+  const [loading ,setLoading] = useState(false)
+
+// const navigate = useNavigate();
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    setLoading(true)
+    const formData = { email, password }; // Assuming you have defined username, email, and password somewhere
+
+    try {
+        const res = await fetch('http://127.0.0.1:4000/api/auth/sign-in', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        console.log(res);
+    } catch (error) {
+        console.error('Error Login user:', error);
+    }
+    setLoading(false)
+};
+
   return (
     <div className="font-sans text-[#333] ">
       <div className="min-h-screen flex flex-col items-center px-5 bg-white justify-center">
         <div className="grid md:grid-cols-2 items-center gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
           <div className="md:max-w-md w-full sm:px-6 py-4">
-            <form>
+            <form onSubmit={handleLogin}>
               <div className="mb-12">
               <img src={logo1} alt="" width={200} />
 
@@ -53,7 +82,7 @@ const Login = () => {
               <div>
                 <label className="text-sm block mb-2">Email</label>
                 <div className="relative flex items-center">
-                  <input name="email" type="text" required className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Enter email" />
+                  <input name="email" type="text" required onChange={(e)=>setEmail(e.target.value)} className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Enter email" />
                   <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
                     <defs>
                       <clipPath id="a" clipPathUnits="userSpaceOnUse">
@@ -70,7 +99,7 @@ const Login = () => {
               <div className="mt-8">
                 <label className="text-sm block mb-2">Password</label>
                 <div className="relative flex items-center">
-                  <input name="password" type="password" required className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Enter password" />
+                  <input name="password" type="password" onChange={(e)=>setPassword(e.target.value)}  required className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Enter password" />
                   <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
                     <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
                   </svg>
@@ -90,9 +119,12 @@ const Login = () => {
                 </div>
               </div>
               <div className="mt-12">
-                <button type="button" className="w-full flex items-center justify-center gap-3 shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white primary hover:bg-violet-700 focus:outline-none">
-                  Sign in
-                  <span className="loading loading-spinner loading-sm"></span>
+              <button type="submit" className="w-full flex items-center justify-center gap-3 shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white secondary_color  focus:outline-none">
+                  {
+                    loading ? <span className="loading loading-spinner loading-sm"></span> : ' Sign Up'
+                  }
+                 
+                  
                 </button>
               </div>
               <p className="text-sm mt-4 ">Don't have an account <Link to="/register" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register here</Link></p>

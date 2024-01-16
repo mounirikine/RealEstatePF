@@ -32,7 +32,7 @@ const Contact = () => {
           </div>
           <button
               type="submit"
-              className="primary px-6 md:px-10 py-3 md:py-4 rounded-xl font-bold"
+              className="secondary_color px-6 md:px-10 py-3 md:py-4 rounded-xl font-bold"
             >
               Send message
             </button>      </form>

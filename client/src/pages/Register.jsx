@@ -1,13 +1,48 @@
 import { Link } from "react-router-dom"
 import logo1 from '../assets/logo3.png'
+import { useEffect, useState } from "react"
 const Register = () => {
+
+  const [username,setUserName] = useState("")
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
+  const [loading ,setLoading] = useState(false)
+
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    setLoading(true)
+    const formData = { username, email, password }; // Assuming you have defined username, email, and password somewhere
+
+    try {
+        const res = await fetch('http://127.0.0.1:4000/api/auth/sign-up', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        console.log(res);
+    } catch (error) {
+        console.error('Error creating user:', error);
+    }
+    setLoading(false)
+};
+
+
+
+
+
+
   return (
     <>
         <div className=" text-[#333] ">
       <div className="min-h-screen flex flex-col items-center bg-white px-5 justify-center">
         <div className="grid md:grid-cols-2 items-center gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
           <div className="md:max-w-md w-full sm:px-6 py-4">
-            <form>
+            <form onSubmit={handleRegister}>
               <div className="mb-12">
               <img src={logo1} alt="" width={200} />
 
@@ -53,14 +88,14 @@ const Register = () => {
               <div className="mb-5">
                 <label className="text-sm block mb-2">Username</label>
                 <div className="relative flex items-center">
-                  <input name="email" type="text" required className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Enter username" />
+                  <input name="email" onChange={(e)=> setUserName(e.target.value)} value={username} type="text" required className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Enter username" />
                  
                 </div>
               </div>
               <div>
                 <label className="text-sm block mb-2">Email</label>
                 <div className="relative flex items-center">
-                  <input name="email" type="text" required className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Enter email" />
+                  <input name="email" type="text" onChange={(e)=> setEmail(e.target.value)} value={email} required className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Enter email" />
                   <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
                     <defs>
                       <clipPath id="a" clipPathUnits="userSpaceOnUse">
@@ -77,7 +112,7 @@ const Register = () => {
               <div className="mt-8">
                 <label className="text-sm block mb-2">Password</label>
                 <div className="relative flex items-center">
-                  <input name="password" type="password" required className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Enter password" />
+                  <input name="password" onChange={(e)=> setPassword(e.target.value)} value={password} type="password" required className="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none" placeholder="Enter password" />
                   <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
                     <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
                   </svg>
@@ -97,9 +132,12 @@ const Register = () => {
                 </div>
               </div>
               <div className="mt-12">
-              <button type="button" className="w-full flex items-center justify-center gap-3 shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white primary hover:bg-violet-700 focus:outline-none">
-                  Sign Up
-                  <span className="loading loading-spinner loading-sm"></span>
+              <button type="submit" className="w-full flex items-center justify-center gap-3 shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white secondary_color  focus:outline-none">
+                  {
+                    loading ? <span className="loading loading-spinner loading-sm"></span> : ' Sign Up'
+                  }
+                 
+                  
                 </button>
               </div>
               <p className="text-sm mt-4 ">Already have an account <Link to="/login" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Login here</Link></p>
