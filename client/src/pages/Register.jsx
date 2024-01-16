@@ -1,18 +1,20 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import logo1 from '../assets/logo3.png'
 import { useEffect, useState } from "react"
+import { toast } from "react-toastify"
 const Register = () => {
 
   const [username,setUserName] = useState("")
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [loading ,setLoading] = useState(false)
-
+  const navigate = useNavigate()
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    setLoading(true)
+    setLoading(true);
+
     const formData = { username, email, password }; // Assuming you have defined username, email, and password somewhere
 
     try {
@@ -24,11 +26,24 @@ const Register = () => {
             body: JSON.stringify(formData),
         });
 
-        console.log(res);
+        const data = await res.json();
+
+        if (res.ok) {
+            toast.success('User created successfully! Login Now');
+            navigate('/login');
+        } else {
+            // Assuming the server sends detailed error messages
+            const errorMessage = data.error || 'This Email Already Exist';
+            toast.error(errorMessage);
+        }
+
+        console.log(data);
     } catch (error) {
         console.error('Error creating user:', error);
+        toast.error('An unexpected error occurred');
+    } finally {
+        setLoading(false);
     }
-    setLoading(false)
 };
 
 
@@ -38,7 +53,7 @@ const Register = () => {
 
   return (
     <>
-        <div className=" text-[#333] ">
+        <div className=" text-[#333] py-20">
       <div className="min-h-screen flex flex-col items-center bg-white px-5 justify-center">
         <div className="grid md:grid-cols-2 items-center gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
           <div className="md:max-w-md w-full sm:px-6 py-4">

@@ -9,4 +9,7 @@ router.post("/google",google);
 router.post('/sign-up',SignUp)
 router.post('/sign-in',SignIn)
 router.get("/signout",signOut);
+router.get("/userInfo",userInfo);
+router.put('/users/:userId', UpdateUser);
+
 export default router;
