@@ -8,6 +8,8 @@ import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
 import Profile from "./pages/Profile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -42,6 +44,9 @@ function App() {
 
   return (
     <>
+
+<ToastContainer position="top-center" />
+
       <Header userInfo={userInfo} />
      
         <Routes>
@@ -50,7 +55,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/properties" element={<Properties />} />
           <Route path="/about" element={<About />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile userInfo={userInfo} />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
    

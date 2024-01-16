@@ -59,4 +59,28 @@ export const signOut =async(req, res, next)=>{
   }
 
 
+  export const UpdateUser = async (req, res, next) => {
+    const userId = req.params.userId;
+    const { username, email, password } = req.body;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) return next(errorHandler(404, "User not found!"));
+
+        // Update user fields if provided
+        if (username) user.username = username;
+        if (email) user.email = email;
+        if (password) {
+            const hashedPassword = bcryptjs.hashSync(password, 10);
+            user.password = hashedPassword;
+        }
+
+        await user.save();
+
+        const { password: pass, ...rest } = user._doc;
+        res.status(200).json(rest);
+    } catch (error) {
+        next(error);
+    }
+};
   

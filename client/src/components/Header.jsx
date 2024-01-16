@@ -7,6 +7,7 @@ import { IoCreateOutline } from "react-icons/io5";
 import { CiUser } from "react-icons/ci";
 import { CiBoxList } from "react-icons/ci";
 import { FaPowerOff } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Header = ({ userInfo }) => {
   const [open, setOpen] = useState(false);
@@ -16,8 +17,10 @@ const Header = ({ userInfo }) => {
 
   const removeCookies = () => {
     setCookies("access_token", "");
+    
     window.localStorage.removeItem("userID");
     window.location.reload(false);
+    toast.success('Logout Successfully')
   };
 
   const handelOpen = () => {

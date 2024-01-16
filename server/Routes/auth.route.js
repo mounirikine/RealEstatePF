@@ -1,5 +1,5 @@
 import express from 'express'
-import { SignIn, SignUp, signOut,userInfo } from '../Controllers/auth.controller.js';
+import { SignIn, SignUp, signOut,userInfo,UpdateUser } from '../Controllers/auth.controller.js';
 
 
 
@@ -10,4 +10,6 @@ router.post('/sign-up',SignUp)
 router.post('/sign-in',SignIn)
 router.get("/signout",signOut);
 router.get("/userInfo",userInfo);
+router.put('/users/:userId', UpdateUser);
+
 export default router;

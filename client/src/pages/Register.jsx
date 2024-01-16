@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import logo1 from '../assets/logo3.png'
 import { useEffect, useState } from "react"
+import { toast } from "react-toastify"
 const Register = () => {
 
   const [username,setUserName] = useState("")
@@ -12,7 +13,8 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    setLoading(true)
+    setLoading(true);
+
     const formData = { username, email, password }; // Assuming you have defined username, email, and password somewhere
 
     try {
@@ -23,12 +25,25 @@ const Register = () => {
             },
             body: JSON.stringify(formData),
         });
-        navigate('/login')
-        
+
+        const data = await res.json();
+
+        if (res.ok) {
+            toast.success('User created successfully! Login Now');
+            navigate('/login');
+        } else {
+            // Assuming the server sends detailed error messages
+            const errorMessage = data.error || 'This Email Already Exist';
+            toast.error(errorMessage);
+        }
+
+        console.log(data);
     } catch (error) {
         console.error('Error creating user:', error);
+        toast.error('An unexpected error occurred');
+    } finally {
+        setLoading(false);
     }
-    setLoading(false)
 };
 
 

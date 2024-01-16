@@ -2,6 +2,7 @@ import { Link, useNavigate} from "react-router-dom"
 import logo1 from '../assets/logo3.png'
 import { useState } from "react"
 import {useCookies} from 'react-cookie'
+import { toast } from "react-toastify"
 const Login = () => {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
@@ -30,11 +31,13 @@ const Login = () => {
        
         setCookies('access_token',data.token)
         window.localStorage.setItem('userID',data.rest._id )
+        
         navigate('/')
         window.location.reload(false)
         
     } catch (error) {
         console.error('Error Login user:', error);
+        toast.error('Email or Password is not correct ! try Again')
     }
     setLoading(false)
 };
