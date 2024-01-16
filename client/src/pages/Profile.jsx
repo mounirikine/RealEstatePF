@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import { IoCreateOutline } from "react-icons/io5";
+
 
 const Profile = ({ userInfo }) => {
   const [active, setActive] = useState(true);
@@ -96,9 +98,21 @@ const Profile = ({ userInfo }) => {
                     <button
                       type="button"
                       onClick={deactivate}
-                      className="py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200 "
+                      className=""
                     >
-                      Edit Profile
+                      <button className="btn flex items-center" onClick={()=>document.getElementById('my_modal_1').showModal()}><span><IoCreateOutline  className="text-xl" /></span> <span>Edit Profile</span></button>
+                            <dialog id="my_modal_1" className="modal">
+                            <div className="modal-box">
+                                <h3 className="font-bold text-lg text-center">Are you Sure </h3>
+                                <p className="py-4">Do you Want To update Profile</p>
+                                <div className="modal-action">
+                                <form method="dialog">
+                                    {/* if there is a button in form, it will close the modal */}
+                                    <button className="btn secondary_color">Yes</button>
+                                </form>
+                                </div>
+                            </div>
+                            </dialog>
                     </button>
                   </div>
                 </div>
@@ -112,12 +126,13 @@ const Profile = ({ userInfo }) => {
                         Your first name
                       </label>
                       <input
+                    
                         type="text"
                         id="first_name"
                         onChange={(e)=>setUsername(e.target.value)}
                         disabled={active}
                         placeholder={userInfo && userInfo.username}
-                        className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
+                        className="bg-indigo-50 border border-indigo-300  text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                         
                         required
                       />
