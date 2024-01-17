@@ -17,10 +17,10 @@ const Header = ({ userInfo }) => {
 
   const removeCookies = () => {
     setCookies("access_token", "");
-    
+
     window.localStorage.removeItem("userID");
     window.location.reload(false);
-    toast.success('Logout Successfully')
+    toast.success("Logout Successfully");
   };
 
   const handelOpen = () => {
@@ -79,19 +79,29 @@ const Header = ({ userInfo }) => {
                   <>
                     <details className="dropdown">
                       <summary className="m-0 btn">
-                        <img
-                          src={userInfo.avatar}
-                          width={30}
-                          height={30}
-                          className="rounded-full border"
-                        />
-                        <div className="badge badge-ghost">
-                          {userInfo.username}
-                        </div>
+                        {userInfo && userInfo.avatar && (
+                          <>
+                            <img
+                              src={userInfo.avatar}
+                              width={30}
+                              height={30}
+                              className="rounded-full border"
+                              style={{ width: "30px", height: "30px" }} // Set width and height explicitly
+                              alt="User Avatar"
+                            />
+                            <div className="badge badge-ghost">
+                              {userInfo.username}
+                            </div>
+                          </>
+                        )}
                       </summary>
+
                       <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                         <li className=" ">
-                          <Link to='/profile' className="text-black bg-slate-100 hover:bg-slate-200 mb-1">
+                          <Link
+                            to="/profile"
+                            className="text-black bg-slate-100 hover:bg-slate-200 mb-1"
+                          >
                             <CiUser className="text-lg" /> Profile
                           </Link>
                         </li>

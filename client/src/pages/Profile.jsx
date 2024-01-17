@@ -80,8 +80,6 @@ const Profile = ({ userInfo }) => {
       );
       window.location.reload(false);
       toast.success("Profile Updated Successfully");
-
-      
     } catch (error) {
       toast.error("Profile Not Updated! Try Again");
     }
@@ -91,7 +89,10 @@ const Profile = ({ userInfo }) => {
 
   const handleDeletePic = async () => {
     setLoading(true);
-    const newImg = {avatar:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+    const newImg = {
+      avatar:
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+    };
 
     try {
       const res = await fetch(
@@ -106,13 +107,9 @@ const Profile = ({ userInfo }) => {
       );
       window.location.reload(false);
       toast.info("Image Deleted Successfully");
-      
-      
     } catch (error) {
       toast.error("Email Not Deleted! Try Again");
     }
-
-    
   };
 
   return (
@@ -157,14 +154,20 @@ const Profile = ({ userInfo }) => {
                     accept="image/*"
                   />
 
-<div className={`radial-progress overflow-hidden  bg-white border-2 border-indigo-600 ${filePerc < 100 ? 'text-error' : 'text-success'}`} style={{ "--value": filePerc, "--thickness": "4px" }} role="progressbar">
+<div
+  className={`radial-progress overflow-hidden bg-white border-2 border-indigo-600 ${
+    filePerc < 100 ? "text-error" : "text-success"
+  }`}
+  style={{ "--value": filePerc, "--thickness": "4px" }}
+  role="progressbar"
+>
   <div className="">
     {userInfo && userInfo.avatar && (
       <img
-        className="object-cover w-40 h-40  rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
-        // eslint-disable-next-line react/prop-types
+        className="object-cover w-40 h-40 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
         src={userInfo.avatar}
         alt="Bordered avatar"
+        style={{ width: "100%", height: "100%" }} // Set width and height explicitly
       />
     )}
   </div>
@@ -196,22 +199,34 @@ const Profile = ({ userInfo }) => {
                     >
                       Change picture
                     </button>
-                   
 
-                    <button className="btn py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200 " onClick={()=>document.getElementById('my_modal_1').showModal()}>Delete picture</button>
-<dialog id="my_modal_1" className="modal">
-  <div className="modal-box">
-    <h3 className="font-bold text-lg">Are You Sure </h3>
-    <p className="py-4">Do Yo Want To Delete The Profile Image</p>
-    <div className="modal-action">
-      <form method="dialog">
-        {/* if there is a button in form, it will close the modal */}
-        <button className="btn secondary_color"  onClick={handleDeletePic}>Yes Delete It </button>
-      </form>
-    </div>
-  </div>
-</dialog>
-                   
+                    <button
+                      className="btn py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200 "
+                      onClick={() =>
+                        document.getElementById("my_modal_1").showModal()
+                      }
+                    >
+                      Delete picture
+                    </button>
+                    <dialog id="my_modal_1" className="modal">
+                      <div className="modal-box">
+                        <h3 className="font-bold text-lg">Are You Sure </h3>
+                        <p className="py-4">
+                          Do Yo Want To Delete The Profile Image
+                        </p>
+                        <div className="modal-action">
+                          <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button
+                              className="btn secondary_color"
+                              onClick={handleDeletePic}
+                            >
+                              Yes Delete It{" "}
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </dialog>
                   </div>
                 </div>
                 <div className="items-center mt-8 sm:mt-14 text-[#202142]">
