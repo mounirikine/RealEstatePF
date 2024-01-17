@@ -87,13 +87,14 @@ console.log(formData)
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true)
+    const updatedFormData = { ...formData, username, email, avatar };
     try {
         const res = await fetch(`http://localhost:4000/api/auth/users/${userInfo._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify(updatedFormData),
         });
         toast.success('Profile Updated Successfully')
         const data = await res.json();
@@ -152,7 +153,7 @@ console.log(formData)
                        />
                   <img
                     className="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
-                    src={formData?.avatar || userInfo.avatar}
+                    src={userInfo && userInfo.avatar}
                     onClick={() => fileRef.current.click()}
 
                     alt="Bordered avatar"
@@ -223,7 +224,7 @@ console.log(formData)
                         id="username"
                         onChange={handleChange}
                         disabled={active}
-                        defaultValue={userInfo.username}
+                        defaultValue={userInfo && userInfo.username}
                         placeholder={userInfo &&  userInfo.username}
                         className="bg-indigo-50 border border-indigo-300  text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                         
@@ -243,7 +244,7 @@ console.log(formData)
                       id="email"
                       onChange={handleChange}
                       disabled={active}
-                      defaultValue={userInfo.email}
+                      defaultValue={userInfo && userInfo.email}
                       placeholder={userInfo && userInfo.email}
                       className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                      
