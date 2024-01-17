@@ -87,14 +87,14 @@ console.log(formData)
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true)
-    const updatedFormData = { ...formData, username, email, avatar };
+   
     try {
         const res = await fetch(`http://localhost:4000/api/auth/users/${userInfo._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(updatedFormData),
+            body: JSON.stringify(formData),
         });
         toast.success('Profile Updated Successfully')
         const data = await res.json();
