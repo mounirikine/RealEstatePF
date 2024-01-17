@@ -11,9 +11,10 @@ import Profile from "./pages/Profile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
+import PrivateRoutes from "./lib/PrivateRoutes";
 
 function App() {
-  const [userInfo, setUserInfo] = useState(null); // Change here
+  const [userInfo, setUserInfo] = useState(null);
   const userId = window.localStorage.getItem('userID');
 
   useEffect(() => {
@@ -27,7 +28,6 @@ function App() {
         });
         const data = await res.json();
         
-        // Filter userInfo based on userId
         const filteredUser = data.find(user => user._id === userId);
         setUserInfo(filteredUser);
 
@@ -44,21 +44,26 @@ function App() {
 
   return (
     <>
-
-<ToastContainer position="top-center" />
+      <ToastContainer position="top-center" />
 
       <Header userInfo={userInfo} />
-     
-        <Routes>
-          <Route path="/" element={<Home userInfo={userInfo} />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/properties" element={<Properties />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/profile" element={<Profile userInfo={userInfo} />} />
-          <Route path="/*" element={<NotFound />} />
-        </Routes>
+
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={<Home userInfo={userInfo} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/properties" element={<Properties />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/*" element={<NotFound />} />
+       
+          {/* Use Routes inside PrivateRoutes */}
+       <Route  element={<PrivateRoutes />}>
+       <Route path="/profile" element={<Profile userInfo={userInfo} />} />
+       </Route>
    
+      </Routes>
+
       <Footer />
     </>
   );
