@@ -61,8 +61,7 @@ export const signOut =async(req, res, next)=>{
   export const UpdateUser = async (req, res, next) => {
     const userId = req.params.userId;
     const { username, email, password,avatar } = req.body;
-    if(req.user.id !== userId)
-        return next(errorHandler(401,"you can only update your own account!"))
+
     try {
         const user = await User.findById(userId);
         if (!user) return next(errorHandler(404, "User not found!"));
