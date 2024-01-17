@@ -31,7 +31,7 @@ function App() {
         const filteredUser = data.find(user => user._id === userId);
         setUserInfo(filteredUser);
 
-        console.log(filteredUser);
+       
       } catch (error) {
         console.error("Error fetching user info:", error);
       }
