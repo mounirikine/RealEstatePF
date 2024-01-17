@@ -58,10 +58,9 @@ export const signOut =async(req, res, next)=>{
     }
   }
 
-
   export const UpdateUser = async (req, res, next) => {
     const userId = req.params.userId;
-    const { username, email, password } = req.body;
+    const { username, email, password,avatar } = req.body;
 
     try {
         const user = await User.findById(userId);
@@ -74,7 +73,8 @@ export const signOut =async(req, res, next)=>{
             const hashedPassword = bcryptjs.hashSync(password, 10);
             user.password = hashedPassword;
         }
-
+        if(avatar) user.avatar =avatar;
+        
         await user.save();
 
         const { password: pass, ...rest } = user._doc;
@@ -83,4 +83,4 @@ export const signOut =async(req, res, next)=>{
         next(error);
     }
 };
-  
+
