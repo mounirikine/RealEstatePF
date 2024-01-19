@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { IoCreateOutline } from "react-icons/io5";
@@ -9,6 +9,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { app } from "../firebase";
+import Header from "../components/Header";
 
 const Profile = ({ userInfo }) => {
   const [active, setActive] = useState(false);
@@ -114,38 +115,13 @@ const Profile = ({ userInfo }) => {
 
   return (
     <>
-      <div className="w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row py-20">
-        <aside className="hidden py-10 md:w-1/3 lg:w-1/4 md:block">
-          <div className="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12 pt-20">
-            <h2 className="pl-3 mb-4 text-2xl font-semibold">Settings</h2>
-            <a
-              href="#"
-              className="flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full"
-            >
-              Your Properties
-            </a>
-            <a
-              href="#"
-              className="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full"
-            >
-              Your Blogs
-            </a>
-            <a
-              href="#"
-              className="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full"
-            >
-              Logout
-            </a>
-          </div>
-        </aside>
-        <main className="w-full py-10 md:w-2/3 lg:w-3/4">
+      <Header userInfo={userInfo} />
+      <div className="w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row py-10">
+        <main className="w-full py-10 md:w-3/3 lg:w-4/4">
           <div className="p-2 md:p-4 ">
-            <div className="w-full px-6 mx-auto pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
-              <h2 className="pl-6 text-2xl font-bold sm:text-xl">
-                {userInfo && userInfo.username}
-              </h2>
-              <div className="grid max-w-3xl mx-auto mt-8">
-                <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
+            <div className="w-full px-6 mx-auto pb-8 mt-8 sm:max-w-xl sm:rounded-lg bg-white">
+              <div className="grid max-w-3xl mx-auto mt-8 ">
+                <div className=" flex-col items-center justify-center gird py-5 w-full space-y-5 sm:flex-row sm:space-y-0">
                   <input
                     onChange={(e) => setFile(e.target.files[0])}
                     type="file"
@@ -154,25 +130,7 @@ const Profile = ({ userInfo }) => {
                     accept="image/*"
                   />
 
-<div
-  className={`radial-progress overflow-hidden bg-white border-2 border-indigo-600 ${
-    filePerc < 100 ? "text-error" : "text-success"
-  }`}
-  style={{ "--value": filePerc, "--thickness": "4px" }}
-  role="progressbar"
->
-  <div className="">
-    {userInfo && userInfo.avatar && (
-      <img
-        className="object-cover w-40 h-40 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
-        src={userInfo.avatar}
-        alt="Bordered avatar"
-        style={{ width: "100%", height: "100%" }} // Set width and height explicitly
-      />
-    )}
-  </div>
-</div>
-
+                 
 
                   {/* img upload to firebase status*/}
                   <p className="text-sm self-center">
@@ -208,6 +166,33 @@ const Profile = ({ userInfo }) => {
                     >
                       Delete picture
                     </button>
+
+                    <div className=" w-full flex items-center justify-center">
+                    <div
+                    className={`radial-progress overflow-hidden     bg-white border-2 border-indigo-600 ${
+                      filePerc < 100 ? "text-error" : "text-success"
+                    }`}
+                    style={{ "--value": filePerc, "--thickness": "4px" }}
+                    role="progressbar"
+                  >
+                    <div className=" mx-auto">
+                      {userInfo && userInfo.avatar && (
+                        <img
+                          className="object-cover w-100 h-100 rounded-full   ring-2 ring-indigo-300 dark:ring-indigo-500"
+                          src={userInfo.avatar}
+                          alt="Bordered avatar"
+                          style={{ width: "100%", height: "100%" }} // Set width and height explicitly
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                    </div>
+                    <div className=" w-full flex items-center justify-center">
+                      <h1 className="px-20 py-3 rounded-lg border bg-indigo-600 text-white ">{userInfo && userInfo.username ? userInfo.username:''}</h1>
+                    </div>
+
+
                     <dialog id="my_modal_1" className="modal">
                       <div className="modal-box">
                         <h3 className="font-bold text-lg">Are You Sure </h3>

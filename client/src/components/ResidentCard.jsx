@@ -6,7 +6,7 @@ import { FaBed, FaBath } from 'react-icons/fa';
 
 const ResidentCard = () => {
   return (
-    <motion.Link to="/property-details" className="flex flex-col p-1 rounded-xl border shadow-xl"
+    <motion.Link to="/property-details" className="flex flex-col  rounded-xl bg-white shadow-xl"
     variants={{
       hidden:{opacity:0 },
       visible:{opacity:1 }
@@ -21,24 +21,29 @@ const ResidentCard = () => {
           src="https://assets-global.website-files.com/65536c2335f1d63e21d653f2/65536c2335f1d63e21d6554f_house5-p-1080.jpg"
           alt=""
         />
+
+<div className="chat chat-start mb-3 px-4 absolute top-1 left-0">
+<span className="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-500">For Buy</span>
       </div>
-      <div className="flex flex-col py-3 px-4 justify-center">
-        <h1 className="text-violet-500 font-bold text-xl md:text-2xl lg:text-3xl py-1">
-          360,000.00 MAD
+      </div>
+      <div className="flex flex-col py-2 px-4 justify-center">
+        <h1 className=" text-xl md:text-2xl lg:text-2xl p">
+          Luxury Home In California
         </h1>
-        <p className="font-bold text-gray-500">/Per Month</p>
+        <h1 className="text-[#782DF3] text-xl md:text-xl lg:text-xl pb-3">
+          $ 860,000
+        </h1>
+        <p className=" text-gray-500 pb-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, nihil dicta officiis nobis asperiores </p>
       </div>
       <div className="flex items-center px-4">
         <span className="flex items-center gap-0.5 py-2">
           <FaMapMarkerAlt className="text-violet-500" /> 123 Street, New York, USA
         </span>
       </div>
-      <div className="chat chat-start mb-3 px-4">
-        <div className="chat-bubble chat-bubble-primary-content">For Rent</div>
-      </div>
-      <hr className="w-11/12 mx-auto" />
+      
+      
 
-      <div className="flex flex-wrap justify-between items-center border  py-1 mb-1 rounded-lg px-10">
+      <div className="flex flex-wrap justify-between items-center border  py-1 mt-4 mb-1 rounded-lg px-10">
         <span className="flex justify-between items-center font-semibold gap-1  border-violet-500 pr-5">
           <SlSizeFullscreen className="text-violet-500" /> 1000 Sqft
         </span>

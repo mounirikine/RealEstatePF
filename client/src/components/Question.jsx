@@ -3,12 +3,13 @@ import {motion} from 'framer-motion'
 
 const Question = () => {
   return (
+
     <div className=" px-2 lg:px-20 sm:px-20 py-14">
-      <h1 className="font-bold text-4xl text-center pb-5 ">
+      <h1 className="font-bold text-5xl text-center pb-5 primary_text  uppercase">
         Frequently asked questions
       </h1>
       <div className="flex items-center justify-center">
-        <p className="w-12/12  lg:w-8/12 sm:w-11/12 font-semibold text-lg text-center py-5 ">
+        <p className="w-5/12  lg:w-8/12 sm:w-11/12  primary_text text-center py-5  ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
           necessitatibus eum magnam atque repellendus quibusdam suscipit debitis
           
@@ -80,7 +81,7 @@ const Question = () => {
         </div>
       </motion.div>
       <div className="flex items-center justify-center py-20">
-      <Link className="px-20 py-4 rounded-xl secondary_color text-white font-bold mx-auto ">More Questions</Link>
+      <Link className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl font-semibold border primary_text flex items-center justify-center bg-[#7af065] ">More Questions</Link>
 
       </div>
 

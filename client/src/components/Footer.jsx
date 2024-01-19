@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom"
-import logo1 from '../assets/logo3.png'
+import logo1 from '../assets/logof1.png'
 
 const Footer = () => {
   return (
     <>
-    <footer className="">
+    <footer className="primary_text">
     <div className="container p-6 mx-auto">
         <div className="lg:flex">
             <div className="w-full -mx-6 lg:w-2/5">
                 <div className="px-6">
-                    <Link to="/" className="py-5">
+                    <Link to="/" className="">
                                      
-                    <img src={logo1} alt="" width={200} />
+                    <img src={logo1} alt="" width={200} className="mb-10"/>
        
                                      
                     </Link>
@@ -56,29 +56,29 @@ const Footer = () => {
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     <div>
                         <h3 className="text-whiteuppercase dark:text-white">About</h3>
-                        <Link to="#" className="block mt-2 text-sm  dark:text-gray-400 hover:underline">Company</Link>
-                        <Link to="#" className="block mt-2 text-sm  dark:text-gray-400 hover:underline">community</Link>
-                        <Link to="#" className="block mt-2 text-sm  dark:text-gray-400 hover:underline">Careers</Link>
+                        <Link to="#" className="block mt-2 text-sm   hover:underline">Company</Link>
+                        <Link to="#" className="block mt-2 text-sm   hover:underline">community</Link>
+                        <Link to="#" className="block mt-2 text-sm   hover:underline">Careers</Link>
                     </div>
 
                     <div>
                         <h3 className="text-whiteuppercase dark:text-white">Blog</h3>
-                        <Link to="#" className="block mt-2 text-sm  dark:text-gray-400 hover:underline">Tec</Link>
-                        <Link to="#" className="block mt-2 text-sm  dark:text-gray-400 hover:underline">Music</Link>
-                        <Link to="#" className="block mt-2 text-sm  dark:text-gray-400 hover:underline">Videos</Link>
+                        <Link to="#" className="block mt-2 text-sm   hover:underline">Tec</Link>
+                        <Link to="#" className="block mt-2 text-sm   hover:underline">Music</Link>
+                        <Link to="#" className="block mt-2 text-sm   hover:underline">Videos</Link>
                     </div>
 
                     <div>
                         <h3 className="text-whiteuppercase dark:text-white">Products</h3>
-                        <Link to="#" className="block mt-2 text-sm  dark:text-gray-400 hover:underline">Mega cloud</Link>
-                        <Link to="#" className="block mt-2 text-sm  dark:text-gray-400 hover:underline">Aperion UI</Link>
-                        <Link to="#" className="block mt-2 text-sm  dark:text-gray-400 hover:underline">Meraki UI</Link>
+                        <Link to="#" className="block mt-2 text-sm   hover:underline">Mega cloud</Link>
+                        <Link to="#" className="block mt-2 text-sm   hover:underline">Aperion UI</Link>
+                        <Link to="#" className="block mt-2 text-sm   hover:underline">Meraki UI</Link>
                     </div>
 
                     <div>
                         <h3 className="text-whiteuppercase dark:text-white">Contact</h3>
-                        <span className="block mt-2 text-sm  dark:text-gray-400 hover:underline">+1 526 654 8965</span>
-                        <span className="block mt-2 text-sm  dark:text-gray-400 hover:underline">example@email.com</span>
+                        <span className="block mt-2 text-sm   hover:underline">+1 526 654 8965</span>
+                        <span className="block mt-2 text-sm   hover:underline">example@email.com</span>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@ const Footer = () => {
         <hr className="h-px my-6 bg-gray-200 border-none dark:bg-gray-700" />
 
         <div>
-            <p className="text-center  dark:text-gray-400">© Brand 2020 - All rights reserved</p>
+            <p className="text-center ">© Brand 2020 - All rights reserved</p>
         </div>
     </div>
 </footer>

@@ -2,45 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 /* .primary{
    @apply  bg-[#e1f1fd]
 } */
-.text_primary {
-    color: #4663ac;
+
+.primary_text{
+    @apply text-[#fff]
 }
-.text_secondary{
-    color: #727272;
+.primary_color{
+    @apply bg-[#fff]
+}
+.secondary_text{
+    opacity: 0.7;
+}
+.secondary_color{
+    @apply bg-[#5F5D61]
 }
 
-.dark_mode{
-    @apply bg-slate-950 text-[#e1f1fd]
+
+body {
+    
+    letter-spacing: -.03em;
+    font-family: "Mulish", sans-serif;
+    font-size: 1rem;
+    line-height: 1em;
+    
+    @apply  bg-[#782DF3]  
+    
+}
+
+
+
+
+/* .dark_mode{
+    @apply bg-slate-950 text-[#F8F4EC]
 
 }
 
 .light_mode{
-    @apply bg-[#e1f1fd] text-gray-900
-}
+    @apply bg-[#F8F4EC] text-gray-900
+} */
 
-.nav_bg_dark{
+/* .nav_bg_dark{
    @apply bg-slate-950
 }
 .nav_bg_light{
-   @apply bg-[#e1f1fd]
-}
-body {
-    
-    letter-spacing: -.03em;
-    font-family: Epilogue, sans-serif;
-    font-size: 1rem;
-    line-height: 1em;
-    
-    /* bg-[#285185]; */
-}
+   @apply bg-[#F8F4EC]
+} */
 
-.secondary_color {
+/* .secondary_color {
     background: #7af065;
 }
 .primary_text{
     @apply text-blue-800
-}
+} */
