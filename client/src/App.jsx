@@ -14,6 +14,11 @@ import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import PrivateRoutes from "./lib/PrivateRoutes";
 import CreateForm from "./pages/CreateForm";
+import CreateHome from "./components/form/CreateHome";
+import CreateVilla from "./components/form/CreateVilla";
+import CreateApartment from "./components/form/CreateApartment";
+import CreateCar from "./components/form/CreateCar";
+import CreateOffice from "./components/form/CreateOffice";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -89,6 +94,11 @@ function App() {
             {/* Use Routes inside PrivateRoutes */}
             <Route element={<PrivateRoutes />}>
               <Route path="/profile" element={<Profile userInfo={userInfo} />} />
+              <Route path="/CreateHome" element={<CreateHome userInfo={userInfo} />} />
+              <Route path="/CreateVilla" element={<CreateVilla userInfo={userInfo} />} />
+              <Route path="/CreateApartment" element={<CreateApartment userInfo={userInfo} />} />
+              <Route path="/CreateCar" element={<CreateCar userInfo={userInfo} />} />
+              <Route path="/CreateOffice" element={<CreateOffice userInfo={userInfo} />} />
               <Route path="/create" element={<CreateForm userInfo={userInfo} />} />
             </Route>
           </Routes>

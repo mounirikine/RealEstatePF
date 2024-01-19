@@ -8,7 +8,7 @@ import { useCookies } from "react-cookie";
 import logof from "../assets/logof1.png";
 
 const Header = ({ userInfo }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [cookies, setCookies] = useCookies(["access_token"]);
 
   const removeCookies = () => {
@@ -29,9 +29,9 @@ const Header = ({ userInfo }) => {
     <header className=" dark:bg-gray-900 bg-[#782DF3] fixed w-full z-20 top-0 start-0 primary_text dark:border-gray-600 py-3">
     <nav className="   px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-            <a href="https://flowbite.com" className="flex items-center">
+            <Link to="/" className="flex items-center">
             <img src={logof} alt="" width={200} />
-            </a>
+            </Link>
             <div className="flex items-center lg:order-2">
             {cookies.access_token ? (
   <>
@@ -105,7 +105,7 @@ const Header = ({ userInfo }) => {
                 <button
                 onClick={handleOpen}
                 type="button"
-                className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="inline-flex items-center p-2 ml-1 text-sm border  rounded-lg lg:hidden :bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               >
                 <span className="sr-only">Open main menu</span>
                 {open ? (

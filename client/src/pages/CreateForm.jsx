@@ -1,110 +1,40 @@
-import React, { useState } from "react";
-import HomeForm from '../components/Formes/HomeForm';
-import CarsForm from '../components/Formes/CarsForm';
-import VillaForm from '../components/Formes/VillaForm';
-import PhonesForm from '../components/Formes/PhonesForm';
-import OfficeForm from '../components/Formes/OfficeForm';
-import BycicleForm from '../components/Formes/BycicleFrom'; // Corrected typo
+import  { useState } from "react";
+
+import { IoHomeSharp } from "react-icons/io5";
+import { FaBuilding } from "react-icons/fa";
+import { MdOutlineVilla } from "react-icons/md";
+import { MdOutlineApartment } from "react-icons/md";
+import { GiOfficeChair } from "react-icons/gi";
+import { IoCarSport } from "react-icons/io5";
+import { CiCircleMore } from "react-icons/ci";
+
+import { Link } from "react-router-dom";
 
 const CreateForm = () => {
-  const [selectedForm, setSelectedForm] = useState(<HomeForm />);
-  const [active, setActive] = useState('HomeForm');
 
-  const handleTabClick = (tab) => {
-    setActive(tab);
-    switch (tab) {
-      case 'HomeForm':
-        setSelectedForm(<HomeForm />);
-        break;
-      case 'CarsForm':
-        setSelectedForm(<CarsForm />);
-        break;
-      case 'PhonesForm':
-        setSelectedForm(<PhonesForm />);
-        break;
-      case 'OfficeForm':
-        setSelectedForm(<OfficeForm />);
-        break;
-      case 'VillaForm':
-        setSelectedForm(<VillaForm />);
-        break;
-      case 'BycicleForm':
-        setSelectedForm(<BycicleForm />);
-        break;
-      default:
-        setSelectedForm(null);
-    }
-  };
+
+  
 
   return (
-    <div className=" pt-14">
-      <div className="flex flex-col md:flex-row justify-between gap-7 p-8 py-22">
-        {/* Post Form */}
-        <div className="w-2/3 ">
-          <h2 className="text-2xl font-bold mb-4">Create Post</h2>
-          {/* Your form elements go here */}
-          {selectedForm}
-        </div>
-
-        {/* Categories Sidebar */}
-        <div className="w-1/3 py-10 ">
-          <div className="sticky top-0">
-            <h2 className="text-2xl font-bold mb-4 px-3 pt-24">Categories</h2>
-            {/* Your categories list goes here */}
-            <ul className="menu bg-base-200 gap-1 w-90  ">
-              <li
-                onClick={() => handleTabClick('HomeForm')}
-                className={`bg-gray-200 pt-1 text-[16px] rounded-xl  font-bold ${
-                  active === 'HomeForm' ? 'secondary_color hover:secondary_color' : ''
-                }`}
-              >
-                <a>Home</a>
-              </li>
-              <li
-                onClick={() => handleTabClick('CarsForm')}
-                className={`bg-gray-200 pt-1 text-[16px] rounded-xl font-bold ${
-                  active === 'CarsForm' ? 'secondary_color hover:secondary_color' : ''
-                }`}
-              >
-                <a>Cars</a>
-              </li>
-              <li
-                onClick={() => handleTabClick('PhonesForm')}
-                className={`bg-gray-200 pt-1 text-[16px] rounded-xl  font-bold ${
-                  active === 'PhonesForm' ? 'secondary_color hover:secondary_color' : ''
-                }`}
-              >
-                <a>Phones</a>
-              </li>
-              <li
-                onClick={() => handleTabClick('OfficeForm')}
-                className={`bg-gray-200 pt-1 text-[16px] rounded-xl  font-bold ${
-                  active === 'OfficeForm' ? 'secondary_color hover:secondary_color' : ''
-                }`}
-              >
-                <a>Offices</a>
-              </li>
-              <li
-                onClick={() => handleTabClick('VillaForm')}
-                className={`bg-gray-200 pt-1 text-[16px] rounded-xl  font-bold ${
-                  active === 'VillaForm' ? 'secondary_color hover:secondary_color' : ''
-                }`}
-              >
-                <a>Villa</a>
-              </li>
-              <li
-                onClick={() => handleTabClick('BycicleForm')}
-                className={`bg-gray-200 pt-1 text-[16px] rounded-xl  font-bold ${
-                  active === 'BycicleForm' ? 'secondary_color hover:secondary_color' : ''
-                }`}
-              >
-                <a>Bicycles</a>
-              </li>
-            </ul>
+    <>
+      <div className="lg:h-screen sm:h-screen">
+          <div className="pt-20 pb-5">
+              <h1 className="text-center text-5xl font-bold uppercase primary_text">Choose a category</h1>
           </div>
-        </div>
+          <div>
+          <h1 className="text-center primary_text text-lg uppercase">what type of property you want to add</h1>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mx-4 px-20 py-20">
+            <Link to='/CreateHome'  className="px-10 rounded-xl  hover:bg-indigo-500 text-xl hover:text-white border py-6 bg-white shadow-lg flex gap-1 items-center justify-center"><span><IoHomeSharp /></span> <span>Home</span></Link>
+            <Link to='/CreateVilla'  className="px-10 rounded-xl  hover:bg-indigo-600 text-xl hover:text-white border py-6 bg-white shadow-lg flex gap-1 items-center justify-center"><span><MdOutlineVilla /></span> <span>Villa</span></Link>
+            <Link to='/CreateApartment'  className="px-10 rounded-xl  hover:bg-indigo-600 text-xl hover:text-white border py-6 bg-white shadow-lg flex gap-1 items-center justify-center"><span><MdOutlineApartment /></span> <span>Apartments</span></Link>
+            <Link to='/CreateCar'  className="px-10 rounded-xl  hover:bg-indigo-600 text-xl hover:text-white border py-6 bg-white shadow-lg flex gap-1 items-center justify-center"><span><IoCarSport /></span> <span>Car</span></Link>
+            <Link to='/CreateOffice'  className="px-10 rounded-xl  hover:bg-indigo-600 text-xl hover:text-white border py-6 bg-white shadow-lg flex gap-1 items-center justify-center"><span><GiOfficeChair /></span> <span>Office</span></Link>
+            <Link to='/CreateHome'  className="px-10 rounded-xl  hover:bg-indigo-600 text-xl hover:text-white border py-6 bg-white shadow-lg flex gap-1 items-center justify-center"><span><CiCircleMore /></span> <span>Bycicle</span></Link>
+          </div>
       </div>
-    </div>
+    </>
   );
 };
 
