@@ -1,5 +1,5 @@
 import express from 'express'
-import { SignIn, SignUp, UpdateUser,  signOut, userInfo } from '../Controllers/auth.controller.js';
+import { forgotPass, SignIn, SignUp, UpdateUser,    signOut, userInfo, resetPass, ResetPass } from '../Controllers/auth.controller.js';
 import { verifyToken } from '../utils/verifyUser.js';
 
 
@@ -11,5 +11,7 @@ router.post('/sign-in',SignIn)
 router.get("/signout",signOut);
 router.get("/userInfo",userInfo);
 router.put('/users/:userId', UpdateUser);
-
+router.post('/forgot-password',forgotPass);
+router.get('/reset-password/:id/:token',resetPass);
+router.post('/reset-password/:id/:token',ResetPass);
 export default router;

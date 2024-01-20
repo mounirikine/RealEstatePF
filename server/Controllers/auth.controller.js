@@ -84,3 +84,83 @@ export const signOut =async(req, res, next)=>{
     }
 };
 
+export const forgotPass = async (req, res, next) => {
+  const { email } = req.body;
+  try {
+    const oldUser = await User.findOne({ email });
+    if (!oldUser) return next(errorHandler(404, 'User not exist!'));
+      
+    
+    const secret = process.env.JWT_SECRET + oldUser.password;
+    const token = jwt.sign(
+      { email: oldUser.email, id: oldUser._id },
+      secret,
+      {
+        expiresIn: '5m',
+      }
+    );
+    const link = `http://localhost:4000/api/auth/reset-password/${oldUser._id}/${token}`;
+    res.json(link);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const resetPass = async (req, res, next) => {
+
+    const { id, token } = req.params;
+
+    const oldUser = await User.findOne({ _id: id });
+    if (!oldUser) return next(errorHandler(404, 'User not exist!'));
+        
+    
+    const secret = process.env.JWT_SECRET + oldUser.password;
+    try {
+      const verify = jwt.verify(token, secret);
+      res.render("app", { email: verify.email, status: "Not Verified" });
+    } catch (error) {
+      next(error)
+      res.send("Not Verified");
+    }
+  
+  }
+  
+  export const ResetPass =async (req,res,next)=>{
+    const { id, token } = req.params;
+  const { password } = req.body;
+
+  try {
+    if (!password) {
+      return res.json({ success: false, statusCode: 400, message: "Password is required" });
+    }
+
+    const oldUser = await User.findOne({ _id: id });
+
+    if (!oldUser) {
+      return res.json({ success: false, statusCode: 404, message: "User Not Exists!!" });
+    }
+
+    const secret = process.env.JWT_SECRET + oldUser.password;
+
+    const verify = jwt.verify(token, secret);
+
+    const encryptedPassword = bcryptjs.hashSync(password, 10);
+
+    await User.updateOne(
+      {
+        _id: id,
+      },
+      {
+        $set: {
+          password: encryptedPassword,
+        },
+      }
+    );
+
+    res.render("app", { email: verify.email, status: "verified" });
+  } catch (error) {
+    next(error);
+    
+    res.json({ success: false, statusCode: 500, message: error.message });
+  }
+  }
