@@ -111,11 +111,12 @@ export const forgotPass = async (req, res, next) => {
         };
   
         await transporter.sendMail(mailOptions);
-
+        console.log('Email sent: ', email);
   
-       
+        res.json({ success: true, message: 'Email sent successfully' });
       } catch (error) {
-      next(error)
+        console.error('Error sending email: ', error);
+        res.status(500).json({ success: false, message: 'Error sending email' });
       }
    
   
@@ -135,7 +136,7 @@ export const resetPass = async (req, res, next) => {
     
     const secret = process.env.JWT_SECRET + oldUser.password;
     try {
-      jwt.verify(token, secret);
+      const verify = jwt.verify(token, secret);
       
     } catch (error) {
       next(error)
@@ -180,6 +181,6 @@ export const resetPass = async (req, res, next) => {
   } catch (error) {
     next(error);
     
-  
+    res.json({ success: false, statusCode: 500, message: error.message });
   }
   }
