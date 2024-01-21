@@ -111,11 +111,10 @@ export const forgotPass = async (req, res, next) => {
         };
   
         await transporter.sendMail(mailOptions);
-        console.log('Email sent: ', email);
-  
+       
         res.json({ success: true, message: 'Email sent successfully' });
       } catch (error) {
-        console.error('Error sending email: ', error);
+        
         res.status(500).json({ success: false, message: 'Error sending email' });
       }
    
@@ -184,3 +183,39 @@ export const resetPass = async (req, res, next) => {
     res.json({ success: false, statusCode: 500, message: error.message });
   }
   }
+  export const google = async (req, res, next) => {
+    try {
+      const user = await User.findOne({ email: req.body.email });
+      if (user) {
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+        const { password: pass, ...rest } = user._doc;
+        res
+          .cookie('access_token', token, { httpOnly: true })
+          .status(200)
+          .json({rest,token});
+      } else {
+        const generatedPassword =
+          Math.random().toString(36).slice(-8) +
+          Math.random().toString(36).slice(-8);
+        const hashedPassword = bcryptjs.hashSync(generatedPassword, 10);
+        const newUser = new User({
+          username:
+            req.body.name.split(' ').join('').toLowerCase() +
+            Math.random().toString(36).slice(-4),
+          email: req.body.email,
+          password: hashedPassword,
+          avatar: req.body.photo,
+        });
+        await newUser.save();
+        const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+        const { password: pass, ...rest } = newUser._doc;
+        res
+          .cookie('access_token', token, { httpOnly: true })
+          .status(200)
+          .json({rest,token});
+      }
+    } catch (error) {
+      next(error);
+    }
+  };
+  

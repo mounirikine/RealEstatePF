@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import finder from "../assets/finder.png";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import OAuth from "../components/0Auth";
 const Register = () => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -127,15 +128,7 @@ const Register = () => {
 
             <hr className="my-6 border-gray-300 w-full" />
 
-            <button className="px-4 py-2 border flex items-center justify-center gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150 w-full">
-              <img
-                className="w-6 h-6"
-                src="https://www.svgrepo.com/show/475656/google-color.svg"
-                loading="lazy"
-                alt="google logo"
-              />
-              <span>Register with Google</span>
-            </button>
+          <OAuth/>
             <p className="mt-8">
               Already have an account?{" "}
               <Link
