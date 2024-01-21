@@ -10,8 +10,7 @@ import authRouter from '../server/Routes/auth.route.js'
 dotenv.config()
 
 const app = express();
-app.set("view engine","ejs")
-app.use(express.urlencoded({ extended: false }));
+
 const PORT = 4000;
 
 app.use(express.json())

@@ -19,6 +19,8 @@ import CreateVilla from "./components/form/CreateVilla";
 import CreateApartment from "./components/form/CreateApartment";
 import CreateCar from "./components/form/CreateCar";
 import CreateOffice from "./components/form/CreateOffice";
+import ForgotPass from "./pages/ForgotPass";
+import NewPass from "./pages/NewPass";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -90,6 +92,8 @@ function App() {
             <Route path="/properties" element={<Properties />} />
             <Route path="/about" element={<About />} />
             <Route path="/*" element={<NotFound />} />
+            <Route path='/forgot-Pass' element={<ForgotPass/>}/>
+            <Route path='/forgot-Pass/:id/:token' element={<NewPass/>}/>
 
             {/* Use Routes inside PrivateRoutes */}
             <Route element={<PrivateRoutes />}>

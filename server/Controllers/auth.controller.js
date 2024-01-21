@@ -1,8 +1,8 @@
 import User from '../Models/user.model.js';
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from '../utils/error.js';
-
 import jwt from 'jsonwebtoken';
+import transporter from '../utils/nodemailer.js';
 
 export const SignUp = async (req,res,next)=>{
 
@@ -79,11 +79,12 @@ export const signOut =async(req, res, next)=>{
 
         const { password: pass, ...rest } = user._doc;
         res.status(200).json(rest);
+        
     } catch (error) {
         next(error);
     }
 };
-
+//irgv uxtg sijs carm
 export const forgotPass = async (req, res, next) => {
   const { email } = req.body;
   try {
@@ -99,8 +100,26 @@ export const forgotPass = async (req, res, next) => {
         expiresIn: '5m',
       }
     );
-    const link = `http://localhost:4000/api/auth/reset-password/${oldUser._id}/${token}`;
-    res.json(link);
+   
+    const linkR = `http://localhost:5173/forgot-pass/${oldUser._id}/${token}`;
+    try {
+        const mailOptions = {
+          from: 'hightllevel@gmail.com',
+          to: email,
+          subject: 'Reset Password',
+          text: linkR,
+        };
+  
+        await transporter.sendMail(mailOptions);
+
+  
+       
+      } catch (error) {
+      next(error)
+      }
+   
+  
+
   } catch (error) {
     next(error);
   }
@@ -116,8 +135,8 @@ export const resetPass = async (req, res, next) => {
     
     const secret = process.env.JWT_SECRET + oldUser.password;
     try {
-      const verify = jwt.verify(token, secret);
-      res.render("app", { email: verify.email, status: "Not Verified" });
+      jwt.verify(token, secret);
+      
     } catch (error) {
       next(error)
       res.send("Not Verified");
@@ -157,10 +176,10 @@ export const resetPass = async (req, res, next) => {
       }
     );
 
-    res.render("app", { email: verify.email, status: "verified" });
+  
   } catch (error) {
     next(error);
     
-    res.json({ success: false, statusCode: 500, message: error.message });
+  
   }
   }
