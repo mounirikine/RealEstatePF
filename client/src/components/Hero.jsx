@@ -6,7 +6,7 @@ import heroImg1 from "../assets/heroImg1.png";
 const Hero = () => {
   return (
     <>
-      <section className="bg-[#782DF3]   lg:bg-white sm:bg-[#782DF3] lg:h-screen mb-20  relative">
+      <section className="bg-[#782DF3]   lg:bg-violet-200 sm:bg-[#782DF3] lg:h-screen mb-20  relative">
         <img src={vector1} alt="" className=" object-cover " />
         <div className="flex items-center justify-between absolute top-1 lg:px-20 px-5    ">
           <div className="w-full lg:w-6/12 py-20 sm:lg-10 lg:py-10">
@@ -18,7 +18,7 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.5, delay: 0.25 }}
-              className="text-5xl lg:text-6xl md:text-5xl font-bold mb-3 md:mb-10 primary_text tracking-wide text-center lg:text-left"
+              className="text-5xl  lg:text-6xl md:text-5xl font-bold mb-3 md:mb-10 primary_text tracking-wide text-center lg:text-left"
             >
               Find your smart living style with Us
             </motion.h1>

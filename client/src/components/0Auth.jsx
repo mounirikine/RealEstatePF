@@ -44,7 +44,7 @@ const OAuth=()=> {
       loading="lazy"
       alt="google logo"
     />
-    <span>Register with Google</span>
+<span>Continue with Google</span>
   </button>
   );
 }

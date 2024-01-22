@@ -18,7 +18,7 @@ const ResidentCard = () => {
       <div className="relative flex items-center justify-center">
         <img
           className="rounded-xl w-full"
-          src="https://assets-global.website-files.com/65536c2335f1d63e21d653f2/65536c2335f1d63e21d6554f_house5-p-1080.jpg"
+          src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt=""
         />
 
@@ -43,14 +43,14 @@ const ResidentCard = () => {
       
       
 
-      <div className="flex flex-wrap justify-between items-center border  py-1 mt-4 mb-1 rounded-lg px-10">
-        <span className="flex justify-between items-center font-semibold gap-1  border-violet-500 pr-5">
+      <div className="flex  justify-between items-center border  py-1 mt-4 mb-1 rounded-lg  px-2">
+        <span className="flex justify-between items-center  gap-1  border-violet-500 pr-5">
           <SlSizeFullscreen className="text-violet-500" /> 1000 Sqft
         </span>
-        <span className="flex justify-between items-center font-semibold gap-1  border-violet-500 pr-5">
+        <span className="flex justify-between items-center  gap-1  border-violet-500 pr-5">
           <FaBed className="text-violet-500" /> 3 Bed
         </span>
-        <span className="flex justify-between items-center font-semibold gap-1 border-violet-500 pr-1">
+        <span className="flex justify-between items-center  gap-1 border-violet-500 pr-1">
           <FaBath className="text-violet-500" /> 2 Bath
         </span>
       </div>

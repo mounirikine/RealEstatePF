@@ -10,6 +10,10 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(()=>{
+      console.log(import.meta.env.VITE_FIREBASE)
+  },[])
+
   const handleRegister = async (e) => {
     e.preventDefault();
 

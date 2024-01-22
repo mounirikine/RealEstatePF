@@ -23,7 +23,7 @@ const CreateOffice = () => {
                   <img src={logof} alt="" width={200} />
                 </div>
                 <h1 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-gray-100 uppercase">
-                  Villa Info
+                  Office Info
                 </h1>
                 <p className="text-gray-600 dark:text-gray-300 mb-6"></p>
                 <form >

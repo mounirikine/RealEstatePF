@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa6";
 const Residential = () => {
   return (
     <div>
-      <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 px-4 sm:px-6 md:px-8 lg:px-24 xl:px-12">
+      <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-12">
         <ResidentCard />
         <ResidentCard />
         <ResidentCard />

@@ -44,7 +44,7 @@ const FirstSection = () => {
     <>
       <motion.section className=" py-10">
         <div className="flex item-center ">
-          <h1 className="text-center mx-auto font-bold text-5xl uppercase primary_text">
+          <h1 className="text-center mt-8 mx-auto font-bold text-5xl uppercase primary_text">
             Find the category for you
           </h1>
         </div>

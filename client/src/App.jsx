@@ -59,7 +59,7 @@ function App() {
     setLoading2(true);
     setTimeout(() => {
       setLoading2(false);
-    }, 5000);
+    }, 3000);
   }, []);
 
   return (
@@ -89,8 +89,8 @@ function App() {
             <Route path="/" element={<Home userInfo={userInfo} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/properties" element={<Properties />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/properties" element={<Properties userInfo={userInfo} />} />
+            <Route path="/about" element={<About userInfo={userInfo} />} />
             <Route path="/*" element={<NotFound />} />
             <Route path='/forgot-Pass' element={<ForgotPass/>}/>
             <Route path='/forgot-Pass/:id/:token' element={<NewPass/>}/>

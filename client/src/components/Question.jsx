@@ -9,7 +9,7 @@ const Question = () => {
         Frequently asked questions
       </h1>
       <div className="flex items-center justify-center">
-        <p className="w-5/12  lg:w-8/12 sm:w-11/12  primary_text text-center py-5  ">
+        <p className="w-11/12  lg:w-8/12 sm:w-11/12  primary_text text-center py-5  ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
           necessitatibus eum magnam atque repellendus quibusdam suscipit debitis
           
