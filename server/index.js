@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
-
+import realRouter from '../server/Routes/Real.route.js'
 import authRouter from '../server/Routes/auth.route.js'
 
 
@@ -34,7 +34,7 @@ console.log('connected');
 } 
 
 app.use("/api/auth",authRouter)
-
+app.use("/api/real",realRouter)
 
 
 app.use((err,req,res,next)=>{
