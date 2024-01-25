@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Header";
 import logof from "../../assets/logof1.png";
@@ -8,7 +8,40 @@ const CreateHome = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [city, setCity] = useState("");
+  const [Country, setCountry] = useState("");
+  const [state, setState] = useState("");
+  const [zip, setZip] = useState("");
+  const [address, setAddress] = useState("");
+  const [Bedrooms, setBedrooms] = useState("");
+  const [Bathrooms, setBathrooms] = useState("");
+  const [area, setArea] = useState("");
+  const [Kitchen, setKitchen] = useState("");
+  const [Garage, setGarage] = useState("");
+  const [Parking, setParking] = useState("");
+  const [SaleOrRent, setSaleOrRent] = useState("");
+  const [Type, setType] = useState("");
+  const [YearBuilt, setYearBuilt] = useState("");
+  const [images, setImages] = useState([]);
 
+  const handleFileChange = (e) => {
+    const fileList = e.target.files;
+    const newImages = [];
+
+    for (let i = 0; i < fileList.length; i++) {
+      const file = fileList[i];
+      newImages.push(file);
+    }
+
+    setImages(newImages);
+  };
+const handleSubmit = (e)=>{
+  e.preventDefault()
+
+  // console.log(title + price + description  + Country + state + zip + Bedrooms + Bathrooms + area + Kitchen + Garage + Parking + SaleOrRent + Type + YearBuilt + images)
+  console.log(images)
+}
+  
  
 
   return (
@@ -26,7 +59,7 @@ const CreateHome = () => {
                   Home Info
                 </h1>
                 <p className="text-gray-600 dark:text-gray-300 mb-6"></p>
-                <form >
+                <form onSubmit={handleSubmit}>
                   <div className="mb-6">
                     <div className="flex items-center justify-center w-full">
                       <label
@@ -60,7 +93,9 @@ const CreateHome = () => {
                           </p>
                         </div>
                         <input
+                          onChange={handleFileChange}
                           id="dropzone-file"
+                          multiple
                           type="file"
                           className="hidden"
                         />
@@ -70,11 +105,14 @@ const CreateHome = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <input
+                      onChange={(e)=>setTitle(e.target.value)}
                       type="text"
                       placeholder="Title"
                       className="border p-2 rounded w-full"
                     />
+                  
                     <textarea
+                     onChange={(e)=>setDescription(e.target.value)}
                       type="text"
                       placeholder="Description"
                       className="border p-2 rounded w-full"
@@ -82,6 +120,7 @@ const CreateHome = () => {
                   </div>
                   <div className="mb-4">
                     <input
+                    onChange={(e)=>setPrice(e.target.value)}
                       type="text"
                       placeholder="Price"
                       className="border p-2 rounded w-full"
@@ -89,6 +128,7 @@ const CreateHome = () => {
                   </div>
                   <div className="mb-4">
                     <select
+                    onChange={(e)=>setCountry(e.target.value)}
                       placeholder="Country"
                       className="border p-2 rounded w-full"
                     >
@@ -423,6 +463,7 @@ const CreateHome = () => {
                   </div>
                   <div className="mb-4">
                     <input
+                      onChange={(e)=>setAddress(e.target.value)}
                       type="text"
                       placeholder="Street address"
                       className="border p-2 rounded w-full"
@@ -430,16 +471,19 @@ const CreateHome = () => {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
+                      onChange={(e)=>setCity(e.target.value)}
                       type="text"
                       placeholder="City"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                    onChange={(e)=>setState(e.target.value)}
                       type="text"
                       placeholder="State / Province"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                      onChange={(e)=>setZip(e.target.value)}
                       type="text"
                       placeholder="ZIP / Postal code"
                       className="border p-2 rounded w-full"
@@ -447,16 +491,19 @@ const CreateHome = () => {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
+                    onChange={(e)=>setBedrooms(e.target.value)}
                       type="number"
                       placeholder="Bedrooms"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                    onChange={(e)=>setBathrooms(e.target.value)}
                       type="number"
                       placeholder="Bathrooms"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                    onChange={(e)=>setArea(e.target.value)}
                       type="number"
                       placeholder="Area, Sq.Ft"
                       className="border p-2 rounded w-full"
@@ -464,16 +511,19 @@ const CreateHome = () => {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
+                    onChange={(e)=>setKitchen(e.target.value)}
                       type="number"
                       placeholder="Kitchen"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                    onChange={(e)=>setGarage(e.target.value)}
                       type="number"
                       placeholder="Garage Space"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                      onChange={(e)=>setParking(e.target.value)}
                       type="number"
                       placeholder="Parking"
                       className="border p-2 rounded w-full"
@@ -481,6 +531,7 @@ const CreateHome = () => {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <select
+                    onChange={(e)=>setSaleOrRent(e.target.value)}
                       type="number"
                       placeholder="Status"
                       className="border p-2 rounded w-full"
@@ -489,11 +540,13 @@ const CreateHome = () => {
                       <option value="rent">Rent</option>
                     </select>
                     <input
+                    onChange={(e)=>setType(e.target.value)}
                       type="number"
                       placeholder="Type"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                      onChange={(e)=>setYearBuilt(e.target.value)}
                       type="number"
                       placeholder="Year Built"
                       className="border p-2 rounded w-full"
