@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Header from "../Header";
 import logof from "../../assets/logof1.png";
 import Footer from "../Footer";
+import { toast } from "react-toastify";
 
 const CreateHome = () => {
   const [title, setTitle] = useState("");
@@ -35,12 +36,52 @@ const CreateHome = () => {
 
     setImages(newImages);
   };
-const handleSubmit = (e)=>{
-  e.preventDefault()
+  const userId = window.localStorage.getItem("userID");
 
-  // console.log(title + price + description  + Country + state + zip + Bedrooms + Bathrooms + area + Kitchen + Garage + Parking + SaleOrRent + Type + YearBuilt + images)
-  console.log(images)
-}
+  const formData = {
+    title,
+    description,
+    Country,
+    state,
+    zip,
+    Bathrooms,
+    Bedrooms,
+    area,
+    Kitchen,
+    Garage,
+    Parking,
+    SaleOrRent,
+    Type,
+    YearBuilt,
+    images,
+  };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const res = await fetch("http://127.0.0.1:4000/api/real/create-real", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData,userId),
+      });
+  
+      const data = await res.json();
+  
+      if (res.ok) {
+        toast.success("Real estate created successfully!");
+      } else {
+        const errorMessage = data.error || "An error occurred";
+        toast.error(errorMessage);
+      }
+    } catch (error) {
+      console.error("Error creating real estate:", error);
+      toast.error("An unexpected error occurred");
+    }
+  };
+  
   
  
 
