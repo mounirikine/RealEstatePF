@@ -67,7 +67,7 @@ const RealestateSchema = new mongoose.Schema(
         required: false,
     },
     kitchen: {
-        type: Boolean,
+        type: Number,
         required: false,
     },
     offer: {
