@@ -35,9 +35,13 @@ const RealestateSchema = new mongoose.Schema(
       required: true,
     },
     parking: {
-      type: Boolean,
+      type: Number,
       required: true,
     },
+    garage: {
+        type: Number,
+        required: true,
+      },
     parkSpace: {
         type: Number,
         required: false,
@@ -48,7 +52,7 @@ const RealestateSchema = new mongoose.Schema(
     },
     catSlug: {
         type: String,
-        required: true,
+        required: false,
     },
     country: {
         type: String,
@@ -74,14 +78,21 @@ const RealestateSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    area: {
+        type: String,
+        required: true,
+      },
     imageUrls: {
       type: Array,
-      required: true,
+      required: false,
     },
     userRef: {
       type: String,
       required: true,
-    },
+    },yearBuilt: {
+        type: Number,
+        required: false,
+      },
   },
   { timestamps: true }
 );

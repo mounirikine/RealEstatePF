@@ -1,9 +1,16 @@
 import jwt from 'jsonwebtoken';
+import express from 'express';
+import cookieParser from 'cookie-parser'
 import { errorHandler } from './error.js';
-
+const app = express();
+app.use(cookieParser());
 export const verifyToken = (req,res,next)=>{
-    const token = req.cookies.access_token;
-    if(!token) return next(errorHandler(401,"Unauthorized"));
+
+
+       const token = req.body.access_token;
+
+    if(!token) return next(errorHandler(401,"Unauthorized"));  
+  
 
 
     jwt.verify(token,process.env.JWT_SECRET,(err,user)=>{

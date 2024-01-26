@@ -30,7 +30,8 @@ const Login = () => {
       });
       const data = await res.json();
 
-      setCookies("access_token", data.token);
+      setCookies("access_token", data.token, { path: '/', domain: 'localhost' }); // Adjust domain and path accordingly
+
       window.localStorage.setItem("userID", data.rest._id);
 
       navigate("/");
@@ -41,7 +42,7 @@ const Login = () => {
     }
     setLoading(false);
   };
-
+ 
   return (
     <>
       <section className="flex flex-col  md:flex-row h-screen items-center">

@@ -8,80 +8,82 @@ import { toast } from "react-toastify";
 const CreateHome = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [address, setAddress] = useState("");
+  const [regularPrice, setRegularPrice] = useState();
+  const [discountPrice, setDiscountPrice] = useState();
+  const [rooms, setRooms] = useState(1);
+  const [bathrooms, setBathrooms] = useState(1);
+  const [furnished, setFurnished] = useState(false);
+  const [parking, setParking] = useState();
+  const [garage, setGarage] = useState();
+  const [parkSpace, setParkSpace] = useState();
+  const [type, setType] = useState("rent"); // sell or rent
+  const [catSlug, setCatSlug] = useState("house");  // home or villa ... 
+  const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
-  const [Country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [zip, setZip] = useState("");
-  const [address, setAddress] = useState("");
-  const [Bedrooms, setBedrooms] = useState("");
-  const [Bathrooms, setBathrooms] = useState("");
+  const [kitchen, setKitchen] = useState("");
+  const [offer, setOffer] = useState(false);
   const [area, setArea] = useState("");
-  const [Kitchen, setKitchen] = useState("");
-  const [Garage, setGarage] = useState("");
-  const [Parking, setParking] = useState("");
-  const [SaleOrRent, setSaleOrRent] = useState("");
-  const [Type, setType] = useState("");
-  const [YearBuilt, setYearBuilt] = useState("");
-  const [images, setImages] = useState([]);
+  const [yearBuilt, setYearBuilt] = useState("");
 
-  const handleFileChange = (e) => {
-    const fileList = e.target.files;
-    const newImages = [];
-
-    for (let i = 0; i < fileList.length; i++) {
-      const file = fileList[i];
-      newImages.push(file);
-    }
-
-    setImages(newImages);
-  };
-  const userId = window.localStorage.getItem("userID");
+const userRef =window.localStorage.getItem("userID");
 
   const formData = {
     title,
     description,
-    Country,
+    address,
+    regularPrice,
+    discountPrice,
+    rooms,
+    bathrooms,
+    furnished,
+    parking,
+    garage,
+    parkSpace,
+    type,
+    catSlug,
+    country,
+    city,
     state,
     zip,
-    Bathrooms,
-    Bedrooms,
+    kitchen,
+    offer,
     area,
-    Kitchen,
-    Garage,
-    Parking,
-    SaleOrRent,
-    Type,
-    YearBuilt,
-    images,
-  };
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    try {
-      const res = await fetch("http://127.0.0.1:4000/api/real/create-real", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData,userId),
-      });
-  
-      const data = await res.json();
-  
-      if (res.ok) {
-        toast.success("Real estate created successfully!");
-      } else {
-        const errorMessage = data.error || "An error occurred";
-        toast.error(errorMessage);
-      }
-    } catch (error) {
-      console.error("Error creating real estate:", error);
-      toast.error("An unexpected error occurred");
-    }
-  };
-  
+    yearBuilt,
+userRef  };
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+
+
+    const access_token = document.cookie.split('; ').find(row => row.startsWith('access_token=')).split('=')[1];
+
+
+    const res = await fetch('http://localhost:4000/api/real/create-real', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+       
+      },
+      body: JSON.stringify({
+        ...formData,
+        access_token
+      }),
+    });
+
+    const data = await res.json();
+    console.log(data)
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
   
  
 
@@ -134,7 +136,7 @@ const CreateHome = () => {
                           </p>
                         </div>
                         <input
-                          onChange={handleFileChange}
+                    
                           id="dropzone-file"
                           multiple
                           type="file"
@@ -161,11 +163,29 @@ const CreateHome = () => {
                   </div>
                   <div className="mb-4">
                     <input
-                    onChange={(e)=>setPrice(e.target.value)}
+                    onChange={(e)=>setRegularPrice(e.target.value)}
                       type="text"
                       placeholder="Price"
                       className="border p-2 rounded w-full"
                     />
+                  </div>
+                  <div className="mb-4">
+                    <input
+                    onChange={(e)=>setDiscountPrice(e.target.value)}
+                      type="text"
+                      placeholder="Price"
+                      className="border p-2 rounded w-full"
+                    />
+                  </div>
+                  <div className='mb-4'>
+                    <input
+                      type='checkbox'
+                      id='offer'
+                      className='w-5'
+                      onChange={(e)=>setOffer(e.target.checked)}
+                      checked={formData.offer}
+                    />
+                    <span>Offer</span>
                   </div>
                   <div className="mb-4">
                     <select
@@ -532,7 +552,7 @@ const CreateHome = () => {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
-                    onChange={(e)=>setBedrooms(e.target.value)}
+                    onChange={(e)=>setRooms(e.target.value)}
                       type="number"
                       placeholder="Bedrooms"
                       className="border p-2 rounded w-full"
@@ -543,6 +563,16 @@ const CreateHome = () => {
                       placeholder="Bathrooms"
                       className="border p-2 rounded w-full"
                     />
+                    <div className='flex gap-2'>
+                      <input
+                        type='checkbox'
+                        id='furnished'
+                        className='w-5'
+                        onChange={(e)=>setFurnished(e.target.checked)}
+                        checked={formData.furnished}
+                      />
+                      <span>Furnished</span>
+                   </div>
                     <input
                     onChange={(e)=>setArea(e.target.value)}
                       type="number"
@@ -569,10 +599,16 @@ const CreateHome = () => {
                       placeholder="Parking"
                       className="border p-2 rounded w-full"
                     />
+                     <input
+                      onChange={(e)=>setParkSpace(e.target.value)}
+                      type="number"
+                      placeholder="ParkSpace "
+                      className="border p-2 rounded w-full"
+                    />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <select
-                    onChange={(e)=>setSaleOrRent(e.target.value)}
+                    onChange={(e)=>setType(e.target.value)}
                       type="number"
                       placeholder="Status"
                       className="border p-2 rounded w-full"
@@ -580,12 +616,7 @@ const CreateHome = () => {
                       <option value="sale">Sale</option>
                       <option value="rent">Rent</option>
                     </select>
-                    <input
-                    onChange={(e)=>setType(e.target.value)}
-                      type="number"
-                      placeholder="Type"
-                      className="border p-2 rounded w-full"
-                    />
+                   
                     <input
                       onChange={(e)=>setYearBuilt(e.target.value)}
                       type="number"
