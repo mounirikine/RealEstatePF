@@ -4,55 +4,106 @@ import Header from "../Header";
 import logof from "../../assets/logof1.png";
 import Footer from "../Footer";
 import { toast } from "react-toastify";
-
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from 'firebase/storage';
+import { app } from "../../firebase";
 const CreateHome = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [address, setAddress] = useState("");
-  const [regularPrice, setRegularPrice] = useState();
-  const [discountPrice, setDiscountPrice] = useState();
-  const [rooms, setRooms] = useState(1);
-  const [bathrooms, setBathrooms] = useState(1);
-  const [furnished, setFurnished] = useState(false);
-  const [parking, setParking] = useState();
-  const [garage, setGarage] = useState();
-  const [parkSpace, setParkSpace] = useState();
-  const [type, setType] = useState("rent"); // sell or rent
-  const [catSlug, setCatSlug] = useState("house");  // home or villa ... 
-  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zip, setZip] = useState("");
-  const [kitchen, setKitchen] = useState("");
-  const [offer, setOffer] = useState(false);
-  const [area, setArea] = useState("");
-  const [yearBuilt, setYearBuilt] = useState("");
 
-const userRef =window.localStorage.getItem("userID");
 
-  const formData = {
-    title,
-    description,
-    address,
-    regularPrice,
-    discountPrice,
-    rooms,
-    bathrooms,
-    furnished,
-    parking,
-    garage,
-    parkSpace,
-    type,
-    catSlug,
-    country,
-    city,
-    state,
-    zip,
-    kitchen,
-    offer,
-    area,
-    yearBuilt,
-userRef  };
+  const [files,setFiles] = useState([])
+  const [imageUploadError, setImageUploadError] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  
+
+
+  
+const [formData, setFormData] = useState( {
+  imageUrls: [],
+  title: "",
+  description: "",
+  address: "",
+  regularPrice: "",
+  discountPrice:"",
+  rooms: 1,
+  bathrooms: 1,
+  furnished: false,
+  parking: undefined,
+  garage: undefined,
+  parkSpace: undefined,
+  type: "rent", // sell or rent
+  catSlug: "house",  // home or villa ...
+  country: "",
+  city: "",
+  state: "",
+  zip: "",
+  kitchen: "",
+  offer: false,
+  area: "",
+  yearBuilt: "",
+  catSlug:"Homes",
+  userRef: window.localStorage.getItem("userID"),});
+
+
+  const handleImageSubmit = (e)=>{
+    if(files.length >0 && files.length + formData.imageUrls.length < 7){
+        const promises = [];
+        for (let i = 0 ; i < files.length ; i++){
+          setUploading(true);
+            promises.push(storeImage(files[i]))
+        }
+        Promise.all(promises).then((urls)=>{
+          setFormData({...formData,imageUrls:formData.imageUrls.concat(urls)})
+
+          setImageUploadError(false);
+          setUploading(false);
+        }).catch((err)=>{
+          setImageUploadError('Image upload failed (2 mb max per image)')
+          setUploading(false);
+        });
+       
+    }else{
+      setImageUploadError('You can only upload 6 images per listing');
+      setUploading(false);
+    }
+}
+
+
+const storeImage = async(file)=>{
+  return new Promise((resolve, reject) => {
+      const storage = getStorage(app);
+      const fileName = new Date().getTime() + file.name;
+      const storageRef = ref(storage, fileName);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(`Upload is ${progress}% done`);
+        },
+        (error) => {
+          reject(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            resolve(downloadURL);
+             console.log(downloadURL)
+          });
+         
+        }
+      );
+    });
+}
+const handleRemoveImage = (index) => {
+ formData({
+    ...formData,
+    imageUrls: formData.imageUrls.filter((_, i) => i !== index),
+  });
+};
 
 
 const handleSubmit = async (e) => {
@@ -84,8 +135,38 @@ const handleSubmit = async (e) => {
   }
 };
 
-  
- 
+const handleChange =(e)=>{
+  if (
+   
+    e.target.id === 'furnished' ||
+    e.target.id === 'offer'
+  ) {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.checked,
+    });
+
+  }if (
+    e.target.id === 'type' ||
+    e.target.type === 'number' ||
+    e.target.type === 'text' ||
+    e.target.type === 'textarea'
+  ) {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  }
+  if (
+    e.target.id === 'country' 
+  ) {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  }
+}
+ console.log(formData)
 
   return (
     <>
@@ -136,7 +217,7 @@ const handleSubmit = async (e) => {
                           </p>
                         </div>
                         <input
-                    
+                     onChange={(e)=>setFiles(e.target.files)}
                           id="dropzone-file"
                           multiple
                           type="file"
@@ -144,53 +225,62 @@ const handleSubmit = async (e) => {
                         />
                       </label>
                     </div>
+                    <button
+              type='button'
+              disabled={uploading}
+              onClick={handleImageSubmit}
+              className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'
+            >
+              {uploading ? 'Uploading...' : 'Upload'}
+
+            </button>
+            {formData.imageUrls.length > 0 &&
+            formData.imageUrls.map((url, index) => (
+              <div
+                key={url}
+                className='flex justify-between p-3 border items-center'
+              >
+                <img
+                  src={url}
+                  alt='listing image'
+                  className='w-20 h-20 object-contain rounded-lg'
+                />
+                <button
+                  type='button'
+                  onClick={() => handleRemoveImage(index)}
+                  className='p-3 text-red-700 rounded-lg uppercase hover:opacity-75'
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <input
-                      onChange={(e)=>setTitle(e.target.value)}
+                      onChange={handleChange}
                       type="text"
+                      id="title"
                       placeholder="Title"
                       className="border p-2 rounded w-full"
                     />
                   
                     <textarea
-                     onChange={(e)=>setDescription(e.target.value)}
+                     onChange={handleChange}
                       type="text"
+                      id="description"
                       placeholder="Description"
                       className="border p-2 rounded w-full"
                     />
                   </div>
-                  <div className="mb-4">
-                    <input
-                    onChange={(e)=>setRegularPrice(e.target.value)}
-                      type="text"
-                      placeholder="Price"
-                      className="border p-2 rounded w-full"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <input
-                    onChange={(e)=>setDiscountPrice(e.target.value)}
-                      type="text"
-                      placeholder="Price"
-                      className="border p-2 rounded w-full"
-                    />
-                  </div>
-                  <div className='mb-4'>
-                    <input
-                      type='checkbox'
-                      id='offer'
-                      className='w-5'
-                      onChange={(e)=>setOffer(e.target.checked)}
-                      checked={formData.offer}
-                    />
-                    <span>Offer</span>
-                  </div>
+                 
+                 
                   <div className="mb-4">
                     <select
-                    onChange={(e)=>setCountry(e.target.value)}
+                    onChange={handleChange}
                       placeholder="Country"
+                      id="country"
+                      value={formData.country}
                       className="border p-2 rounded w-full"
                     >
                       <option value="" disabled>
@@ -524,42 +614,48 @@ const handleSubmit = async (e) => {
                   </div>
                   <div className="mb-4">
                     <input
-                      onChange={(e)=>setAddress(e.target.value)}
+                      onChange={handleChange}
                       type="text"
+                      id="address"
                       placeholder="Street address"
                       className="border p-2 rounded w-full"
                     />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
-                      onChange={(e)=>setCity(e.target.value)}
+                      onChange={handleChange}
                       type="text"
+                      id="city"
                       placeholder="City"
                       className="border p-2 rounded w-full"
                     />
                     <input
-                    onChange={(e)=>setState(e.target.value)}
+                    onChange={handleChange}
                       type="text"
+                      id="state"
                       placeholder="State / Province"
                       className="border p-2 rounded w-full"
                     />
                     <input
-                      onChange={(e)=>setZip(e.target.value)}
+                      onChange={handleChange}
                       type="text"
+                      id="zip"
                       placeholder="ZIP / Postal code"
                       className="border p-2 rounded w-full"
                     />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
-                    onChange={(e)=>setRooms(e.target.value)}
+                    onChange={handleChange}
                       type="number"
+                      id="rooms"
                       placeholder="Bedrooms"
                       className="border p-2 rounded w-full"
                     />
                     <input
-                    onChange={(e)=>setBathrooms(e.target.value)}
+                    onChange={handleChange}
                       type="number"
+                      id="bathrooms"
                       placeholder="Bathrooms"
                       className="border p-2 rounded w-full"
                     />
@@ -568,63 +664,109 @@ const handleSubmit = async (e) => {
                         type='checkbox'
                         id='furnished'
                         className='w-5'
-                        onChange={(e)=>setFurnished(e.target.checked)}
+                        onChange={handleChange}
                         checked={formData.furnished}
                       />
                       <span>Furnished</span>
                    </div>
                     <input
-                    onChange={(e)=>setArea(e.target.value)}
+                    onChange={handleChange}
                       type="number"
+                      id="area"
                       placeholder="Area, Sq.Ft"
                       className="border p-2 rounded w-full"
                     />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
-                    onChange={(e)=>setKitchen(e.target.value)}
+                    onChange={handleChange}
                       type="number"
+                      id="kitchen"
                       placeholder="Kitchen"
                       className="border p-2 rounded w-full"
                     />
                     <input
-                    onChange={(e)=>setGarage(e.target.value)}
+                    onChange={handleChange}
                       type="number"
+                      id="garage"
                       placeholder="Garage Space"
                       className="border p-2 rounded w-full"
                     />
                     <input
-                      onChange={(e)=>setParking(e.target.value)}
+                      onChange={handleChange}
                       type="number"
+                      id="parking"
                       placeholder="Parking"
                       className="border p-2 rounded w-full"
                     />
                      <input
-                      onChange={(e)=>setParkSpace(e.target.value)}
+                      onChange={handleChange}
                       type="number"
+                      id="parkSpace"
                       placeholder="ParkSpace "
                       className="border p-2 rounded w-full"
                     />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <select
-                    onChange={(e)=>setType(e.target.value)}
-                      type="number"
+                    onChange={handleChange}
+                      type="text"
                       placeholder="Status"
+                      id="type"
+                      value={formData.type}
                       className="border p-2 rounded w-full"
                     >
-                      <option value="sale">Sale</option>
-                      <option value="rent">Rent</option>
+                      <option id="sale" value="sale">Sale</option>
+                      <option id="rent" value="rent">Rent</option>
                     </select>
                    
                     <input
-                      onChange={(e)=>setYearBuilt(e.target.value)}
+                      onChange={handleChange}
                       type="number"
+                      id="yearBuilt"
                       placeholder="Year Built"
                       className="border p-2 rounded w-full"
                     />
                   </div>
-
+                  <div className="flex items-center gap-2 mb-4">
+                    <input
+                    onChange={handleChange}
+                      type="text"
+                      id="regularPrice"
+                      placeholder="Price"
+                      className="p-3 border w-full border-gray-300 rounded-lg"
+                    />
+                  </div>
+                  <div className='mb-4'>
+                    <input
+                      type='checkbox'
+                      id='offer'
+                      className='w-5'
+                      onChange={handleChange}
+                      checked={formData.offer}
+                    />
+                    <span>Offer</span>
+                  </div>
+                  {formData.offer && (
+                  <div className='flex items-center gap-2 mb-4'>
+                  <input
+                    type='number'
+                    id='discountPrice'
+                    min='0'
+                    max='10000000'
+                    required
+                    className='p-3 border w-full border-gray-300 rounded-lg'
+                    onChange={handleChange}
+                    value={formData.discountPrice}
+                  />
+                  <div className='flex flex-col items-center'>
+                    <p>Discounted price</p>
+  
+                    {formData.type === 'rent' && (
+                      <span className='text-xs'>($ / month)</span>
+                    )}
+                  </div>
+                </div>)}
                   <button
                     type="submit"
                     className="w-full py-3 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none transition-colors"
