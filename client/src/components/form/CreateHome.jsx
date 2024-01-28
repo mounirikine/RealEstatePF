@@ -4,6 +4,8 @@ import Header from "../Header";
 import logof from "../../assets/logof1.png";
 import Footer from "../Footer";
 import { toast } from "react-toastify";
+import { FaCircleCheck } from "react-icons/fa6";
+
 import {
   getDownloadURL,
   getStorage,
@@ -17,7 +19,9 @@ const CreateHome = () => {
   const [files,setFiles] = useState([])
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
-  
+  const [loading, setLoading] = useState(false);
+  const [porcentageProgress, setPorcentageProgress] = useState(0);
+
 
 
   
@@ -27,24 +31,21 @@ const [formData, setFormData] = useState( {
   description: "",
   address: "",
   regularPrice: "",
-  discountPrice:"",
   rooms: 1,
   bathrooms: 1,
   furnished: false,
   parking: undefined,
   garage: undefined,
   parkSpace: undefined,
-  type: "rent", // sell or rent
+  type: "", // sell or rent
   catSlug: "house",  // home or villa ...
   country: "",
   city: "",
   state: "",
   zip: "",
   kitchen: "",
-  offer: false,
   area: "",
   yearBuilt: "",
-  catSlug:"Homes",
   userRef: window.localStorage.getItem("userID"),});
 
 
@@ -84,6 +85,7 @@ const storeImage = async(file)=>{
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log(`Upload is ${progress}% done`);
+          setPorcentageProgress(progress)
         },
         (error) => {
           reject(error);
@@ -108,6 +110,8 @@ const handleRemoveImage = (index) => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+  setLoading(true)
+  const success_button = document.getElementById('success_button');
 
   try {
 
@@ -128,11 +132,15 @@ const handleSubmit = async (e) => {
     });
 
     const data = await res.json();
-    console.log(data)
+    toast.success(data)
+    
+  
 
   } catch (error) {
     console.log(error);
   }
+
+  setLoading(false)
 };
 
 const handleChange =(e)=>{
@@ -220,40 +228,64 @@ const handleChange =(e)=>{
                      onChange={(e)=>setFiles(e.target.files)}
                           id="dropzone-file"
                           multiple
+                          required
                           type="file"
                           className="hidden"
                         />
                       </label>
                     </div>
-                    <button
-              type='button'
-              disabled={uploading}
-              onClick={handleImageSubmit}
-              className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'
-            >
-              {uploading ? 'Uploading...' : 'Upload'}
+                    <div className="w-full pb-3 ">
+                      <p className="py-2 text-sm text-center text-gray-500">
+                        After Select Images Click in The{" "}
+                        <kbd className="kbd kbd-md">Upload</kbd> To Upload Imges
+                      </p>
+                      <span className="flex items-center gap-2 px-5">
+                        <button
+                          type="button"
+                          disabled={uploading}
+                          onClick={handleImageSubmit}
+                          className="  h-[40px] w-[110px] bg-gray-200 text-blue-700  border mx-auto rounded-lg hover:shadow-md disabled:opacity-80"
+                        >
+                          {uploading ? (
+                            <span className="loading loading-spinner loading-md "></span>
+                          ) : (
+                            "Upload"
+                          )}
+                        </button>
+                        <progress
+                          className={`progress progress-primary  mx-auto ${
+                            porcentageProgress > 0 ? "" : " opacity-0"
+                          }`}
+                          value={porcentageProgress}
+                          max="100"
+                        ></progress>{" "}
+                        <span
+                          className={`flex items-center ${
+                            porcentageProgress > 0 ? "" : " opacity-0"
+                          }`}
+                        >
+                          <p>{parseInt(porcentageProgress)}</p>
+                          <p>%</p>
+                        </span>
+                      </span>
+                    </div>
 
-            </button>
-            {formData.imageUrls.length > 0 &&
-            formData.imageUrls.map((url, index) => (
-              <div
-                key={url}
-                className='flex justify-between p-3 border items-center'
-              >
-                <img
-                  src={url}
-                  alt='listing image'
-                  className='w-20 h-20 object-contain rounded-lg'
-                />
-                <button
-                  type='button'
-                  onClick={() => handleRemoveImage(index)}
-                  className='p-3 text-red-700 rounded-lg uppercase hover:opacity-75'
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
+                    <div className="grid grid-cols-6 items-center justify-center gap-2 lg:px-40 py-2">
+                      {formData.imageUrls.length > 0 &&
+                        formData.imageUrls.map((url, index) => (
+                          <div
+                            key={url}
+                            className="flex items-center"
+                            onClick={() => handleRemoveImage(index)}
+                          >
+                            <img
+                              src={url}
+                              alt="listing image"
+                              className=" w-20 object-contain rounded-lg"
+                            />
+                          </div>
+                        ))}
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -261,6 +293,7 @@ const handleChange =(e)=>{
                       onChange={handleChange}
                       type="text"
                       id="title"
+                      required
                       placeholder="Title"
                       className="border p-2 rounded w-full"
                     />
@@ -268,6 +301,7 @@ const handleChange =(e)=>{
                     <textarea
                      onChange={handleChange}
                       type="text"
+                      required
                       id="description"
                       placeholder="Description"
                       className="border p-2 rounded w-full"
@@ -275,7 +309,7 @@ const handleChange =(e)=>{
                   </div>
                  
                  
-                  <div className="mb-4">
+                  <div className="mb-6 grid grid-cols-1 md:grid-cols-2  gap-4">
                     <select
                     onChange={handleChange}
                       placeholder="Country"
@@ -611,20 +645,21 @@ const handleChange =(e)=>{
                       <option value="Zambia">Zambia</option>
                       <option value="Zimbabwe">Zimbabwe</option>
                     </select>
-                  </div>
-                  <div className="mb-4">
                     <input
                       onChange={handleChange}
                       type="text"
+                      required
                       id="address"
                       placeholder="Street address"
                       className="border p-2 rounded w-full"
                     />
                   </div>
+                 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
                       onChange={handleChange}
                       type="text"
+                      required
                       id="city"
                       placeholder="City"
                       className="border p-2 rounded w-full"
@@ -633,6 +668,7 @@ const handleChange =(e)=>{
                     onChange={handleChange}
                       type="text"
                       id="state"
+                      required
                       placeholder="State / Province"
                       className="border p-2 rounded w-full"
                     />
@@ -640,6 +676,7 @@ const handleChange =(e)=>{
                       onChange={handleChange}
                       type="text"
                       id="zip"
+                      required
                       placeholder="ZIP / Postal code"
                       className="border p-2 rounded w-full"
                     />
@@ -648,6 +685,7 @@ const handleChange =(e)=>{
                     <input
                     onChange={handleChange}
                       type="number"
+                      required
                       id="rooms"
                       placeholder="Bedrooms"
                       className="border p-2 rounded w-full"
@@ -656,31 +694,27 @@ const handleChange =(e)=>{
                     onChange={handleChange}
                       type="number"
                       id="bathrooms"
+                      required
                       placeholder="Bathrooms"
                       className="border p-2 rounded w-full"
                     />
-                    <div className='flex gap-2'>
+                    <div className='flex gap-2 border p-1 rounded w-full items-center'>
                       <input
                         type='checkbox'
                         id='furnished'
-                        className='w-5'
+                        className='checkbox '
                         onChange={handleChange}
                         checked={formData.furnished}
                       />
                       <span>Furnished</span>
                    </div>
-                    <input
-                    onChange={handleChange}
-                      type="number"
-                      id="area"
-                      placeholder="Area, Sq.Ft"
-                      className="border p-2 rounded w-full"
-                    />
+
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
                     onChange={handleChange}
                       type="number"
+                      required
                       id="kitchen"
                       placeholder="Kitchen"
                       className="border p-2 rounded w-full"
@@ -688,6 +722,7 @@ const handleChange =(e)=>{
                     <input
                     onChange={handleChange}
                       type="number"
+                      required
                       id="garage"
                       placeholder="Garage Space"
                       className="border p-2 rounded w-full"
@@ -696,56 +731,77 @@ const handleChange =(e)=>{
                       onChange={handleChange}
                       type="number"
                       id="parking"
+                      required
                       placeholder="Parking"
                       className="border p-2 rounded w-full"
                     />
                      <input
                       onChange={handleChange}
                       type="number"
+                      required
                       id="parkSpace"
                       placeholder="ParkSpace "
                       className="border p-2 rounded w-full"
                     />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                    <select
+                                        <input
                     onChange={handleChange}
-                      type="text"
-                      placeholder="Status"
-                      id="type"
-                      value={formData.type}
+                      type="number"
+                      required
+                      id="area"
+                      placeholder="Area, Sq.Ft"
                       className="border p-2 rounded w-full"
-                    >
-                      <option id="sale" value="sale">Sale</option>
-                      <option id="rent" value="rent">Rent</option>
-                    </select>
-                   
+                    />
                     <input
                       onChange={handleChange}
                       type="number"
                       id="yearBuilt"
+                      required
                       placeholder="Year Built"
                       className="border p-2 rounded w-full"
                     />
                   </div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <input
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                   
+                   
+                  <select
+                    onChange={handleChange}
+                      type="text"
+                      placeholder="Status"
+                      required
+                      id="type"
+                     
+                      className="border p-2 rounded w-full"
+                    >
+                      <option  disabled>Select: Sale Or Rent</option>
+                      <option id="sale" value="sale">Sale</option>
+                      <option id="rent" value="rent">Rent</option>
+                    </select>
+                   <span className="flex items-center gap-1">
+                   <input
                     onChange={handleChange}
                       type="text"
                       id="regularPrice"
+                      required
                       placeholder="Price"
                       className="p-3 border w-full border-gray-300 rounded-lg"
                     />
+                    {formData.type === 'rent' && (
+                      <span className=' badge badge-outline'>$/month</span>
+                    )}
+                   </span>
+                  </div>
+                  <div className="flex items-center gap-2 mb-4">
+                 
                   </div>
                   <div className='mb-4'>
-                    <input
+                    {/* <input
                       type='checkbox'
                       id='offer'
                       className='w-5'
-                      onChange={handleChange}
-                      checked={formData.offer}
+                      // onChange={handleChange}
+                      // checked={formData.offer}
                     />
-                    <span>Offer</span>
+                    <span>Offer</span> */}
                   </div>
                   {formData.offer && (
                   <div className='flex items-center gap-2 mb-4'>
@@ -756,22 +812,24 @@ const handleChange =(e)=>{
                     max='10000000'
                     required
                     className='p-3 border w-full border-gray-300 rounded-lg'
-                    onChange={handleChange}
+                    
                     value={formData.discountPrice}
                   />
                   <div className='flex flex-col items-center'>
                     <p>Discounted price</p>
   
-                    {formData.type === 'rent' && (
-                      <span className='text-xs'>($ / month)</span>
-                    )}
+                    
                   </div>
                 </div>)}
-                  <button
+                <button
                     type="submit"
                     className="w-full py-3 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none transition-colors"
                   >
-                    Save
+                    {loading ? (
+                      <span className="loading loading-spinner loading-md "></span>
+                    ) : (
+                      "Save"
+                    )}
                   </button>
                 </form>
               </div>

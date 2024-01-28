@@ -18,10 +18,6 @@ const RealestateSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    discountPrice: {
-      type: Number,
-      required: true,
-    },
     bathrooms: {
       type: Number,
       required: false,
@@ -74,10 +70,7 @@ const RealestateSchema = new mongoose.Schema(
         type: Number,
         required: false,
     },
-    offer: {
-      type: Boolean,
-      required: true,
-    },
+
     area: {
         type: String,
         required: true,
