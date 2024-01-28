@@ -12,13 +12,13 @@ import { CiCircleMore } from "react-icons/ci";
 
 const FirstSection = () => {
   const [activeTab, setActiveTab] = useState("Residential");
-  const [compSelected, setCompSelected] = useState(<Residential />);
+  const [compSelected, setCompSelected] = useState(<Residential catSlug="house"/>);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
     switch (tab) {
       case "Residential":
-        setCompSelected(<Residential />);
+        setCompSelected(<Residential catSlug="house"/>);
         break;
       case "Villa":
         setCompSelected("Not competent yet");
@@ -64,7 +64,7 @@ const FirstSection = () => {
                   activeTab === "Residential" ? "tab-active bg-[#7af065] text-black" : ""
                 }`}
               >
-               <span className=" bg-white text-black p-1 rounded-full"><FaBuilding  /></span> <span>Residential</span>
+               <span className=" bg-white text-black p-1 rounded-full"><FaBuilding/></span> <span>Residential</span>
               </Link>
             </li>
             <li className="me-2">
