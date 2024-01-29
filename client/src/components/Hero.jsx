@@ -6,7 +6,7 @@ import heroImg1 from "../assets/heroImg1.png";
 const Hero = () => {
   return (
     <>
-      <section className="bg-[#782DF3]   lg:bg-violet-200 sm:bg-[#782DF3] lg:h-screen mb-20  relative">
+      <section className="    lg:h-screen mb-20  relative">
         <img src={vector1} alt="" className=" object-cover " />
         <div className="flex items-center justify-between absolute top-1 lg:px-20 px-5    ">
           <div className="w-full lg:w-6/12 py-20 sm:lg-10 lg:py-10">
@@ -18,7 +18,7 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.5, delay: 0.25 }}
-              className="text-5xl  lg:text-6xl md:text-5xl font-bold mb-3 md:mb-10 primary_text tracking-wide text-center lg:text-left"
+              className="text-5xl pt-14 md:py-2  lg:text-6xl md:text-5xl font-bold mb-3 md:mb-10 text-black md:text-white tracking-wide text-center lg:text-left"
             >
               Find your smart living style with Us
             </motion.h1>
@@ -34,13 +34,13 @@ const Hero = () => {
                 animate="visible"
                 transition={{ duration: 0.5, delay: 0.25 }}
               >
-                <span className="bg-white px-5 py-2 rounded-xl flex justify-between ">
+                <span className="bg-white px-5 border py-2 rounded-xl flex justify-between ">
                   <input
                     type="text"
                     placeholder="Search for city, properties, cars ..."
                     className="w-8/12 text-black outline-none text-[17px]"
                   />
-                  <button className="cursor-pointer primary_text rounded-xl hover:bg-[#782DF3] bg-[#7af065] text-[17px] px-10 py-3">
+                  <button className="cursor-pointer primary_text rounded-xl button text-[17px] px-5 sm:px-10 py-3">
                     Search
                   </button>
                 </span>

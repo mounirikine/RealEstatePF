@@ -124,7 +124,7 @@ const Login = () => {
             </p>
           </div>
         </div>
-        <div className=" hidden   w-7/12 h-screen lg:flex items-center justify-center">
+        <div className=" hidden bg-[#782DF3]  w-7/12 h-screen lg:flex items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             data-name="Layer 1"

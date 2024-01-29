@@ -1,13 +1,12 @@
 import { motion } from 'framer-motion';
-import { FaMapMarkerAlt } from 'react-icons/fa';
+import { FaBath, FaBed, FaMapMarkerAlt } from 'react-icons/fa';
 import { SlSizeFullscreen } from 'react-icons/sl';
-import { FaBed, FaBath } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-const ResidentCard = ({ data }) => {
-  const imageUrl = data.imageUrls[0]; // Using the first image URL
-
+const FilterCard = ({data}) => {
+    const imageUrl = data.imageUrls[0];
   return (
+    <>
     <motion.Card
       to="/property-details"
       className="flex flex-col rounded-xl bg-white shadow-xl h-[450px]"
@@ -57,7 +56,8 @@ const ResidentCard = ({ data }) => {
         </span>
       </div></Link></>
     </motion.Card>
-  );
-};
+    </>
+  )
+}
 
-export default ResidentCard;
+export default FilterCard

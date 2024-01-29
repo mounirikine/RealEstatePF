@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CiMenuFries, CiUser, CiBoxList } from "react-icons/ci";
 import { IoCreateOutline, IoMenuOutline } from "react-icons/io5";
 import { FaPowerOff } from "react-icons/fa";
@@ -8,6 +8,8 @@ import { useCookies } from "react-cookie";
 import logof from "../assets/logof1.png";
 
 const Header = ({ userInfo }) => {
+
+ 
   const [open, setOpen] = useState(true);
   const [cookies, setCookies] = useCookies(["access_token"]);
 
@@ -26,11 +28,11 @@ const Header = ({ userInfo }) => {
 
   return (
     <>
-    <header className=" dark:bg-gray-900 bg-[#782DF3] fixed w-full z-20 top-0 start-0 primary_text dark:border-gray-600 py-3">
+    <header className=" dark:bg-gray-900 bg-[#782DF3] fixed w-full z-20 top-0 start-0 primary_text dark:border-gray-600 py-1">
     <nav className="   px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <Link to="/" className="flex items-center">
-            <img src={logof} alt="" width={200} />
+            <img src={logof} alt="" width={150} />
             </Link>
             <div className="flex items-center lg:order-2">
             {cookies.access_token ? (

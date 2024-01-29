@@ -4,8 +4,8 @@ import logo1 from '../assets/logof1.png'
 const Footer = () => {
   return (
     <>
-    <footer className="primary_text">
-    <div className="container p-6 mx-auto">
+    <footer className="bg-[#782DF3] ">
+    <div className="container p-6 mx-auto text-white">
         <div className="lg:flex">
             <div className="w-full -mx-6 lg:w-2/5">
                 <div className="px-6">

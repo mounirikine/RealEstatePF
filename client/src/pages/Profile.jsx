@@ -116,7 +116,7 @@ const Profile = ({ userInfo }) => {
   return (
     <>
       <Header userInfo={userInfo} />
-      <div className="w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row py-10 ">
+      <div className="w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row py-10 bg-[#782DF3]">
         <main className="w-full py-10 md:w-3/3 lg:w-4/4">
           <div className="p-2 md:p-4 ">
             <div className="w-full px-6 mx-auto pb-8 mt-8 sm:max-w-xl sm:rounded-lg bg-white">

@@ -23,13 +23,13 @@ const ShowCatalog = () => {
           transition={{ duration: 0.8, delay: 0.75 }}
           className="w-full lg:w-1/2  px-5"
         >
-          <h1 className="font-bold primary_text text-3xl uppercase sm:text-5xl py-5 sm:py-10">
+          <h1 className="font-bold  text-3xl uppercase sm:text-5xl py-5 sm:py-10">
             Discover properties that will improve your{" "}
             <span className="text-violet-400">
               life and that of your family
             </span>
           </h1>
-          <p className=" sm:text-lg primary_text pb-5 sm:pb-10">
+          <p className=" sm:text-lg  pb-5 sm:pb-10">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit nibh
             pretium nunc mauris sed adipiscing. Lorem ipsum dolor sit amet,
             consectetur adipiscing elit. Gravida ante quis nisl amet,
@@ -39,7 +39,7 @@ const ShowCatalog = () => {
 
           <Link
             to="/"
-            className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl font-semibold border primary_text flex items-center justify-center bg-[#7af065]"
+            className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl  border button text-white flex items-center justify-center "
           >
             To Catalog
           </Link>

@@ -17,7 +17,7 @@ const CreateForm = () => {
 
   return (
     <>
-      <div className="lg:h-screen sm:h-screen">
+      <div className="lg:h-screen sm:h-screen bg-[#782DF3]">
           <div className="pt-20 pb-5">
               <h1 className="text-center text-5xl font-bold uppercase primary_text">Choose a category</h1>
           </div>

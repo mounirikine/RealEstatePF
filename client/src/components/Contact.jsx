@@ -3,14 +3,14 @@ const Contact = () => {
   return (
     <div className=""> 
 <section
-   className="relative z-10 overflow-hidden bg-white dark:bg-dark px-20 py-20 lg:py-[120px]"
+   className="relative z-10 overflow-hidden bg-gray-100 rounded-2xl md:mx-5 dark:bg-dark px-10 py-10 lg:py-[120px]"
   
    >
    <div className="container mx-auto">
       <div className="flex flex-wrap -mx-4 lg:justify-between">
          <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
             <div className="mb-12 max-w-[570px] lg:mb-0">
-               <span className="block mb-4 text-base font-semibold text-primary">
+               <span className="block mb-4 text-base font-semibold ">
                Contact Us
                </span>
                <h2

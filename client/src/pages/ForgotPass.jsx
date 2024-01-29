@@ -34,7 +34,7 @@ const ForgotPass = () => {
   };
 
   return (
-    <div className='min-h-screen flex items-center justify-center'>
+    <div className='min-h-screen flex items-center justify-center bg-[#782DF3]'>
       <div className=' bg-white w-full mx-5 sm:w-9/12 md:w-8/12 lg:w-9/12 xl:w-4/12 px-6 sm:px-8 md:px-10 lg:px-12 py-10 rounded-xl shadow-md'>
         <div className='text-center py-5'>
           <img src={finder} width={200} alt="" />

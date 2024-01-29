@@ -108,14 +108,7 @@ const Register = () => {
                 />
               </div>
 
-              <div className="text-right mt-2">
-                <a
-                  href="#"
-                  className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700"
-                >
-                  Forgot Password?
-                </a>
-              </div>
+
 
               <button
                 type="submit"
@@ -125,7 +118,7 @@ const Register = () => {
                 {loading ? (
                   <span className="loading loading-spinner loading-sm"></span>
                 ) : (
-                  " Log In"
+                  " Register"
                 )}
               </button>
             </form>
@@ -144,7 +137,7 @@ const Register = () => {
             </p>
           </div>
         </div>
-        <div className="bg-indigo-600 hidden   w-7/12 h-screen lg:flex items-center justify-center">
+        <div className="bg-[#782DF3] hidden   w-7/12 h-screen lg:flex items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             data-name="Layer 1"
