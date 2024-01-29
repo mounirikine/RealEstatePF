@@ -1,6 +1,6 @@
 import express  from "express";
 import { verifyToken } from "../utils/verifyUser.js";
-import { createReal, deleteReal, getReal, updateReal } from "../Controllers/Real.controller.js";
+import { createReal, deleteReal, getReal, getRealEstats, updateReal } from "../Controllers/Real.controller.js";
 const router = express.Router();
 
 
@@ -13,5 +13,5 @@ router.delete('/delete-real/:id',verifyToken ,deleteReal)
 router.post('/update-real/:id',verifyToken ,updateReal)
 router.get('/get-real/:id', getReal);
 
-
+router.get('/RealEstats', getRealEstats);
 export default router;
