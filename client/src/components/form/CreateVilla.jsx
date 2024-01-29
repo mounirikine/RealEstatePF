@@ -1,15 +1,180 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import Header from "../Header";
 import logof from "../../assets/logof1.png";
 import Footer from "../Footer";
+import { toast } from "react-toastify";
+import { FaCircleCheck } from "react-icons/fa6";
 
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from 'firebase/storage';
+import { app } from "../../firebase";
 const CreateVilla = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
 
- 
+
+  const [files,setFiles] = useState([])
+  const [imageUploadError, setImageUploadError] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [porcentageProgress, setPorcentageProgress] = useState(0);
+
+
+
+  
+const [formData, setFormData] = useState( {
+  imageUrls: [],
+  title: "",
+  description: "",
+  address: "",
+  regularPrice: "",
+  rooms: 1,
+  bathrooms: 1,
+  furnished: false,
+  parking: undefined,
+  garage: undefined,
+  parkSpace: undefined,
+  type: "", // sell or rent
+  catSlug: "villa",  
+  country: "",
+  city: "",
+  state: "",
+  zip: "",
+  kitchen: "",
+  area: "",
+  yearBuilt: "",
+  userRef: window.localStorage.getItem("userID"),});
+
+
+  const handleImageSubmit = (e)=>{
+    if(files.length >0 && files.length + formData.imageUrls.length < 7){
+        const promises = [];
+        for (let i = 0 ; i < files.length ; i++){
+          setUploading(true);
+            promises.push(storeImage(files[i]))
+        }
+        Promise.all(promises).then((urls)=>{
+          setFormData({...formData,imageUrls:formData.imageUrls.concat(urls)})
+
+          setImageUploadError(false);
+          setUploading(false);
+        }).catch((err)=>{
+          setImageUploadError('Image upload failed (2 mb max per image)')
+          setUploading(false);
+        });
+       
+    }else{
+      setImageUploadError('You can only upload 6 images per listing');
+      setUploading(false);
+    }
+}
+
+
+const storeImage = async(file)=>{
+  return new Promise((resolve, reject) => {
+      const storage = getStorage(app);
+      const fileName = new Date().getTime() + file.name;
+      const storageRef = ref(storage, fileName);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(`Upload is ${progress}% done`);
+          setPorcentageProgress(progress)
+        },
+        (error) => {
+          reject(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            resolve(downloadURL);
+             console.log(downloadURL)
+          });
+         
+        }
+      );
+    });
+}
+const handleRemoveImage = (index) => {
+ formData({
+    ...formData,
+    imageUrls: formData.imageUrls.filter((_, i) => i !== index),
+  });
+};
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true)
+  const success_button = document.getElementById('success_button');
+
+  try {
+
+
+    const access_token = document.cookie.split('; ').find(row => row.startsWith('access_token=')).split('=')[1];
+
+
+    const res = await fetch('http://localhost:4000/api/real/create-real', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+       
+      },
+      body: JSON.stringify({
+        ...formData,
+        access_token
+      }),
+    });
+
+    const data = await res.json();
+    toast.success(data)
+    
+  
+
+  } catch (error) {
+    console.log(error);
+  }
+
+  setLoading(false)
+};
+
+const handleChange =(e)=>{
+  if (
+   
+    e.target.id === 'furnished' ||
+    e.target.id === 'offer'
+  ) {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.checked,
+    });
+
+  }if (
+    e.target.id === 'type' ||
+    e.target.type === 'number' ||
+    e.target.type === 'text' ||
+    e.target.type === 'textarea'
+  ) {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  }
+  if (
+    e.target.id === 'country' 
+  ) {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  }
+}
+ console.log(formData)
 
   return (
     <>
@@ -26,7 +191,7 @@ const CreateVilla = () => {
                   Villa Info
                 </h1>
                 <p className="text-gray-600 dark:text-gray-300 mb-6"></p>
-                <form >
+                <form onSubmit={handleSubmit}>
                   <div className="mb-6">
                     <div className="flex items-center justify-center w-full">
                       <label
@@ -60,36 +225,96 @@ const CreateVilla = () => {
                           </p>
                         </div>
                         <input
+                     onChange={(e)=>setFiles(e.target.files)}
                           id="dropzone-file"
+                          multiple
+                          required
                           type="file"
                           className="hidden"
                         />
                       </label>
                     </div>
+                    <div className="w-full pb-3 ">
+                      <p className="py-2 text-sm text-center text-gray-500">
+                        After Select Images Click in The{" "}
+                        <kbd className="kbd kbd-md">Upload</kbd> To Upload Imges
+                      </p>
+                      <span className="flex items-center gap-2 px-5">
+                        <button
+                          type="button"
+                          disabled={uploading}
+                          onClick={handleImageSubmit}
+                          className="  h-[40px] w-[110px] bg-gray-200 text-blue-700  border mx-auto rounded-lg hover:shadow-md disabled:opacity-80"
+                        >
+                          {uploading ? (
+                            <span className="loading loading-spinner loading-md "></span>
+                          ) : (
+                            "Upload"
+                          )}
+                        </button>
+                        <progress
+                          className={`progress progress-primary  mx-auto ${
+                            porcentageProgress > 0 ? "" : " opacity-0"
+                          }`}
+                          value={porcentageProgress}
+                          max="100"
+                        ></progress>{" "}
+                        <span
+                          className={`flex items-center ${
+                            porcentageProgress > 0 ? "" : " opacity-0"
+                          }`}
+                        >
+                          <p>{parseInt(porcentageProgress)}</p>
+                          <p>%</p>
+                        </span>
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-6 items-center justify-center gap-2 lg:px-40 py-2">
+                      {formData.imageUrls.length > 0 &&
+                        formData.imageUrls.map((url, index) => (
+                          <div
+                            key={url}
+                            className="flex items-center"
+                            onClick={() => handleRemoveImage(index)}
+                          >
+                            <img
+                              src={url}
+                              alt="listing image"
+                              className=" w-20 object-contain rounded-lg"
+                            />
+                          </div>
+                        ))}
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <input
+                      onChange={handleChange}
                       type="text"
+                      id="title"
+                      required
                       placeholder="Title"
                       className="border p-2 rounded w-full"
                     />
+                  
                     <textarea
+                     onChange={handleChange}
                       type="text"
+                      required
+                      id="description"
                       placeholder="Description"
                       className="border p-2 rounded w-full"
                     />
                   </div>
-                  <div className="mb-4">
-                    <input
-                      type="text"
-                      placeholder="Price"
-                      className="border p-2 rounded w-full"
-                    />
-                  </div>
-                  <div className="mb-4">
+                 
+                 
+                  <div className="mb-6 grid grid-cols-1 md:grid-cols-2  gap-4">
                     <select
+                    onChange={handleChange}
                       placeholder="Country"
+                      id="country"
+                      value={formData.country}
                       className="border p-2 rounded w-full"
                     >
                       <option value="" disabled>
@@ -420,91 +645,191 @@ const CreateVilla = () => {
                       <option value="Zambia">Zambia</option>
                       <option value="Zimbabwe">Zimbabwe</option>
                     </select>
-                  </div>
-                  <div className="mb-4">
                     <input
+                      onChange={handleChange}
                       type="text"
+                      required
+                      id="address"
                       placeholder="Street address"
                       className="border p-2 rounded w-full"
                     />
                   </div>
+                 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
+                      onChange={handleChange}
                       type="text"
+                      required
+                      id="city"
                       placeholder="City"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                    onChange={handleChange}
                       type="text"
+                      id="state"
+                      required
                       placeholder="State / Province"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                      onChange={handleChange}
                       type="text"
+                      id="zip"
+                      required
                       placeholder="ZIP / Postal code"
                       className="border p-2 rounded w-full"
                     />
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
+                    onChange={handleChange}
                       type="number"
+                      required
+                      id="rooms"
                       placeholder="Bedrooms"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                    onChange={handleChange}
                       type="number"
+                      id="bathrooms"
+                      required
                       placeholder="Bathrooms"
                       className="border p-2 rounded w-full"
                     />
-                    <input
-                      type="number"
-                      placeholder="Area, Sq.Ft"
-                      className="border p-2 rounded w-full"
-                    />
+                    <div className='flex gap-2 border p-1 rounded w-full items-center'>
+                      <input
+                        type='checkbox'
+                        id='furnished'
+                        className='checkbox '
+                        onChange={handleChange}
+                        checked={formData.furnished}
+                      />
+                      <span>Furnished</span>
+                   </div>
+
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
+                    onChange={handleChange}
                       type="number"
+                      required
+                      id="kitchen"
                       placeholder="Kitchen"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                    onChange={handleChange}
                       type="number"
+                      required
+                      id="garage"
                       placeholder="Garage Space"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                      onChange={handleChange}
                       type="number"
+                      id="parking"
+                      required
                       placeholder="Parking"
                       className="border p-2 rounded w-full"
                     />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                    <select
+                     <input
+                      onChange={handleChange}
                       type="number"
-                      placeholder="Status"
+                      required
+                      id="parkSpace"
+                      placeholder="ParkSpace "
                       className="border p-2 rounded w-full"
-                    >
-                      <option value="sale">Sale</option>
-                      <option value="rent">Rent</option>
-                    </select>
-                    <input
+                    />
+                                        <input
+                    onChange={handleChange}
                       type="number"
-                      placeholder="Type"
+                      required
+                      id="area"
+                      placeholder="Area, Sq.Ft"
                       className="border p-2 rounded w-full"
                     />
                     <input
+                      onChange={handleChange}
                       type="number"
+                      id="yearBuilt"
+                      required
                       placeholder="Year Built"
                       className="border p-2 rounded w-full"
                     />
                   </div>
-
-                  <button
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                   
+                   
+                  <select
+                    onChange={handleChange}
+                      type="text"
+                      placeholder="Status"
+                      required
+                      id="type"
+                     
+                      className="border p-2 rounded w-full"
+                    >
+                      <option  disabled selected>Select: Sale Or Rent</option>
+                      <option id="sale" value="sale">Sale</option>
+                      <option id="rent" value="rent">Rent</option>
+                    </select>
+                   <span className="flex items-center gap-1">
+                   <input
+                    onChange={handleChange}
+                      type="text"
+                      id="regularPrice"
+                      required
+                      placeholder="Price"
+                      className="p-3 border w-full border-gray-300 rounded-lg"
+                    />
+                    {formData.type === 'rent' && (
+                      <span className=' badge badge-outline'>$/month</span>
+                    )}
+                   </span>
+                  </div>
+                  <div className="flex items-center gap-2 mb-4">
+                 
+                  </div>
+                  <div className='mb-4'>
+                    {/* <input
+                      type='checkbox'
+                      id='offer'
+                      className='w-5'
+                      // onChange={handleChange}
+                      // checked={formData.offer}
+                    />
+                    <span>Offer</span> */}
+                  </div>
+                  {formData.offer && (
+                  <div className='flex items-center gap-2 mb-4'>
+                  <input
+                    type='number'
+                    id='discountPrice'
+                    min='0'
+                    max='10000000'
+                    required
+                    className='p-3 border w-full border-gray-300 rounded-lg'
+                    
+                    value={formData.discountPrice}
+                  />
+                  <div className='flex flex-col items-center'>
+                    <p>Discounted price</p>
+  
+                    
+                  </div>
+                </div>)}
+                <button
                     type="submit"
                     className="w-full py-3 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none transition-colors"
                   >
-                    Save
+                    {loading ? (
+                      <span className="loading loading-spinner loading-md "></span>
+                    ) : (
+                      "Save"
+                    )}
                   </button>
                 </form>
               </div>
