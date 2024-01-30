@@ -6,12 +6,13 @@ import transporter from '../utils/nodemailer.js';
 
 export const SignUp = async (req,res,next)=>{
 
-    const {username,email,password} = req.body;
+    const {username,email,password,phoneNumber} = req.body;
     const hashedPassword = bcryptjs.hashSync(password,10);
     const newUser = new User({
         username,
         email,
-        password:hashedPassword
+        password:hashedPassword,
+        phoneNumber
     });
 
     try {
