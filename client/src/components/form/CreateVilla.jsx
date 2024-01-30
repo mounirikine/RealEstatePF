@@ -46,9 +46,10 @@ const [formData, setFormData] = useState( {
   kitchen: "",
   area: "",
   yearBuilt: "",
-  userRef: window.localStorage.getItem("userID"),});
+  userRef: window.localStorage.getItem("userID"),
+  userNumber:window.localStorage.getItem("Phone")});
 
-
+ 
   const handleImageSubmit = (e)=>{
     if(files.length >0 && files.length + formData.imageUrls.length < 7){
         const promises = [];

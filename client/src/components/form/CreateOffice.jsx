@@ -38,7 +38,7 @@ const [formData, setFormData] = useState( {
   garage: undefined,
   parkSpace: undefined,
   type: "", // sell or rent
-  catSlug: "Apartment",  
+  catSlug: "Office",  
   country: "",
   city: "",
   state: "",
@@ -46,7 +46,8 @@ const [formData, setFormData] = useState( {
   kitchen: "",
   area: "",
   yearBuilt: "",
-  userRef: window.localStorage.getItem("userID"),});
+  userRef: window.localStorage.getItem("userID"),
+  userNumber:window.localStorage.getItem("Phone")});
 
 
   const handleImageSubmit = (e)=>{
