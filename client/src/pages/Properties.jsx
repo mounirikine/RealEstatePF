@@ -17,8 +17,8 @@ const Properties = ({ userInfo }) => {
       <Header userInfo={userInfo} />
       <section>
         <div className="px-1 md:px-20 py-20">
-          <div className="py-10">
-            <h1 className="text-center  font-bold text-4xl py-5">
+          <div className="py-3">
+            <h1 className="text-center  font-bold text-4xl py-3">
               Property Types
             </h1>
             <p className="text-center w-11/12 md:w-8/12 mx-auto ">
@@ -27,7 +27,7 @@ const Properties = ({ userInfo }) => {
               rebum vero dolor duo.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-4 mx-4 px-10 pt-20 ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-4 mx-4 px-10 pt-10 ">
             <Link
               onClick={()=>{setCategories('house')}}
               className={`px-10 rounded-xl ${category ==='house' ? 'bg-indigo-500 text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-6  shadow-lg flex gap-1 items-center justify-center `}
@@ -79,7 +79,7 @@ const Properties = ({ userInfo }) => {
         <div></div>
 
         <div className="mb-5 bg-white w-10/12 mx-auto px-4 py-5 rounded-2xl ">
-          <div className="text-center py-5">
+          <div className="text-center py-2">
             <h1 className="text-xl font-bold">Filter Property</h1>
           </div>
           <div className="mx-auto">

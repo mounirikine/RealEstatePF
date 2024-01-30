@@ -7,8 +7,8 @@ const FilterCard = ({data}) => {
     const imageUrl = data.imageUrls[0];
   return (
     <>
-    <motion.Card
-      to="/property-details"
+  <motion.Card
+      to={`PropertieDetails/${data._id}`}
       className="flex flex-col rounded-xl bg-white shadow-xl h-[450px]"
       variants={{
         hidden: { opacity: 0 },
@@ -19,7 +19,7 @@ const FilterCard = ({data}) => {
       transition={{ duration: 0.8, delay: 0.75 }}
     >
       <>
-      <Link  to="/property-details" >
+      <Link  to={`/PropertieDetails/${data._id}`} >
       <div className="relative flex items-center justify-center ">
         <img
           className="rounded-xl w-full h-[280px]  transition ease-in-out delay-150  duration-300"
@@ -55,7 +55,7 @@ const FilterCard = ({data}) => {
           <FaBath className="text-violet-500" /> {data.bathrooms} Bath
         </span>
       </div></Link></>
-    </motion.Card>
+    </motion.Card> 
     </>
   )
 }

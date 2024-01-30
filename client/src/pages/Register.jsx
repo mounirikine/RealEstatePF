@@ -7,6 +7,7 @@ const Register = () => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ const Register = () => {
 
     setLoading(true);
 
-    const formData = { username, email, password }; // Assuming you have defined username, email, and password somewhere
+    const formData = { username, email, password ,phoneNumber }; // Assuming you have defined username, email, and password somewhere
 
     try {
       const res = await fetch("http://127.0.0.1:4000/api/auth/sign-up", {
@@ -102,6 +103,20 @@ const Register = () => {
                   placeholder="Password"
                   minlength="6"
                   onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+              focus:bg-white focus:outline-none"
+                  required
+                />
+              </div>
+              <div className="mt-4">
+                <label className="block text-gray-700">Phone Number</label>
+                <input
+                  type="phone"
+                  name=""
+                  id=""
+                  placeholder="Phone Number"
+                  minlength="6"
+                  onChange={(e) => setPhoneNumber(e.target.value)}
                   className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
               focus:bg-white focus:outline-none"
                   required

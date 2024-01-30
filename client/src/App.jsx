@@ -21,6 +21,7 @@ import CreateCar from "./components/form/CreateCar";
 import CreateOffice from "./components/form/CreateOffice";
 import ForgotPass from "./pages/ForgotPass";
 import NewPass from "./pages/NewPass";
+import PropertieDetails from "./pages/PropertieDetails";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -86,6 +87,7 @@ function App() {
 
           {/* Routes */}
           <Routes>
+          <Route path="/PropertieDetails/:id" element={<PropertieDetails userInfo={userInfo} />} />
             <Route path="/" element={<Home userInfo={userInfo} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
