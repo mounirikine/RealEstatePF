@@ -6,12 +6,13 @@ import transporter from '../utils/nodemailer.js';
 
 export const SignUp = async (req,res,next)=>{
 
-    const {username,email,password} = req.body;
+    const {username,email,password,phoneNumber} = req.body;
     const hashedPassword = bcryptjs.hashSync(password,10);
     const newUser = new User({
         username,
         email,
-        password:hashedPassword
+        password:hashedPassword,
+        phoneNumber
     });
 
     try {
@@ -60,7 +61,7 @@ export const signOut =async(req, res, next)=>{
 
   export const UpdateUser = async (req, res, next) => {
     const userId = req.params.userId;
-    const { username, email, password,avatar } = req.body;
+    const { username, email, password,avatar ,phoneNumber} = req.body;
 
     try {
         const user = await User.findById(userId);
@@ -69,6 +70,7 @@ export const signOut =async(req, res, next)=>{
         // Update user fields if provided
         if (username) user.username = username;
         if (email) user.email = email;
+        if (phoneNumber) user.phoneNumber = phoneNumber;
         if (password) {
             const hashedPassword = bcryptjs.hashSync(password, 10);
             user.password = hashedPassword;

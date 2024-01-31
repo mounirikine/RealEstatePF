@@ -62,7 +62,7 @@ function App() {
       setLoading2(false);
     }, 3000);
   }, []);
-
+console.log(userInfo)
   return (
     <>
       <ToastContainer position="top-center" />

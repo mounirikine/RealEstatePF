@@ -112,8 +112,8 @@ const Register = () => {
                 <label className="block text-gray-700">Phone Number</label>
                 <input
                   type="phone"
-                  name=""
-                  id=""
+                  name="phoneNumber"
+                  id="phoneNumber"
                   placeholder="Phone Number"
                   minlength="6"
                   onChange={(e) => setPhoneNumber(e.target.value)}

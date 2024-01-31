@@ -21,8 +21,9 @@ const Profile = ({ userInfo }) => {
     username: "",
     email: "",
     password: "",
+    phoneNumber: "",
   });
-
+console.log(formData)
   const navigate = useNavigate();
   const fileRef = useRef(null);
 
@@ -79,10 +80,17 @@ const Profile = ({ userInfo }) => {
           body: JSON.stringify(formData),
         }
       );
+
+
+      const data = await res.json();
+        
+        window.localStorage.setItem("Phone",data.phoneNumber );
+   
       window.location.reload(false);
-      toast.success("Profile Updated Successfully");
+       toast.success("Profile Updated Successfully");
     } catch (error) {
       toast.error("Profile Not Updated! Try Again");
+      console.log(error)
     }
 
     setLoading(false);
@@ -106,6 +114,7 @@ const Profile = ({ userInfo }) => {
           body: JSON.stringify(newImg),
         }
       );
+      
       window.location.reload(false);
       toast.info("Image Deleted Successfully");
     } catch (error) {
@@ -249,6 +258,25 @@ const Profile = ({ userInfo }) => {
                       disabled={active}
                       defaultValue={userInfo && userInfo.email}
                       placeholder={userInfo && userInfo.email}
+                      className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
+                      required
+                    />
+                  </div>
+                  <div className="mb-2 sm:mb-6">
+                    <label
+                      htmlFor="phoneNumber"
+                      className="block mb-2 text-sm font-medium "
+                    >
+                      Your phone number
+                    </label>
+                    <input
+                      type="text"
+                      id="phoneNumber"
+                      onChange={handleChange}
+                      disabled={active}
+                      defaultValue={userInfo?.phoneNumber}
+                      placeholder={userInfo?.phoneNumber}
+                      
                       className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                       required
                     />

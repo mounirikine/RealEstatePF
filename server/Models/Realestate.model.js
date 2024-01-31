@@ -86,6 +86,10 @@ const RealestateSchema = new mongoose.Schema(
         type: Number,
         required: false,
       },
+      userNumber: {
+        type: String,
+        required: true,
+      },
   },
   { timestamps: true }
 );

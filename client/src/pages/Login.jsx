@@ -33,7 +33,7 @@ const Login = () => {
       setCookies("access_token", data.token, { path: '/', domain: 'localhost' }); // Adjust domain and path accordingly
 
       window.localStorage.setItem("userID", data.rest._id);
-
+      window.localStorage.setItem("Phone", data.rest.phoneNumber);
       navigate("/");
       window.location.reload(false);
     } catch (error) {
