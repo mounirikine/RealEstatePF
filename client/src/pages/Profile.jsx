@@ -23,7 +23,6 @@ const Profile = ({ userInfo }) => {
     password: "",
     phoneNumber: "",
   });
-console.log(formData)
   const navigate = useNavigate();
   const fileRef = useRef(null);
 

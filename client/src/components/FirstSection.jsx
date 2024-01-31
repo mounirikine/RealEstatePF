@@ -34,7 +34,7 @@ const FirstSection = () => {
             {[
               { tab: "Residential", icon: <FaBuilding /> },
               { tab: "Villa", icon: <MdOutlineVilla /> },
-              { tab: "Apartments", icon: <MdOutlineApartment /> },
+              { tab: "Apartment", icon: <MdOutlineApartment /> },
               { tab: "Office space", icon: <GiOfficeChair /> },
               { tab: "Cars", icon: <IoCarSport /> },
               // Add more tabs as needed

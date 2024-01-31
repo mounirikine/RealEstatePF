@@ -38,7 +38,7 @@ const [formData, setFormData] = useState( {
   garage: undefined,
   parkSpace: undefined,
   type: "", // sell or rent
-  catSlug: "Office",  
+  catSlug: "office",  
   country: "",
   city: "",
   state: "",
