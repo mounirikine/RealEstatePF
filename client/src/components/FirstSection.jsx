@@ -23,8 +23,8 @@ const FirstSection = () => {
         </h1>
       </div>
       <p className="text-center mx-auto py-7 w-9/12 ">
-        Lorem ipsum dolor sit amet consectetur adipiscing elit feugiat purus
-        suscipit turpis sed vitae.
+      Here you can find your categories that you are simply looking for and be the first to take them
+
       </p>
 
         

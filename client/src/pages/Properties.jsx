@@ -22,9 +22,7 @@ const Properties = ({ userInfo }) => {
               Property Types
             </h1>
             <p className="text-center w-11/12 md:w-8/12 mx-auto ">
-              Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut
-              dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed
-              rebum vero dolor duo.
+            Here you can find your categories that you are simply looking for and be the first to take them
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-4 mx-4 px-10 pt-10 ">
