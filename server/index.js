@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import realRouter from '../server/Routes/Real.route.js'
 import authRouter from '../server/Routes/auth.route.js'
-
+import carRouter from '../server/Routes/car.route.js'
 
 dotenv.config()
 
@@ -35,7 +35,7 @@ console.log('connected');
 
 app.use("/api/auth",authRouter)
 app.use("/api/real",realRouter)
-
+app.use("/api/car",carRouter)
 
 app.use((err,req,res,next)=>{
     const statusCode = err.statusCode || 500;
