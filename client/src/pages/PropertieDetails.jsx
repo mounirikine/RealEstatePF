@@ -6,6 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FaBath } from "react-icons/fa";
 import { IoBed } from "react-icons/io5";
 import { TbToolsKitchen3 } from "react-icons/tb";
+import RelatedItems from "../components/RelatedItems";
 
 
 const PropertyDetails = ({ userInfo }) => {
@@ -63,7 +64,7 @@ const PropertyDetails = ({ userInfo }) => {
             <button>
               {" "}
               <a
-                href="https://wa.me/+212679985221?text=Hello How Can I Get More Info About This ?"
+                href={`https://wa.me/${data.userNumber}?text=Hello How Can I Get More Info About This ?`}
                 target="_blank"
                 className="button px-20 py-4 text-xl flex items-center gap-1 text-white rounded-xl"
               >
@@ -255,7 +256,19 @@ const PropertyDetails = ({ userInfo }) => {
 </div>
 
           </div>
+
+          <div>
+            <h1 className="text-5xl pb-7">You May Also Like</h1>
+          </div>
+          
+          <main>
+            <RelatedItems catSlug={data.catSlug} idItem={data._id} />
+          </main>
+
         </main>
+
+
+
       </section>
       <Footer />
     </>

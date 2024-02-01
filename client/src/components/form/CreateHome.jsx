@@ -113,7 +113,6 @@ const handleRemoveImage = (index) => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   setLoading(true)
-  const success_button = document.getElementById('success_button');
 
   try {
 
@@ -145,39 +144,24 @@ const handleSubmit = async (e) => {
   setLoading(false)
 };
 
-const handleChange =(e)=>{
-  if (
-   
-    e.target.id === 'furnished' ||
-    e.target.id === 'offer'
-  ) {
+const handleChange = (e) => {
+  if (e.target.id === 'furnished' || e.target.id === 'offer') {
     setFormData({
       ...formData,
       [e.target.id]: e.target.checked,
     });
-
-  }if (
-    e.target.id === 'type' ||
-    e.target.type === 'number' ||
-    e.target.type === 'text' ||
-    e.target.type === 'textarea'
-  ) {
+  } else if (e.target.type === 'number' || e.target.type === 'text' || e.target.type === 'textarea') {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  } else if (e.target.id === 'country') {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
   }
-  if (
-    e.target.id === 'country' 
-  ) {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
-  }
-}
- console.log(formData)
-
+};
   return (
     <>
       {/* <Header /> */}
