@@ -6,6 +6,10 @@ const carSchema = new mongoose.Schema(
     type: String,
     required: true,
   },
+  imageUrls: {
+    type: Array,
+    required: false,
+  },
   price: {
     type: Number,
     required: true,
