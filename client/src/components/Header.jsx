@@ -12,6 +12,7 @@ const Header = ({ userInfo }) => {
   const [cookies, setCookies] = useCookies(["access_token"]);
   const [active, setActive] = useState("");
   const location = useLocation();
+  const useId = window.localStorage.getItem('userID')
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/properties", label: "Properties" },
@@ -74,9 +75,9 @@ const Header = ({ userInfo }) => {
                         </Link>
                       </li>
                       <li className="">
-                        <a className="text-black bg-slate-100 hover:bg-slate-200 mb-1">
+                        <Link to={`/list/${useId}`} className="text-black bg-slate-100 hover:bg-slate-200 mb-1">
                           <CiBoxList className="text-lg" /> Your Properties
-                        </a>
+                        </Link>
                       </li>
                       <li className="">
                         <div className="flex  text-black bg-slate-100 hover:bg-slate-200 mb-1">

@@ -22,6 +22,8 @@ import CreateOffice from "./components/form/CreateOffice";
 import ForgotPass from "./pages/ForgotPass";
 import NewPass from "./pages/NewPass";
 import PropertieDetails from "./pages/PropertieDetails";
+import CarDetails from "./pages/CarDetails";
+import List from "./pages/List";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -88,6 +90,7 @@ function App() {
           {/* Routes */}
           <Routes>
           <Route path="/PropertieDetails/:id" element={<PropertieDetails userInfo={userInfo} />} />
+          <Route path="/cardDetails/:id" element={<CarDetails userInfo={userInfo} />} />
             <Route path="/" element={<Home userInfo={userInfo} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -106,6 +109,7 @@ function App() {
               <Route path="/CreateCar" element={<CreateCar userInfo={userInfo} />} />
               <Route path="/CreateOffice" element={<CreateOffice userInfo={userInfo} />} />
               <Route path="/create" element={<CreateForm userInfo={userInfo} />} />
+              <Route path="/list/:id" element={<List userInfo={userInfo} />} />
             </Route>
           </Routes>
 

@@ -24,7 +24,7 @@ const CarCard = ({data}) => {
       transition={{ duration: 0.8, delay: 0.75 }}
     >
       <>
-      <Link  to={`/PropertieDetails/${data._id}`} >
+      <Link  to={`/cardDetails/${data._id}`} >
       <div className="relative flex items-center justify-center ">
         <img
           className="rounded-xl w-full h-[280px]  transition ease-in-out delay-150  duration-300"
