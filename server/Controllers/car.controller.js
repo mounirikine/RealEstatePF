@@ -43,3 +43,21 @@ export const getCar = async (req, res, next) => {
     }
 };
 
+
+export const deleteCar = async(req,res,next)=>{
+  const listing = await Car.findById(req.params.id);
+if(!listing){
+   return next(errorHandler(404,'Real not found1'));
+}
+if(req.user.id !== listing.userRef){
+  return next(errorHandler(401,'You can only delete your own car!'));
+}
+try {
+
+   await Car.findByIdAndDelete(req.params.id);
+res.status(200).json('listings has been deleleted!')
+} catch (error) {
+   next(error);
+}
+}
+

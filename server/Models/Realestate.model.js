@@ -88,7 +88,7 @@ const RealestateSchema = new mongoose.Schema(
       },
       userNumber: {
         type: String,
-        required: true,
+        required: false,
       },
   },
   { timestamps: true }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header";
 import logof from "../../assets/logof1.png";
 import Footer from "../Footer";
@@ -15,7 +15,7 @@ import {
 import { app } from "../../firebase";
 const CreateHome = () => {
 
-
+const navigate= useNavigate()
   const [files,setFiles] = useState([])
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -49,7 +49,7 @@ const [formData, setFormData] = useState( {
   userRef: window.localStorage.getItem("userID"),
   userNumber:window.localStorage.getItem("Phone")
 });
-
+console.log(formData)
 
   const handleImageSubmit = (e)=>{
     if(files.length >0 && files.length + formData.imageUrls.length < 7){
@@ -63,6 +63,7 @@ const [formData, setFormData] = useState( {
 
           setImageUploadError(false);
           setUploading(false);
+
         }).catch((err)=>{
           setImageUploadError('Image upload failed (2 mb max per image)')
           setUploading(false);
@@ -135,7 +136,7 @@ const handleSubmit = async (e) => {
     const data = await res.json();
     toast.success(data)
     
-  
+    navigate(`/list/${formData.userRef}`)
 
   } catch (error) {
     console.log(error);
@@ -143,14 +144,17 @@ const handleSubmit = async (e) => {
 
   setLoading(false)
 };
-
 const handleChange = (e) => {
   if (e.target.id === 'furnished' || e.target.id === 'offer') {
     setFormData({
       ...formData,
       [e.target.id]: e.target.checked,
     });
-  } else if (e.target.type === 'number' || e.target.type === 'text' || e.target.type === 'textarea') {
+  } else if (
+    e.target.type === 'number' ||
+    e.target.type === 'text' ||
+    e.target.type === 'textarea'
+  ) {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
@@ -160,8 +164,15 @@ const handleChange = (e) => {
       ...formData,
       [e.target.id]: e.target.value,
     });
+  } else if (e.target.id === 'type') {
+    // Handle select element
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
   }
 };
+
   return (
     <>
       {/* <Header /> */}
@@ -279,6 +290,7 @@ const handleChange = (e) => {
                       onChange={handleChange}
                       type="text"
                       id="title"
+                      name="title"
                       required
                       placeholder="Title"
                       className="border p-2 rounded w-full"
@@ -288,6 +300,7 @@ const handleChange = (e) => {
                      onChange={handleChange}
                       type="text"
                       required
+                      name="description"
                       id="description"
                       placeholder="Description"
                       className="border p-2 rounded w-full"
@@ -634,6 +647,7 @@ const handleChange = (e) => {
                     <input
                       onChange={handleChange}
                       type="text"
+                      name="address"
                       required
                       id="address"
                       placeholder="Street address"
@@ -646,6 +660,7 @@ const handleChange = (e) => {
                       onChange={handleChange}
                       type="text"
                       required
+                      name="city"
                       id="city"
                       placeholder="City"
                       className="border p-2 rounded w-full"
@@ -654,6 +669,7 @@ const handleChange = (e) => {
                     onChange={handleChange}
                       type="text"
                       id="state"
+                      name="state"
                       required
                       placeholder="State / Province"
                       className="border p-2 rounded w-full"
@@ -662,6 +678,7 @@ const handleChange = (e) => {
                       onChange={handleChange}
                       type="text"
                       id="zip"
+                      name="zip"
                       required
                       placeholder="ZIP / Postal code"
                       className="border p-2 rounded w-full"
@@ -672,6 +689,7 @@ const handleChange = (e) => {
                     onChange={handleChange}
                       type="number"
                       required
+                      name="rooms"
                       id="rooms"
                       placeholder="Bedrooms"
                       className="border p-2 rounded w-full"
@@ -681,6 +699,7 @@ const handleChange = (e) => {
                       type="number"
                       id="bathrooms"
                       required
+                      name="bathrooms"
                       placeholder="Bathrooms"
                       className="border p-2 rounded w-full"
                     />

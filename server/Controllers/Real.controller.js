@@ -1,4 +1,5 @@
 
+import Car from "../Models/Car.model.js";
 import Real from "../Models/Realestate.model.js";
 import { errorHandler } from "../utils/error.js";
 
@@ -89,3 +90,29 @@ export const deleteReal = async(req,res,next)=>{
     }
 };
 
+
+export const getListings = async (req, res, next) => {
+  const userId = req.params.id; 
+  try {
+ 
+
+    // Find all cars with the specified userId
+    const cars = await Car.find({ userRef: userId });
+
+    // Find all reals with the specified userId
+    const reals = await Real.find({ userRef: userId });
+
+    // Combine the results into a single object
+    const allListings = { cars, reals };
+
+    // If both cars and reals arrays are empty, return a 404 error
+    if (!cars.length && !reals.length) {
+      return next(errorHandler(404, 'Listings not found!'));
+    }
+
+    // Return the combined listings
+    res.status(200).json(allListings);
+  } catch (error) {
+    next(error);
+  }
+};
