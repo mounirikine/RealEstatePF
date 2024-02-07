@@ -64,31 +64,39 @@ useEffect(() => {
     }
   };
   const handleDeleteCar = async (productId) => {
-    console.log(productId)
-    const access_token = document.cookie.split('; ').find(row => row.startsWith('access_token=')).split('=')[1];
+    console.log(productId);
+    const access_token = document.cookie
+      .split('; ')
+      .find((row) => row.startsWith('access_token='))
+      .split('=')[1];
     try {
-      const response = await fetch(`http://localhost:4000/api/real/delete-car/${productId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-         
-        },
-        body: JSON.stringify({
-
-          access_token
-        }),
-      });
-  console.log(access_token)
+      const response = await fetch(
+        `http://localhost:4000/api/car/delete-car/${productId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            access_token,
+          }),
+        }
+      );
+  
+      if (!response.ok) {
+        throw new Error(`Failed to delete car: ${response.status} ${response.statusText}`);
+      }
+  
       const data = await response.json();
- console.log(data)
-      
-
+      console.log(data);
     } catch (error) {
       console.error("Error deleting product:", error);
     }
   };
+  
   // Console log the combined data
-  console.log(data);
+console.log(data)
+
 
   return (
     <>
@@ -132,16 +140,20 @@ useEffect(() => {
                     <td className="px-6 py-4">Car</td>
                     <td className="px-6 py-4">{`$ ${item.price}`}</td>
                     <td className="px-6 py-4 flex items-center gap-2">
-                      <Link
-                        className="font-medium py-3  rounded-full bg-green-600 px-3 dark:text-blue-500 hover:underline"
-                      >
-                        <FaRegTrashAlt className="text-black text-lg" />
-                      </Link>
-                      <Link
-                        className="font-medium py-3 px-3 rounded-full bg-red-500 dark:text-blue-500 hover:underline"
-                      >
-                        <FaEdit className="text-black text-lg" />
-                      </Link>
+               
+                            <button 
+                              onClick={() => handleDeleteCar(item._id)}
+                              className="font-medium py-3 rounded-full bg-green-600 px-3 dark:text-blue-500 hover:underline"
+                            >
+                              <FaRegTrashAlt className="text-black text-lg" />
+                            </button>
+                            <Link
+                              to={`/Update/${item._id}`}
+                              className="font-medium py-3 px-3 rounded-full bg-red-500 dark:text-blue-500 hover:underline"
+                            >
+                              <FaEdit className="text-black text-lg" />
+                            </Link>
+                       
                     </td>
                   </tr>
                 ))}
@@ -159,38 +171,23 @@ useEffect(() => {
                     <td className="px-6 py-4">{`$ ${item.regularPrice}`}</td>
                     <td className="px-6 py-4 flex items-center gap-2">
 
-                      {item.cars ? (
-                      <>
-                      <button 
-                     onClick={()=>handleDeleteCar(item._id)}
-                        className="font-medium py-3  rounded-full bg-green-600 px-3 dark:text-blue-500 hover:underline"
-                      >
-                        <FaRegTrashAlt className="text-black text-lg" />
-                      </button>
-                      <button
-                       
-                        className="font-medium py-3 px-3 rounded-full bg-red-500 dark:text-blue-500 hover:underline"
-                      >
-                        <FaEdit className="text-black text-lg" />
-                      </button></>
-                      ):
-                      (
-                        <>
-                         <button 
-                     onClick={()=>handleDeleteReal(item._id)}
-                        className="font-medium py-3  rounded-full bg-green-600 px-3 dark:text-blue-500 hover:underline"
-                      >
-                        <FaRegTrashAlt className="text-black text-lg" />
-                      </button>
-                      <button
-                       
-                        className="font-medium py-3 px-3 rounded-full bg-red-500 dark:text-blue-500 hover:underline"
-                      >
-                        <FaEdit className="text-black text-lg" />
-                      </button></>
+                                            
+                         
+                            <button 
+                              onClick={() => handleDeleteReal(item._id)}
+                              className="font-medium py-3 rounded-full bg-green-600 px-3 dark:text-blue-500 hover:underline"
+                            >
+                              <FaRegTrashAlt className="text-black text-lg" />
+                            </button>
+                            <Link
+                              to={`/Update0/${item._id}`}
+                              className="font-medium py-3 px-3 rounded-full bg-red-500 dark:text-blue-500 hover:underline"
+                            >
+                              <FaEdit className="text-black text-lg" />
+                            </Link>
+                      
                    
 
-                      ) }
                       
                     </td>
                   </tr>

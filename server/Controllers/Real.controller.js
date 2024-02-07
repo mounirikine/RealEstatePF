@@ -116,3 +116,17 @@ export const getListings = async (req, res, next) => {
     next(error);
   }
 };
+
+
+export const getForUpdating = async (req, res, next) => {
+  try {
+    const listing = await Real.findById(req.params.id);
+    const listing2 = await Car.findById(req.params.id);
+
+    
+   
+    res.status(200).json({listing,listing2});
+  } catch (error) {
+    next(error);
+  }
+};
