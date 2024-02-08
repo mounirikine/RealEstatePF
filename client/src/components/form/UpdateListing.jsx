@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import logof from "../../assets/logof1.png";
 import Footer from "../Footer";
 import { toast } from "react-toastify";
@@ -61,7 +61,7 @@ const UpdateListing = () => {
 
   const { id } = useParams();
   
-
+const navigate = useNavigate()
   useEffect(() => {
     const fetchListing = async () => {
 
@@ -147,7 +147,7 @@ console.log(formData)
         .find((row) => row.startsWith("access_token="))
         .split("=")[1];
 
-      const res = await fetch("http://127.0.0.1:4000/api/car/create-car", {
+      const res = await fetch(`http://127.0.0.1:4000/api/car/update-car/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -159,7 +159,7 @@ console.log(formData)
       });
 
       const data = await res.json();
-      toast.success(data);
+      navigate(`/list/${window.localStorage.getItem("userID")}`)
     } catch (error) {
       console.log(error);
     }
@@ -168,16 +168,27 @@ console.log(formData)
 
     setLoading(false);
   };
-
   const handleChange = (e) => {
+    const { id, value, type, checked } = e.target;
   
-      setFormData({
-        ...formData,
-        [e.target.id]: e.target.value,
-      });
-  
+    // If the input is a text input or textarea, update the value in the form data
+    if (type === 'text' || type === 'textarea' || type === 'number') {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        [id]: value
+      }));
+    }
+    
+    // If the input is a checkbox, update the checked status in the form data
+    if (type === 'checkbox') {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        [id]: checked
+      }));
+    }
   };
-
+  
+  
   return (
     <>
       {/* <Header /> */}
@@ -229,8 +240,9 @@ console.log(formData)
                         <input
                           onChange={(e) => setFiles(e.target.files)}
                           id="dropzone-file"
+                          name="file"
                           multiple
-                          required
+                       
                           type="file"
                           className="hidden"
                         />
@@ -468,8 +480,8 @@ console.log(formData)
                     <input
                       onChange={handleChange}
                       type="number"
-                      id="carYear"
-                      name="carYear"
+                      id="year"
+                      name="year"
                       placeholder="Enter year"
                       min="1900"
                       max="2024"
@@ -494,6 +506,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                      id="DigitalOdometer"
                      checked={formData.DigitalOdometer}
                       />
                       <span>DigitalOdometer</span>
@@ -503,6 +516,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="Heater"
                         checked={formData.Heater}
                       />
                       <span>Heater</span>
@@ -512,6 +526,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="LeatherSeats"
                         checked={formData.LeatherSeats}
                       />
                       <span>LeatherSeats</span>
@@ -521,6 +536,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="PanoramicMoonroof"
                         checked={formData.PanoramicMoonroof}
                       />
                       <span>PanoramicMoonroof</span>
@@ -530,6 +546,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="Tachometer"
                         checked={formData.Tachometer}
                       />
                       <span>Tachometer</span>
@@ -539,6 +556,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="TouchscreenDisplay"
                         checked={formData.TouchscreenDisplay}
                       />
                       <span>TouchscreenDisplay</span>
@@ -548,6 +566,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="BrakeAssist"
                         checked={formData.BrakeAssist}
                       />
                       <span>BrakeAssist</span>
@@ -557,6 +576,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="ChildSafetyLocks"
                         checked={formData.ChildSafetyLocks}
                       />
                       <span>ChildSafetyLocks</span>
@@ -566,6 +586,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="DriverAirBag"
                         checked={formData.DriverAirBag}
                       />
                       <span>DriverAirBag</span>
@@ -575,6 +596,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="PowerDoorLocks"
                         checked={formData.PowerDoorLocks}
                       />
                       <span>PowerDoorLocks</span>
@@ -584,6 +606,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="StabilityControl"
                         checked={formData.StabilityControl}
                       />
                       <span>StabilityControl</span>
@@ -593,6 +616,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="TractionControl"
                         checked={formData.TractionControl}
                       />
                       <span>TractionControl</span>
@@ -602,6 +626,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="FogLightsFront"
                         checked={formData.FogLightsFront}
                       />
                       <span>FogLightsFront</span>
@@ -611,6 +636,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="RainSensingWiper"
                         checked={formData.RainSensingWiper}
                       />
                       <span>RainSensingWiper</span>
@@ -620,6 +646,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="RearSpoiler"
                         checked={formData.RearSpoiler}
                       />
                       <span>RearSpoiler</span>
@@ -629,6 +656,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="WindowsElectric"
                         checked={formData.WindowsElectric}
                       />
                       <span>WindowsElectric</span>
@@ -638,6 +666,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="AndroidAuto"
                         checked={formData.AndroidAuto}
                       />
                       <span>AndroidAuto</span>
@@ -647,6 +676,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="AppleCarPlay"
                         checked={formData.AppleCarPlay}
                       />
                       <span>AppleCarPlay</span>
@@ -656,6 +686,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="Bluetooth"
                         checked={formData.Bluetooth}
                       />
                       <span>Bluetooth</span>
@@ -665,6 +696,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="HomeLink"
                         checked={formData.HomeLink}
                       />
                       <span>HomeLink</span>
@@ -674,6 +706,7 @@ console.log(formData)
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        id="PowerSteering"
                         checked={formData.PowerSteering}
                       />
                       <span>PowerSteering</span>

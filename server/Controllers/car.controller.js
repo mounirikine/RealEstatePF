@@ -61,3 +61,21 @@ res.status(200).json('listings has been deleleted!')
 }
 }
 
+
+export const updateCar = async (req, res, next) => {
+  const listing = await Car.findById(req.params.id);
+  if (!listing) {
+    return next(errorHandler(404, 'Real not found!'));
+  }
+ 
+  try {
+    const updatedListing = await Car.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }  
+    );
+    res.status(200).json(updatedListing);
+  } catch (error) {
+    next(error);
+  }
+};

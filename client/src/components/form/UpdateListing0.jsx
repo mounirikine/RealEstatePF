@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { useParams } from "react-router-dom";
+import { useParams ,useNavigate} from "react-router-dom";
 import logof from "../../assets/logof1.png";
 import Footer from "../Footer";
 import { toast } from "react-toastify";
@@ -88,7 +88,7 @@ console.log(formData)
       setUploading(false);
     }
   };
-
+  const navigate = useNavigate()
   const storeImage = async (file) => {
     return new Promise((resolve, reject) => {
       const storage = getStorage(app);
@@ -132,7 +132,7 @@ console.log(formData)
         .find((row) => row.startsWith("access_token="))
         .split("=")[1];
 
-      const res = await fetch("http://127.0.0.1:4000/api/car/create-car", {
+      const res = await fetch(`http://127.0.0.1:4000/api/real/update-real/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -144,7 +144,7 @@ console.log(formData)
       });
 
       const data = await res.json();
-      toast.success(data);
+      navigate(`/list/${window.localStorage.getItem("userID")}`)
     } catch (error) {
       console.log(error);
     }
@@ -156,11 +156,23 @@ console.log(formData)
 
   const handleChange = (e) => {
   
-      setFormData({
-        ...formData,
-        [e.target.id]: e.target.value,
-      });
+    const { id, value, type, checked } = e.target;
   
+    // If the input is a text input or textarea, update the value in the form data
+    if (type === 'text' || type === 'textarea' || type === 'number' || id  === "type" || id === 'country' ) {
+      setFormData(prevFormData => ({
+        ...prevFormData, 
+        [id]: value
+      }));
+    }
+    
+    // If the input is a checkbox, update the checked status in the form data
+    if (type === 'checkbox') {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        [id]: checked
+      }));
+    }
   };
 
   return (
@@ -215,7 +227,7 @@ console.log(formData)
                      onChange={(e)=>setFiles(e.target.files)}
                           id="dropzone-file"
                           multiple
-                          required
+              
                           type="file"
                           className="hidden"
                         />
