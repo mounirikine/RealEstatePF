@@ -285,7 +285,9 @@ const handleChange = (e) => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div className={`${porcentageProgress >= 100 ?'block':'hidden'}`}>
+                      <h1>Complete This </h1>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <input
                       onChange={handleChange}
                       type="text"
@@ -777,7 +779,7 @@ const handleChange = (e) => {
                      
                       className="border p-2 rounded w-full"
                     >
-                      <option  disabled>Select: Sale Or Rent</option>
+                      <option selected disabled required value='' >Select: Sale Or Rent</option>
                       <option id="sale" value="sale">Sale</option>
                       <option id="rent" value="rent">Rent</option>
                     </select>
@@ -836,6 +838,7 @@ const handleChange = (e) => {
                       "Save"
                     )}
                   </button>
+                    </div>
                 </form>
               </div>
             </div>
