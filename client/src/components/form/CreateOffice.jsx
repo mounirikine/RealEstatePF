@@ -102,7 +102,7 @@ const storeImage = async(file)=>{
     });
 }
 const handleRemoveImage = (index) => {
- formData({
+  setFormData({
     ...formData,
     imageUrls: formData.imageUrls.filter((_, i) => i !== index),
   });
@@ -284,6 +284,13 @@ const handleChange =(e)=>{
                               alt="listing image"
                               className=" w-20 object-contain rounded-lg"
                             />
+                             <button
+                  type='button'
+                  onClick={() => handleRemoveImage(index)}
+                  className='p-3 text-red-700 rounded-lg uppercase hover:opacity-75'
+                >
+                  Delete
+                </button>
                           </div>
                         ))}
                     </div>
