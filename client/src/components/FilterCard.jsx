@@ -57,6 +57,8 @@ const FilterCard = ({data}) => {
       </div></Link></>
     </motion.Card> 
     </>
+
+    
   )
 }
 

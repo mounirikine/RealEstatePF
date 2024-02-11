@@ -8,55 +8,69 @@ const ResidentCard = ({ data }) => {
   const imageUrl = data.imageUrls[0]; // Using the first image URL
 
   return (
-    <motion.Card
+    <motion.div
     to={`/PropertieDetails/${data._id}`}
-      className="flex flex-col rounded-xl bg-white shadow-xl h-[450px]"
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
-      }}
-      initial='hidden'
-      animate='visible'
-      transition={{ duration: 0.8, delay: 0.75 }}
-    >
-      <>
-      <Link  to={`/PropertieDetails/${data._id}`} >
-      <div className="relative flex items-center justify-center ">
-        <img
-          className="rounded-xl w-full h-[280px]  transition ease-in-out delay-150  duration-300"
-          src={imageUrl}
-          alt=""
-        />
-        <div className="chat chat-start mb-3 px-4 absolute top-1 left-0">
-          <span className={`${data.type === 'sale' ?'bg-red-200' :'bg-green-100'} text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-500`}>For {data.type}</span>
+    className="flex flex-col rounded-xl bg-white shadow-xl h-[450px] overflow-hidden"
+    variants={{
+      hidden: { opacity: 0 },
+      visible: { opacity: 1 }
+    }}
+    initial='hidden'
+    animate='visible'
+    transition={{ duration: 0.8, delay: 0.75 }}
+  >
+    <>
+      <Link to={`/PropertieDetails/${data._id}`} >
+        <div className="relative flex-shrink-0">
+          <img
+            className="rounded-t-xl w-full h-[244px] object-cover"
+            src={imageUrl}
+            alt=""
+          />
+          <div className="absolute top-2 left-2">
+            <span className={`${data.type === 'sale' ? 'bg-red-200' : 'bg-green-100'} text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-green-900 dark:text-green-500`}>For {data.type}</span>
+          </div>
         </div>
-      </div>
-      <div className="flex flex-col py-2 px-4 justify-center">
-        <h1 className="text-lg md:text-xl lg:text-xl ">
-          {data.title}
-        </h1>
-        <h1 className="text-[#782DF3] truncate text-xl md:text-xl lg:text-xl pb-1">
-          ${data.regularPrice}
-        </h1>
-        <p className="text-gray-500 text-sm truncate w-full">{data.description}</p>
-      </div>
-      <div className="flex items-center px-4">
-        <span className="flex items-center gap-0.5 truncate  text-sm">
-          <FaMapMarkerAlt className="text-violet-500 text-sm" /> {data.address}, {data.city}, {data.country}
-        </span>
-      </div>
-      <div className="flex justify-between items-center border  mt-2 py-0.5 mx-3 rounded-lg text-sm px-2">
-        <span className="flex justify-between items-center gap-1 border-violet-500 pr-5">
-          <SlSizeFullscreen className="text-violet-500" /> {data.area} Sqft
-        </span>
-        <span className="flex justify-between items-center gap-1 border-violet-500 pr-5">
-          <FaBed className="text-violet-500" /> {data.rooms} Bed
-        </span>
-        <span className="flex justify-between items-center gap-1 border-violet-500 pr-1">
-          <FaBath className="text-violet-500" /> {data.bathrooms} Bath
-        </span>
-      </div></Link></>
-    </motion.Card>
+        <div className="flex flex-col justify-between  py-4 px-4">
+          <div>
+            <h1 className="text-lg md:text-xl lg:text-xl font-bold mb-1">
+              {data.title}
+            </h1>
+            <h1 className="text-[#782DF3] text-xl md:text-xl lg:text-xl font-bold pb-1">
+              ${data.regularPrice}
+            </h1>
+            <p className="text-gray-500 text-sm truncate">{data.description}</p>
+          </div><div className='flex mb-1'>
+                  <FaMapMarkerAlt className="text-violet-500" />
+                     <span className="flex items-center  truncate text-sm">
+                       {data.country} - {data.city} - {data.address}
+                      </span>
+                  </div>
+          <div className="flex flex-wrap justify-between border-t border-gray-200 pt-2">
+                  
+                  <div className='flex'>
+                    <SlSizeFullscreen className="text-violet-500  mx-1" />
+                  <span className="flex items-center  truncate text-sm">
+                     {data.area} Sqft
+                  </span>
+                  </div>
+                  <div className='flex'>
+                    <FaBed className="text-violet-500 mx-1"  />
+                <span className="flex items-center  truncate text-sm">
+                   {data.rooms} Bed
+                </span></div>
+                <div className='flex'>
+                  <FaBath className="text-violet-500 mx-1" />
+                <span className="flex items-center truncate text-sm">
+                   {data.bathrooms} Bath
+                </span></div>
+          </div>
+        </div>
+      </Link>
+    </>
+  </motion.div>
+  
+  
   );
 };
 
