@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import ResidentCard from './ResidentCard';
-import { FaArrowRight } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa";
 import { useEffect, useState } from 'react';
+import ResidentCardCol from './form/ResidentCardCol';
 
-const Residential = ({catSlug}) => {
+const Residential = ({ catSlug }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -15,7 +16,7 @@ const Residential = ({catSlug}) => {
         }
         const rawData = await response.json();
         const shuffledData = rawData.sort(() => 0.5 - Math.random());
-        const slicedData = shuffledData.slice(0, 6);
+        const slicedData = shuffledData.slice(0, 4);
         setData(slicedData);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -27,13 +28,22 @@ const Residential = ({catSlug}) => {
 
   return (
     <div>
-      <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 px-4 sm:px-6 md:px-8 lg:px-20 xl:px-20">
-        {data.map(item => (
-          <ResidentCard key={item._id} data={item} />
-        ))}
+      <main className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-4 px-4 sm:px-6 md:px-8 lg:px-20 xl:px-20">
+        {data.length > 0 && (
+          <>
+            <div className="grid grid-cols-1">
+              <ResidentCard key={data[0]._id} data={data[0]} />
+            </div>
+            <div className="grid grid-cols-3 gap-4">
+              {data.slice(1).map((item) => (
+                <ResidentCardCol key={item._id} data={item} />
+              ))}
+            </div>
+          </>
+        )}
       </main>
       <div className='w-full flex items-center justify-center py-10'>
-        <Link to='/properties' className='button px-14 py-4 rounded-xl flex items-center gap-2 text-white '>Load More Listing  <FaArrowRight /> </Link>
+        <Link to='/properties' className=' px-14 py-4 text-2xl hover:translate-x-1 rounded-xl flex items-center gap-2 text-black '>Load More Listing  <FaArrowRight /> </Link>
       </div>
     </div>
   );

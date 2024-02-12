@@ -1,11 +1,11 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { CiMenuFries, CiUser, CiBoxList } from "react-icons/ci";
+import {  CiUser, CiBoxList } from "react-icons/ci";
 import { IoCreateOutline, IoMenuOutline } from "react-icons/io5";
 import { FaPowerOff } from "react-icons/fa";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import logof from "../assets/logof1.png";
+import logof from "../assets/finder.png";
 
 const Header = ({ userInfo }) => {
   const [open, setOpen] = useState(true);
@@ -35,9 +35,28 @@ const Header = ({ userInfo }) => {
   //   console.log(location.pathname)
   // },[active])
 
+    useEffect(() => {
+      const header = document.getElementById('header');
+      const handleScroll = () => {
+        const value = window.scrollY;
+        if (value > 50) {
+          header.style.transform = 'translateY(-100px)';
+          header.style.transition = '0.3s ease-in'
+        } else {
+          header.style.transform = 'translateY(0px)';
+        }
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      // Clean up the event listener on component unmount
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []); 
   return (
     <>
-      <header className=" dark:bg-gray-900 bg-[#782DF3] fixed w-full z-20 top-0 start-0 primary_text dark:border-gray-600 py-1">
+      <header id="header" className=" dark:bg-gray-900 headerColor   fixed w-full z-20 top-0 start-0 primary_text dark:border-gray-600 py-2">
         <nav className="   px-4 lg:px-6 py-2.5 dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <Link to="/" className="flex items-center">
@@ -134,7 +153,7 @@ const Header = ({ userInfo }) => {
                     className={`${
                       location.pathname === item.path
                         ? "bg-white text-black"
-                        : "text-white"
+                        : "text-black"
                     } px-5 py-1 rounded-xl`}
                   >
                     <NavLink

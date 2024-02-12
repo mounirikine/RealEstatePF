@@ -50,25 +50,25 @@ const FirstSection = () => {
         Here you can find your categories that you are simply looking for and be the first to take them
       </p>
 
-      <div className="w-12/12 flex">
-        <ul className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2 flex-wrap text-sm font-medium text-center mx-auto text-gray-500 dark:text-gray-400 primary_color px-7 py-1 rounded-2xl">
+      <div className="w-12/12 flex items-center justify-center">
+        <ul className="grid grid-cols-2  sm:grid-cols-3 lg:grid-cols-5 gap-2 flex-wrap text-sm font-medium text-center mx-auto text-gray-500 dark:text-gray-400  px-7 py-1 rounded-2xl">
           {[
-            { tab: "Residential", icon: <FaBuilding /> },
-            { tab: "Villa", icon: <MdOutlineVilla /> },
-            { tab: "Apartment", icon: <MdOutlineApartment /> },
-            { tab: "Office space", icon: <GiOfficeChair /> },
-            { tab: "Cars", icon: <IoCarSport /> },
+            { tab: "Residential", icon: <FaBuilding className="text-xl"/> },
+            { tab: "Villa", icon: <MdOutlineVilla className="text-xl" /> },
+            { tab: "Apartment", icon: <MdOutlineApartment className="text-xl" /> },
+            { tab: "Office space", icon: <GiOfficeChair className="text-xl" /> },
+            { tab: "Cars", icon: <IoCarSport className="text-xl" /> },
           ].map((item) => (
             <li key={item.tab} className="me-2">
               <Link
                 onClick={() => handleTabClick(item.tab)}
                 role="tab"
-                className={`px-4 py-3 rounded-xl flex items-center gap-1 border dark:hover:bg-gray-800 dark:hover:text-white ${
-                  activeTab === item.tab ? "tab-active button text-white" : ""
+                className={`px-14 py-4 rounded-xl flex items-center gap-1 border dark:hover:bg-gray-800 dark:hover:text-white ${
+                  activeTab === item.tab ? "tab-active button text-base" : "text-base bg-violet-100"
                 }`}
               >
                 <span className="bg-white text-black p-1 rounded-full">{item.icon}</span>
-                <span>{item.tab}</span>
+                <span className="flex flex-col items-center justify-center"><span>{item.tab}</span>  </span>
               </Link>
             </li>
           ))}

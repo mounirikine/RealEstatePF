@@ -2,13 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap'); */
 /* .primary{
    @apply  bg-[#e1f1fd]
 } */
 
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Teko:wght@300..700&display=swap');
+
 .primary_text{
-    @apply text-[#fff]
+    @apply text-[#000]
 }
 .primary_color{
     @apply bg-[#fff]
@@ -21,11 +23,33 @@
 }
 
 .button{
-    @apply bg-[#782DF3]
+    @apply bg-black text-white
 }
 
+.hero{
+   
+    background-image: url(./assets/newhero.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+}
 
-body {
+body{
+    font-family: "Syne", sans-serif;
+    font-optical-sizing: auto;
+    background: #ffffffef;
+}
+
+.left{
+    background: #ffffffef;
+    /* min-height: 120vh;
+    height: 100%; */
+}
+
+.headerColor{
+    background: #fffffff0;
+}
+/* body {
     
     letter-spacing: -.03em;
     font-family: "Mulish", sans-serif;
@@ -34,7 +58,7 @@ body {
     
      @apply     inset-0 h-full w-full  bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] 
     
-}
+} */
 
 
 
@@ -64,4 +88,8 @@ body {
 
 .b{
     color: #c3bebe48;
+}
+
+.bgColor{
+    background: #d0f5b6;
 }
