@@ -17,11 +17,12 @@ const ResidentCardCol = ({ data }) => {
               transition={{duration:0.8 ,delay:0.6}} 
       
       className="  justify-center rounded-xl border">
+        <Link to={`/PropertieDetails/${data._id}`} >
         <div className=" rounded-xl mx-h-[340px]">
           <img
             src={imageUrl}
             alt=""
-            className=" rounded-xl h-[300px]  w-full"
+            className=" rounded-t-xl h-[300px]  w-full"
           />
         </div>
         <div className=" px-3 mt-5">
@@ -55,28 +56,30 @@ const ResidentCardCol = ({ data }) => {
             </div>
           </div>
 
-          <div className="border bg-violet-100 w-12/12 rounded-xl  mb-4 lg:px-10 py-3 flex  items-center  justify-center">
-            <span className="w-4/12 flex items-center justify-center">
-              <h1 className="text-sm"></h1>
-              <h1 className="flex items-center gap-2 justify-center text-lg">
-                <FaBed className="text-2xl" /> {data.rooms}
-              </h1>
-            </span>
-            <span className="w-4/12 flex items-center justify-center">
-              <h1 className="text-sm"></h1>
-              <h1 className="flex items-center gap-2 justify-center text-lg">
-                <FaBath className="text-2xl" /> {data.bathrooms}
-              </h1>
-            </span>
-            <span className="w-4/12 flex items-center justify-center">
-              <h1 className="text-sm"></h1>
-              <h1 className="flex items-center gap-2 justify-center text-lg">
-                <FaRegSquare className="text-2xl" />
+          <div className="border bg-violet-100 w-12/12 rounded-xl  mb-4 lg:px-10 py-3 flex  items-center  justify-evenly">
+            <div className='flex'>
+              <FaBed className="text-2xl mx-1" />
+              <span className="flex items-center  truncate text-sm">
+                 {data.rooms}
+              </span>
+            </div>
+
+            <div className="flex">
+              <FaBath className="text-2xl mx-1" /> 
+              <span className="flex items-center  truncate text-sm">
+                {data.bathrooms}
+              </span>
+            </div>
+            <div className="flex">
+              <FaRegSquare className="text-2xl mx-1" />
+              <span className="flex items-center  truncate text-sm">
+                
                 {data.area}{" "}
-              </h1>
-            </span>
+              </span>
+            </div>
           </div>
         </div>
+        </Link>
       </motion.div>
     </>
   );
