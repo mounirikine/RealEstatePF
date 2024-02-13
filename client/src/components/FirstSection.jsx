@@ -51,7 +51,7 @@ const FirstSection = () => {
       </p>
 
       <div className="w-12/12 flex items-center justify-center">
-        <ul className="grid grid-cols-2  sm:grid-cols-3 lg:grid-cols-5 gap-2 flex-wrap text-sm font-medium text-center mx-auto text-gray-500 dark:text-gray-400  px-7 py-1 rounded-2xl">
+        <ul className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 flex-wrap text-sm font-medium text-center mx-auto text-gray-500 dark:text-gray-400   py-1 rounded-2xl">
           {[
             { tab: "Residential", icon: <FaBuilding className="text-xl"/> },
             { tab: "Villa", icon: <MdOutlineVilla className="text-xl" /> },

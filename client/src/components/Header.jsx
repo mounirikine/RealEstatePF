@@ -39,9 +39,9 @@ const Header = ({ userInfo }) => {
       const header = document.getElementById('header');
       const handleScroll = () => {
         const value = window.scrollY;
-        if (value > 50) {
+        if (value > 10) {
           header.style.transform = 'translateY(-100px)';
-          header.style.transition = '0.3s ease-in'
+          header.style.transition = '0.5s ease-in'
         } else {
           header.style.transform = 'translateY(0px)';
         }
@@ -56,11 +56,11 @@ const Header = ({ userInfo }) => {
     }, []); 
   return (
     <>
-      <header id="header" className=" dark:bg-gray-900 headerColor   fixed w-full z-20 top-0 start-0 primary_text dark:border-gray-600 py-2">
+      <header id="header" className=" dark:bg-gray-900   bg-white    w-full z-20 top-0 start-0 primary_text dark:border-gray-600 py-4 ">
         <nav className="   px-4 lg:px-6 py-2.5 dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <Link to="/" className="flex items-center">
-              <img src={logof} alt="" width={150} />
+              <img src={logof} alt="" width={130} />
             </Link>
             <div className="flex items-center lg:order-2">
               {cookies.access_token ? (
@@ -121,7 +121,7 @@ const Header = ({ userInfo }) => {
                 <>
                   <Link
                     to="/login"
-                    className=" bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 border bg-white text-black"
+                    className=" bg-black hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 border  text-white"
                   >
                     Get started
                   </Link>
@@ -175,15 +175,15 @@ const Header = ({ userInfo }) => {
                 open ? "hidden" : "flex"
               } lg:hidden justify-between items-center w-full lg:w-auto lg:order-1" id="mobile-menu-2`}
             >
-              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 w-full  shadow-xl rounded-3xl mb-10 pt-10 pb-6">
+              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 w-full  h-screen  rounded-3xl mb-10 pt-10 pb-6">
                 {navItems.map((item) => (
                   <li
                     key={item.label}
                     onClick={() => setActive(item.label)}
                     className={`${
                       location.pathname === item.path
-                        ? "bg-white text-black"
-                        : "text-white"
+                        ? "bg-black text-white flex items-center justify-center"
+                        : "text-black flex items-center justify-center"
                     } px-5 py-1 rounded-xl`}
                   >
                     <NavLink

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FaArrowRight } from "react-icons/fa";
 const ShowCatalog = () => {
   return (
-    <>
-      <section className="flex items-center gap-8 lg:gap-1  py-5 px-5 sm:px-0 lg:px-10">
+    <>      <section className="flex items-center gap-8 lg:gap-1  py-14 px-5 sm:px-0 lg:px-10">
         <motion.div
           initial={{ x: 0, opacity: 0 }}
           whileInView={{ x: 107, opacity: 1 }}
@@ -25,7 +25,7 @@ const ShowCatalog = () => {
         >
           <h1 className="font-bold  text-3xl uppercase sm:text-5xl py-5 sm:py-10">
             Discover properties that will improve your{" "}
-            <span className="text-violet-400">
+            <span className="bg-violet-200">
               life and that of your family
             </span>
           </h1>
@@ -39,9 +39,10 @@ const ShowCatalog = () => {
 
           <Link
             to="/"
-            className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl  border button text-white flex items-center justify-center "
+            className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl gap-2 text-xl   hover:translate-x-1  text-black font-bold  flex items-center justify-center "
           >
             To Catalog
+            <FaArrowRight />
           </Link>
         </motion.div>
       </section>

@@ -102,8 +102,8 @@ console.log(data)
     <>
       <Header userInfo={userInfo} />
       <section className="bg-white min-h-screen">
-        <main className="py-20 px-10">
-          <h1 className="py-10 text-3xl text-center">Your List Property</h1>
+        <main className="py-10 px-10">
+          <h1 className="py-10 text-xl lg:text-5xl font-bold text-center">Your List Property</h1>
 
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -143,15 +143,15 @@ console.log(data)
                
                             <button 
                               onClick={() => handleDeleteCar(item._id)}
-                              className="font-medium py-3 rounded-full bg-green-600 px-3 dark:text-blue-500 hover:underline"
+                              className="font-medium py-3 rounded-full bg-violet-200 px-3 dark:text-blue-500 hover:underline"
                             >
                               <FaRegTrashAlt className="text-black text-lg" />
                             </button>
                             <Link
                               to={`/Update/${item._id}`}
-                              className="font-medium py-3 px-3 rounded-full bg-red-500 dark:text-blue-500 hover:underline"
+                              className="font-medium py-3 px-3 rounded-full bg-black text-white dark:text-blue-500 hover:underline"
                             >
-                              <FaEdit className="text-black text-lg" />
+                              <FaEdit className=" text-lg" />
                             </Link>
                        
                     </td>

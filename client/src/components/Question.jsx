@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import {motion} from 'framer-motion'
+import { FaArrowRight } from "react-icons/fa";
 
 const Question = () => {
   return (
@@ -9,11 +10,7 @@ const Question = () => {
         Frequently asked questions
       </h1>
       <div className="flex items-center justify-center">
-        <p className="w-11/12  lg:w-8/12 sm:w-11/12   text-center py-5  ">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-          necessitatibus eum magnam atque repellendus quibusdam suscipit debitis
-          
-        </p>
+       
       </div>
       <motion.div className="join join-vertical text-black w-full" 
          initial={{x:5 ,opacity:0}}
@@ -22,7 +19,7 @@ const Question = () => {
       >
         <div className="collapse collapse-arrow join-item border bg-white border-base-300">
           <input type="radio" name="my-accordion-4" />
-          <div className="collapse-title text-lg font-medium">
+          <div className="collapse-title  font-medium text-xl bg-violet-100">
             What is the process of buying a house in a country?
           </div>
           <div className="collapse-content">
@@ -36,7 +33,7 @@ const Question = () => {
         </div>
         <div className="collapse collapse-arrow join-item border bg-white border-base-300">
           <input type="radio" name="my-accordion-4" />
-          <div className="collapse-title text-lg font-medium">
+          <div className="collapse-title  font-medium text-xl bg-violet-100">
             How can I calculate the potential return on investment for a rental
             property?
           </div>
@@ -51,7 +48,7 @@ const Question = () => {
         </div>
         <div className="collapse collapse-arrow join-item border bg-white border-base-300">
           <input type="radio" name="my-accordion-4" />
-          <div className="collapse-title text-lg font-medium">
+          <div className="collapse-title text-xl bg-violet-100 font-medium">
             What are the common closing costs associated with purchasing a
             property?
           </div>
@@ -61,7 +58,7 @@ const Question = () => {
         </div>
         <div className="collapse collapse-arrow join-item border bg-white border-base-300">
           <input type="radio" name="my-accordion-4" />
-          <div className="collapse-title text-lg font-medium">
+          <div className="collapse-title text-xl bg-violet-100 font-medium">
             How does the rental market in different cities compare within a
             country?
           </div>
@@ -71,7 +68,7 @@ const Question = () => {
         </div>
         <div className="collapse collapse-arrow join-item border bg-white border-base-300">
           <input type="radio" name="my-accordion-4" />
-          <div className="collapse-title text-lg font-medium">
+          <div className="collapse-title text-xl bg-violet-100 font-medium">
             What are the key factors to consider when investing in commercial
             real estate?{" "}
           </div>
@@ -80,8 +77,8 @@ const Question = () => {
           </div>
         </div>
       </motion.div>
-      <div className="flex items-center justify-center py-20">
-      <Link className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl  border primary_text flex items-center justify-center button  ">More Questions</Link>
+      <div className="flex items-center justify-center py-10">
+      <Link className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl text-xl hover:translate-x-1   font-bold flex items-center justify-center   ">More Questions <FaArrowRight /> </Link>
 
       </div>
 

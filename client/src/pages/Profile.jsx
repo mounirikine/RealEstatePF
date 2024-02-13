@@ -124,11 +124,11 @@ const Profile = ({ userInfo }) => {
   return (
     <>
       <Header userInfo={userInfo} />
-      <div className="w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row py-10 bg-[#782DF3]">
-        <main className="w-full py-10 md:w-3/3 lg:w-4/4">
-          <div className="p-2 md:p-4 ">
-            <div className="w-full px-6 mx-auto pb-8 mt-8 sm:max-w-xl sm:rounded-lg bg-white">
-              <div className="grid max-w-3xl mx-auto mt-8 ">
+      <div className="w-full  gap-5 px-3 md:px-16 lg:px-28 md:flex-row hero  ">
+        <main className="w-full  md:w-3/3 lg:w-4/4">
+        
+            <div className="w-full border-2 border-black px-6 mx-auto pb-8 mt-8 sm:max-w-xl sm:rounded-lg bg-white mb-14">
+              <div className="grid max-w-3xl mx-auto  ">
                 <div className=" flex-col items-center justify-center gird py-5 w-full space-y-5 sm:flex-row sm:space-y-0">
                   <input
                     onChange={(e) => setFile(e.target.files[0])}
@@ -161,13 +161,13 @@ const Profile = ({ userInfo }) => {
                       type="button"
                       onClick={() => fileRef.current.click()}
                       disabled={active}
-                      className="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 "
+                      className="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-black rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 "
                     >
                       Change picture
                     </button>
 
                     <button
-                      className="btn py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200 "
+                      className="btn py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-black focus:z-10 focus:ring-4 focus:ring-indigo-200 "
                       onClick={() =>
                         document.getElementById("my_modal_1").showModal()
                       }
@@ -211,7 +211,7 @@ const Profile = ({ userInfo }) => {
                           <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
                             <button
-                              className="btn secondary_color"
+                              className="btn bg-black text-white"
                               onClick={handleDeletePic}
                             >
                               Yes Delete It{" "}
@@ -224,7 +224,7 @@ const Profile = ({ userInfo }) => {
                 </div>
                 <div className="items-center mt-8 sm:mt-14 text-[#202142]">
                   <div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
-                    <div className="w-full">
+                    <div className="w-full ">
                       <label
                         htmlFor="username"
                         className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
@@ -238,7 +238,7 @@ const Profile = ({ userInfo }) => {
                         disabled={active}
                         defaultValue={userInfo && userInfo.username}
                         placeholder={userInfo && userInfo.username}
-                        className="bg-indigo-50 border border-indigo-300  text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
+                        className="bg-violet-100 border border-indigo-300  text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                         required
                       />
                     </div>
@@ -257,7 +257,7 @@ const Profile = ({ userInfo }) => {
                       disabled={active}
                       defaultValue={userInfo && userInfo.email}
                       placeholder={userInfo && userInfo.email}
-                      className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
+                      className="bg-violet-100 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                       required
                     />
                   </div>
@@ -276,7 +276,7 @@ const Profile = ({ userInfo }) => {
                       defaultValue={userInfo?.phoneNumber}
                       placeholder={userInfo?.phoneNumber}
                       
-                      className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
+                      className="bg-violet-100 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                       required
                     />
                   </div>
@@ -291,7 +291,7 @@ const Profile = ({ userInfo }) => {
                       id="message"
                       rows="4"
                       disabled={active}
-                      className="block p-2.5 w-full text-sm text-indigo-900 bg-indigo-50 rounded-lg border border-indigo-300 focus:ring-indigo-500 focus:border-indigo-500 "
+                      className="block p-2.5 w-full text-sm text-indigo-900 bg-violet-100 rounded-lg border border-indigo-300 focus:ring-indigo-500 focus:border-indigo-500 "
                       placeholder="Write your bio here..."
                     ></textarea>
                   </div>
@@ -311,7 +311,7 @@ const Profile = ({ userInfo }) => {
                 </div>
               </div>
             </div>
-          </div>
+        
         </main>
       </div>
       <Footer />

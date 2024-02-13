@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 const Hero = () => {
   return (
     <>
-      <section className="hero min-h-screen py-14 lg:py-10 w-full">
-        <main className="flex flex-col lg:flex-row items-center w-full justify-between px-4 lg:px-0 pt-10">
-          <div className="w-full lg:w-6/12 left mb-8 lg:mb-0  pt-5 relative">
+      <section className="hero min-h-screen pb-5 w-full mt-32 lg:mt-0">
+        <main className="flex flex-col lg:flex-row items-center w-full justify-center  px-4 lg:px-0 ">
+          <div className=" lg:w-6/12  mb-8 lg:mb-0   relative">
             <motion.h1
               variants={{
                 hidden: { opacity: 0, x: -57 },
@@ -18,7 +18,7 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 1, delay: 0.25 }}
-              className="text-6xl lg:px-24 lg:text-6xl font-bold mb-2 text-center lg:text-left"
+              className="text-5xl lg:px-24 lg:text-6xl font-bold mb-2 w-full text-center lg:text-left"
             >
               We help people to realize their dream property
             </motion.h1>
@@ -44,8 +44,8 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
             transition={{ duration: 1.2, delay: 1 }}
-             className="flex lg:mx-14 flex-col lg:flex-row items-center lg:items-end w-10/12 mx-auto lg:w-full py-3 px-4 mt-10 rounded-xl border-2 border-black justify-between">
-              <div className="flex items-center gap-2 mb-4 lg:mb-0 w-full lg:w-3/12">
+             className="flex lg:mx-14 bg-white flex-col lg:flex-row items-center lg:items-end w-10/12 mx-auto lg:w-full py-3 px-4 mt-10 rounded-xl border-2 border-black justify-between">
+              <div className="flex  items-center gap-2 mb-4 lg:mb-0 w-full lg:w-3/12">
                 <span className="border rounded-xl bg-violet-100 px-3 py-3 ">
                   <FaMapMarkerAlt />
                 </span>
@@ -64,7 +64,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 mb-4 lg:mb-0 w-full lg:w-3/12">
+              <div className="flex items-center  gap-2 mb-4 lg:mb-0 w-full lg:w-3/12">
                 <span className="border rounded-xl bg-violet-100 px-3 py-3">
                   <FaMapMarkerAlt />
                 </span>
@@ -108,7 +108,7 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          <div className="w-full lg:w-6/12 flex gap-2 items-center justify-center">
+          <div className="w-full hidden lg:flex lg:w-6/12  gap-2 items-center justify-center">
             <motion.span
               variants={{
                 hidden: { opacity: 0, scale: 0 },

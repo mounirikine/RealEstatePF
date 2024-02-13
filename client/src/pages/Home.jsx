@@ -12,7 +12,7 @@ const Home = ({userInfo}) => {
     <>
       
       <Header userInfo={userInfo} />
-      <section className="py-10 ">
+      <section className="">
 
         <Hero />
         <FirstSection />

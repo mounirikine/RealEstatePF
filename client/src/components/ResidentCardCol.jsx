@@ -12,8 +12,8 @@ const ResidentCardCol = ({ data }) => {
   return (
     <>
       <motion.div 
-              initial={{scale:0 ,opacity:0}}
-              whileInView={{scale:1,opacity:1 }}
+              initial={{y:-22 ,opacity:0}}
+              whileInView={{y:0,opacity:1 }}
               transition={{duration:0.8 ,delay:0.6}} 
       
       className="  justify-center rounded-xl border">
@@ -26,8 +26,8 @@ const ResidentCardCol = ({ data }) => {
         </div>
         <div className=" px-3 mt-5">
           <div className="flex items-center justify-between">
-            <span className="text-5xl flex items-end">
-              ${data.regularPrice}/<p className="text-lg">month</p>
+            <span className="text-3xl lg:text-4xl flex items-end truncate">
+              ${data.regularPrice}/<p className="text-sm lg:text-lg ">month</p>
             </span>
             <span className="flex items-center  px-3 py-1 gap-3 rounded-xl">
               <div>
@@ -42,20 +42,20 @@ const ResidentCardCol = ({ data }) => {
               </div>
             </span>
           </div>
-          <div className="pt-2">
-            <h1 className="text-4xl mb-2 ">{data.title}</h1>
-            <div className="flex items-center gap-2 text-xl mb-5">
+          <div className="pt-1">
+            <h1 className="text-2xl lg:text-3xl mb-2 truncate">{data.title}</h1>
+            <div className="flex items-center gap-2 text-sm lg:text-xl mb-3">
               <span>
                 <FiMapPin />
               </span>
-              <span>{data.address}</span>
+              <span className="text-base truncate">{data.address}</span>
             </div>
             <div className="h-[40px]">
-              <h1 className=" pr-3 truncate">{data.description}</h1>
+              <h1 className=" pr-3 truncate text-sm lg:text-xl">{data.description}</h1>
             </div>
           </div>
 
-          <div className="border bg-violet-100 w-12/12 rounded-xl  mb-4 px-10 py-4 flex  items-center  justify-center">
+          <div className="border bg-violet-100 w-12/12 rounded-xl  mb-4 lg:px-10 py-3 flex  items-center  justify-center">
             <span className="w-4/12 flex items-center justify-center">
               <h1 className="text-sm"></h1>
               <h1 className="flex items-center gap-2 justify-center text-lg">

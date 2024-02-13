@@ -2,10 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap'); */
-/* .primary{
-   @apply  bg-[#e1f1fd]
-} */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Teko:wght@300..700&display=swap');
 
@@ -49,42 +52,7 @@ body{
 .headerColor{
     background: #fffffff0;
 }
-/* body {
-    
-    letter-spacing: -.03em;
-    font-family: "Mulish", sans-serif;
-    font-size: 1rem;
-    line-height: 1em;
-    
-     @apply     inset-0 h-full w-full  bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] 
-    
-} */
 
-
-
-
-/* .dark_mode{
-    @apply bg-slate-950 text-[#F8F4EC]
-
-}
-
-.light_mode{
-    @apply bg-[#F8F4EC] text-gray-900
-} */
-
-/* .nav_bg_dark{
-   @apply bg-slate-950
-}
-.nav_bg_light{
-   @apply bg-[#F8F4EC]
-} */
-
-/* .secondary_color {
-    background: #7af065;
-}
-.primary_text{
-    @apply text-blue-800
-} */
 
 .b{
     color: #c3bebe48;

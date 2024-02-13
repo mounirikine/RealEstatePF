@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { FaBath, FaBed, FaMapMarkerAlt } from 'react-icons/fa';
 import { SlSizeFullscreen } from 'react-icons/sl';
 import { Link } from 'react-router-dom';
+import { AiOutlineNodeIndex } from "react-icons/ai";
 
 import { LuFuel } from "react-icons/lu";
 import { IoIosBody } from "react-icons/io";
@@ -25,7 +26,7 @@ const CarCard = ({data}) => {
       >
         <Link to={`/cardDetails/${data._id}`} className="relative flex-shrink-0">
           <img
-            className="rounded-t-xl w-full h-[244px] object-cover"
+            className="rounded-t-xl w-full h-[240px] object-cover"
             src={imageUrl}
             alt=""
           />
@@ -35,41 +36,37 @@ const CarCard = ({data}) => {
             </span>
           </div>
         </Link>
-        <div className="flex flex-col justify-between py-4 px-4">
+        <div className="flex flex-col h-[320px] justify-between pt-5 pb-2 px-4">
           <div>
-            <h1 className="text-lg md:text-xl lg:text-xl font-bold mb-1">
-              {data.title}
-            </h1>
-            <h1 className="text-[#782DF3] text-xl md:text-xl lg:text-xl font-bold pb-1">
+          <h1 className=" text-xl md:text-xl lg:text-2xl font-bold  truncate">
               ${data.price}
             </h1>
-            <p className="text-gray-500 text-sm truncate">{data.description}</p>
+            <h1 className="text-lg md:text-xl lg:text-xl truncate font-semibold mb-1">
+              {data.title}
+            </h1>
+            
+            <p className="text-gray-500 text-sm truncate mb-2 ">{data.description}</p>
           </div>
           <div className="flex mb-1">
-            <FaMapMarkerAlt className="text-violet-500 mx-1" />
+            <AiOutlineNodeIndex className=" " />
             <span className="flex items-center gap-0.5 truncate text-sm">
               {data.transmission}
             </span>
           </div>
-          <div className="flex flex-wrap justify-between border-t border-gray-200 pt-2">
-            <div className='flex'>
-              <IoIosBody className="text-violet-500 mx-1" /> 
+          <div className="flex  justify-center border py-1 rounded-lg bg-violet-100 px-1 border-gray-200 pt-2">
+            <div className='flex items-center'>
+              <IoIosBody className="mx-1" /> 
               <span className="flex justify-between items-center gap-1 border-violet-500 pr-5">
                 {data.body} 
               </span>
             </div>
-            <div className='flex'>
-              <LuFuel className="text-violet-500 mx-1" />
+            <div className='flex items-center'>
+              <LuFuel className=" mx-1" />
               <span className="flex justify-between items-center gap-1 border-violet-500 pr-5">
                 {data.fueltype}
               </span>
             </div>
-            <div className='flex'>
-              <FaCalendarDays className="text-violet-500 mx-1" />
-              <span className="flex justify-between items-center gap-1 border-violet-500 pr-1">
-                {data.year} 
-              </span>
-            </div>
+            
           </div>
         </div>
       </motion.div>
