@@ -65,7 +65,7 @@ function App() {
     setLoading2(true);
     setTimeout(() => {
       setLoading2(false);
-    }, 1000);
+    }, 2000);
   }, []);
 
   return (
@@ -73,17 +73,17 @@ function App() {
       <ToastContainer position="top-center" />
 
       {loading2 ? (
-        <div className="h-screen bg-black flex items-center justify-center">
+        <div className="h-screen hero flex items-center justify-center">
           <div className="sweet-loading flex-col gap-5 justify-center items-center">
             <ClipLoader
             className="mx-auto"
               color={color}
               loading={loading}
-              size={80}
+              size={100}
               aria-label="Loading Spinner"
               data-testid="loader"
             />
-            <img src={finder} width={200} alt="" />
+            <img src={finder} width={330} alt="" />
           </div>
         </div>
       ) : (
