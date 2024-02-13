@@ -23,33 +23,32 @@ const ResidentCard = ({ data }) => {
       className={`h-72 md:h-auto w-2/6 rounded-t-lg md:rounded-none md:rounded-l-lg object-cover`}
     />
     <div className="flex flex-col  justify-between w-4/6 p-6 ">
+      <div className="flex   justify-between">
+          <span className="text-xl lg:text-5xl flex  items-end">
+            ${data.regularPrice}/<p className="text-lg">month</p>
+          </span>
+              <span className="flex items-center  gap-3">
+                <div className="avatar">
+                          <div className="w-14 mask mask-hexagon">
+                            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                          </div>
+                        </div>
+                  <div>
+                    <h1>Edwin Martins</h1>
+                  </div>
+                  <div>
+                    <a
+                      href={`https://wa.me/${data.userNumber}?text=Hello How Can I Get More Info About This ?`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-black bg-violet-100 px-3 py-3 rounded-3xl cursor-pointer"
+                    >
+                      <FaWhatsapp className="text-xl" />
+                    </a>
+                  </div>
+              </span>
+      </div>
 
-      <span className="text-xl lg:text-5xl flex items-end">
-        ${data.regularPrice}/<p className="text-lg">month</p>
-      </span>
-      <span className="flex items-center gap-3">
-        <div className="avatar w-14">
-          <div className="mask mask-hexagon">
-            <img
-              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              alt="avatar"
-            />
-          </div>
-        </div>
-        <div>
-          <h1>Edwin Martins</h1>
-        </div>
-        <div>
-          <a
-            href={`https://wa.me/${data.userNumber}?text=Hello How Can I Get More Info About This ?`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-black bg-violet-100 px-3 py-3 rounded-3xl cursor-pointer"
-          >
-            <FaWhatsapp className="text-xl" />
-          </a>
-        </div>
-      </span>
       <h1 className="text-5xl mb-4 truncate">{data.title}</h1>
       <div className="flex items-center gap-2 text-xl mb-5">
         <span>
@@ -62,30 +61,31 @@ const ResidentCard = ({ data }) => {
    
 
         <div className="bg-violet-100 w-full  rounded-xl px-6 py-4 flex flex-wrap lg:flex-wrap items-center justify-center lg:justify-between">
-        <div className="  mb-3 lg:mb-0">
-     <FaBed className="text-2xl" />
-          <h1 className="flex items-center gap-2 justify-center text-xl">
-             {data.rooms}
-          </h1>
-        </div>
-        <div className="  mb-3 lg:mb-0">
-          <FaBath className="text-2xl" /> 
-          <h1 className="flex items-center gap-2 justify-center text-xl">
-          {data.bathrooms}
-          </h1>
-        </div>
-        <div className="  mb-3 lg:mb-0">
-     <FaRegSquare className="text-2xl" />
-          <h1 className="flex items-center gap-2 justify-center text-xl">
-            
-            {data.area}m²{" "}
-          </h1>
-        </div>
-        <div className="">  <TbToolsKitchen3 className="text-2xl" />
-          <h1 className="flex items-center gap-2 justify-center text-xl">
-           {data.kitchen}
-          </h1>
-        </div>
+        <span className="w-3/12 flex flex-col items-center justify-center">
+              <h1>Bedrooms</h1>
+              <h1 className="flex items-center gap-2 justify-center text-xl">
+                <FaBed className="text-2xl" /> {data.rooms}
+              </h1>
+            </span>
+            <span className="w-3/12 flex flex-col items-center justify-center">
+              <h1>Bathrooms</h1>
+              <h1 className="flex items-center gap-2 justify-center text-xl">
+                <FaBath className="text-2xl" /> {data.bathrooms}
+              </h1>
+            </span>
+            <span className="w-3/12 flex flex-col items-center justify-center">
+              <h1>Square Area</h1>
+              <span className="flex items-center gap-2 justify-center text-xl">
+                <FaRegSquare className="text-2xl" />
+                {data.area}m²{" "}
+              </span>
+            </span>
+            <span className="w-3/12 flex flex-col items-center justify-center">
+              <h1>Kitchen</h1>
+              <h1 className="flex items-center gap-2 justify-center text-xl">
+                <TbToolsKitchen3 className="text-2xl" /> {data.kitchen}
+              </h1>
+            </span>
       </div>
 
   </div>

@@ -12,7 +12,7 @@ const Home = ({userInfo}) => {
     <>
       
       <Header userInfo={userInfo} />
-      <section className="">
+
 
         <Hero />
         <FirstSection />
@@ -21,7 +21,7 @@ const Home = ({userInfo}) => {
         <ShowCatalog />
         <Question />
         <Contact />
-      </section>
+
       <Footer />
     </>
   );

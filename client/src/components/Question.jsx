@@ -6,7 +6,7 @@ const Question = () => {
   return (
 
     <div className=" px-2 lg:px-20 sm:px-20 py-14">
-      <h1 className="font-bold text-5xl text-center pb-5   uppercase">
+      <h1 className="text-5xl lg:px-24 lg:text-6xl font-bold mb-2 w-full text-center lg:text-left">
         Frequently asked questions
       </h1>
       <div className="flex items-center justify-center">

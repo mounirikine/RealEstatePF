@@ -59,10 +59,10 @@ const Header = ({ userInfo }) => {
       <header id="header" className=" dark:bg-gray-900   bg-white    w-full z-20 top-0 start-0 primary_text dark:border-gray-600 py-4 ">
         <nav className="   px-4 lg:px-6 py-2.5 dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-            <Link to="/" className="flex items-center">
+            <Link to="/" className=" items-center">
               <img src={logof} alt="" width={130} />
             </Link>
-            <div className="flex items-center lg:order-2">
+            <div className=" items-center   lg:order-2">
               {cookies.access_token ? (
                 <>
                   <details className="dropdown dropdown-end">
@@ -73,18 +73,18 @@ const Header = ({ userInfo }) => {
                             src={userInfo.avatar}
                             width={30}
                             height={30}
-                            className="rounded-full border"
+                            className="rounded-full  border"
                             style={{ width: "30px", height: "30px" }}
                             alt="User Avatar"
                           />
-                          <div className="badge badge-ghost">
+                          <div className="badge hidden sm:block badge-ghost">
                             {userInfo.username}
                           </div>
                         </>
                       )}
                     </summary>
 
-                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                    <ul className="p-2 shadow menu dropdown-content z-[22] bg-base-100 rounded-box w-52">
                       <li className=" ">
                         <Link
                           to="/profile"
@@ -141,6 +141,8 @@ const Header = ({ userInfo }) => {
                 )}
               </button>
             </div>
+
+
             <div
               className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
               id="mobile-menu-2"
