@@ -220,4 +220,23 @@ export const resetPass = async (req, res, next) => {
       next(error);
     }
   };
+
+  export const contact = async (req, res, next) => {
+    const { name,email,phone, message } = req.body;
+    
+    try {
+      const mailOptions = {
+        from: 'hightllevel@gmail.com', // Use your own email address as the sender
+        to: 'hightllevel@gmail.com',
+        subject: `Contact us - From: ${email}`, // Include sender's email in the subject
+        text: `Sender's Email: ${email}\n\n${message}`, // Include sender's email in the body
+      };
+  
+      await transporter.sendMail(mailOptions);
+  
+      res.json({ success: true, message: 'Email sent successfully' });
+    } catch (error) {
+      res.status(500).json({ success: false, message: 'Error sending email' });
+    }
+  };
   

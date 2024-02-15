@@ -1,5 +1,34 @@
 import {motion} from 'framer-motion'
+import React, { useState } from 'react';
 const Contact = () => {
+    const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:4000/api/auth/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      console.log(data);
+      // Handle success or error response from the server
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
   return (
     <div className=""> 
 <section
@@ -125,44 +154,56 @@ const Contact = () => {
             <div
                className="relative p-8 bg-white rounded-lg shadow-lg dark:bg-dark-2 sm:p-12"
                >
-               <form>
-                  <div className="mb-6">
-                     <input
-                        type="text"
-                        placeholder="Your Name"
-                        className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
-                        />
-                  </div>
-                  <div className="mb-6">
-                     <input
-                        type="email"
-                        placeholder="Your Email"
-                        className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
-                        />
-                  </div>
-                  <div className="mb-6">
-                     <input
-                        type="text"
-                        placeholder="Your Phone"
-                        className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
-                        />
-                  </div>
-                  <div className="mb-6">
-                     <textarea
-                        rows="6"
-                        placeholder="Your Message"
-                        className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none"
-                        ></textarea>
-                  </div>
-                  <div>
-                     <button
-                        type="submit"
-                        className="w-full p-3 text-white transition border rounded  bg-black  hover:bg-opacity-90"
-                        >
-                     Send Message
-                     </button>
-                  </div>
-               </form>
+              <form onSubmit={handleSubmit}>
+      <div className="mb-6">
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Your Name"
+          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+        />
+      </div>
+      <div className="mb-6">
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Your Email"
+          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+        />
+      </div>
+      <div className="mb-6">
+        <input
+          type="text"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="Your Phone"
+          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+        />
+      </div>
+      <div className="mb-6">
+        <textarea
+          rows="6"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          placeholder="Your Message"
+          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none"
+        ></textarea>
+      </div>
+      <div>
+        <button
+          type="submit"
+          className="w-full p-3 text-white transition border rounded  bg-black  hover:bg-opacity-90"
+        >
+          Send Message
+        </button>
+      </div>
+    </form>
                <div>
                   
                  

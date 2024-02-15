@@ -1,6 +1,7 @@
 import express from 'express'
-import { forgotPass, SignIn, SignUp, UpdateUser,    signOut, userInfo, resetPass, ResetPass, google } from '../Controllers/auth.controller.js';
+import { forgotPass, SignIn, SignUp, UpdateUser,    signOut, userInfo, resetPass, ResetPass, google, contact } from '../Controllers/auth.controller.js';
 import { verifyToken } from '../utils/verifyUser.js';
+
 
 
 
@@ -15,4 +16,6 @@ router.post('/forgot-password',forgotPass);//he will post rcupiration email
 router.get('/reset-password/:id/:token',resetPass);
 router.post('/reset-password/:id/:token',ResetPass);//he will post the new password
 router.post("/google",google);
+router.post('/contact',contact)
+
 export default router;
