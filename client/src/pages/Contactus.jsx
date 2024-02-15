@@ -115,7 +115,7 @@ const Contactus = ({ userInfo }) => {
                           Email Address
                         </h4>
                         <p className="text-base text-body-color dark:text-dark-6">
-                          finder@yourdomain.com
+                            finderteam6@gmail.com
                         </p>
                       </div>
                     </div>
