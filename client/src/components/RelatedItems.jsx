@@ -26,11 +26,11 @@ const RelatedItems = ({ catSlug, idItem }) => {
         // Shuffle the array randomly
         const shuffledData = filteredData.sort(() => Math.random() - 0.5);
 
-        // Slice the array to get the first 8 items
-        const first8Items = shuffledData.slice(0, 8);
+        // Slice the array to get the first 3 items
+        const first3Items = shuffledData.slice(0, 3);
 
-        setData(first8Items);
-        console.log(first8Items);
+        setData(first3Items);
+        console.log(first3Items);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError("Failed to fetch data. Please try again later.");
@@ -48,7 +48,7 @@ const RelatedItems = ({ catSlug, idItem }) => {
         {loading && <span className="loading loading-spinner loading-lg text-primary"></span>}
 
         {!loading && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 px-4 sm:px-6 md:px-8 lg:px-20 xl:px-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 px-4 sm:px-6 md:px-8 ">
             {data.map((item) => (
               <FilterCard key={item._id} data={item} />
             ))}
