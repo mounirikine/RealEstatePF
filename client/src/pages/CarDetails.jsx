@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import RelatedItems from "../components/RelatedItems";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { FaCheckCircle } from "react-icons/fa";
-import { IoIosCloseCircle } from "react-icons/io";
+import {
+  FaArrowRight,
+  FaBath,
+  FaBed,
+  FaCheckCircle,
+  FaRegSquare,
+  FaShareAlt,
+} from "react-icons/fa";
+import { IoIosBody, IoIosCloseCircle } from "react-icons/io";
+import { LuFuel } from "react-icons/lu";
 
+import {motion} from  'framer-motion'
 
 import {
   FaCog,
@@ -23,242 +32,473 @@ import { IoMdSpeedometer } from "react-icons/io";
 import { FaCalendarAlt } from "react-icons/fa";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { FaCarSide } from "react-icons/fa";
+import { TbToolsKitchen3 } from "react-icons/tb";
+import { SlSpeedometer } from "react-icons/sl";
+import { IoFootstepsOutline } from "react-icons/io5";
+import { AiOutlineNodeIndex } from "react-icons/ai";
 
 const CarDetails = ({ userInfo }) => {
   const { id } = useParams();
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+ 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(`http://127.0.0.1:4000/api/car/get-car/${id}`);
         const response = await res.json();
-        setData(response);
+
+        if (Array.isArray(response)) {
+          setData(response);
+        } else {
+          setData([response]);
+        }
+
+        setLoading(false);
+        console.log(data);
       } catch (err) {
-        console.error(err); // Change console.log to console.error for errors
+        console.error(err);
+        setError("Error fetching data");
+        setLoading(false);
       }
     };
 
     fetchData();
   }, [id]);
 
+
+
+
+
   return (
     <>
       <Header userInfo={userInfo} />
-      <section className="py-32 md:py-32 bg-white md:px-10">
-        <div className=" md:flex items-center justify-between px-4">
-          <div>
-            <h1 className="text-5xl font-bold ">{data.title}</h1>
-            <h1 className="py-2 ">
-              4.0 D5 PowerPulse Momentum 5dr AWD Geartronic Estate
-            </h1>
-            <div className="grid grid-cols-1 md:grid-cols-4 items-center gap-3 pt-4 font-thin">
-              <div className="flex items-center gap-1 bg-blue-100 px-10 text-blue-700 justify-center py-2 rounded-full">
-                <FaCalendarAlt /> {data.year}
-              </div>
-              <div className="flex items-center gap-1 bg-blue-100 px-10 text-blue-700 justify-center py-2 rounded-full">
-                <IoMdSpeedometer /> {data.mileage}
-              </div>
-              <div className="flex items-center gap-1 bg-blue-100 px-10 text-blue-700 justify-center py-2 rounded-full">
-                <IoMdSpeedometer /> {data.drivetype}
-              </div>
-              <div className="flex items-center gap-1 bg-blue-100 px-10 text-blue-700 justify-center py-2 rounded-full">
-                <BsFillFuelPumpFill /> {data.fueltype}
-              </div>
-            </div>
-          </div>
-          <div className="md:text-right p-5">
-            <h1 className="text-2xl md:text-3xl font-bold">${data.price}</h1>
-            <div className="flex items-center gap-1 py-3">
-              <ImTicket /> <span>Make An Offer Price</span>
-            </div>
-          </div>
-        </div>
 
-        <div className="">
-          <div className="carousel w-full md:w-10/12 h-[300px] md:h-[500px] mt-6 md:mt-10 rounded-xl px-2">
-            {data.imageUrls && data.imageUrls.length > 1 ? (
-              data.imageUrls.map((img, index) => (
-                <div
-                  key={index}
-                  id={`slide${index + 1}`}
-                  className="carousel-item relative w-full"
-                >
-                  <img src={img} alt={`slide${index + 1}`} className="w-full" />
-                  <div className="absolute flex justify-between transform -translate-y-1/2 left-3 md:left-5 right-3 md:right-5 top-1/2">
-                    <a href={`#slide${index}`} className="btn btn-circle">
-                      ❮
-                    </a>
-                    <a href={`#slide${index + 2}`} className="btn btn-circle">
-                      ❯
-                    </a>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="carousel-item relative w-full">
-                <img
-                  src={data.imageUrls && data.imageUrls[0]}
-                  alt="single-image"
-                  className="w-full"
-                />
-              </div>
+      <section className="py-20 md:py-14 bg-white min-h-screen">
+        <main className="px-4 md:px-4 lg:px-32 flex flex-col md:flex-row items-center justify-center gap-6">
+          <div className="md:w-9/12">
+            {data.length > 0 && data[0].imageUrls && (
+              <img
+                src={data[0].imageUrls[0]}
+                className="w-full rounded-xl h-[499px]"
+                alt=""
+              />
             )}
           </div>
-        </div>
+          <div className="md:w-3/12 flex flex-col gap-5">
+            {data.length > 0 && data[0].imageUrls && (
+              <>
+                <img
+                  src={data[0].imageUrls[1]}
+                  className="w-full rounded-xl h-[240px]"
+                  alt=""
+                />
+                <div className="relative">
+                  <img
+                    src={data[0].imageUrls[1]}
+                    className="w-full rounded-xl h-[240px]"
+                    alt=""
+                  />
+                  <span className="absolute bottom-4 right-3 px-3 lg:px-6 bg-white py-3 rounded-lg font-bold">
+                    Show All Images
+                  </span>
+                </div>
+              </>
+            )}
+          </div>
+        </main>
 
-        <div className="container mx-auto px-4 md:px-10 py-10">
-  <h1 className="py-6 text-2xl">Car Overview</h1>
-  <div className="flex flex-col md:flex-row items-center justify-between">
-    <table className="w-full md:w-8/12 text-sm text-left rtl:text-right overflow-x-auto">
-              <tbody>
-                <tr className="bg-white  dark:bg-gray-800 dark:border-gray-700">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    <span className="flex items-center gap-2">
-                      <FaCarSide /> <span>Body</span>
-                    </span>
-                  </th>
-                  <td className="px-6 py-4">{data.body}</td>
-                  <td className="px-6 py-4">
-                    <span className="flex items-center gap-2">
-                      <FaCog /> <span>Transmission</span>
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">{data.transmission}</td>
-                </tr>
-                <tr className="bg-white  ">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    <span className="flex items-center gap-2">
-                      <FaRoad /> <span>Mileage</span>
-                    </span>
-                  </th>
-                  <td className="px-6 py-4">{data.mileage}</td>
-                  <td className="px-6 py-4">
-                    <span className="flex items-center gap-2">
-                      <FaGasPump /> <span>Fuel Type</span>
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">{data.fueltype}</td>
-                </tr>
-                <tr className="bg-white">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    <span className="flex items-center gap-2">
-                      <FaPalette /> <span>Color</span>
-                    </span>
-                  </th>
-                  <td className="px-6 py-4">{data.color}</td>
-                  <td className="px-6 py-4">
-                    <span className="flex items-center gap-2">
-                      <FaCalendarAlt /> <span>Year</span>
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">{data.year}</td>
-                </tr>
-                <tr className="bg-white">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    <span className="flex items-center gap-2">
-                      <FaKey /> <span>VIN</span>
-                    </span>
-                  </th>
-                  <td className="px-6 py-4">{data.vin}</td>
-                  <td className="px-6 py-4">
-                    <span className="flex items-center gap-2">
-                      <GiSteeringWheel /> <span>Drive Type</span>
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">{data.drivetype}</td>
-                </tr>
-              </tbody>
+        <main className="px-4 md:px-6 lg:px-32 flex flex-col lg:flex-row justify-center gap-6">
+          <div className="md:w-9/12">
+            <div className="flex flex-col lg:flex-row justify-between items-center py-10">
+              <div className="text-center lg:text-left lg:mr-8">
+                <h1 className="text-3xl lg:text-5xl font-bold">
+                  {data.length > 0 && data[0].title}
+                </h1>
+              </div>
+              <div className="text-center lg:text-right mt-4 lg:mt-0">
+                <button className="flex items-center justify-between gap-2 font-bold border px-6 py-2 rounded-lg border-black">
+                  Share
+                  <FaShareAlt />
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-violet-50 w-full border rounded-xl px-6 py-4 flex flex-wrap items-center justify-center lg:justify-around">
+              <div className="w-full lg:w-3/12 flex flex-col items-center justify-center mb-4 lg:mb-0">
+                <h1 className="text-center lg:text-left">
+                  {data.length > 0 && data[0].mileage}
+                </h1>
+                <h1 className="flex items-center gap-2 justify-center text-xl">
+                  <SlSpeedometer className="text-2xl" />{" "}
+                </h1>
+              </div>
+              <div className="w-full lg:w-3/12 flex flex-col items-center justify-center mb-4 lg:mb-0">
+                <h1 className="text-center lg:text-left">
+                  {data.length > 0 && data[0].year}
+                </h1>
+                <h1 className="flex items-center gap-2 justify-center text-xl">
+                  <FaCalendarAlt className="text-2xl" />{" "}
+                </h1>
+              </div>
+              <div className="w-full lg:w-3/12 flex flex-col items-center justify-center mb-4 lg:mb-0">
+                <h1 className="text-center lg:text-left">
+                  {data.length > 0 && data[0].transmission}
+                </h1>
+                <span className="flex items-center gap-2 justify-center text-xl">
+                  <IoFootstepsOutline className="text-2xl" />
+                </span>
+              </div>
+              <div className="w-full lg:w-3/12 flex flex-col items-center justify-center">
+                <h1 className="text-center lg:text-left">
+                  {data.length > 0 && data[0].fueltype}
+                </h1>
+                <h1 className="flex items-center gap-2 justify-center text-xl">
+                  <LuFuel className="text-2xl" />{" "}
+                  {data.length > 0 && data[0].kitchen}
+                </h1>
+              </div>
+            </div>
+
+            <div className="py-10">
+              <h1 className="text-3xl mt-5">Description</h1>
+
+              <p className="pt-10 ">{data.length > 0 && data[0].description}</p>
+            </div>
+
+            <div className="py-5 px-6">
+              <hr className="border border-black" />
+            </div>
+
+            <div className="py-5">
+              <h1 className="text-3xl font-bold text-center lg:text-left">
+                Car Details
+              </h1>
+              <table className="w-full my-10  bg-violet-50 rounded-sm ">
+                <tbody>
+                  <tr className="  dark:bg-gray-800 dark:border-gray-700 border-b">
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      <span className="flex items-center gap-2 justify-between">
+                        <FaCarSide /> <span>Body</span>
+                      </span>
+                    </th>
+                    <td className="px-6 py-4">{data.body}</td>
+                    <td className="px-6 py-4">
+                      <span className="flex items-center gap-2 justify-between  ">
+                        <FaCog /> <span>Transmission</span>
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">{data.transmission}</td>
+                  </tr>
+                  <tr className=" border-b ">
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      <span className="flex items-center gap-2 justify-between">
+                        <FaRoad /> <span>Mileage</span>
+                      </span>
+                    </th>
+                    <td className="px-6 py-4">{data.mileage}</td>
+                    <td className="px-6 py-4">
+                      <span className="flex items-center gap-2 justify-between">
+                        <FaGasPump /> <span>Fuel Type</span>
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">{data.fueltype}</td>
+                  </tr>
+                  <tr className=" border-b">
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      <span className="flex items-center gap-2 justify-between">
+                        <FaPalette /> <span>Color</span>
+                      </span>
+                    </th>
+                    <td className="px-6 py-4">{data.color}</td>
+                    <td className="px-6 py-4">
+                      <span className="flex items-center gap-2 justify-between">
+                        <FaCalendarAlt /> <span>Year</span>
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">{data.year}</td>
+                  </tr>
+                  <tr className=" border-b">
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    >
+                      <span className="flex items-center gap-2 justify-between">
+                        <FaKey /> <span>VIN</span>
+                      </span>
+                    </th>
+                    <td className="px-6 py-4">{data.vin}</td>
+                    <td className="px-6 py-4">
+                      <span className="flex items-center gap-2 justify-between">
+                        <GiSteeringWheel /> <span>Drive Type</span>
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">{data.drivetype}</td>
+                  </tr>
+                </tbody>
               </table>
-              <div className="w-full md:w-4/12 md:ml-4 mt-4 md:mt-0">
-      <div className="border py-14 rounded-xl shadow-xl">
-        <div className="avatar flex items-center justify-center">
-          <div className="w-20 h-20 rounded-full overflow-hidden">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg"
-              alt="Seller Avatar"
-              className="w-full h-full object-cover"
+            </div>
+            <div>
+              <div className="py-5 text-center lg:text-left">
+                <h1 className="text-3xl font-bold">View Map</h1>
+              </div>
+              <main className="w-full lg:w-10/12 relative mx-auto">
+                <img
+                  src="https://assets-global.website-files.com/63dccc1ba88f450bf57ed4e1/63ecb989859f6a5fd823e440_Map.webp"
+                  className="w-full h-auto lg:h-[400px] object-cover"
+                  alt=""
+                />
+              </main>
+            </div>
+          </div>
+          <div className="md:w-3/12">
+            <main className="flex py-10">
+              <div className="w-full  border-2 px-5 py-6 rounded-xl bg-violet-50 border-black">
+                <h1>Price</h1>
+
+                <div className="text-4xl font-bold">
+                  ${data.length > 0 && data[0].price}
+                </div>
+
+                <hr className="my-5 border border-black" />
+
+                <div>
+                  <h1 className="text-xl font-bold">Request a home tour</h1>
+                </div>
+
+                <div className="pt-10">
+                  <a
+                    href={`https://wa.me/${
+                      data.length > 0 && data[0].userNumber
+                    }?text=Hello How Can I Get More Info About This ?`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center text-white  gap-1  bg-black px-3 py-3 rounded-3xl cursor-pointer"
+                  >
+                    Send Message <FaWhatsapp className="text-xl" />
+                  </a>
+                </div>
+              </div>
+            </main>
+          </div>
+        </main>
+
+        <main className=" lg:px-32 w-full  my-10 ">
+        <div className="px-3 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full py-10 gap-3  md:px-10">
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].ChildSafetyLocks ? (
+                <FaCheckCircle className="text-green-500 " />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}
+              <span className="text-black">Child Safety Locks</span>
+            </span>
+
+            <span className="flex items-center gap-1 border-b">
+              { data.length > 0 && data[0].Heater ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">Heater</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].LeatherSeats ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">LeatherSeats</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].PanoramicMoonroof ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">PanoramicMoonroof</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].Tachometer ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">Tachometer</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].TouchscreenDisplay ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">TouchscreenDisplay</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].AntiLockBraking ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">AntiLockBraking</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].BrakeAssist ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">BrakeAssist</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].ChildSafetyLocks ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">ChildSafetyLocks</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].DriverAirBag ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">DriverAirBag</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+               {data.length > 0 && data[0].PowerDoorLocks ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">PowerDoorLocks</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].StabilityControl ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">StabilityControl</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].TractionControl ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">TractionControl</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].FogLightsFront ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">FogLightsFront</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].RainSensingWiper ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">RainSensingWiper</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              { data.length > 0 && data[0].RearSpoiler ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">RearSpoiler</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].WindowsElectric ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">WindowsElectric</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].AndroidAuto ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">AndroidAuto</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].AppleCarPlay ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">AppleCarPlay</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].Bluetooth ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">Bluetooth</span>
+            </span>
+            <span className="flex items-center gap-1 border-b">
+              {data.length > 0 && data[0].HomeLink ? (
+                <FaCheckCircle className="text-green-500" />
+              ) : (
+                <IoIosCloseCircle className="text-red-500 text-lg" />
+              )}{" "}
+              <span className="text-black">HomeLink</span>
+            </span>
+          </div>
+        </main>
+        <main className="py-14 px-6 md:px-12 lg:px-20 xl:px-32">
+          <div className="py-5 text-center lg:text-left">
+            <h1 className="text-4xl lg:text-5xl font-bold">Similar Listings</h1>
+          </div>
+
+          <div>
+            <RelatedItems
+              
+              idItem={data.length > 0 && data[0]._id}
             />
           </div>
-        </div>
-        <h1 className="py-3 text-xl text-center">Seller</h1>
-        <h1 className="text-gray-400 text-center mb-2">{data.userNumber}</h1>
-        <div className="flex items-center justify-center">
-          
-            <a
-              href={`https://wa.me/${data.userNumber}?text=Hello How Can I Get More Info About This ?`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 text-black  bg-green-400 px-10 py-3 rounded-3xl cursor-pointer"
+
+          <div className="w-full flex items-center justify-center py-10">
+            <Link
+              to="/properties"
+              className="px-8 md:px-14 py-4 text-xl lg:text-2xl hover:translate-x-1 rounded-xl flex items-center gap-2 text-black"
             >
-              <FaWhatsapp className="text-xl" />
-              <span>Send Message</span>
-            </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-        <hr className="my-6" />
-
-        <div className="py-6 px-5 md:py-10">
-  <h1 className="text-3xl md:text-4xl">Description</h1>
-  <p className="w-full   py-4 md:py-6 lg:py-8 text-base md:text-lg tracking-wide">
-    {data.description}
-  </p>
-</div>
+              Load More Listings <FaArrowRight />
+            </Link>
+          </div>
+        </main>
 
 
-<hr className="my-6" />
-
-<h1 className="text-3xl md:text-4xl mt-5 px-6">Features</h1>
-
-<div className="grid grid-cols-4 w-6/12 px-6 py-10 gap-3">
-<span className="flex items-center gap-1">
-  {data.DigitalOdometer ? (
-    <FaCheckCircle className="text-green-700" />
-  ) : (
-    <IoIosCloseCircle className="text-red-700 text-lg" />
-  )}
-  <span className="text-black">Digital Odometer</span>
-</span>
-    <span className="flex items-center gap-1">{data.Heater ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">Heater</span></span>
-    <span className="flex items-center gap-1">{data.LeatherSeats ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">LeatherSeats</span></span>
-    <span className="flex items-center gap-1">{data.PanoramicMoonroof ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">PanoramicMoonroof</span></span>
-    <span className="flex items-center gap-1">{data.Tachometer ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">Tachometer</span></span>
-    <span className="flex items-center gap-1">{data.TouchscreenDisplay ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">TouchscreenDisplay</span></span>
-    <span className="flex items-center gap-1">{data.AntiLockBraking ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">AntiLockBraking</span></span>
-    <span className="flex items-center gap-1">{data.BrakeAssist ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">BrakeAssist</span></span>
-    <span className="flex items-center gap-1">{data.ChildSafetyLocks ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">ChildSafetyLocks</span></span>
-    <span className="flex items-center gap-1">{data.DriverAirBag ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">DriverAirBag</span></span>
-    <span className="flex items-center gap-1">{data.PowerDoorLocks ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">PowerDoorLocks</span></span>
-    <span className="flex items-center gap-1">{data.StabilityControl ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">StabilityControl</span></span>
-    <span className="flex items-center gap-1">{data.TractionControl ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">TractionControl</span></span>
-    <span className="flex items-center gap-1">{data.FogLightsFront ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">FogLightsFront</span></span>
-    <span className="flex items-center gap-1">{data.RainSensingWiper ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">RainSensingWiper</span></span>
-    <span className="flex items-center gap-1">{data.RearSpoiler ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">RearSpoiler</span></span>
-    <span className="flex items-center gap-1">{data.WindowsElectric ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">WindowsElectric</span></span>
-    <span className="flex items-center gap-1">{data.AndroidAuto ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">AndroidAuto</span></span>
-    <span className="flex items-center gap-1">{data.AppleCarPlay ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">AppleCarPlay</span></span>
-    <span className="flex items-center gap-1">{data.Bluetooth ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">Bluetooth</span></span>
-    <span className="flex items-center gap-1">{data.HomeLink ? <FaCheckCircle className="text-green-700" /> :<IoIosCloseCircle className="text-red-700 text-lg" /> }  <span className="text-black">HomeLink</span></span>
-</div>
+       
+        
       </section>
+
+
       <Footer />
     </>
   );
 };
 
 export default CarDetails;
+
