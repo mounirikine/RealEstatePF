@@ -34,8 +34,8 @@ const NewPass = () => {
   return (
 
     <>
-     <div className='min-h-screen flex items-center justify-center bg-[#782DF3]'>
-      <div className=' bg-white w-full mx-5 sm:w-9/12 md:w-8/12 lg:w-9/12 xl:w-4/12 px-6 sm:px-8 md:px-10 lg:px-12 py-10 rounded-xl shadow-md'>
+     <div className='min-h-screen flex items-center justify-center hero'>
+      <div className=' border-2 border-black bg-white w-full mx-5 sm:w-9/12 md:w-8/12 lg:w-9/12 xl:w-4/12 px-6 sm:px-8 md:px-10 lg:px-12 py-10 rounded-xl shadow-md'>
         <div className='text-center py-5'>
           <img src={finder} width={200} alt="" />
         </div>
@@ -55,7 +55,7 @@ const NewPass = () => {
 
       <button
         type="submit"
-        className="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
+        className="w-full block bg-black  text-white font-semibold rounded-lg
           px-4 py-3 mt-6"
       >
          {loading ? (

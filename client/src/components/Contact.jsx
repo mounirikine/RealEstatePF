@@ -1,5 +1,6 @@
 import {motion} from 'framer-motion'
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 const Contact = () => {
     const [formData, setFormData] = useState({
     name: '',
@@ -8,12 +9,17 @@ const Contact = () => {
     message: '',
   });
 
+  const [loader,setLoader]=useState(false)
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
+
+    setLoader(true)
     try {
       const response = await fetch('http://localhost:4000/api/auth/contact', {
         method: 'POST',
@@ -23,11 +29,13 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log(data);
+      toast.success('Message Sent Successfully')
       // Handle success or error response from the server
     } catch (error) {
       console.error('Error:', error);
     }
+
+    setLoader(false)
   };
   return (
     <div className=""> 
@@ -196,12 +204,17 @@ const Contact = () => {
         ></textarea>
       </div>
       <div>
-        <button
-          type="submit"
-          className="w-full p-3 text-white transition border rounded  bg-black  hover:bg-opacity-90"
-        >
-          Send Message
-        </button>
+      <button
+                type="submit"
+                className="w-full block bg-black  focus:bg-indigo-400 text-white font-semibold rounded-lg
+            px-4 py-3 mt-6"
+              >
+                {loader ? (
+                  <span className="loading loading-spinner loading-sm"></span>
+                ) : (
+                  "Send Message"
+                )}
+              </button>
       </div>
     </form>
                <div>

@@ -61,3 +61,29 @@ body{
 .bgColor{
     background: #d0f5b6;
 }
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 14px;
+    padding-inline: 1px;
+  }
+  
+  /* Track */
+  /* ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  } */
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    padding-inline: 1px;
+    @apply bg-black
+    
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-black }
