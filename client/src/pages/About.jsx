@@ -8,69 +8,92 @@ import { AiOutlineLike } from "react-icons/ai";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { motion } from "framer-motion";
 
-import p1 from '../assets/p1.webp'
-import p2 from '../assets/p2.webp'
-import p3 from '../assets/p3.webp'
-import p4 from '../assets/p4.webp'
+import p1 from "../assets/p1.webp";
+import p2 from "../assets/p2.webp";
+import p3 from "../assets/p3.webp";
+import p4 from "../assets/p4.webp";
 
-
-
-import z1 from '../assets/z1.webp'
-import z2 from '../assets/z2.webp'
-import z3 from '../assets/z3.webp'
-import toto from '../assets/toto.webp'
-import { FaFacebook, FaInstagram, FaPhone, FaTwitter } from "react-icons/fa";
+import z1 from "../assets/z1.webp";
+import z2 from "../assets/z2.webp";
+import z3 from "../assets/z3.webp";
+import toto from "../assets/toto.webp";
+import { FaAlignLeft, FaArrowLeft, FaArrowRight, FaFacebook, FaInstagram, FaPhone, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
+
 
 // Styles
 
-
 // Function component for the About page
 export default function About({ userInfo }) {
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const teamMembers = [
+    { name: 'David Brown', role: 'CEO Founder', image: p1 },
+    { name: 'Tom Johnson', role: 'Property Manager', image: p2 },
+    { name: 'Sarah Lee', role: 'Property Consultant', image: p3 },
+    { name: 'John Smith', role: 'Property Advisor', image: p4 },
+  ];
+
+  const handlePrev = () => {
+    setActiveIndex((prevIndex) => (prevIndex - 1 + teamMembers.length) % teamMembers.length);
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % teamMembers.length);
+  };
+
+
+
   return (
     <>
       <Header userInfo={userInfo} />
 
       {/* Hero Section */}
       <section className=" py-20 dark:bg-gray-900">
-      <main className="flex flex-col lg:flex-row justify-between px-5 lg:px-10">
-  <div className="w-full lg:w-6/12 px-5 lg:px-10 mb-10 lg:mb-0">
-    <motion.h1
-      variants={{
-        hidden: { opacity: 0, x: -57 },
-        visible: { opacity: 1, x: 0 },
-      }}
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 1, delay: 0.25 }}
-      className="text-4xl lg:text-6xl font-bold mb-5"
-    >
-      We know how valuable a house is.
-    </motion.h1>
-    <motion.p
-      variants={{
-        hidden: { opacity: 0, x: -57 },
-        visible: { opacity: 1, x: 0 },
-      }}
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 1.2, delay: 0.75 }}
-      className="text-base lg:text-lg text-gray-600 mb-10"
-    >
-      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-      Velit officia consequat duis enim velit mollit. Exercitation veniam
-      consequat sunt nostrud amet.
-    </motion.p>
-
-    <hr className="mb-4 lg:mb-9" />
-
-    <motion.div               variants={{
+        <main className="flex flex-col lg:flex-row justify-between px-5 lg:px-10">
+          <div className="w-full lg:w-6/12 px-5 lg:px-10 mb-10 lg:mb-0">
+            <motion.h1
+              variants={{
                 hidden: { opacity: 0, x: -57 },
                 visible: { opacity: 1, x: 0 },
               }}
               initial="hidden"
               animate="visible"
-              transition={{ duration: 1, delay: 0.25 }} className="grid gap-14 grid-cols-2 items-center justify-center px-10">
+              transition={{ duration: 1, delay: 0.25 }}
+              className="text-4xl lg:text-6xl font-bold mb-5"
+            >
+              We know how valuable a house is.
+            </motion.h1>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, x: -57 },
+                visible: { opacity: 1, x: 0 },
+              }}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 1.2, delay: 0.75 }}
+              className="text-base lg:text-lg text-gray-600 mb-10"
+            >
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Velit officia consequat duis enim velit mollit.
+              Exercitation veniam consequat sunt nostrud amet.
+            </motion.p>
+
+            <hr className="mb-4 lg:mb-9" />
+
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, x: -57 },
+                visible: { opacity: 1, x: 0 },
+              }}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 1, delay: 0.25 }}
+              className="grid gap-14 grid-cols-2 items-center justify-center px-10"
+            >
               <span className="flex-col items-center  justify-center">
                 <p className="text-5xl">60M+</p>
                 <p className="text-lg text-gray-600">In Property Sales</p>
@@ -88,356 +111,327 @@ export default function About({ userInfo }) {
                 <p className="text-lg text-gray-600">Years Experience</p>
               </span>
             </motion.div>
-  </div>
-  <div className="w-full lg:w-6/12 flex flex-col lg:flex-row items-center gap-5 lg:gap-10">
-    <motion.span
-      variants={{
-        hidden: { opacity: 0, scale: 0 },
-        visible: { opacity: 1, scale: 1 },
-      }}
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 0.6, delay: 1 }}
-    >
-      <img
-        src={z1}
-        className="w-full lg:w-[300px] transform lg:translate-y-10"
-        alt=""
-      />
-    </motion.span>
-    <motion.span
-      variants={{
-        hidden: { opacity: 0, scale: 0 },
-        visible: { opacity: 1, scale: 1 },
-      }}
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 0.6, delay: 1 }}
-    >
-      <img
-        src={z2}
-        className="w-full lg:w-[300px] transform lg:-translate-y-14"
-        alt=""
-      />
-    </motion.span>
-  </div>
-</main>;
+          </div>
+          <div className="w-full lg:w-6/12 flex flex-col lg:flex-row items-center gap-5 lg:gap-10">
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, scale: 0 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.6, delay: 1 }}
+            >
+              <img
+                src={z1}
+                className="w-full lg:w-[300px] transform lg:translate-y-10"
+                alt=""
+              />
+            </motion.span>
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, scale: 0 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              initial="hidden"
+              animate="visible"
+              transition={{ duration: 0.6, delay: 1 }}
+            >
+              <img
+                src={z2}
+                className="w-full lg:w-[300px] transform lg:-translate-y-14"
+                alt=""
+              />
+            </motion.span>
+          </div>
+        </main>
+        ;
+        <main className="flex flex-col lg:flex-row pt-10 lg:pt-20">
+          <motion.div
+            initial={{ y: -22, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-col lg:flex-row w-full lg:w-10/12 mx-auto border-2 bg-violet-100 border-black rounded-xl items-center justify-between px-5 lg:px-10"
+          >
+            <span className="w-full lg:w-4/12 text-2xl lg:text-4xl font-bold mb-4 lg:mb-0 lg:mr-4">
+              Our Mission to Realize People's Dreams
+            </span>
+            <span className="w-full lg:w-4/12 h-[200px] lg:h-[350px] mb-4 lg:mb-0">
+              <img src={toto} className="w-full h-full" alt="" />
+            </span>
+            <span className="w-full lg:w-4/12 text-base lg:text-lg text-gray-500">
+              We guarantee that the products we sell will make our customers
+              happy because we are very concerned about our consumer
+              satisfaction
+            </span>
+          </motion.div>
+        </main>
+        ;
+        <main className="pt-10 lg:pt-20">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-14 px-5 lg:px-20">
+            <h1 className="w-full lg:w-6/12 text-xl lg:text-4xl px-3 lg:px-10 font-bold mb-4 lg:mb-0">
+              Comfort Is Our Top Priority For You
+            </h1>
+            <p className="w-full lg:w-6/12 text-sm lg:text-lg text-gray-600 px-3 lg:px-10">
+              We guarantee that the products we sell will make our customers
+              happy because we are very concerned about our consumer
+              satisfaction
+            </p>
+          </div>
 
+          <motion.div
+            initial={{ y: -22, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex flex-col lg:flex-row items-center justify-between py-8 lg:py-14 px-5 lg:px-32 gap-4 lg:gap-5"
+          >
+            <div className="lg:w-3/12 h-[250px] lg:h-[330px] px-5 py-8 border-2 border-black rounded-xl mb-4 lg:mb-0">
+              <span className=" ">
+                <CiBadgeDollar className="p-1 bg-violet-200 rounded-full text-5xl font-bold mb-14" />
+              </span>
+              <h1 className="text-2xl font-bold mb-5">Affordable Price</h1>
+              <p className="text-gray-600">
+                We provide the best for you. The price we offer accordance with
+                the quality we provide
+              </p>
+            </div>
+            <div className="lg:w-3/12 translate-y-2 h-[250px] lg:h-[330px] px-5 py-8 border-2 border-black rounded-xl mb-4 lg:mb-0">
+              <span className=" ">
+                <IoSpeedometerOutline className="p-1 bg-violet-200 rounded-full text-5xl font-bold mb-14" />
+              </span>
+              <h1 className="text-2xl font-bold mb-5">Quick Process</h1>
+              <p className="text-gray-600">
+                We help you to taking care of all your needs, quickly to find
+                your dream property
+              </p>
+            </div>
+            <div className="lg:w-3/12 translate-y-4 h-[250px] lg:h-[330px] px-5 py-8 border-2 border-black rounded-xl mb-4 lg:mb-0">
+              <span className=" ">
+                <AiOutlineLike className="p-1 bg-violet-200 rounded-full text-5xl font-bold mb-14" />
+              </span>
+              <h1 className="text-2xl font-bold mb-5">Clear Legality</h1>
+              <p className="text-gray-600">
+                Put your trust in us. We are a legal entity with official
+                legality in the relevant government
+              </p>
+            </div>
+            <div className="lg:w-3/12 translate-y-6 h-[250px] lg:h-[330px] px-5 py-8 border-2 border-black rounded-xl">
+              <span className=" ">
+                <HiOutlineUserGroup className="p-1 bg-violet-200 rounded-full text-5xl font-bold mb-14" />
+              </span>
+              <h1 className="text-2xl font-bold mb-5">Experience Agent</h1>
+              <p className="text-gray-600">
+                We always work wih agents in their fields so that we can provide
+                the best quality
+              </p>
+            </div>
+          </motion.div>
+        </main>
+        <main className="py-10 md:py-20 lg:py-30">
+  <div className="flex items-center justify-center md:pt-10 lg:pt-20">
+    <h1 className="mt-10 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">Meet Our Teams</h1>
+  </div>
 
-<main className="flex flex-col lg:flex-row pt-10 lg:pt-20">
   <motion.div
     initial={{ y: -22, opacity: 0 }}
     whileInView={{ y: 0, opacity: 1 }}
     transition={{ duration: 0.6, delay: 0.5 }}
-    className="flex flex-col lg:flex-row w-full lg:w-10/12 mx-auto border-2 bg-violet-100 border-black rounded-xl items-center justify-between px-5 lg:px-10"
+    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-10 lg:px-20 py-10"
   >
-    <span className="w-full lg:w-4/12 text-2xl lg:text-4xl font-bold mb-4 lg:mb-0 lg:mr-4">
-      Our Mission to Realize People's Dreams
-    </span>
-    <span className="w-full lg:w-4/12 h-[200px] lg:h-[350px] mb-4 lg:mb-0">
-      <img src={toto} className="w-full h-full" alt="" />
-    </span>
-    <span className="w-full lg:w-4/12 text-base lg:text-lg text-gray-500">
-      We guarantee that the products we sell will make our customers happy
-      because we are very concerned about our consumer satisfaction
-    </span>
-  </motion.div>
-</main>;
-
-
-        <main className="pt-10 lg:pt-20">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-14 px-5 lg:px-20">
-  <h1 className="w-full lg:w-6/12 text-xl lg:text-4xl px-3 lg:px-10 font-bold mb-4 lg:mb-0">
-    Comfort Is Our Top Priority For You
-  </h1>
-  <p className="w-full lg:w-6/12 text-sm lg:text-lg text-gray-600 px-3 lg:px-10">
-    We guarantee that the products we sell will make our customers happy because
-    we are very concerned about our consumer satisfaction
-  </p>
-</div>
-
-
-
-          <motion.div initial={{ y: -22, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.5 }}  className="flex flex-col lg:flex-row items-center justify-between py-8 lg:py-14 px-5 lg:px-32 gap-4 lg:gap-5">
-            <div className="lg:w-3/12 h-[250px] lg:h-[330px] px-5 py-8 border-2 border-black rounded-xl mb-4 lg:mb-0">
-              <span className=" ">
-              <CiBadgeDollar className="p-1 bg-violet-200 rounded-full text-5xl font-bold mb-14" />
-              </span>
-              <h1 className="text-2xl font-bold mb-5">Affordable Price</h1>
-              <p className="text-gray-600">We provide the best for you. The price we offer accordance with the quality we provide</p>
-              
-            </div>
-            <div className="lg:w-3/12 translate-y-2 h-[250px] lg:h-[330px] px-5 py-8 border-2 border-black rounded-xl mb-4 lg:mb-0">
-              <span className=" ">
-              <IoSpeedometerOutline className="p-1 bg-violet-200 rounded-full text-5xl font-bold mb-14" />
-              </span>
-              <h1 className="text-2xl font-bold mb-5">Quick Process</h1>
-              <p className="text-gray-600">We help you to taking care of all your needs, quickly to find your dream property</p>
-              
-            </div>
-            <div className="lg:w-3/12 translate-y-4 h-[250px] lg:h-[330px] px-5 py-8 border-2 border-black rounded-xl mb-4 lg:mb-0">
-              <span className=" ">
-              <AiOutlineLike className="p-1 bg-violet-200 rounded-full text-5xl font-bold mb-14" />
-              </span>
-              <h1 className="text-2xl font-bold mb-5">Clear Legality</h1>
-              <p className="text-gray-600">Put your trust in us. We are a legal entity with official legality in the relevant government</p>
-              
-            </div>
-            <div className="lg:w-3/12 translate-y-6 h-[250px] lg:h-[330px] px-5 py-8 border-2 border-black rounded-xl">
-              <span className=" ">
-              <HiOutlineUserGroup className="p-1 bg-violet-200 rounded-full text-5xl font-bold mb-14" />
-              </span>
-              <h1 className="text-2xl font-bold mb-5">Experience Agent</h1>
-              <p className="text-gray-600">We always work wih agents in their fields so that we can provide the best quality</p>
-              
-            </div>
-          </motion.div>
-        </main>
-
-        <main className="py-20">
-          <div className="flex items-center  justify-center pt-20 ">
-            <h1 className="mt-10 text-5xl font-bold">Meet Our Teams</h1>
+    {teamMembers.map((member, index) => (
+      <div
+        key={index}
+        className="w-full rounded-xl overflow-hidden relative shadow-md"
+      >
+        <img src={member.image} className="w-full h-auto rounded-xl" alt={member.name} />
+        <div className="absolute bottom-0 left-0 right-0 py-5 px-4 bg-white rounded-b-xl border-t-2 border-black">
+          <h1 className="text-xl font-bold">{member.name}</h1>
+          <p className="mb-3">{member.role}</p>
+          <div className="flex items-center justify-between px-6">
+            <Link to="#" className="px-3 py-2 bg-violet-200 rounded-md">
+              <FaPhone />
+            </Link>
+            <Link to="#" className="px-3 py-2 bg-violet-200 rounded-md">
+              <FaInstagram />
+            </Link>
+            <Link to="#" className="px-3 py-2 bg-violet-200 rounded-md">
+              <FaFacebook />
+            </Link>
+            <Link to="#" className="px-3 py-2 bg-violet-200 rounded-md">
+              <FaTwitter />
+            </Link>
           </div>
+        </div>
+      </div>
+    ))}
+  </motion.div>
 
-          <motion.div initial={{ y: -22, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.5 }} className="flex   items-center gap-5 justify-between px-20 py-10">
-            <div className=" w-full md:w-3/12 rounded-xl relative">
-              <img src={p1} className="rounded-xl" alt=""/>
-              <div className=" absolute py-5  border-2 px-4 -bottom-6 bg-white rounded-xl  border-black w-full ">
-                  <h1 className="text-xl font-bold">David Brown</h1>
-                  <p className="mb-3">CEO Founder</p>
-
-                 <div className="flex items-center justify-between px-6 ">
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaPhone  /> </Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaInstagram  /></Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaFacebook  /></Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaTwitter  /></Link>
-                 </div>
-              </div>
-            </div>
-            <div className=" w-full md:w-3/12 rounded-xl relative">
-              <img src={p2} className="rounded-xl" alt=""/>
-              <div className=" absolute py-5  border-2 px-4 -bottom-6 bg-white rounded-xl  border-black w-full ">
-                  <h1 className="text-xl font-bold">Tom Johnson</h1>
-                  <p className="mb-3">Property Manager</p>
-
-                 <div className="flex items-center justify-between px-6 ">
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaPhone  /> </Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaInstagram  /></Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaFacebook  /></Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaTwitter  /></Link>
-                 </div>
-              </div>
-            </div>
-            <div className="w-full md:w-3/12 rounded-xl relative">
-              <img src={p3} className="rounded-xl" alt=""/>
-              <div className=" absolute py-5  border-2 px-4 -bottom-6 bg-white rounded-xl  border-black w-full ">
-                  <h1 className="text-xl font-bold">Sarah Lee</h1>
-                  <p className="mb-3">Property Consultant</p>
-
-                 <div className="flex items-center justify-between px-6 ">
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaPhone  /> </Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaInstagram  /></Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaFacebook  /></Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaTwitter  /></Link>
-                 </div>
-              </div>
-            </div>
-            <div className=" w-full md:w-3/12 rounded-xl relative">
-              <img src={p4} className="rounded-xl" alt=""/>
-              <div className=" absolute py-5  border-2 px-4 -bottom-6 bg-white rounded-xl  border-black w-full ">
-                  <h1 className="text-xl font-bold">John Smith </h1>
-                  <p className="mb-3">Property Advisor</p>
-
-                 <div className="flex items-center justify-between px-6 ">
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaPhone  /> </Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaInstagram  /></Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaFacebook  /></Link>
-                  <Link className=" px-3 py-2 bg-violet-200 rounded-md"> <FaTwitter  /></Link>
-                 </div>
-              </div>
-            </div>
-          </motion.div>
-        </main>
+  {/* <div className="items-center flex lg:hidden justify-center gap-3">
+    <button className="px-4 py-2 bg-black text-white" onClick={handlePrev}>
+      <FaArrowLeft />
+    </button>
+    <button className="px-4 py-2 bg-black text-white" onClick={handleNext}>
+      <FaArrowRight />
+    </button>
+  </div> */}
+</main>
 
         <main className="py-10 px-5">
-        <section
-   className="relative z-10 overflow-hidden bg-violet-300 rounded-2xl md:mx-5 dark:bg-dark px-10 py-10 lg:py-[120px]"
-  
-   >
-
-<div className="container mx-auto">
-      <div className="flex flex-wrap -mx-4 lg:justify-between">
-         <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
-            <div className="mb-12 max-w-[570px] lg:mb-0">
-               <span className="block mb-4 text-base font-semibold ">
-               Contact Us
-               </span>
-               <h2
-                  className="text-dark dark:text-white mb-6 text-[20px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]"
-                  >
-                  GET IN TOUCH WITH US
-               </h2>
-               <p
-                  className="text-base leading-relaxed text-body-color dark:text-dark-6 mb-9"
-                  >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eius tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                  adiqua minim veniam quis nostrud exercitation ullamco
-               </p>
-               <div className="mb-8 flex w-full max-w-[370px]">
-                  <div
-                     className="bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"
-                     >
-                     <svg
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+          <section className="relative z-10 overflow-hidden bg-violet-300 rounded-2xl md:mx-5 dark:bg-dark px-10 py-10 lg:py-[120px]">
+            <div className="container mx-auto">
+              <div className="flex flex-wrap -mx-4 lg:justify-between">
+                <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
+                  <div className="mb-12 max-w-[570px] lg:mb-0">
+                    <span className="block mb-4 text-base font-semibold ">
+                      Contact Us
+                    </span>
+                    <h2 className="text-dark dark:text-white mb-6 text-[20px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]">
+                      GET IN TOUCH WITH US
+                    </h2>
+                    <p className="text-base leading-relaxed text-body-color dark:text-dark-6 mb-9">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eius tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim adiqua minim veniam quis nostrud
+                      exercitation ullamco
+                    </p>
+                    <div className="mb-8 flex w-full max-w-[370px]">
+                      <div className="bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]">
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
                         >
-                        <path
-                           d="M30.6 11.8002L17.7 3.5002C16.65 2.8502 15.3 2.8502 14.3 3.5002L1.39998 11.8002C0.899983 12.1502 0.749983 12.8502 1.04998 13.3502C1.39998 13.8502 2.09998 14.0002 2.59998 13.7002L3.44998 13.1502V25.8002C3.44998 27.5502 4.84998 28.9502 6.59998 28.9502H25.4C27.15 28.9502 28.55 27.5502 28.55 25.8002V13.1502L29.4 13.7002C29.6 13.8002 29.8 13.9002 30 13.9002C30.35 13.9002 30.75 13.7002 30.95 13.4002C31.3 12.8502 31.15 12.1502 30.6 11.8002ZM13.35 26.7502V18.5002C13.35 18.0002 13.75 17.6002 14.25 17.6002H17.75C18.25 17.6002 18.65 18.0002 18.65 18.5002V26.7502H13.35ZM26.3 25.8002C26.3 26.3002 25.9 26.7002 25.4 26.7002H20.9V18.5002C20.9 16.8002 19.5 15.4002 17.8 15.4002H14.3C12.6 15.4002 11.2 16.8002 11.2 18.5002V26.7502H6.69998C6.19998 26.7502 5.79998 26.3502 5.79998 25.8502V11.7002L15.5 5.4002C15.8 5.2002 16.2 5.2002 16.5 5.4002L26.3 11.7002V25.8002Z"
-                           fill="currentColor"
-                           />
-                     </svg>
-                  </div>
-                  <div className="w-full">
-                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
-                        Our Location
-                     </h4>
-                     <p className="text-base text-body-color dark:text-dark-6">
-                        99 S.t Jomblo Park Pekanbaru 28292. Indonesia
-                     </p>
-                  </div>
-               </div>
-               <div className="mb-8 flex w-full max-w-[370px]">
-                  <div
-                     className="bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"
-                     >
-                     <svg
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                          <path
+                            d="M30.6 11.8002L17.7 3.5002C16.65 2.8502 15.3 2.8502 14.3 3.5002L1.39998 11.8002C0.899983 12.1502 0.749983 12.8502 1.04998 13.3502C1.39998 13.8502 2.09998 14.0002 2.59998 13.7002L3.44998 13.1502V25.8002C3.44998 27.5502 4.84998 28.9502 6.59998 28.9502H25.4C27.15 28.9502 28.55 27.5502 28.55 25.8002V13.1502L29.4 13.7002C29.6 13.8002 29.8 13.9002 30 13.9002C30.35 13.9002 30.75 13.7002 30.95 13.4002C31.3 12.8502 31.15 12.1502 30.6 11.8002ZM13.35 26.7502V18.5002C13.35 18.0002 13.75 17.6002 14.25 17.6002H17.75C18.25 17.6002 18.65 18.0002 18.65 18.5002V26.7502H13.35ZM26.3 25.8002C26.3 26.3002 25.9 26.7002 25.4 26.7002H20.9V18.5002C20.9 16.8002 19.5 15.4002 17.8 15.4002H14.3C12.6 15.4002 11.2 16.8002 11.2 18.5002V26.7502H6.69998C6.19998 26.7502 5.79998 26.3502 5.79998 25.8502V11.7002L15.5 5.4002C15.8 5.2002 16.2 5.2002 16.5 5.4002L26.3 11.7002V25.8002Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                      <div className="w-full">
+                        <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
+                          Our Location
+                        </h4>
+                        <p className="text-base text-body-color dark:text-dark-6">
+                          99 S.t Jomblo Park Pekanbaru 28292. Indonesia
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mb-8 flex w-full max-w-[370px]">
+                      <div className="bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]">
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
                         >
-                        <g clip-path="url(#clip0_941_17577)">
-                           <path
+                          <g clip-path="url(#clip0_941_17577)">
+                            <path
                               d="M24.3 31.1499C22.95 31.1499 21.4 30.7999 19.7 30.1499C16.3 28.7999 12.55 26.1999 9.19997 22.8499C5.84997 19.4999 3.24997 15.7499 1.89997 12.2999C0.39997 8.59994 0.54997 5.54994 2.29997 3.84994C2.34997 3.79994 2.44997 3.74994 2.49997 3.69994L6.69997 1.19994C7.74997 0.599942 9.09997 0.899942 9.79997 1.89994L12.75 6.29994C13.45 7.34994 13.15 8.74994 12.15 9.44994L10.35 10.6999C11.65 12.7999 15.35 17.9499 21.25 21.6499L22.35 20.0499C23.2 18.8499 24.55 18.4999 25.65 19.2499L30.05 22.1999C31.05 22.8999 31.35 24.2499 30.75 25.2999L28.25 29.4999C28.2 29.5999 28.15 29.6499 28.1 29.6999C27.2 30.6499 25.9 31.1499 24.3 31.1499ZM3.79997 5.54994C2.84997 6.59994 2.89997 8.74994 3.99997 11.4999C5.24997 14.6499 7.64997 18.0999 10.8 21.2499C13.9 24.3499 17.4 26.7499 20.5 27.9999C23.2 29.0999 25.35 29.1499 26.45 28.1999L28.85 24.0999C28.85 24.0499 28.85 24.0499 28.85 23.9999L24.45 21.0499C24.45 21.0499 24.35 21.0999 24.25 21.2499L23.15 22.8499C22.45 23.8499 21.1 24.1499 20.1 23.4999C13.8 19.5999 9.89997 14.1499 8.49997 11.9499C7.84997 10.8999 8.09997 9.54994 9.09997 8.84994L10.9 7.59994V7.54994L7.94997 3.14994C7.94997 3.09994 7.89997 3.09994 7.84997 3.14994L3.79997 5.54994Z"
                               fill="currentColor"
-                              />
-                           <path
+                            />
+                            <path
                               d="M29.3 14.25C28.7 14.25 28.25 13.8 28.2 13.2C27.8 8.15003 23.65 4.10003 18.55 3.75003C17.95 3.70003 17.45 3.20003 17.5 2.55003C17.55 1.95003 18.05 1.45003 18.7 1.50003C24.9 1.90003 29.95 6.80003 30.45 13C30.5 13.6 30.05 14.15 29.4 14.2C29.4 14.25 29.35 14.25 29.3 14.25Z"
                               fill="currentColor"
-                              />
-                           <path
+                            />
+                            <path
                               d="M24.35 14.7002C23.8 14.7002 23.3 14.3002 23.25 13.7002C22.95 11.0002 20.85 8.90018 18.15 8.55018C17.55 8.50018 17.1 7.90018 17.15 7.30018C17.2 6.70018 17.8 6.25018 18.4 6.30018C22.15 6.75018 25.05 9.65018 25.5 13.4002C25.55 14.0002 25.15 14.5502 24.5 14.6502C24.4 14.7002 24.35 14.7002 24.35 14.7002Z"
                               fill="currentColor"
-                              />
-                        </g>
-                        <defs>
-                           <clipPath id="clip0_941_17577">
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_941_17577">
                               <rect width="32" height="32" fill="white" />
-                           </clipPath>
-                        </defs>
-                     </svg>
-                  </div>
-                  <div className="w-full">
-                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
-                        Phone Number
-                     </h4>
-                     <p className="text-base text-body-color dark:text-dark-6">
-                        (+62)81 414 257 9980
-                     </p>
-                  </div>
-               </div>
-               <div className="mb-8 flex w-full max-w-[370px]">
-                  <div
-                     className="bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"
-                     >
-                     <svg
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </div>
+                      <div className="w-full">
+                        <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
+                          Phone Number
+                        </h4>
+                        <p className="text-base text-body-color dark:text-dark-6">
+                          (+62)81 414 257 9980
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mb-8 flex w-full max-w-[370px]">
+                      <div className="bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]">
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
                         >
-                        <path
-                           d="M28 4.7998H3.99998C2.29998 4.7998 0.849976 6.1998 0.849976 7.9498V24.1498C0.849976 25.8498 2.24998 27.2998 3.99998 27.2998H28C29.7 27.2998 31.15 25.8998 31.15 24.1498V7.8998C31.15 6.1998 29.7 4.7998 28 4.7998ZM28 7.0498C28.05 7.0498 28.1 7.0498 28.15 7.0498L16 14.8498L3.84998 7.0498C3.89998 7.0498 3.94998 7.0498 3.99998 7.0498H28ZM28 24.9498H3.99998C3.49998 24.9498 3.09998 24.5498 3.09998 24.0498V9.2498L14.8 16.7498C15.15 16.9998 15.55 17.0998 15.95 17.0998C16.35 17.0998 16.75 16.9998 17.1 16.7498L28.8 9.2498V24.0998C28.9 24.5998 28.5 24.9498 28 24.9498Z"
-                           fill="currentColor"
-                           />
-                     </svg>
+                          <path
+                            d="M28 4.7998H3.99998C2.29998 4.7998 0.849976 6.1998 0.849976 7.9498V24.1498C0.849976 25.8498 2.24998 27.2998 3.99998 27.2998H28C29.7 27.2998 31.15 25.8998 31.15 24.1498V7.8998C31.15 6.1998 29.7 4.7998 28 4.7998ZM28 7.0498C28.05 7.0498 28.1 7.0498 28.15 7.0498L16 14.8498L3.84998 7.0498C3.89998 7.0498 3.94998 7.0498 3.99998 7.0498H28ZM28 24.9498H3.99998C3.49998 24.9498 3.09998 24.5498 3.09998 24.0498V9.2498L14.8 16.7498C15.15 16.9998 15.55 17.0998 15.95 17.0998C16.35 17.0998 16.75 16.9998 17.1 16.7498L28.8 9.2498V24.0998C28.9 24.5998 28.5 24.9498 28 24.9498Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </div>
+                      <div className="w-full">
+                        <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
+                          Email Address
+                        </h4>
+                        <p className="text-base text-body-color dark:text-dark-6">
+                          finder@yourdomain.com
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-full">
-                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
-                        Email Address
-                     </h4>
-                     <p className="text-base text-body-color dark:text-dark-6">
-                        finder@yourdomain.com
-                     </p>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
-            <div
-               className="relative p-8 bg-white rounded-lg shadow-lg dark:bg-dark-2 sm:p-12"
-               >
-               <form>
-                  <div className="mb-6">
-                     <input
-                        type="text"
-                        placeholder="Your Name"
-                        className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+                </div>
+                <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
+                  <div className="relative p-8 bg-white rounded-lg shadow-lg dark:bg-dark-2 sm:p-12">
+                    <form>
+                      <div className="mb-6">
+                        <input
+                          type="text"
+                          placeholder="Your Name"
+                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                         />
-                  </div>
-                  <div className="mb-6">
-                     <input
-                        type="email"
-                        placeholder="Your Email"
-                        className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+                      </div>
+                      <div className="mb-6">
+                        <input
+                          type="email"
+                          placeholder="Your Email"
+                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                         />
-                  </div>
-                  <div className="mb-6">
-                     <input
-                        type="text"
-                        placeholder="Your Phone"
-                        className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+                      </div>
+                      <div className="mb-6">
+                        <input
+                          type="text"
+                          placeholder="Your Phone"
+                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                         />
-                  </div>
-                  <div className="mb-6">
-                     <textarea
-                        rows="6"
-                        placeholder="Your Message"
-                        className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none"
+                      </div>
+                      <div className="mb-6">
+                        <textarea
+                          rows="6"
+                          placeholder="Your Message"
+                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none"
                         ></textarea>
-                  </div>
-                  <div>
-                     <button
-                        type="submit"
-                        className="w-full p-3 text-white transition border rounded  bg-black  hover:bg-opacity-90"
+                      </div>
+                      <div>
+                        <button
+                          type="submit"
+                          className="w-full p-3 text-white transition border rounded  bg-black  hover:bg-opacity-90"
                         >
-                     Send Message
-                     </button>
+                          Send Message
+                        </button>
+                      </div>
+                    </form>
+                    <div></div>
                   </div>
-               </form>
-               <div>
-                  
-                 
-               </div>
+                </div>
+              </div>
             </div>
-         </div>
-      </div>
-   </div>
-   
-</section>
+          </section>
         </main>
-      </section>
 
+      </section>
 
       {/* Footer */}
       <Footer />
