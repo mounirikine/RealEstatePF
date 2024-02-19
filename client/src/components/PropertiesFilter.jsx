@@ -32,7 +32,7 @@ const PropertiesFilter = ({ catSlug }) => {
         // Simulate a delay of 3 seconds before setting loading to false
         setTimeout(() => {
           setLoading(false);
-        }, 3000);
+        }, 1000);
       }
     };
 

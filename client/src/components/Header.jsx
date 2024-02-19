@@ -18,6 +18,7 @@ const Header = ({ userInfo }) => {
     { path: "/properties", label: "Properties" },
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
+    { path: "/notification", label: "Notification" },
   ];
   const removeCookies = () => {
     setCookies("access_token", "");

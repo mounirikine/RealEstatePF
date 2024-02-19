@@ -18,9 +18,9 @@ const Properties = ({ userInfo }) => {
     <>
       <Header userInfo={userInfo} />
       <section>
-        <div className="px-1 md:px-20 py-20">
-          <div className="py-3">
-            <h1 className="text-center  font-bold text-4xl py-3">
+        <div className="px-1 md:px-20 pt-10 pb-20">
+          <div className="">
+            <h1 className="text-center  font-bold text-4xl pb-10">
               Property Types
             </h1>
             <p className="text-center w-11/12 md:w-8/12 mx-auto ">
@@ -30,7 +30,7 @@ const Properties = ({ userInfo }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-4 mx-4 px-10 pt-10 ">
             <Link
               onClick={()=>{setCategories('house')}}
-              className={`px-10 rounded-xl ${category ==='house' ? 'bg-violet-100 text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-6  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-10 rounded-xl ${category ==='house' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-3  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
                 <IoHomeSharp />
@@ -39,7 +39,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('villa')}}
-              className={`px-10 rounded-xl ${category ==='villa' ? 'bg-violet-100 text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-6  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-10 rounded-xl ${category ==='villa' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-3  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
                 <MdOutlineVilla />
@@ -48,7 +48,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('apartment')}}
-              className={`px-10 rounded-xl ${category ==='apartment' ? 'bg-violet-100 text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-6  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-10 rounded-xl ${category ==='apartment' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-3  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
                 <MdOutlineApartment />
@@ -57,7 +57,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('car')}}
-              className={`px-10 rounded-xl ${category ==='car' ? 'bg-violet-100 text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-6  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-10 rounded-xl ${category ==='car' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-3  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
                 <IoCarSport />
@@ -66,7 +66,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('office')}}
-              className={`px-10 rounded-xl ${category ==='office' ? 'bg-violet-100 text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-6  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-10 rounded-xl ${category ==='office' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-3  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
                 <GiOfficeChair />
@@ -89,7 +89,7 @@ const Properties = ({ userInfo }) => {
             }}
             initial="hidden"
             animate="visible"
-            transition={{ duration: 1.2, delay: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
              className="flex lg:mx-14 bg-white flex-col  lg:flex-row items-center lg:items-end w-11/12 mx-auto lg:w-full py-3 px-4 mt-10 rounded-xl border-2 border-black justify-center">
               <div className="flex  items-center  gap-2 mb-4 lg:mb-0 w-full lg:w-3/12">
                 <span className="border rounded-xl bg-violet-100 px-3 py-3 ">
