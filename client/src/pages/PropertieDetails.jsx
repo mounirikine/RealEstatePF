@@ -6,19 +6,20 @@ import {
   FaArrowRight,
   FaBath,
   FaBed,
+  FaCheckCircle,
   FaRegSquare,
   FaShareAlt,
   FaWhatsapp,
 } from "react-icons/fa";
 import { TbToolsKitchen3 } from "react-icons/tb";
 
-import RelatedItems from '../components/RelatedItems'
+import RelatedItems from "../components/RelatedItems";
+import { IoIosCloseCircle } from "react-icons/io";
 const PropertyDetails = ({ userInfo }) => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -267,20 +268,28 @@ const PropertyDetails = ({ userInfo }) => {
         </main>
 
         <main className="py-14 px-6 md:px-12 lg:px-20 xl:px-32">
-  <div className="py-5 text-center lg:text-left">
-    <h1 className="text-4xl lg:text-5xl font-bold">Similar Listings</h1>
-  </div>
+          <div className="py-5 text-center lg:text-left">
+            <h1 className="text-4xl lg:text-5xl font-bold">Similar Listings</h1>
+          </div>
 
-  <div>
-    <RelatedItems catSlug={data.length > 0 && data[0].catSlug} idItem={data.length > 0 && data[0]._id} />
-  </div>
+          <div>
+            <RelatedItems
+              catSlug={data.length > 0 && data[0].catSlug}
+              idItem={data.length > 0 && data[0]._id}
+            />
+          </div>
 
-  <div className="w-full flex items-center justify-center py-10">
-    <Link to="/properties" className="px-8 md:px-14 py-4 text-xl lg:text-2xl hover:translate-x-1 rounded-xl flex items-center gap-2 text-black">
-      Load More Listings <FaArrowRight />
-    </Link>
-  </div>
-</main>
+          <div className="w-full flex items-center justify-center py-10">
+            <Link
+              to="/properties"
+              className="px-8 md:px-14 py-4 text-xl lg:text-2xl hover:translate-x-1 rounded-xl flex items-center gap-2 text-black"
+            >
+              Load More Listings <FaArrowRight />
+            </Link>
+          </div>
+        </main>
+
+
 
       </section>
       <Footer />
