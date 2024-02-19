@@ -30,11 +30,7 @@ const ShowCatalog = () => {
             </span>
           </h1>
           <p className=" sm:text-lg  pb-5 sm:pb-10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit nibh
-            pretium nunc mauris sed adipiscing. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Gravida ante quis nisl amet,
-            suspendisse massa. Venenatis imperdiet mauris lacus justo, hac nibh.
-            Cursus in et odio at at commodo.
+          refers to the act of actively seeking out real estate assets or living spaces that offer beneficial features and amenities to enhance the well-being, comfort, and overall quality of life for both yourself and your family members. This could encompass various factors such as location, size, layout, amenities, safety, community atmosphere, and potential for future growth or investment value. The aim is to find properties that align with your specific needs, preferences, and long-term goals, thereby contributing positively to your everyday experiences and fostering a fulfilling family life.
           </p>
 
           <Link

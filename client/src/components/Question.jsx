@@ -24,10 +24,9 @@ const Question = () => {
           </div>
           <div className="collapse-content">
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste
-              aperiam illum dicta doloremque minima distinctio aliquid, quas
-              itaque iure? Repellat ea molestiae beatae nesciunt. In pariatur
-              est dolorum hic assumenda!
+            Assessing your financial situation, determining your budget, and obtaining mortgage pre-approval if necessary
+
+            
             </p>
           </div>
         </div>
@@ -39,10 +38,7 @@ const Question = () => {
           </div>
           <div className="collapse-content">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Reiciendis sapiente veritatis minima quia nemo delectus beatae
-              corrupti vitae dignissimos tenetur qui saepe temporibus impedit,
-              unde ex recusandae, quisquam, eos illum!
+            Calculate Total Rental Income: Determine the total rental income you expect to receive annually. This includes the monthly rent multiplied by 12 months.
             </p>
           </div>
         </div>
@@ -53,7 +49,7 @@ const Question = () => {
             property?
           </div>
           <div className="collapse-content">
-            <p>hello</p>
+            <p>Loan Origination Fees: Charges from the lender for processing the loan application, often a percentage of the total loan amount.</p>
           </div>
         </div>
         <div className="collapse collapse-arrow join-item border bg-white border-base-300">
@@ -63,7 +59,7 @@ const Question = () => {
             country?
           </div>
           <div className="collapse-content">
-            <p>hello</p>
+            <p>Rental Prices: Rental prices can vary widely between cities, with major metropolitan areas generally having higher rents compared to smaller cities or rural areas. Cities with strong job markets and higher costs of living tend to have higher rental prices.</p>
           </div>
         </div>
         <div className="collapse collapse-arrow join-item border bg-white border-base-300">
@@ -73,7 +69,7 @@ const Question = () => {
             real estate?{" "}
           </div>
           <div className="collapse-content">
-            <p>hello</p>
+            <p>Location: Location is paramount in commercial real estate. Evaluate factors such as proximity to major highways, public transportation, population density, demographic trends, and nearby amenities. </p>
           </div>
         </div>
       </motion.div>
