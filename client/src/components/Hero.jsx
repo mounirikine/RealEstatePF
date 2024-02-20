@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import R1 from "../assets/r1.webp";
 import R2 from "../assets/r2.webp";
 import { motion } from "framer-motion";
-
+import {  useNavigate } from 'react-router-dom';
 const Hero = () => {
+  const navigate = useNavigate();
+  const [country, setCountry] = useState("");
+  const [catSlug, setPropertyType] = useState("");
+  const [priceRange, setPriceRange] = useState({ min: "100", max: "1000000" });
+  const searchQuery = `?country=${country}&catSlug=${catSlug}&price=${JSON.stringify(priceRange)}`;
+const handlenavigate = ()=>{
+  navigate(`/properties${searchQuery}`)
+}
+
   return (
     <>
       <section className="hero min-h-screen pb-5 w-full mt-32 lg:mt-0">
@@ -54,6 +63,8 @@ const Hero = () => {
                     Location 
                   </label>
                   <select
+                      onChange={(e) => setCountry(e.target.value)}
+                      value={country}
                     name=""
                     id=""
                     className="font-semibold outline-none px-2 "
@@ -398,10 +409,12 @@ const Hero = () => {
                   <select
                     name=""
                     id=""
+                    onChange={(e) => setPropertyType(e.target.value)}
+                    value={catSlug}
                     className="font-semibold outline-none px-2"
                   >
                     <option value="">Apartment </option>
-                    <option value="">Home </option>
+                    <option value="house">Home </option>
                     <option value="">Villa </option>
                     <option value="">Office Space </option>
                     <option value="">Car </option>
@@ -414,25 +427,34 @@ const Hero = () => {
                 <span className="border rounded-xl bg-violet-100 px-3 py-3">
                   <FaMapMarkerAlt />
                 </span>
-                <div className="flex flex-col">
-                  <label htmlFor="" className="text-sm">
-                    Price
-                  </label>
-                  <select
-                    name=""
-                    id=""
-                    className="font-semibold outline-none px-2"
-                  >
-                    <option value="">1000$-$1500 </option>
-                    <option value="">2500$-$5000 </option>
-                    <option value="">5000$-$8000 </option>
-                    <option value="">8000$+ </option>
+                <div className="flex h-22 w-15 flex-col">
+               
+                
+                     <input
+                      type="number"
+                      name="minPrice"
+                      value={priceRange.min}
+                      onChange={(e) => setPriceRange({ ...priceRange, min: e.target.value })}
+                      placeholder="Min Price"
+                      className="font-semibold outline-none px-2"
+                    />
+                    <input
+                      type="number"
+                      name="maxPrice"
+                      value={priceRange.max}
+                      onChange={(e) => setPriceRange({ ...priceRange, max: e.target.value })}
+                      placeholder="Max Price"
+                      className="font-semibold truncate outline-none px-2"
+                    />
                     {/* Add other options as needed */}
-                  </select>
+                
                 </div>
               </div>
 
-              <button className="lg:ml-4 px-5 py-2 rounded-e-md hover:shadow-lg bg-black font-bold text-white w-full lg:w-3/12">
+              <button
+                onClick={handlenavigate}
+                className="lg:ml-4 px-5 py-2 rounded-e-md hover:shadow-lg bg-black font-bold text-white w-full lg:w-3/12"
+              >
                 Search
               </button>
             </motion.div>

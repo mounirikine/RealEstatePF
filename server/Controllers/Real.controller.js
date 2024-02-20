@@ -130,3 +130,36 @@ export const getForUpdating = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getListingsby = async (req, res, next) => {
+  const { country, catSlug, minPrice, maxPrice } = req.query;
+
+  try {
+    // Find cars within the specified country, catSlug, and price range
+    const cars = await Car.find({
+      country,
+      catSlug,
+      price: { $gte: minPrice, $lte: maxPrice } // Filter by price range
+    });
+
+    // Find reals within the specified country, catSlug, and price range
+    const reals = await Real.find({
+      country,
+      catSlug,
+      regularPrice: { $gte: minPrice, $lte: maxPrice } // Filter by price range
+    });
+
+    // Combine the results into a single object
+    const allListings = { cars, reals };
+
+    // If both cars and reals arrays are empty, return a 404 error
+    if (!cars.length && !reals.length) {
+      return next(errorHandler(404, 'Listings not found!'));
+    }
+
+    // Return the combined listings
+    res.status(200).json(allListings);
+  } catch (error) {
+    next(error);
+  }
+};
