@@ -15,7 +15,7 @@ const Header = ({ userInfo }) => {
   const useId = window.localStorage.getItem('userID')
   const navItems = [
     { path: "/", label: "Home" },
-    { path: "/properties", label: "Properties" },
+    { path: "/properties?country=&catSlug=&price=", label: "Properties" },
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
     { path: "/notification", label: "Notification" },

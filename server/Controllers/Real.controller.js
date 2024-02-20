@@ -132,22 +132,36 @@ export const getForUpdating = async (req, res, next) => {
 };
 
 export const getListingsby = async (req, res, next) => {
-  const { country, catSlug, minPrice, maxPrice } = req.query;
+  let { country, catSlug, minPrice, maxPrice } = req.query;
+
+  // Check if parameters are empty, if so, set them to null
+  country = country || null;
+  catSlug = catSlug || null;
+  minPrice = minPrice || null;
+  maxPrice = maxPrice || null;
 
   try {
-    // Find cars within the specified country, catSlug, and price range
-    const cars = await Car.find({
-      country,
-      catSlug,
-      price: { $gte: minPrice, $lte: maxPrice } // Filter by price range
-    });
+    let cars, reals;
 
-    // Find reals within the specified country, catSlug, and price range
-    const reals = await Real.find({
-      country,
-      catSlug,
-      regularPrice: { $gte: minPrice, $lte: maxPrice } // Filter by price range
-    });
+    // If any of the parameters are empty, fetch all cars and reals
+    if (!country || !catSlug || !minPrice || !maxPrice) {
+      cars = await Car.find();
+      reals = await Real.find();
+    } else {
+      // Find cars within the specified country, catSlug, and price range
+      cars = await Car.find({
+        country,
+        catSlug,
+        price: { $gte: minPrice, $lte: maxPrice } // Filter by price range
+      });
+
+      // Find reals within the specified country, catSlug, and price range
+      reals = await Real.find({
+        country,
+        catSlug,
+        regularPrice: { $gte: minPrice, $lte: maxPrice } // Filter by price range
+      });
+    }
 
     // Combine the results into a single object
     const allListings = { cars, reals };

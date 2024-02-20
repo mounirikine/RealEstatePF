@@ -413,11 +413,11 @@ const handlenavigate = ()=>{
                     value={catSlug}
                     className="font-semibold outline-none px-2"
                   >
-                    <option value="">Apartment </option>
+                    <option value="apartment">Apartment </option>
                     <option value="house">Home </option>
-                    <option value="">Villa </option>
-                    <option value="">Office Space </option>
-                    <option value="">Car </option>
+                    <option value="villa">Villa </option>
+                    <option value="office">Office Space </option>
+                    <option value="car">Car </option>
                     {/* Add other options as needed */}
                   </select>
                 </div>
