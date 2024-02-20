@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import RelatedItems from "../components/RelatedItems";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -14,7 +14,7 @@ import {
 import { IoIosBody, IoIosCloseCircle } from "react-icons/io";
 import { LuFuel } from "react-icons/lu";
 
-import {motion} from  'framer-motion'
+import { motion } from "framer-motion";
 
 import {
   FaCog,
@@ -42,7 +42,6 @@ const CarDetails = ({ userInfo }) => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
- 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,10 +67,6 @@ const CarDetails = ({ userInfo }) => {
     fetchData();
   }, [id]);
 
-
-
-
-
   return (
     <>
       <Header userInfo={userInfo} />
@@ -88,58 +83,63 @@ const CarDetails = ({ userInfo }) => {
             )}
           </div>
           <div className="md:w-3/12 flex flex-col gap-5">
-            {data.length > 0 && data[0].imageUrls && (
-              <>
-                <img
-                  src={data[0].imageUrls[1]}
-                  className="w-full rounded-xl h-[240px]"
-                  alt=""
-                />
-                <div className="relative">
-                  <img
-                    src={data[0].imageUrls[1]}
-                    className="w-full rounded-xl h-[240px]"
-                    alt=""
-                  />
-                  {/* <span className="absolute bottom-4 right-3 px-3 lg:px-6 bg-white py-3 rounded-lg font-bold">
-                    Show All Images
-                  </span> */}
-                  <button className="absolute bottom-4 right-3 px-3 lg:px-6 bg-white py-3 rounded-lg font-bold" onClick={()=>document.getElementById('my_modal_3').showModal()}>Show All Images</button>
-<dialog id="my_modal_3" className="modal min-h-[90vh] w-11/12 mx-auto  ">
-  <div className=" min-h-[90vh] w-11/12  bg-white ">
-    <form method="dialog " >
-      {/* if there is a button in form, it will close the modal */}
-      <button className=" text-white btn-circle btn-ghost absolute right-2 top-2">✕</button>
-    </form >
+  {data.length > 0 && data[0].imageUrls && (
+    <>
+      <img
+        src={data[0].imageUrls[0]}  
+        className="rounded-xl h-[240px]"
+        alt=""
+      />
+      <div className="relative">
+        <img
+          src={data[0].imageUrls[1]}
+          className="rounded-xl h-[240px]"
+          alt=""
+        />
 
-   <div className="py-10">
-   <div className="carousel w-full">
-  <div id="item1" className="carousel-item w-full h-full">
-    <img src="https://firebasestorage.googleapis.com/v0/b/realestatepf.appspot.com/o/1707002591082car14-qgcqjcnfpk9aba3s9dq1z9f5si5k0ovmj8ewvsz6m4.jpg?alt=media&token=137ff458-3569-4553-a679-afdbdb4e1835" className="w-full h-80vh" />
-  </div> 
-  <div id="item2" className="carousel-item w-full">
-    <img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg" className="w-full" />
-  </div> 
-  <div id="item3" className="carousel-item w-full">
-    <img src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg" className="w-full" />
-  </div> 
-  <div id="item4" className="carousel-item w-full">
-    <img src="https://daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg" className="w-full" />
-  </div>
-</div> 
-<div className="flex justify-center w-full py-2 gap-2">
-  <a href="#item1" className="btn btn-xs">1</a> 
-  <a href="#item2" className="btn btn-xs">2</a> 
-  <a href="#item3" className="btn btn-xs">3</a> 
-  <a href="#item4" className="btn btn-xs">4</a>
-</div>
-   </div>
-  </div>
-</dialog>
+        <button
+          className="absolute bottom-4 right-3 px-3 lg:px-6 bg-white py-3 rounded-lg font-bold"
+          onClick={() => document.getElementById("my_modal_2").showModal()}
+        >
+          Show All Images
+        </button>
+
+        <dialog
+          id="my_modal_2"
+          className="modal mt-5 flex items-center justify-center w-11/12 mx-auto"
+        >
+          <div className="h-screen bg-white px-2 sm:px-10">
+            <form method="dialog" className="modal-backdrop py-7">
+              <button className="text-white">
+                <span className="bg-black px-14 py-3 rounded-lg">Close</span>
+              </button>
+            </form>
+
+            <div className="carousel w-full">
+              {data[0].imageUrls.map((item, index) => (
+                <div key={index} id={`item${index}`} className="carousel-item w-full h-[75vh]">
+                  <img
+                    src={item}
+                    className="w-full"
+                    alt={`Image ${index}`}
+                  />
                 </div>
-              </>
-            )}
+              ))}
+            </div>
+            <div className="flex justify-center w-full py-2 gap-2">
+              {data[0].imageUrls.map((item, index) => (
+                <a key={index} href={`#item${index}`} className="px-5 bg-black text-white rounded-md">
+                  {index + 1} 
+                </a>
+              ))}
+            </div>
           </div>
+        </dialog>
+      </div>
+    </>
+  )}
+</div>
+
         </main>
 
         <main className="px-4 md:px-6 lg:px-32 flex flex-col lg:flex-row justify-center gap-6">
@@ -327,7 +327,7 @@ const CarDetails = ({ userInfo }) => {
         </main>
 
         <main className=" lg:px-32 w-full  my-10 ">
-        <div className="px-3 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full py-10 gap-3  md:px-10">
+          <div className="px-3 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full py-10 gap-3  md:px-10">
             <span className="flex items-center gap-1 border-b">
               {data.length > 0 && data[0].ChildSafetyLocks ? (
                 <FaCheckCircle className="text-green-500 " />
@@ -338,7 +338,7 @@ const CarDetails = ({ userInfo }) => {
             </span>
 
             <span className="flex items-center gap-1 border-b">
-              { data.length > 0 && data[0].Heater ? (
+              {data.length > 0 && data[0].Heater ? (
                 <FaCheckCircle className="text-green-500" />
               ) : (
                 <IoIosCloseCircle className="text-red-500 text-lg" />
@@ -410,7 +410,7 @@ const CarDetails = ({ userInfo }) => {
               <span className="text-black">DriverAirBag</span>
             </span>
             <span className="flex items-center gap-1 border-b">
-               {data.length > 0 && data[0].PowerDoorLocks ? (
+              {data.length > 0 && data[0].PowerDoorLocks ? (
                 <FaCheckCircle className="text-green-500" />
               ) : (
                 <IoIosCloseCircle className="text-red-500 text-lg" />
@@ -450,7 +450,7 @@ const CarDetails = ({ userInfo }) => {
               <span className="text-black">RainSensingWiper</span>
             </span>
             <span className="flex items-center gap-1 border-b">
-              { data.length > 0 && data[0].RearSpoiler ? (
+              {data.length > 0 && data[0].RearSpoiler ? (
                 <FaCheckCircle className="text-green-500" />
               ) : (
                 <IoIosCloseCircle className="text-red-500 text-lg" />
@@ -505,10 +505,7 @@ const CarDetails = ({ userInfo }) => {
           </div>
 
           <div>
-            <RelatedItems
-              
-              idItem={data.length > 0 && data[0]._id}
-            />
+            <RelatedItems idItem={data.length > 0 && data[0]._id} />
           </div>
 
           <div className="w-full flex items-center justify-center py-10">
@@ -520,12 +517,7 @@ const CarDetails = ({ userInfo }) => {
             </Link>
           </div>
         </main>
-
-
-       
-        
       </section>
-
 
       <Footer />
     </>
@@ -533,4 +525,3 @@ const CarDetails = ({ userInfo }) => {
 };
 
 export default CarDetails;
-
