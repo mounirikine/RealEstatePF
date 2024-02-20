@@ -3,13 +3,15 @@ import Residential from "../components/Residential";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { IoCarSport, IoHomeSharp } from "react-icons/io5";
-import { MdOutlineApartment, MdOutlineVilla } from "react-icons/md";
-import { GiOfficeChair } from "react-icons/gi";
+import { MdOutlineApartment, MdOutlineDevices, MdOutlineVilla } from "react-icons/md";
+import { GiClothes, GiOfficeChair } from "react-icons/gi";
 import { CiCircleMore } from "react-icons/ci";
 import PropertiesFilter from "../components/PropertiesFilter";
 import {  useState } from "react";
 import {motion} from 'framer-motion'
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { PiBicycleBold, PiGuitar } from "react-icons/pi";
+import { LuArmchair } from "react-icons/lu";
 
 const Properties = ({ userInfo }) => {
   const [category,setCategories] = useState('house')
@@ -27,7 +29,7 @@ const Properties = ({ userInfo }) => {
             Here you can find your categories that you are simply looking for and be the first to take them
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-4 mx-4 px-10 pt-10 ">
+          <div className="flex  gap-4 mx-4 px-10 mt-10  overflow-x-auto   bg-violet-100 rounded-md py-2 ">
             <Link
               onClick={()=>{setCategories('house')}}
               className={`px-10 rounded-xl ${category ==='house' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-3  shadow-lg flex gap-1 items-center justify-center `}
@@ -73,6 +75,52 @@ const Properties = ({ userInfo }) => {
               </span>{" "}
               <span>Office</span>
             </Link>
+            <Link
+              onClick={()=>{setCategories('bycicle')}}
+              className={`px-10 rounded-xl ${category ==='bycicle' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-3  shadow-lg flex gap-1 items-center justify-center `}
+            >
+              <span>
+                <PiBicycleBold />
+              </span>{" "}
+              <span>Bycicle</span>
+            </Link>
+            <Link
+              onClick={()=>{setCategories('devices')}}
+              className={`px-10 rounded-xl ${category ==='devices' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-3  shadow-lg flex gap-1 items-center justify-center `}
+            >
+              <span>
+                <MdOutlineDevices />
+              </span>{" "}
+              <span>Devices</span>
+            </Link>
+            <Link
+              onClick={()=>{setCategories('clothes')}}
+              className={`px-10 rounded-xl ${category ==='clothes' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-3  shadow-lg flex gap-1 items-center justify-center `}
+            >
+              <span>
+                <GiClothes />
+              </span>{" "}
+              <span>Clothes</span>
+            </Link>
+            <Link
+              onClick={()=>{setCategories('music')}}
+              className={`px-10 rounded-xl ${category ==='music' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-3  shadow-lg flex gap-1 items-center justify-center `}
+            >
+              <span>
+                <PiGuitar />
+              </span>{" "}
+              <span>Music</span>
+            </Link>
+            <Link
+              onClick={()=>{setCategories('furnishing')}}
+              className={`px-10 rounded-xl ${category ==='furnishing' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-3  shadow-lg flex gap-1 items-center justify-center `}
+            >
+              <span>
+                <LuArmchair />
+              </span>{" "}
+              <span>Furnishing</span>
+            </Link>
+ 
 
           </div>
         </div>

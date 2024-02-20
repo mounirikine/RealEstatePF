@@ -101,9 +101,41 @@ const CarDetails = ({ userInfo }) => {
                     className="w-full rounded-xl h-[240px]"
                     alt=""
                   />
-                  <span className="absolute bottom-4 right-3 px-3 lg:px-6 bg-white py-3 rounded-lg font-bold">
+                  {/* <span className="absolute bottom-4 right-3 px-3 lg:px-6 bg-white py-3 rounded-lg font-bold">
                     Show All Images
-                  </span>
+                  </span> */}
+                  <button className="absolute bottom-4 right-3 px-3 lg:px-6 bg-white py-3 rounded-lg font-bold" onClick={()=>document.getElementById('my_modal_3').showModal()}>Show All Images</button>
+<dialog id="my_modal_3" className="modal min-h-[90vh] w-11/12 mx-auto  ">
+  <div className=" min-h-[90vh] w-11/12  bg-white ">
+    <form method="dialog " >
+      {/* if there is a button in form, it will close the modal */}
+      <button className=" text-white btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form >
+
+   <div className="py-10">
+   <div className="carousel w-full">
+  <div id="item1" className="carousel-item w-full h-full">
+    <img src="https://firebasestorage.googleapis.com/v0/b/realestatepf.appspot.com/o/1707002591082car14-qgcqjcnfpk9aba3s9dq1z9f5si5k0ovmj8ewvsz6m4.jpg?alt=media&token=137ff458-3569-4553-a679-afdbdb4e1835" className="w-full h-80vh" />
+  </div> 
+  <div id="item2" className="carousel-item w-full">
+    <img src="https://daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg" className="w-full" />
+  </div> 
+  <div id="item3" className="carousel-item w-full">
+    <img src="https://daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg" className="w-full" />
+  </div> 
+  <div id="item4" className="carousel-item w-full">
+    <img src="https://daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg" className="w-full" />
+  </div>
+</div> 
+<div className="flex justify-center w-full py-2 gap-2">
+  <a href="#item1" className="btn btn-xs">1</a> 
+  <a href="#item2" className="btn btn-xs">2</a> 
+  <a href="#item3" className="btn btn-xs">3</a> 
+  <a href="#item4" className="btn btn-xs">4</a>
+</div>
+   </div>
+  </div>
+</dialog>
                 </div>
               </>
             )}

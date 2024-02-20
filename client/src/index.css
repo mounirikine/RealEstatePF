@@ -82,7 +82,11 @@ body{
     padding-inline: 1px;
     @apply bg-black
     
+
   }
+  .scroll::-webkit-scrollbar{
+    display: none;
+}
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
