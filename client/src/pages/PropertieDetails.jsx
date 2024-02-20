@@ -76,9 +76,44 @@ const PropertyDetails = ({ userInfo }) => {
                     className="w-full rounded-xl h-[240px]"
                     alt=""
                   />
-                  <span className="absolute bottom-4 right-3 px-3 lg:px-6 bg-white py-3 rounded-lg font-bold">
-                    Show All Images
-                  </span>
+                   <button
+          className="absolute bottom-4 right-3 px-3 lg:px-6 bg-white py-3 rounded-lg font-bold"
+          onClick={() => document.getElementById("my_modal_2").showModal()}
+        >
+          Show All Images
+        </button>
+
+        <dialog
+          id="my_modal_2"
+          className="modal mt-5 flex items-center justify-center w-11/12 mx-auto"
+        >
+          <div className="h-screen bg-white px-2 sm:px-10">
+            <form method="dialog" className="modal-backdrop py-7">
+              <button className="text-white">
+                <span className="bg-black px-14 py-3 rounded-lg">Close</span>
+              </button>
+            </form>
+
+            <div className="carousel w-full">
+              {data[0].imageUrls.map((item, index) => (
+                <div key={index} id={`item${index}`} className="carousel-item w-full h-[75vh]">
+                  <img
+                    src={item}
+                    className="w-full"
+                    alt={`Image ${index}`}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-center w-full py-2 gap-2">
+              {data[0].imageUrls.map((item, index) => (
+                <a key={index} href={`#item${index}`} className="px-5 bg-black text-white rounded-md">
+                  {index + 1} 
+                </a>
+              ))}
+            </div>
+          </div>
+        </dialog>
                 </div>
               </>
             )}
