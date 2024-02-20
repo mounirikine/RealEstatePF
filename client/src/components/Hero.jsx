@@ -69,6 +69,7 @@ const handlenavigate = ()=>{
                     id=""
                     className="font-semibold outline-none px-2 "
                   >
+                     <option>Countries</option>
                       <option value="Afghanistan">Afghanistan</option>
                       <option value="Åland Islands">Åland Islands</option>
                       <option value="Albania">Albania</option>
@@ -413,6 +414,7 @@ const handlenavigate = ()=>{
                     value={catSlug}
                     className="font-semibold outline-none px-2"
                   >
+                    <option >Type </option>
                     <option value="apartment">Apartment </option>
                     <option value="house">Home </option>
                     <option value="villa">Villa </option>

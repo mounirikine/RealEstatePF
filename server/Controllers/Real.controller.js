@@ -144,27 +144,31 @@ export const getListingsby = async (req, res, next) => {
     let cars, reals;
 
     // If any of the parameters are empty, fetch all cars and reals
-    if (!country || !catSlug || !minPrice || !maxPrice) {
-      cars = await Car.find();
-      reals = await Real.find();
-    } else {
-      // Find cars within the specified country, catSlug, and price range
+    if (country || catSlug || minPrice || maxPrice) {
+     
       cars = await Car.find({
-        country,
-        catSlug,
-        price: { $gte: minPrice, $lte: maxPrice } // Filter by price range
+        $or: [
+          { country },
+          { catSlug },
+          { price: { $gte: minPrice, $lte: maxPrice } }
+        ]
       });
 
       // Find reals within the specified country, catSlug, and price range
       reals = await Real.find({
-        country,
-        catSlug,
-        regularPrice: { $gte: minPrice, $lte: maxPrice } // Filter by price range
+        $or: [
+          { country },
+          { catSlug },
+          { regularPrice: { $gte: minPrice, $lte: maxPrice } }
+        ]
       });
+    } else {
+      // Find cars within the specified country, catSlug, and price range
+      cars = await Car.find();
+      reals = await Real.find();
     }
-
     // Combine the results into a single object
-    const allListings = { cars, reals };
+     const allListings = { cars, reals };
 
     // If both cars and reals arrays are empty, return a 404 error
     if (!cars.length && !reals.length) {
