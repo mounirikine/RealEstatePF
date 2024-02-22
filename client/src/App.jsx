@@ -29,6 +29,7 @@ import UpdateListing0 from "./components/form/UpdateListing0";
 import Contactus from "./pages/Contactus";
 import MoreQuestions from "./components/MoreQuestions";
 import CreateStore from "./pages/CreateStore";
+import Store from "./pages/Store";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -107,6 +108,7 @@ function App() {
             <Route path='/forgot-Pass' element={<ForgotPass/>}/>
             <Route path='/forgot-Pass/:id/:token' element={<NewPass/>}/>
             <Route path='/MoreQuestions' element={<MoreQuestions/>}/>
+            <Route path='/store' element={<Store userInfo={userInfo}/>} />
 
             {/* Use Routes inside PrivateRoutes */}
             <Route element={<PrivateRoutes />}>

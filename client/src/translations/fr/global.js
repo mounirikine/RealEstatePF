@@ -1,6 +1,7 @@
 export const linksFr = {
     'create_your_account': "Créons votre compte",
   loginTitle:"Connectez-vous à votre compte",
+  'store':'magasin',
   email: "E-mail",
   get_started: 'Commencer',
   password: "Mot de passe",

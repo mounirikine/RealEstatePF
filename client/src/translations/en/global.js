@@ -1,5 +1,6 @@
 export const linksEn = {
     'create_your_account':"Let's Create Your Account",
+    'store':'store',
     'loginTitle':'Log in to your account',
     'get_started': 'Get Started',
     'email':'Email',

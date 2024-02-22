@@ -1,6 +1,7 @@
 export const linksAr = {
     'create_your_account': "لنقم بإنشاء حسابك",
     'loginTitle': 'تسجيل الدخول إلى حسابك',
+    'store':'متجر',
     'email': 'البريد الإلكتروني',
     'get_started': 'نبدأ الآن',
     'password': 'كلمة المرور',

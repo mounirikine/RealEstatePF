@@ -27,8 +27,10 @@ const Header = ({ userInfo }) => {
     { path: "/", label: t('Home') },
     { path: "/properties?country=&catSlug=&price=", label: t('Properties') },
     { path: "/about", label: t('About') },
-    { path: "/contact", label: t('Contact') },
+    { path: "/contact", label: t('Contact') }, 
+    { path: "/store", label: t('store') },
     { path: "/notification", label: t('Notifications') },
+   
   ];
   const removeCookies = () => {
     setCookies("access_token", "");
