@@ -5,11 +5,15 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 import OAuth from "../components/0Auth";
+import {useTranslation} from 'react-i18next'
+import Header from "../components/Header";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [t,i18n]=useTranslation('global')
+
 
   const [loading, setLoading] = useState(false);
   const [_, setCookies] = useCookies(["access_token"]);
@@ -55,12 +59,12 @@ const Login = () => {
               <img src={finder} width={300} alt="" />
             </div>
             <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">
-              Log in to your account
+            {t('loginTitle')}
             </h1>
 
             <form className="mt-6" onSubmit={handleLogin}>
               <div>
-                <label className="block text-gray-700">Email Address</label>
+                <label className="block text-gray-700">{t('email')}</label>
                 <input
                   type="email"
                   name=""
@@ -75,7 +79,7 @@ const Login = () => {
               </div>
 
               <div className="mt-4">
-                <label className="block text-gray-700">Password</label>
+                <label className="block text-gray-700">{t('password')}</label>
                 <input
                   type="password"
                   name=""
@@ -94,7 +98,7 @@ const Login = () => {
                   to={"/forgot-pass"}
                   className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700"
                 >
-                  Forgot Password?
+                  {t('forgetpassword')}?
                 </Link>
               </div>
 
@@ -106,7 +110,7 @@ const Login = () => {
                 {loading ? (
                   <span className="loading loading-spinner loading-sm"></span>
                 ) : (
-                  " Log In"
+                  t('login')
                 )}
               </button>
             </form>
@@ -114,12 +118,12 @@ const Login = () => {
             <hr className="my-6 border-gray-300 w-full" />
             <OAuth />
             <p className="mt-8">
-              Need an account?{" "}
+            {t('need_an_account')}
               <Link
                 to="/register"
                 className="text-blue-500 hover:text-blue-700 font-semibold"
               >
-                Create an account
+                 {t('register')}
               </Link>
             </p>
           </div>

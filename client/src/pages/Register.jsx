@@ -3,7 +3,9 @@ import finder from "../assets/finder.png";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import OAuth from "../components/0Auth";
+import {useTranslation} from 'react-i18next'
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 const Register = () => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,6 +13,7 @@ const Register = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [t,i18n]=useTranslation('global')
 
 
 
@@ -58,7 +61,7 @@ const Register = () => {
   };
   return (
     <>
-      <section className="flex flex-col pt-40  md:flex-row h-screen items-center">
+      <section className="flex  flex-col pt-40  md:flex-row h-screen items-center">
         <div
           className="bg-white w-full  lg:w-6/12   md:mx-0   h-screen px-6 lg:px-16 xl:px-12
       flex items-center justify-center"
@@ -68,12 +71,12 @@ const Register = () => {
               <img src={finder} width={300} alt="" />
             </div>
             <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">
-              Let's Create your account
+              {t('create_your_account')}
             </h1>
 
             <form className="mt-6" onSubmit={handleRegister}>
               <div>
-                <label className="block text-gray-700">Username</label>
+                <label className="block text-gray-700">{t('username')}</label>
                 <input
                   type="text"
                   name=""
@@ -87,7 +90,7 @@ const Register = () => {
                 />
               </div>
               <div className="mt-4">
-                <label className="block text-gray-700">Email Address</label>
+                <label className="block text-gray-700">{t('email')}</label>
                 <input
                   type="email"
                   name=""
@@ -102,7 +105,7 @@ const Register = () => {
               </div>
 
               <div className="mt-4">
-                <label className="block text-gray-700">Password</label>
+                <label className="block text-gray-700">{t('password')}</label>
                 <input
                   type="password"
                   name=""
@@ -116,7 +119,7 @@ const Register = () => {
                 />
               </div>
               <div className="mt-4">
-                <label className="block text-gray-700">Phone Number</label>
+                <label className="block text-gray-700">{t('phone_number')}</label>
                 <input
                   type="phone"
                   name="phoneNumber"
@@ -140,7 +143,7 @@ const Register = () => {
                 {loading ? (
                   <span className="loading loading-spinner loading-sm"></span>
                 ) : (
-                  " Register"
+                  t('register')
                 )}
               </button>
             </form>
@@ -149,12 +152,12 @@ const Register = () => {
 
           <OAuth/>
             <p className="mt-8">
-              Already have an account?{" "}
+              {t('already_have_account')}?{" "}
               <Link
                 to="/login"
                 className="text-blue-500 hover:text-blue-700 font-semibold"
               >
-                Login
+               {t('login')}
               </Link>
             </p>
           </div>

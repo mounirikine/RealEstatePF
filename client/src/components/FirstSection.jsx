@@ -7,11 +7,14 @@ import { GiOfficeChair } from "react-icons/gi";
 import { IoCarSport } from "react-icons/io5";
 import Residential from "./Residential";
 import CarCard from "./CarCard";
+import {useTranslation} from 'react-i18next'
 
 const FirstSection = () => {
   const [activeTab, setActiveTab] = useState("Residential");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [t,i18n]=useTranslation('global')
+
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -43,11 +46,11 @@ const FirstSection = () => {
     <motion.section className="py-10 md:py-5">
       <div className="flex items-center">
         <h1 className="text-center mt-8 mx-auto font-bold text-3xl px-5 md:text-5xl uppercase pt-20 md:pt-0">
-          Find the category for you
+          {t('FirstSectionTitle')}
         </h1>
       </div>
       <p className="text-center mx-auto py-7 w-9/12">
-        Here you can find your categories that you are simply looking for and be the first to take them
+        {t('FirstSectionDes')}
       </p>
 
       <div className="w-12/12 flex items-center justify-center">

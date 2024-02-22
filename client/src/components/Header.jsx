@@ -7,20 +7,28 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import logof from "../assets/finder.png";
 import { HiOutlineLanguage } from "react-icons/hi2";
-
+import {useTranslation} from 'react-i18next'
 
 const Header = ({ userInfo }) => {
+  const [t,i18n]=useTranslation('global')
+ 
+  const handleChange = (lang) => {
+    
+    i18n.changeLanguage(lang);
+    window.localStorage.setItem('lng', lang);
+  };
+
   const [open, setOpen] = useState(true);
   const [cookies, setCookies] = useCookies(["access_token"]);
   const [active, setActive] = useState("");
   const location = useLocation();
   const useId = window.localStorage.getItem("userID");
   const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/properties?country=&catSlug=&price=", label: "Properties" },
-    { path: "/about", label: "About" },
-    { path: "/contact", label: "Contact" },
-    { path: "/notification", label: "Notification" },
+    { path: "/", label: t('Home') },
+    { path: "/properties?country=&catSlug=&price=", label: t('Properties') },
+    { path: "/about", label: t('About') },
+    { path: "/contact", label: t('Contact') },
+    { path: "/notification", label: t('Notifications') },
   ];
   const removeCookies = () => {
     setCookies("access_token", "");
@@ -106,7 +114,7 @@ const Header = ({ userInfo }) => {
                         aria-label="close sidebar"
                         className="drawer-overlay"
                       ></label>
-                      <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                      <ul className="menu p-4 w-80 min-h-full bg-white text-base-content">
                         {/* Sidebar content here */}
 
                         <div className="pb-10 pt-2 px-3">
@@ -118,7 +126,7 @@ const Header = ({ userInfo }) => {
                         <li className=" ">
                           <Link
                             to="/profile"
-                            className="text-black bg-slate-100 hover:bg-slate-200 mb-1"
+                            className="py-4  bg-gray-100 mb-1"
                           >
                             <CiUser className="text-lg" /> Profile
                           </Link>
@@ -126,13 +134,13 @@ const Header = ({ userInfo }) => {
                         <li className="">
                           <Link
                             to={`/list/${useId}`}
-                            className="text-black bg-slate-100 hover:bg-slate-200 mb-1"
+                            className="py-4  bg-gray-100  mb-1"
                           >
                             <CiBoxList className="text-lg" /> Your Properties
                           </Link>
                         </li>
                         <li className="">
-                          <div className="flex  text-black bg-slate-100 hover:bg-slate-200 mb-1">
+                          <div className="flex  py-4  bg-gray-100  mb-1">
                             <Link to="/create" className="flex items-center">
                               <IoCreateOutline className="text-2xl" />
                               Create Property
@@ -140,7 +148,7 @@ const Header = ({ userInfo }) => {
                           </div>
                         </li>
                         <li className="">
-                          <div className="flex  text-black bg-slate-100 hover:bg-slate-200 mb-1">
+                          <div className="flex  py-4  bg-gray-100  mb-1">
                             <Link
                               to="/create-store"
                               className="flex items-center gap-1"
@@ -154,23 +162,25 @@ const Header = ({ userInfo }) => {
                         <li className="">
                           <Link
                             onClick={removeCookies}
-                            className="text-black bg-slate-100 hover:bg-slate-200 mb-1"
+                            className="py-4  bg-gray-100  mb-4"
                           >
                             <FaPowerOff className="text-lg" /> Logout
                           </Link>
                         </li>
-                        <li className="">
+                        <li className=" hover:bg-white focus:bg-white">
                           <Link
                            
-                            className="text-black bg-slate-100 hover:bg-slate-200 mb-1"
+                            className="text-black hover:bg-white focus:bg-white mb-1"
                           >
                             <HiOutlineLanguage className="text-lg" /> 
-                            
+                            Languages
+
                           </Link>
+                          
                           <li>
-                              <Link className="bg-black text-white hover:bg-black flex items-center justify-center">English</Link>
-                              <Link className="bg-black text-white hover:bg-black flex items-center justify-center">Arabic</Link>
-                              <Link className="bg-black text-white hover:bg-black flex items-center justify-center">French</Link>
+                              <Link onClick={()=>handleChange('en')} className="bg-black text-white hover:bg-black flex items-center justify-center">English</Link>
+                              <Link onClick={()=>handleChange('ar')} className="bg-black text-white hover:bg-black flex items-center justify-center">Arabic</Link>
+                              <Link onClick={()=>handleChange('fr')} className="bg-black text-white hover:bg-black flex items-center justify-center">French</Link>
                             </li>
                         </li>
                       </ul>
@@ -183,7 +193,7 @@ const Header = ({ userInfo }) => {
                     to="/login"
                     className=" bg-black hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 border  text-white"
                   >
-                    Get started
+                    {t('get_started')}
                   </Link>
                 </>
               )}

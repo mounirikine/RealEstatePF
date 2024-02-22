@@ -8,11 +8,12 @@ import img from '../assets/newhero.svg'
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { BiLike } from "react-icons/bi";
 import { HiOutlineUserGroup } from "react-icons/hi2";
+import {useTranslation} from 'react-i18next'
 
 import { useState } from "react";
 const Video = () => {
   const [counterState, setCounterState] = useState(false);
-
+  const [t,i18n]=useTranslation('global')
   return (
     <>
 
@@ -26,14 +27,14 @@ const Video = () => {
           }}
           initial="hidden"
           whileInView="show"
-          transition={{ duration: 0.5, delay: 0.25 }}  className="text-4xl lg:text-5xl font-bold mb-4 text-center lg:text-left w-full">Comfort Is Our Top Priority For You</motion.h1>
+          transition={{ duration: 0.5, delay: 0.25 }}  className="text-4xl lg:text-5xl font-bold mb-4 text-center lg:text-left w-full">{t('OfferesTitle')}</motion.h1>
           <motion.p                    variants={{
             hidden: { opacity: 0,x:-33  },
             show: { opacity: 1,x:0  },
           }}
           initial="hidden"
           whileInView="show"
-          transition={{ duration: 0.5, delay: 0.75 }} className="lg:text-lg text-sm mt-3 mb-5 text-center lg:text-left">We guarantee that the products we sell will make our customers happy because we are very concerned about our consumer satisfaction</motion.p>
+          transition={{ duration: 0.5, delay: 0.75 }} className="lg:text-lg text-sm mt-3 mb-5 text-center lg:text-left">{t('OfferesDesc')}</motion.p>
         </div>
         <div className=" w-full g:w-6/12">
           <motion.div 

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 
-const NotFound = () => {
+const NotFound = ({userInfo}) => {
   return (
     <>
-      <Header />
+      <Header  userInfo={userInfo}/>
 
       <section className="hero h-[90vh]">
         <main className="flex items-center justify-center">

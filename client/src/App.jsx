@@ -103,7 +103,7 @@ function App() {
             <Route path="/properties" element={<Properties userInfo={userInfo} />} />
             <Route path="/about" element={<About userInfo={userInfo} />} />
             <Route path="/contact" element={<Contactus userInfo={userInfo} />} />
-            <Route path="/*" element={<NotFound />} />
+            <Route path="/*" element={<NotFound  userInfo={userInfo}/>} />
             <Route path='/forgot-Pass' element={<ForgotPass/>}/>
             <Route path='/forgot-Pass/:id/:token' element={<NewPass/>}/>
             <Route path='/MoreQuestions' element={<MoreQuestions/>}/>

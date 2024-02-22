@@ -4,7 +4,9 @@ import R1 from "../assets/r1.webp";
 import R2 from "../assets/r2.webp";
 import { motion } from "framer-motion";
 import {Link} from 'react-router-dom'
+import {useTranslation} from 'react-i18next'
 const Hero = () => {
+  const [t,i18n]=useTranslation('global')
   return (
     <>
       <section className="hero min-h-screen pb-5 w-full  lg:mt-0">
@@ -20,7 +22,7 @@ const Hero = () => {
               transition={{ duration: 1, delay: 0.25 }}
               className="text-5xl lg:px-24 lg:text-6xl font-bold mb-2 w-full text-center lg:text-left"
             >
-              We help people to realize their dream property
+              {t('Title')}
             </motion.h1>
             <motion.p
               variants={{
@@ -32,8 +34,7 @@ const Hero = () => {
               transition={{ duration: 1.2, delay: 0.75 }}
               className="text-xl lg:px-24 lg:text-2xl text-gray-500 text-center lg:text-left"
             >
-              We are creative people who provide the best way to you who want to
-              have a new comfortable and suitable place to live
+              {t('description')}
             </motion.p>
 
             <motion.button
@@ -45,7 +46,7 @@ const Hero = () => {
             animate="visible"
             transition={{ duration: 1.2, delay: 1 }}
              className=" w-full flex items-center justify-center lg:justify-start  sm:px-24 py-10">
-                  <Link to='/create' className="px-20 py-3 hover:translate-x-1  bg-black text-white rounded-lg flex items-center justify-center gap-2"><span>Create Property</span> <FaEdit /> </Link>
+                  <Link to='/create' className="px-20 py-3 hover:translate-x-1  bg-black text-white rounded-lg flex items-center justify-center gap-2"><span>{t('button')}</span> <FaEdit /> </Link>
             </motion.button>
           </div>
 
