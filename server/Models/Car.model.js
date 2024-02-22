@@ -20,7 +20,7 @@ const carSchema = new mongoose.Schema(
   },
   userNumber: {
     type: String,
-    required: true,
+    required: false,
   },
   userRef: {
     type: String,
