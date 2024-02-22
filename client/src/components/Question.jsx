@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import {motion} from 'framer-motion'
 import { FaArrowRight } from "react-icons/fa";
+import MoreQuestions from "./MoreQuestions";
+
 
 const Question = () => {
   return (
@@ -74,7 +76,7 @@ const Question = () => {
         </div>
       </motion.div>
       <div className="flex items-center justify-center py-10">
-      <Link className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl text-xl hover:translate-x-1   font-bold flex items-center justify-center   ">More Questions <FaArrowRight /> </Link>
+      <Link to={"/MoreQuestions"} className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl text-xl hover:translate-x-1   font-bold flex items-center justify-center   ">More Questions   <FaArrowRight /> </Link>
 
       </div>
 

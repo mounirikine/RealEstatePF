@@ -27,6 +27,7 @@ import List from "./pages/List";
 import UpdateListing from "./components/form/UpdateListing";
 import UpdateListing0 from "./components/form/UpdateListing0";
 import Contactus from "./pages/Contactus";
+import MoreQuestions from "./components/MoreQuestions";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -104,6 +105,7 @@ function App() {
             <Route path="/*" element={<NotFound />} />
             <Route path='/forgot-Pass' element={<ForgotPass/>}/>
             <Route path='/forgot-Pass/:id/:token' element={<NewPass/>}/>
+            <Route path='/MoreQuestions' element={<MoreQuestions/>}/>
 
             {/* Use Routes inside PrivateRoutes */}
             <Route element={<PrivateRoutes />}>
