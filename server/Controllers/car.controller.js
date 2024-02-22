@@ -65,7 +65,7 @@ res.status(200).json('listings has been deleleted!')
 export const updateCar = async (req, res, next) => {
   const listing = await Car.findById(req.params.id);
   if (!listing) {
-    return next(errorHandler(404, 'Real not found!'));
+    return next(errorHandler(404, 'Car not found!'));
   }
  
   try {
