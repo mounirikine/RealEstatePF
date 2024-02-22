@@ -66,7 +66,7 @@ body{
 
 /* width */
 ::-webkit-scrollbar {
-    width: 14px;
+    width: 8px;
     padding-inline: 1px;
   }
   

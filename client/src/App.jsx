@@ -28,6 +28,7 @@ import UpdateListing from "./components/form/UpdateListing";
 import UpdateListing0 from "./components/form/UpdateListing0";
 import Contactus from "./pages/Contactus";
 import MoreQuestions from "./components/MoreQuestions";
+import CreateStore from "./pages/CreateStore";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -116,11 +117,13 @@ function App() {
               <Route path="/CreateCar" element={<CreateCar userInfo={userInfo} />} />
               <Route path="/CreateOffice" element={<CreateOffice userInfo={userInfo} />} />
               <Route path="/create" element={<CreateForm userInfo={userInfo} />} />
+              <Route path="/create-store" element={<CreateStore userInfo={userInfo} />} />
               <Route path="/list/:id" element={<List userInfo={userInfo} />} /> 
               <Route path="/Update/:id" element={<UpdateListing />} />
           <Route path="/Update0/:id" element={<UpdateListing0 />} />
             </Route>
           </Routes>
+          {/* create-store */}
 
           
         </>

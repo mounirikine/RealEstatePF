@@ -1,18 +1,20 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
-import {  CiUser, CiBoxList } from "react-icons/ci";
+import { CiUser, CiBoxList } from "react-icons/ci";
 import { IoCreateOutline, IoMenuOutline } from "react-icons/io5";
-import { FaPowerOff } from "react-icons/fa";
+import { FaPowerOff, FaStore } from "react-icons/fa";
 import { toast } from "react-toastify";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import logof from "../assets/finder.png";
+import { HiOutlineLanguage } from "react-icons/hi2";
+
 
 const Header = ({ userInfo }) => {
   const [open, setOpen] = useState(true);
   const [cookies, setCookies] = useCookies(["access_token"]);
   const [active, setActive] = useState("");
   const location = useLocation();
-  const useId = window.localStorage.getItem('userID')
+  const useId = window.localStorage.getItem("userID");
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/properties?country=&catSlug=&price=", label: "Properties" },
@@ -36,87 +38,144 @@ const Header = ({ userInfo }) => {
   //   console.log(location.pathname)
   // },[active])
 
-    useEffect(() => {
-      const header = document.getElementById('header');
-      const handleScroll = () => {
-        const value = window.scrollY;
-        if (value > 10) {
-          header.style.transform = 'translateY(-100px)';
-          header.style.transition = '0.5s ease-in'
-        } else {
-          header.style.transform = 'translateY(0px)';
-        }
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-  
-      // Clean up the event listener on component unmount
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, []); 
+  useEffect(() => {
+    const header = document.getElementById("header");
+    const handleScroll = () => {
+      const value = window.scrollY;
+      if (value > 10) {
+        header.style.transform = "translateY(-100px)";
+        header.style.transition = "0.5s ease-in";
+      } else {
+        header.style.transform = "translateY(0px)";
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
-      <header id="header" className=" dark:bg-gray-900   bg-white    w-full z-20 top-0 start-0 primary_text dark:border-gray-600 py-4 ">
+      <header
+        id=""
+        className=" dark:bg-gray-900   bg-white    w-full z-20 top-0 start-0 primary_text dark:border-gray-600 py-4 "
+      >
         <nav className="   px-4 lg:px-6 py-2.5 dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <Link to="/" className=" items-center">
               <img src={logof} alt="" width={130} />
             </Link>
-            <div className=" items-center   lg:order-2">
+            <div className=" items-center   lg:order-2 flex">
               {cookies.access_token ? (
                 <>
-                  <details className="dropdown dropdown-end">
-                    <summary className="m-0 btn">
-                      {userInfo && userInfo.avatar && (
-                        <>
-                          <img
-                            src={userInfo.avatar}
-                            width={30}
-                            height={30}
-                            className="rounded-full  border"
-                            style={{ width: "30px", height: "30px" }}
-                            alt="User Avatar"
-                          />
-                          <div className="badge hidden sm:block badge-ghost">
-                            {userInfo.username}
-                          </div>
-                        </>
-                      )}
-                    </summary>
+                  <div className="drawer z-[9999999999]">
+                    <input
+                      id="my-drawer"
+                      type="checkbox"
+                      className="drawer-toggle"
+                    />
+                    <div className="drawer-content">
+                      {/* Page content here */}
+                      <label
+                        htmlFor="my-drawer"
+                        className="btn bg-black hover:bg-black drawer-button"
+                      >
+                        {userInfo && userInfo.avatar && (
+                          <>
+                            <img
+                              src={userInfo.avatar}
+                              width={30}
+                              height={30}
+                              className="rounded-full  border"
+                              style={{ width: "30px", height: "30px" }}
+                              alt="User Avatar"
+                            />
+                            <div className="badge hidden sm:block badge-ghost">
+                              {userInfo.username}
+                            </div>
+                          </>
+                        )}
+                      </label>
+                    </div>
+                    <div className="drawer-side">
+                      <label
+                        htmlFor="my-drawer"
+                        aria-label="close sidebar"
+                        className="drawer-overlay"
+                      ></label>
+                      <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                        {/* Sidebar content here */}
 
-                    <ul className="p-2 shadow menu dropdown-content z-[22] bg-base-100 rounded-box w-52">
-                      <li className=" ">
-                        <Link
-                          to="/profile"
-                          className="text-black bg-slate-100 hover:bg-slate-200 mb-1"
-                        >
-                          <CiUser className="text-lg" /> Profile
-                        </Link>
-                      </li>
-                      <li className="">
-                        <Link to={`/list/${useId}`} className="text-black bg-slate-100 hover:bg-slate-200 mb-1">
-                          <CiBoxList className="text-lg" /> Your Properties
-                        </Link>
-                      </li>
-                      <li className="">
-                        <div className="flex  text-black bg-slate-100 hover:bg-slate-200 mb-1">
-                          <Link to="/create" className="flex items-center">
-                            <IoCreateOutline className="text-2xl" />
-                            Create Property
+                        <div className="pb-10 pt-2 px-3">
+                          <Link to="/" className=" items-center">
+                            <img src={logof} alt="" width={130} />
                           </Link>
                         </div>
-                      </li>
-                      <li className="">
-                        <Link
-                          onClick={removeCookies}
-                          className="text-black bg-slate-100 hover:bg-slate-200 mb-1"
-                        >
-                          <FaPowerOff className="text-lg" /> Logout
-                        </Link>
-                      </li>
-                    </ul>
-                  </details>
+
+                        <li className=" ">
+                          <Link
+                            to="/profile"
+                            className="text-black bg-slate-100 hover:bg-slate-200 mb-1"
+                          >
+                            <CiUser className="text-lg" /> Profile
+                          </Link>
+                        </li>
+                        <li className="">
+                          <Link
+                            to={`/list/${useId}`}
+                            className="text-black bg-slate-100 hover:bg-slate-200 mb-1"
+                          >
+                            <CiBoxList className="text-lg" /> Your Properties
+                          </Link>
+                        </li>
+                        <li className="">
+                          <div className="flex  text-black bg-slate-100 hover:bg-slate-200 mb-1">
+                            <Link to="/create" className="flex items-center">
+                              <IoCreateOutline className="text-2xl" />
+                              Create Property
+                            </Link>
+                          </div>
+                        </li>
+                        <li className="">
+                          <div className="flex  text-black bg-slate-100 hover:bg-slate-200 mb-1">
+                            <Link
+                              to="/create-store"
+                              className="flex items-center gap-1"
+                            >
+                              <FaStore className="text-xl" />
+                              Create Store
+                            </Link>
+                          </div>
+                        </li>
+                      
+                        <li className="">
+                          <Link
+                            onClick={removeCookies}
+                            className="text-black bg-slate-100 hover:bg-slate-200 mb-1"
+                          >
+                            <FaPowerOff className="text-lg" /> Logout
+                          </Link>
+                        </li>
+                        <li className="">
+                          <Link
+                           
+                            className="text-black bg-slate-100 hover:bg-slate-200 mb-1"
+                          >
+                            <HiOutlineLanguage className="text-lg" /> 
+                            
+                          </Link>
+                          <li>
+                              <Link className="bg-black text-white hover:bg-black flex items-center justify-center">English</Link>
+                              <Link className="bg-black text-white hover:bg-black flex items-center justify-center">Arabic</Link>
+                              <Link className="bg-black text-white hover:bg-black flex items-center justify-center">French</Link>
+                            </li>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </>
               ) : (
                 <>
@@ -142,7 +201,6 @@ const Header = ({ userInfo }) => {
                 )}
               </button>
             </div>
-
 
             <div
               className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
@@ -209,4 +267,3 @@ const Header = ({ userInfo }) => {
 };
 
 export default Header;
-
