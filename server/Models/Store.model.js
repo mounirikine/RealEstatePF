@@ -7,7 +7,7 @@ const storeSchema = new mongoose.Schema(
         required: true,
       },
       BrandImg: {
-        type: String,
+        type: Array ,
         required: false,
         default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
       },
@@ -19,6 +19,10 @@ const storeSchema = new mongoose.Schema(
       userName: {
         type: String,
         required: false,
+      },
+      email: {
+        type: String,
+        required: true,
       },
       userNumber: {
         type: String,
