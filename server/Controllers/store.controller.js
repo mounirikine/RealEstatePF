@@ -12,16 +12,16 @@ export const createStore = async(req,res,next)=>{
     }
 }
 export const getStore = async (req, res, next) => {
-    try {
-      const Store = await Store.findById(req.params.id);
-      if (!Store) {
-        return next(errorHandler(404, 'Store not found!'));
-      }
-      res.status(200).json(Store);
-    } catch (error) {
-      next(error);
+  try {
+    const foundStore = await Store.findById(req.params.id); // Renamed the variable
+    if (!foundStore) {
+      return next(errorHandler(404, 'Store not found!'));
     }
-  };
+    res.status(200).json(foundStore);
+  } catch (error) {
+    next(error);
+  }
+};
 
   export const getStores = async (req, res, next) => {
     try {
