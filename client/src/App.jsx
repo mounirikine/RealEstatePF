@@ -31,6 +31,7 @@ import MoreQuestions from "./components/MoreQuestions";
 import CreateStore from "./pages/CreateStore";
 import Store from "./pages/Store";
 import CreateAccountStore from "./pages/CreateAccountStore";
+import SingleStore from "./pages/SingleStore";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -124,6 +125,7 @@ function App() {
               <Route path="/create" element={<CreateForm userInfo={userInfo} />} />
               <Route path="/create-store" element={<CreateStore userInfo={userInfo} />} />
               <Route path="/list/:id" element={<List userInfo={userInfo} />} /> 
+              <Route path="/SingleStore/:id" element={<SingleStore userInfo={userInfo} />} /> 
               <Route path="/Update/:id" element={<UpdateListing />} />
           <Route path="/Update0/:id" element={<UpdateListing0 />} />
             </Route>

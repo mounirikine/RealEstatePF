@@ -1,22 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { CiHome, CiUser } from "react-icons/ci";
-import { FaBicycle, FaCar, FaChair, FaLaptop } from "react-icons/fa";
-import { IoCarSport, IoCreateOutline, IoHomeSharp, IoPhoneLandscape } from "react-icons/io5";
-import { HiOutlineLanguage } from "react-icons/hi2";
+import { IoHomeSharp, IoCarSport } from "react-icons/io5";
+import { MdOutlineVilla, MdOutlineApartment, MdOutlineDevices } from "react-icons/md";
+import { GiOfficeChair, GiClothes } from "react-icons/gi";
+import { PiBicycleBold, PiGuitar } from "react-icons/pi";
+import { LuArmchair } from "react-icons/lu";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import newhero from "../assets/newhero.svg";
-import PropertiesFilter from "../components/PropertiesFilter";
+import AllStores from "../components/AllStores";
 import FilterStore from "../components/FilterStore";
-import { MdOutlineApartment, MdOutlineDevices, MdOutlineVilla } from "react-icons/md";
-import { GiClothes, GiOfficeChair } from "react-icons/gi";
-import { PiBicycleBold, PiGuitar } from "react-icons/pi";
-import { LuArmchair } from "react-icons/lu";
 
 const Store = ({ userInfo }) => {
-    const [category,setCategories] = useState('house')
+  const [category, setCategories] = useState("house");
+  const [stores, setStores] = useState([]);
+  const userRef = userInfo ? userInfo._id : null; // Ensure userInfo is not null or undefined
+  useEffect(() => {
+    const getStores = async () => {
+      try {
+        const res = await fetch("http://localhost:4000/api/store/Stores");
+        const data = await res.json();
+        setStores(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getStores();
+  }, []);
 
+  const userStore = stores.find((item) => item.userRef === userRef);
   return (
     <>
       <Header userInfo={userInfo} />
@@ -39,14 +51,17 @@ const Store = ({ userInfo }) => {
                 to="/create-store"
                 className="px-6 py-3 bg-black text-white rounded-lg text-lg md:text-sm"
               >
-                Create Your Store
+                
+                {
+                  userStore ? 'Add Element' : 'Create Store'
+                }
               </Link>
             </div>
           </div>
         </main>
 
         <main className="mt-10 flex flex-col lg:flex-row justify-between px-5">
-          <div className="   w-full md:w-3/12  top-2 sticky">
+          <div className="   w-full md:w-3/12  top-2 ">
           <div className="flex py-3 flex-col border  gap-4  px-10 mt-4  w-full   ">
             <Link
               onClick={()=>{setCategories('house')}}
@@ -139,7 +154,11 @@ const Store = ({ userInfo }) => {
               <span>Furnishing</span>
             </Link>
  
-
+      <hr />
+      <AllStores />
+      <div>
+       
+      </div>
           </div>
           </div>
           <div className="min-h-screen w-full  lg:w-12/12">

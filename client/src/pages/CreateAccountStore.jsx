@@ -98,19 +98,15 @@ const handleRemoveImage = (index) => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  setLoading(true)
+  setLoading(true);
 
   try {
-
-
     const access_token = document.cookie.split('; ').find(row => row.startsWith('access_token=')).split('=')[1];
-
 
     const res = await fetch('http://localhost:4000/api/store/create-store', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-       
       },
       body: JSON.stringify({
         ...formData,
@@ -119,16 +115,21 @@ const handleSubmit = async (e) => {
     });
 
     const data = await res.json();
-    toast.success(data)
+    toast.success(data);
+    // window.localStorage.setItem('StoreUserRef', data.userRef);
+
     
-    navigate(`/store`)
-
+    
+    navigate(`/store`);
   } catch (error) {
-    console.log(error);
+    console.error(error);
+  } finally {
+    setLoading(false);
   }
-
-  setLoading(false)
 };
+
+
+
 const handleChange = (e) => {
   if (e.target.id === 'furnished' || e.target.id === 'offer') {
     setFormData({
