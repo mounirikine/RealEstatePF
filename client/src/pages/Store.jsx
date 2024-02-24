@@ -46,8 +46,8 @@ const Store = ({ userInfo }) => {
         </main>
 
         <main className="mt-10 flex flex-col lg:flex-row justify-between px-5">
-          <div className="lg:min-h-screen w-full md:w-3/12  top-2 sticky">
-          <div className="flex flex-col  gap-4  px-10 mt-4  w-full   py-1 ">
+          <div className="   w-full md:w-3/12  top-2 sticky">
+          <div className="flex py-3 flex-col border  gap-4  px-10 mt-4  w-full   ">
             <Link
               onClick={()=>{setCategories('house')}}
               className={`px-10 rounded-xl ${category ==='house' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
@@ -142,7 +142,7 @@ const Store = ({ userInfo }) => {
 
           </div>
           </div>
-          <div className="min-h-screen w-full lg:w-12/12">
+          <div className="min-h-screen w-full  lg:w-12/12">
             <FilterStore catSlug={category} />
           </div>
         </main>
