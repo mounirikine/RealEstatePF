@@ -30,6 +30,7 @@ import Contactus from "./pages/Contactus";
 import MoreQuestions from "./components/MoreQuestions";
 import CreateStore from "./pages/CreateStore";
 import Store from "./pages/Store";
+import CreateAccountStore from "./pages/CreateAccountStore";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -118,6 +119,8 @@ function App() {
               <Route path="/CreateApartment" element={<CreateApartment userInfo={userInfo} />} />
               <Route path="/CreateCar" element={<CreateCar userInfo={userInfo} />} />
               <Route path="/CreateOffice" element={<CreateOffice userInfo={userInfo} />} />
+              <Route path="/create-account-store" element={<CreateAccountStore userInfo={userInfo} />} />
+
               <Route path="/create" element={<CreateForm userInfo={userInfo} />} />
               <Route path="/create-store" element={<CreateStore userInfo={userInfo} />} />
               <Route path="/list/:id" element={<List userInfo={userInfo} />} /> 
