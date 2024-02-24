@@ -27,24 +27,25 @@ const navigate= useNavigate()
 
   
 const [formData, setFormData] = useState( {
-  imageUrls: [],
+  BrandImg: [],
   title: "",
   description: "",
   userName:userInfo.username,
+  email:userInfo.email,
   userRef: userInfo._id,
   userNumber:userInfo.phoneNumber
 });
 console.log(formData)
-
+console.log(userInfo)
   const handleImageSubmit = (e)=>{
-    if(files.length >0 && files.length + formData.imageUrls.length < 2){
+    if(files.length >0 && files.length + formData.BrandImg.length < 2){
         const promises = [];
         for (let i = 0 ; i < files.length ; i++){
           setUploading(true);
             promises.push(storeImage(files[i]))
         }
         Promise.all(promises).then((urls)=>{
-          setFormData({...formData,imageUrls:formData.imageUrls.concat(urls)})
+          setFormData({...formData,BrandImg:formData.BrandImg.concat(urls)})
 
           setImageUploadError(false);
           setUploading(false);
@@ -91,7 +92,7 @@ const storeImage = async(file)=>{
 const handleRemoveImage = (index) => {
   setFormData({
     ...formData,
-    imageUrls: formData.imageUrls.filter((_, i) => i !== index),
+    BrandImg: formData.BrandImg.filter((_, i) => i !== index),
   });
 };
 
@@ -251,8 +252,8 @@ const handleChange = (e) => {
                     </div>
 
                     <div className="grid grid-cols-6 items-center justify-center gap-2 lg:px-40 py-2">
-                      {formData.imageUrls.length > 0 &&
-                        formData.imageUrls.map((url, index) => (
+                      {formData.BrandImg.length > 0 &&
+                        formData.BrandImg.map((url, index) => (
                           <div
                             key={url}
                             className="flex items-center"
