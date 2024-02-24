@@ -30,30 +30,14 @@ const [formData, setFormData] = useState( {
   imageUrls: [],
   title: "",
   description: "",
-  address: "",
-  regularPrice: "",
-  rooms: 1,
-  bathrooms: 1,
-  furnished: false,
-  parking: undefined,
-  garage: undefined,
-  parkSpace: undefined,
-  type: "", // sell or rent
-  catSlug: "house",  // home or villa ...
-  country: "",
-  city: "",
-  state: "",
-  zip: "",
-  kitchen: "",
-  area: "",
-  yearBuilt: "",
-  userRef: window.localStorage.getItem("userID"),
-  userNumber:window.localStorage.getItem("Phone")
+  userName:userInfo.username,
+  userRef: userInfo._id,
+  userNumber:userInfo.phoneNumber
 });
 console.log(formData)
 
   const handleImageSubmit = (e)=>{
-    if(files.length >0 && files.length + formData.imageUrls.length < 7){
+    if(files.length >0 && files.length + formData.imageUrls.length < 2){
         const promises = [];
         for (let i = 0 ; i < files.length ; i++){
           setUploading(true);
@@ -122,7 +106,7 @@ const handleSubmit = async (e) => {
     const access_token = document.cookie.split('; ').find(row => row.startsWith('access_token=')).split('=')[1];
 
 
-    const res = await fetch('http://localhost:4000/api/real/create-real', {
+    const res = await fetch('http://localhost:4000/api/store/create-store', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -137,7 +121,7 @@ const handleSubmit = async (e) => {
     const data = await res.json();
     toast.success(data)
     
-    navigate(`/list/${formData.userRef}`)
+    navigate(`/store`)
 
   } catch (error) {
     console.log(error);
