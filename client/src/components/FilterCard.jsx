@@ -1,62 +1,87 @@
 import { motion } from 'framer-motion';
-import { FaBath, FaBed, FaMapMarkerAlt, FaRegSquare } from 'react-icons/fa';
-import { SlSizeFullscreen } from 'react-icons/sl';
+
+
 import { Link } from 'react-router-dom';
 
+
+
+import { FiMapPin } from "react-icons/fi";
+import { FaBed,FaRegSquare, FaBath,FaMap, FaMapMarkerAlt, FaWhatsapp   } from "react-icons/fa";
 const FilterCard = ({data}) => {
     const imageUrl = data.imageUrls[0];
   return (
     <>
-  <motion.Card
-      to={`PropertieDetails/${data._id}`}
-      className="flex flex-col rounded-xl bg-white shadow-xl h-[450px]"
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
-      }}
-      initial='hidden'
-      animate='visible'
-      transition={{ duration: 0.8, delay: 0.75 }}
-    >
+   <motion.div 
+              initial={{y:-22 ,opacity:0}}
+              whileInView={{y:0,opacity:1 }}
+              transition={{duration:0.8 ,delay:0.6}} 
+      
+      className="  justify-center rounded-xl border">
       <>
-      <Link  to={`/PropertieDetails/${data._id}`} >
-      <div className="relative flex items-center justify-center ">
-        <img
-          className="rounded-xl w-full h-[280px]  transition ease-in-out delay-150  duration-300"
-          src={imageUrl}
-          alt=""
-        />
-        <div className="chat chat-start mb-3 px-4 absolute top-1 left-0">
-          <span className={`${data.type === 'sale' ?'bg-red-200' :'bg-green-100'} text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-500`}>For {data.type}</span>
+      <Link to={`/PropertieDetails/${data._id}`} >
+        <div className=" rounded-xl mx-h-[340px]">
+          <img
+            src={imageUrl}
+            alt=""
+            className=" rounded-t-xl h-[300px]  w-full"
+          />
         </div>
-      </div>
-      <div className="flex flex-col py-2 px-4 justify-center">
-      <h1 className=" truncate text-xl md:text-xl lg:text-2xl pb-1">
-          ${data.regularPrice}
-        </h1>
-        <h1 className="text-lg md:text-xl lg:text-2xl truncate ">
-          {data.title}
-        </h1>
-        
-        <p className="text-gray-500 text-sm truncate w-full">{data.description}</p>
-      </div>
-      <div className="flex items-center px-4">
-        <span className="flex items-center gap-0.5 truncate  text-sm">
-          <FaMapMarkerAlt className="text-sm" /> {data.address}, {data.city}, {data.country}
-        </span>
-      </div>
-      <div className="flex justify-between items-center border bg-violet-100  mt-2 py-0.5 mx-3 rounded-lg text-sm px-2">
-        <span className="flex justify-between items-center gap-1 -violet-500 pr-5">
-          <FaRegSquare className="" /> {data.area} Sqft
-        </span>
-        <span className="flex justify-between items-center gap-1  pr-5">
-          <FaBed className="0" /> {data.rooms} Bed
-        </span>
-        <span className="flex justify-between items-center gap-1  pr-1">
-          <FaBath className="" /> {data.bathrooms} Bath
-        </span>
-      </div></Link></>
-    </motion.Card> 
+        <div className=" px-3 mt-5">
+          <div className="flex items-center justify-between">
+            <span className="text-3xl lg:text-4xl flex items-end truncate">
+              ${data.regularPrice}/<p className="text-sm lg:text-lg ">month</p>
+            </span>
+            <span className="flex items-center  px-3 py-1 gap-3 rounded-xl">
+              <div>
+                <a
+                  href={`https://wa.me/${data.userNumber}?text=Hello How Can I Get More Info About This ?`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-black  bg-violet-100 px-3 py-3 rounded-3xl cursor-pointer"
+                >
+                  <FaWhatsapp className="text-xl" />
+                </a>
+              </div>
+            </span>
+          </div>
+          <div className="pt-1">
+            <h1 className="text-2xl lg:text-3xl mb-2 truncate">{data.title}</h1>
+            <div className="flex items-center gap-2 text-sm lg:text-xl mb-3">
+              <span>
+                <FiMapPin />
+              </span>
+              <span className="text-base truncate">{data.address}</span>
+            </div>
+            <div className="h-[40px]">
+              <h1 className=" pr-3 truncate text-sm lg:text-xl">{data.description}</h1>
+            </div>
+          </div>
+
+          <div className="border bg-violet-100 w-12/12 rounded-xl  mb-4 lg:px-10 py-3 flex  items-center  justify-evenly">
+            <div className='flex'>
+              <FaBed className="text-2xl mx-1" />
+              <span className="flex items-center  truncate text-sm">
+                 {data.rooms}
+              </span>
+            </div>
+
+            <div className="flex">
+              <FaBath className="text-2xl mx-1" /> 
+              <span className="flex items-center  truncate text-sm">
+                {data.bathrooms}
+              </span>
+            </div>
+            <div className="flex">
+              <FaRegSquare className="text-2xl mx-1" />
+              <span className="flex items-center  truncate text-sm">
+                
+                {data.area}{" "}
+              </span>
+            </div>
+          </div>
+        </div>
+        </Link></>
+    </motion.div> 
     </>
 
     

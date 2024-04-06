@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { FaMap, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 import { FaRegSquare } from "react-icons/fa";
 import { TbToolsKitchen3 } from "react-icons/tb";
-
+import { FiMapPin } from "react-icons/fi";
 import { FaBed, FaBath } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { FiMapPin } from "react-icons/fi";
+
 
 const ResidentCardCol = ({ data }) => {
   const imageUrl = data.imageUrls[0]; //
