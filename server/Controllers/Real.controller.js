@@ -71,20 +71,24 @@ export const deleteReal = async(req,res,next)=>{
         let catSlug = req.query.catSlug;
 
         if (catSlug !== undefined ) {
-            // If catSlug is provided and not equal to 'Homes'
+
+
+          if(catSlug !== 'car'){
+              
             const listing = await Real.find({ catSlug });
             if (!listing || listing.length === 0) {
                 return next(errorHandler(404, 'Reals not found!'));
             }
             res.status(200).json(listing);
-        } else {
-            // If catSlug is not provided or equal to 'Homes'
-            const allListings = await Real.find();
-            if (!allListings || allListings.length === 0) {
-                return next(errorHandler(404, 'Reals not found!'));
+          }else if(catSlug === 'car'){
+            const listing = await Car.find({ catSlug });
+            if (!listing || listing.length === 0) {
+                return next(errorHandler(404, 'Cars not found!'));
             }
-            res.status(200).json(allListings);
-        }
+            res.status(200).json(listing);
+          }
+       
+        } 
     } catch (error) {
         next(error);
     }
