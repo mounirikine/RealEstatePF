@@ -46,7 +46,7 @@ const [formData, setFormData] = useState( {
   kitchen: "",
   area: "",
   yearBuilt: "",
-  userRef: window.localStorage.getItem("userID"),
+  
   userNumber:window.localStorage.getItem("Phone")
 });
 console.log(formData)
@@ -129,6 +129,7 @@ const handleSubmit = async (e) => {
       },
       body: JSON.stringify({
         ...formData,
+        userRef: window.localStorage.getItem("userID"),
         access_token
       }),
     });
@@ -136,7 +137,7 @@ const handleSubmit = async (e) => {
     const data = await res.json();
     toast.success(data)
     
-    navigate(`/list/${formData.userRef}`)
+   // navigate(`/list/${formData.userRef}`)
 
   } catch (error) {
     console.log(error);

@@ -41,7 +41,6 @@ const UpdateListing0 = () => {
     kitchen: "",
     area: "",
     yearBuilt: "",
-    userRef: window.localStorage.getItem("userID"),
     userNumber:window.localStorage.getItem("Phone")
   });
   const { id } = useParams();
@@ -139,6 +138,8 @@ console.log(formData)
         },
         body: JSON.stringify({
           ...formData,
+          userRef: window.localStorage.getItem("userID"),
+
           access_token,
         }),
       });

@@ -6,7 +6,7 @@ import ResidentCardCol from './ResidentCardCol';
 
 const Residential = ({ catSlug }) => {
   const [data, setData] = useState([]);
-
+      console.log(data)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -17,7 +17,9 @@ const Residential = ({ catSlug }) => {
         const rawData = await response.json();
         const shuffledData = rawData.sort(() => 0.5 - Math.random());
         const slicedData = shuffledData.slice(0, 4);
-        setData(slicedData);
+      
+        setData(slicedData); 
+   
       } catch (error) {
         console.error('Error fetching data:', error);
       }

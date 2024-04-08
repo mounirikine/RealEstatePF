@@ -46,7 +46,6 @@ const [formData, setFormData] = useState( {
   kitchen: "",
   area: "",
   yearBuilt: "",
-  userRef: window.localStorage.getItem("userID"),
   userNumber:window.localStorage.getItem("Phone")});
 
  
@@ -128,6 +127,8 @@ const handleSubmit = async (e) => {
       },
       body: JSON.stringify({
         ...formData,
+        userRef: window.localStorage.getItem("userID"),
+
         access_token
       }),
     });

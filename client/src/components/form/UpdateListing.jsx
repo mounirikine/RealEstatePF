@@ -55,7 +55,6 @@ const UpdateListing = () => {
     Bluetooth: false,
     HomeLink: false,
     PowerSteering: false,
-    userRef: window.localStorage.getItem("userID"),
     userNumber: window.localStorage.getItem("Phone"),
   });
 
@@ -154,6 +153,8 @@ console.log(formData)
         },
         body: JSON.stringify({
           ...formData,
+          userRef: window.localStorage.getItem("userID"),
+
           access_token,
         }),
       });

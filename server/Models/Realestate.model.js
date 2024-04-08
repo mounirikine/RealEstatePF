@@ -80,9 +80,10 @@ const RealestateSchema = new mongoose.Schema(
       required: false,
     },
     userRef: {
-      type: String,
-      required: true,
-    },yearBuilt: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User', // Reference the User model
+      required: true
+  },yearBuilt: {
         type: Number,
         required: false,
       },

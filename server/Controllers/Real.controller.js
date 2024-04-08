@@ -6,14 +6,19 @@ import { errorHandler } from "../utils/error.js";
 
 
 
-export const createReal = async(req,res,next)=>{
-    try {
-        const listing = Real.create(req.body);
-        return res.status(201).json("Real has ben created successfully");
-    } catch (error) {
-        next(error)
-    }
-}
+export const createReal = async (req, res, next) => {
+  try {
+    const userId = req.body.userRef; // Assuming the authenticated user's ID is available in req.user
+    const realData = {
+      ...req.body,
+      userRef: userId // Set the userRef field to the authenticated user's ID
+    };
+    const real = await Real.create(realData);
+    res.status(201).json(real);
+  } catch (error) {
+    next(error);
+  }
+};
 
 
 export const deleteReal = async(req,res,next)=>{
@@ -21,9 +26,7 @@ export const deleteReal = async(req,res,next)=>{
  if(!listing){
      return next(errorHandler(404,'Real not found1'));
  }
- if(req.user.id !== listing.userRef){
-     return next(errorHandler(401,'You can only delete your own Real!'));
- }
+
  try {
  
      await Real.findByIdAndDelete(req.params.id);
@@ -39,9 +42,7 @@ export const deleteReal = async(req,res,next)=>{
     if (!listing) {
       return next(errorHandler(404, 'Real not found!'));
     }
-    if (req.user.id !== listing.userRef) {
-      return next(errorHandler(401, 'You can only update your own realestats!'));
-    }
+   
   
     try {
       const updatedListing = await Real.findByIdAndUpdate(
@@ -68,30 +69,26 @@ export const deleteReal = async(req,res,next)=>{
   };
   export const getRealEstats = async (req, res, next) => {
     try {
-        let catSlug = req.query.catSlug;
+      let catSlug = req.query.catSlug;
 
-        if (catSlug !== undefined ) {
-
-
-          if(catSlug !== 'car'){
-              
-            const listing = await Real.find({ catSlug });
-            if (!listing || listing.length === 0) {
-                return next(errorHandler(404, 'Reals not found!'));
-            }
-            res.status(200).json(listing);
-          }else if(catSlug === 'car'){
-            const listing = await Car.find({ catSlug });
-            if (!listing || listing.length === 0) {
-                return next(errorHandler(404, 'Cars not found!'));
-            }
-            res.status(200).json(listing);
+      if (catSlug !== undefined) {
+          let listings;
+          if (catSlug !== 'car') {
+              listings = await Real.find({ catSlug }).populate('userRef', 'avatar');
+              if (!listings || listings.length === 0) {
+                  return next(errorHandler(404, 'Reals not found!'));
+              }
+          } else if (catSlug === 'car') {
+              listings = await Car.find({ catSlug }).populate('userRef', 'avatar');
+              if (!listings || listings.length === 0) {
+                  return next(errorHandler(404, 'Cars not found!'));
+              }
           }
-       
-        } 
-    } catch (error) {
-        next(error);
-    }
+          res.status(200).json(listings);
+      }
+  } catch (error) {
+      next(error);
+  }
 };
 
 
@@ -116,6 +113,7 @@ export const getListings = async (req, res, next) => {
 
     // Return the combined listings
     res.status(200).json(allListings);
+ 
   } catch (error) {
     next(error);
   }
