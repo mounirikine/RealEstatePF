@@ -28,8 +28,7 @@ import UpdateListing from "./components/form/UpdateListing";
 import UpdateListing0 from "./components/form/UpdateListing0";
 import Contactus from "./pages/Contactus";
 import MoreQuestions from "./components/MoreQuestions";
-import CreateStore from "./pages/CreateStore";
-import Store from "./pages/Store";
+
 import CreateAccountStore from "./pages/CreateAccountStore";
 import SingleStore from "./pages/SingleStore";
 
@@ -110,7 +109,6 @@ function App() {
             <Route path='/forgot-Pass' element={<ForgotPass/>}/>
             <Route path='/forgot-Pass/:id/:token' element={<NewPass/>}/>
             <Route path='/MoreQuestions' element={<MoreQuestions/>}/>
-            <Route path='/store' element={<Store userInfo={userInfo}/>} />
 
             {/* Use Routes inside PrivateRoutes */}
             <Route element={<PrivateRoutes />}>
@@ -123,7 +121,7 @@ function App() {
               <Route path="/create-account-store" element={<CreateAccountStore userInfo={userInfo} />} />
 
               <Route path="/create" element={<CreateForm userInfo={userInfo} />} />
-              <Route path="/create-store" element={<CreateStore userInfo={userInfo} />} />
+             
               <Route path="/list/:id" element={<List userInfo={userInfo} />} /> 
               <Route path="/SingleStore/:id" element={<SingleStore userInfo={userInfo} />} /> 
               <Route path="/Update/:id" element={<UpdateListing />} />

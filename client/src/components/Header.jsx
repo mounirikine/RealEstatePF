@@ -28,7 +28,7 @@ const Header = ({ userInfo }) => {
     { path: "/properties?country=&catSlug=&price=", label: t('Properties') },
     { path: "/about", label: t('About') },
     { path: "/contact", label: t('Contact') }, 
-    { path: "/store", label: t('store') },
+
     { path: "/notification", label: t('Notifications') },
    
   ];
@@ -149,17 +149,7 @@ const Header = ({ userInfo }) => {
                             </Link>
                           </div>
                         </li>
-                        <li className="">
-                          <div className="flex  py-4  bg-gray-100  mb-1">
-                            <Link
-                              to="/create-store"
-                              className="flex items-center gap-1"
-                            >
-                              <FaStore className="text-xl" />
-                              Create Store
-                            </Link>
-                          </div>
-                        </li>
+                       
                       
                         <li className="">
                           <Link
