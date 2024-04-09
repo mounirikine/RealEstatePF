@@ -6,21 +6,25 @@ import {
   FaArrowRight,
   FaBath,
   FaBed,
-  FaCheckCircle,
   FaRegSquare,
   FaShareAlt,
   FaWhatsapp,
 } from "react-icons/fa";
 import { TbToolsKitchen3 } from "react-icons/tb";
-
+import { toast } from "react-toastify";
 import RelatedItems from "../components/RelatedItems";
-import { IoIosCloseCircle } from "react-icons/io";
+import { FiPlus } from "react-icons/fi";
+
+
+
 const PropertyDetails = ({ userInfo }) => {
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [text,setText] = useState('');
+console.log(comments)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,10 +48,71 @@ const PropertyDetails = ({ userInfo }) => {
         setLoading(false);
       }
     };
+    const fetchComments = async () => {
+      try {
+        const res = await fetch(
+          `http://127.0.0.1:4000/api/comment/comments/${id}`
+        );
+        const response = await res.json();
 
+        if (Array.isArray(response)) {
+          setComments(response);
+
+          console.log(data);
+        } else {
+          setComments([response]);
+        }
+
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+        setError("Error fetching data");
+        setLoading(false);
+      }
+    };
+    fetchComments();
     fetchData();
   }, [id]);
 
+
+
+  const handleComment = async (e) => {
+    e.preventDefault();
+    setLoading(true)
+  
+    try {
+  
+  
+      const access_token = document.cookie.split('; ').find(row => row.startsWith('access_token=')).split('=')[1];
+  
+  
+      const res = await fetch('http://localhost:4000/api/comment/create-comment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+         
+        },
+        body: JSON.stringify({
+          text,
+          userRef: window.localStorage.getItem("userID"),
+
+       id,
+        
+          access_token
+        }),
+      });
+  
+      const data = await res.json();
+      toast.success(data)
+      
+      
+  
+    } catch (error) {
+      console.log(error);
+    }
+  
+    setLoading(false)
+  };
   return (
     <>
       <Header userInfo={userInfo} />
@@ -267,7 +332,34 @@ const PropertyDetails = ({ userInfo }) => {
                   className="w-full h-auto lg:h-[400px] object-cover"
                   alt=""
                 />
+                
               </main>
+            </div>
+            <div>
+              <div className="py-5 text-center lg:text-left">
+                <h1 className="text-3xl font-bold">Comments</h1>
+              </div>
+                <main className="w-full lg:w-10/12 mx-auto">
+                  <div className="flex items-center justify-center lg:justify-start mb-4">
+                    <div className="avatar">
+                      <div className="w-12 mr-2 rounded-full">
+                        <img src={userInfo?.avatar} />
+                      </div>
+                    </div>
+
+                    <textarea
+                      placeholder="Comment"
+                      onChange={(e)=>setText(e.target.value)}
+                      value={text}
+                      className="textarea textarea-bordered textarea-xs w-full max-w-xs lg:max-w-full"
+                    ></textarea>
+                    <h5 onClick={handleComment} className="btn text-2xl rounded-xl ml-1" >{loading ? (
+                      <span className="loading loading-spinner loading-md "></span>
+                    ) : (
+                      <FiPlus />
+                    )}</h5>
+                  </div>
+                </main>
             </div>
           </div>
           <div className="md:w-3/12">
@@ -301,7 +393,8 @@ const PropertyDetails = ({ userInfo }) => {
             </main>
           </div>
         </main>
-
+        
+        
         <main className="py-14 px-6 md:px-12 lg:px-20 xl:px-32">
           <div className="py-5 text-center lg:text-left">
             <h1 className="text-4xl lg:text-5xl font-bold">Similar Listings</h1>

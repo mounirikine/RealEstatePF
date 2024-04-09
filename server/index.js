@@ -8,6 +8,7 @@ import authRouter from '../server/Routes/auth.route.js'
 import carRouter from '../server/Routes/car.route.js'
 import otherRouter from '../server/Routes/other.route.js'
 import storeRouter from '../server/Routes/store.route.js'
+import commentRouter from '../server/Routes/comment.route.js'
 dotenv.config()
 
 const app = express();
@@ -44,6 +45,7 @@ app.use("/api/real",realRouter)
 app.use("/api/car",carRouter)
 app.use("/api/other",otherRouter)
 app.use("/api/store",storeRouter)
+app.use("/api/comment",commentRouter)
 app.use((err,req,res,next)=>{
     const statusCode = err.statusCode || 500;
     const message = err.message || 'Internal Server Error';
