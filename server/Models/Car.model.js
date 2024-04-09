@@ -23,9 +23,10 @@ const carSchema = new mongoose.Schema(
     required: false,
   },
   userRef: {
-    type: String,
-    required: true,
-  },
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', // Reference the User model
+    required: true
+},
   body: {
     type: String,
     required: true,

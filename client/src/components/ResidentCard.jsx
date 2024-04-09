@@ -30,7 +30,7 @@ const ResidentCard = ({ data }) => {
               <span className="flex items-center  gap-3">
                 <div className="avatar">
                           <div className="w-14 mask mask-hexagon">
-                            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                           <img src={data.userRef.avatar} />
                           </div>
                         </div>
                   <div>

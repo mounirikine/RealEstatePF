@@ -3,7 +3,12 @@ import Other from "../Models/Other.model.js";
 
 export const createProduct = async(req,res,next)=>{
     try {
-        const listing = Other.create(req.body);
+      const userId = req.body.userRef; // Assuming the authenticated user's ID is available in req.user
+      const otherData = {
+        ...req.body,
+        userRef: userId // Set the userRef field to the authenticated user's ID
+      };
+        const listing = Other.create(otherData);
         return res.status(201).json("Product has ben created successfully");
     } catch (error) {
         next(error)

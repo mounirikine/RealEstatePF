@@ -8,7 +8,12 @@ import Car from "../Models/Car.model.js";
 
 export const createCar = async(req,res,next)=>{
     try {
-        const listing = Car.create(req.body);
+      const userId = req.body.userRef; // Assuming the authenticated user's ID is available in req.user
+      const carData = {
+        ...req.body,
+        userRef: userId // Set the userRef field to the authenticated user's ID
+      };
+        const listing = Car.create(carData);
         return res.status(201).json("Car has ben created successfully");
     } catch (error) {
         next(error)

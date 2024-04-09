@@ -25,7 +25,7 @@ const Header = ({ userInfo }) => {
   const useId = window.localStorage.getItem("userID");
   const navItems = [
     { path: "/", label: t('Home') },
-    { path: "/properties?country=&catSlug=&price=", label: t('Properties') },
+    { path: "/properties", label: t('Properties') },
     { path: "/about", label: t('About') },
     { path: "/contact", label: t('Contact') }, 
 
@@ -87,11 +87,11 @@ const Header = ({ userInfo }) => {
                       type="checkbox"
                       className="drawer-toggle"
                     />
-                    <div className="drawer-content">
+                    <div className="drawer-content  rounded-2xl">
                       {/* Page content here */}
                       <label
                         htmlFor="my-drawer"
-                        className="btn bg-black hover:bg-black drawer-button"
+                        className="btn   hover:bg-black drawer-button"
                       >
                         {userInfo && userInfo.avatar && (
                           <>
@@ -211,22 +211,24 @@ const Header = ({ userInfo }) => {
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 {navItems.map((item) => (
                   <li
-                    key={item.label}
-                    onClick={() => setOpen(true)}
+                  key={item.label}
+                  onClick={() => setOpen(true)}
+                  className={`${
+                    location.pathname === item.path
+                      ? "bg-white text-black"
+                      : "text-black"
+                  } px-5 py-1 rounded-xl`}
+                >
+                  <NavLink
+                    to={item.path}
+                    activeClassName="bg-white text-black" // Pass activeClassName to NavLink
                     className={`${
-                      location.pathname === item.path
-                        ? "bg-white text-black"
-                        : "text-black"
-                    } px-5 py-1 rounded-xl`}
+                      location.pathname === item.path ? "bg-white text-black" : "text-black"
+                    } px-5 py-1 rounded-xl block font-semibold bg-primary-700 lg:text-primary-700 lg:p-0 dark:text-white`}
                   >
-                    <NavLink
-                      to={item.path}
-                      activeClassName="bg-white text-black"
-                      className="block py-2 pr-4 pl-3 font-semibold rounded bg-primary-700 lg:text-primary-700 lg:p-0 dark:text-white"
-                    >
-                      {item.label}
-                    </NavLink>
-                  </li>
+                    {item.label}
+                  </NavLink>
+                </li>
                 ))}
               </ul>
             </div>

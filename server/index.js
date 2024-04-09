@@ -18,21 +18,26 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
 
+
+const connect = async () => {
+    try {
+        await mongoose.connect(process.env.MONGO);
+        console.log('Connected to MongoDB');
+    } catch (error) {
+        console.error('MongoDB connection error:', error);
+        // You may choose to handle this error differently, like retrying the connection or logging it to a file.
+        process.exit(1); // Exit the process if MongoDB connection fails.
+    }
+
+}
+
 app.listen(PORT, ()=> {
     connect()
     console.log(`Server is running on port ${PORT}`);
 });
 
-const connect= async ()=>{
-    try {
 
-    await mongoose.connect(process.env.MONGO);
-console.log('connected');
-} catch (error) {
-   
-    throw error  
-}
-} 
+
 
 app.use("/api/auth",authRouter)
 app.use("/api/real",realRouter)

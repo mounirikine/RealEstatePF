@@ -54,10 +54,9 @@ const CreateCar = () => {
     Bluetooth: false,
     HomeLink: false,
     PowerSteering: false,
-    userRef: window.localStorage.getItem("userID"),
     userNumber: window.localStorage.getItem("Phone"),
   });
-
+console.log(formData)
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       const promises = [];
@@ -135,6 +134,8 @@ const CreateCar = () => {
         },
         body: JSON.stringify({
           ...formData,
+          userRef: window.localStorage.getItem("userID"),
+
           access_token,
         }),
       });
@@ -151,12 +152,13 @@ const CreateCar = () => {
   };
 
   const handleChange = (e) => {
-  
-      setFormData({
+    const { id, type, checked, value } = e.target;
+    const newValue = type === 'checkbox' ? checked : value;
+
+    setFormData({
         ...formData,
-        [e.target.id]: e.target.value,
-      });
-  
+        [id]: newValue,
+    });
   };
 
   return (
@@ -314,6 +316,7 @@ const CreateCar = () => {
                       onChange={handleChange}
                       placeholder="body"
                       id="body"
+                      value=""
                       className="border p-2 rounded w-full"
                     >
                       <option disabled selected>
@@ -342,6 +345,7 @@ const CreateCar = () => {
                       onChange={handleChange}
                       required
                       id="color"
+                      value=""
                       placeholder="color"
                       className="border p-2 rounded w-full"
                     >
@@ -380,6 +384,7 @@ const CreateCar = () => {
                       onChange={handleChange}
                       required
                       id="fueltype"
+                      value=""
                       placeholder="Fuel Type"
                       className="border p-2 rounded w-full"
                     >
@@ -400,6 +405,7 @@ const CreateCar = () => {
                       type="text"
                       id="transmission"
                       required
+                      value=""
                       placeholder="transmission"
                       className="border p-2 rounded w-full"
                     >
@@ -418,6 +424,7 @@ const CreateCar = () => {
                       onChange={handleChange}
                       id="drivetype"
                       required
+                      value=""
                       placeholder="Drive Type"
                       className="border p-2 rounded w-full"
                     >
@@ -442,14 +449,15 @@ const CreateCar = () => {
                       type="text"
                       required
                       id="vin"
+                      
                       placeholder="VIN"
                       className="border p-2 rounded w-full"
                     />
                     <input
                       onChange={handleChange}
                       type="number"
-                      id="carYear"
-                      name="carYear"
+                      id="year"
+                      name="year"
                       placeholder="Enter year"
                       min="1900"
                       max="2024"
@@ -472,6 +480,8 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.DigitalOdometer}
+                        id="DigitalOdometer"
                       />
                       <span>DigitalOdometer</span>
                     </div>
@@ -480,6 +490,9 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.Heater}
+
+                        id="Heater"
                       />
                       <span>Heater</span>
                     </div>
@@ -488,6 +501,8 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.LeatherSeats}
+                        id="LeatherSeats"
                       />
                       <span>LeatherSeats</span>
                     </div>
@@ -496,6 +511,8 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.PanoramicMoonroof}
+                        id="PanoramicMoonroof"
                       />
                       <span>PanoramicMoonroof</span>
                     </div>
@@ -504,6 +521,8 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.Tachometer}
+                        id="Tachometer"
                       />
                       <span>Tachometer</span>
                     </div>
@@ -512,6 +531,8 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.TouchscreenDisplay}
+                        id="TouchscreenDisplay"
                       />
                       <span>TouchscreenDisplay</span>
                     </div>
@@ -520,6 +541,8 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.BrakeAssist}
+                        id="BrakeAssist"
                       />
                       <span>BrakeAssist</span>
                     </div>
@@ -528,6 +551,8 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.ChildSafetyLocks}
+                        id="ChildSafetyLocks"
                       />
                       <span>ChildSafetyLocks</span>
                     </div>
@@ -536,6 +561,8 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.DriverAirBag}
+                        id="DriverAirBag"
                       />
                       <span>DriverAirBag</span>
                     </div>
@@ -544,6 +571,8 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.PowerDoorLocks}
+                        id="PowerDoorLocks"
                       />
                       <span>PowerDoorLocks</span>
                     </div>
@@ -552,6 +581,8 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.StabilityControl}
+                        id="StabilityControl"
                       />
                       <span>StabilityControl</span>
                     </div>
@@ -560,6 +591,9 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.TractionControl}
+
+                        id="TractionControl"
                       />
                       <span>TractionControl</span>
                     </div>
@@ -568,6 +602,9 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.FogLightsFront}
+
+                        id="FogLightsFront"
                       />
                       <span>FogLightsFront</span>
                     </div>
@@ -576,6 +613,9 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.RainSensingWiper}
+
+                        id="RainSensingWiper"
                       />
                       <span>RainSensingWiper</span>
                     </div>
@@ -584,6 +624,9 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.RearSpoiler}
+
+                        id="RearSpoiler"
                       />
                       <span>RearSpoiler</span>
                     </div>
@@ -592,6 +635,9 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.WindowsElectric}
+
+                        id="WindowsElectric"
                       />
                       <span>WindowsElectric</span>
                     </div>
@@ -600,6 +646,9 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.AndroidAuto}
+
+                        id="AndroidAuto"
                       />
                       <span>AndroidAuto</span>
                     </div>
@@ -608,6 +657,9 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.AppleCarPlay}
+
+                        id="AppleCarPlay"
                       />
                       <span>AppleCarPlay</span>
                     </div>
@@ -616,6 +668,9 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.Bluetooth}
+
+                        id="Bluetooth"
                       />
                       <span>Bluetooth</span>
                     </div>
@@ -624,6 +679,9 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.HomeLink}
+
+                        id="HomeLink"
                       />
                       <span>HomeLink</span>
                     </div>
@@ -632,6 +690,9 @@ const CreateCar = () => {
                         onChange={handleChange}
                         type="checkbox"
                         className="checkbox"
+                        checked={formData.PowerSteering}
+
+                          id="PowerSteering"
                       />
                       <span>PowerSteering</span>
                     </div>
