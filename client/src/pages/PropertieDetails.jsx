@@ -36,7 +36,6 @@ console.log(comments)
         if (Array.isArray(response)) {
           setData(response);
 
-          console.log(data);
         } else {
           setData([response]);
         }
@@ -58,7 +57,6 @@ console.log(comments)
         if (Array.isArray(response)) {
           setComments(response);
 
-          console.log(data);
         } else {
           setComments([response]);
         }
@@ -74,45 +72,62 @@ console.log(comments)
     fetchData();
   }, [id]);
 
-
-
-  const handleComment = async (e) => {
-    e.preventDefault();
-    setLoading(true)
-  
+  const fetchComments = async () => {
     try {
-  
-  
-      const access_token = document.cookie.split('; ').find(row => row.startsWith('access_token=')).split('=')[1];
-  
-  
-      const res = await fetch('http://localhost:4000/api/comment/create-comment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-         
-        },
-        body: JSON.stringify({
-          text,
-          userRef: window.localStorage.getItem("userID"),
+      const res = await fetch(
+        `http://127.0.0.1:4000/api/comment/comments/${id}`
+      );
+      const response = await res.json();
 
-       id,
-        
-          access_token
-        }),
-      });
-  
-      const data = await res.json();
-      toast.success(data)
-      
-      
-  
-    } catch (error) {
-      console.log(error);
+      if (Array.isArray(response)) {
+        setComments(response);
+
+      } else {
+        setComments([response]);
+      }
+
+      setLoading(false);
+    } catch (err) {
+      console.error(err);
+      setError("Error fetching data");
+      setLoading(false);
     }
-  
-    setLoading(false)
   };
+const handleComment = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+
+  try {
+    const access_token = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("access_token="))
+      .split("=")[1];
+
+    const res = await fetch("http://localhost:4000/api/comment/create-comment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text,
+        userRef: window.localStorage.getItem("userID"),
+        id,
+        access_token,
+      }),
+    });
+
+    const data = await res.json();
+    toast.success(data);
+
+    // Refetch comments after successful comment creation
+    fetchComments();
+  } catch (error) {
+    console.log(error);
+  }
+
+  setLoading(false);
+};
+
   return (
     <>
       <Header userInfo={userInfo} />
@@ -359,8 +374,28 @@ console.log(comments)
                       <FiPlus />
                     )}</h5>
                   </div>
+                  {comments.map((item)=>(
+                    <div key={item._id} className="flex items-center justify-center lg:justify-start mb-4">
+                    <div className="avatar">
+                      <div className="w-12 mr-2 rounded-full">
+                        <img src={item.userRef?.avatar} />
+                      </div>
+                    </div>
+
+                    <p
+                    
+                      
+                      className="textarea textarea-bordered textarea-xs w-full max-w-xs lg:max-w-full"
+                    >{item.text}</p>
+                   
+                  </div>
+                  ))}
+                  
                 </main>
             </div>
+
+
+
           </div>
           <div className="md:w-3/12">
             <main className="flex py-10">

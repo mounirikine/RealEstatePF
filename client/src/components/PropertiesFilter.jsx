@@ -33,7 +33,7 @@ console.log(data)
       } finally {
         setTimeout(() => {
           setLoading(false);
-        }, 3000);
+        }, 500);
       }
     };
   

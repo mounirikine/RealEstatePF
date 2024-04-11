@@ -20,20 +20,23 @@ app.use(cookieParser())
 app.use(cors())
 
 
-const connect = async () => {
+const connectWithRetry = async () => {
     try {
         await mongoose.connect(process.env.MONGO);
         console.log('Connected to MongoDB');
     } catch (error) {
         console.error('MongoDB connection error:', error);
-        // You may choose to handle this error differently, like retrying the connection or logging it to a file.
-        process.exit(1); // Exit the process if MongoDB connection fails.
+        // Retry connection after a delay
+        setTimeout(connectWithRetry, 5000); // Retry after 5 seconds
     }
+};
 
-}
+const connect = async () => {
+    await connectWithRetry();
+};
 
 app.listen(PORT, ()=> {
-    connect()
+    connect();
     console.log(`Server is running on port ${PORT}`);
 });
 

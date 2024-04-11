@@ -30,7 +30,9 @@ export const getCommentsByReferenceId = async (req, res, next) => {
   
   
         // Find comments based on the reference ID and type
-        const comments = await Comment.find({commentAbleId: referenceId });
+        const comments = await Comment.find({ commentAbleId: referenceId })
+        .sort({ createdAt: -1 })
+        .populate('userRef', 'avatar');
 
         return res.status(200).json(comments);
     } catch (error) {
