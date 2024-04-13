@@ -9,6 +9,8 @@ import carRouter from '../server/Routes/car.route.js'
 import otherRouter from '../server/Routes/other.route.js'
 import storeRouter from '../server/Routes/store.route.js'
 import commentRouter from '../server/Routes/comment.route.js'
+import setupSwagger from './swagger.js'; // Import Swagger setup
+
 dotenv.config()
 
 const app = express();
@@ -18,6 +20,8 @@ const PORT = 4000;
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
+// Initialize Swagger
+setupSwagger(app);
 
 
 const connectWithRetry = async () => {
