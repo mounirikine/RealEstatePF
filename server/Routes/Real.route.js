@@ -4,6 +4,97 @@ import { createReal, deleteReal, getForUpdating, getListings, getListingsby, get
 const router = express.Router();
 
 
+// Swagger annotations for real routes
+/**
+ * @swagger
+ * /api/real/create-real:
+ *   post:
+ *     summary: Create a new real estate listing
+ *     tags: [Real]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/RealEstate'
+ *     responses:
+ *       '201':
+ *         description: Successfully created a new real estate listing
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/RealEstate'
+ *       '500':
+ *         $ref: '#/components/responses/InternalServerError'
+ *
+ * /api/real/delete-real/{id}:
+ *   delete:
+ *     summary: Delete a real estate listing
+ *     tags: [Real]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Real estate listing deleted successfully
+ *       '404':
+ *         $ref: '#/components/responses/NotFound'
+ *       '500':
+ *         $ref: '#/components/responses/InternalServerError'
+ *
+ * /api/real/update-real/{id}:
+ *   put:
+ *     summary: Update a real estate listing
+ *     tags: [Real]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/RealEstate'
+ *     responses:
+ *       '200':
+ *         description: Real estate listing updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/RealEstate'
+ *       '404':
+ *         $ref: '#/components/responses/NotFound'
+ *       '500':
+ *         $ref: '#/components/responses/InternalServerError'
+ *
+ * /api/real/get-real/{id}:
+ *   get:
+ *     summary: Get a real estate listing
+ *     tags: [Real]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Real estate listing retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/RealEstate'
+ *       '404':
+ *         $ref: '#/components/responses/NotFound'
+ *       '500':
+ *         $ref: '#/components/responses/InternalServerError'
+ */
 
 
 

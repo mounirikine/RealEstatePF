@@ -2,38 +2,7 @@
 import Car from "../Models/Car.model.js";
 import Real from "../Models/Realestate.model.js";
 import { errorHandler } from "../utils/error.js";
-/**
- * @swagger
- * tags:
- *   name: Real
- *   description: Operations related to Real Estate listings
- */
 
-/**
- * @swagger
- * /api/real:
- *   post:
- *     summary: Create a new real estate listing
- *     tags: [Real]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               // Define your request body properties here
- *     responses:
- *       '201':
- *         description: Successfully created a new real estate listing
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               // Define your response schema here
- *       '500':
- *         $ref: '#/components/responses/InternalServerError'
- */
 export const createReal = async (req, res, next) => {
   try {
     const userId = req.body.userRef; // Assuming the authenticated user's ID is available in req.user
