@@ -165,9 +165,9 @@ const RealestateSchema = new mongoose.Schema(
         type: String,
         required: false,
       },
-      likes: {
-        type: Map,
-        of: Boolean,
+      likeCount: {
+        type: Number,
+        default: 0, // Default value is 0
       },
   },
   { timestamps: true }
