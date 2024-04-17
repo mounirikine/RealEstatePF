@@ -1,5 +1,6 @@
 
 import Car from "../Models/Car.model.js";
+import Like from "../Models/Like.model.js";
 import Real from "../Models/Realestate.model.js";
 import { errorHandler } from "../utils/error.js";
 
@@ -182,25 +183,25 @@ export const getListingsby = async (req, res, next) => {
 };
 export const togglePostLike = async (req, res, next) => {
   try {
-    const { postId, userId, postType } = req.body;
+    const { realId, userId, postType } = req.body;
 
     // Find the existing like document
-    const existingLike = await Like.findOne({ postId, userId, postType });
+    const existingLike = await Like.findOne({ postId:realId, userId, postType });
 
     if (existingLike) {
       // If the user has already liked the post, unlike it
-      await Like.findOneAndDelete({ postId, userId, postType });
+      await Like.findOneAndDelete({ postId:realId, userId, postType });
 
       // Decrease the like count in the post document by 1
-      await Post.findByIdAndUpdate(postId, { $inc: { likeCount: -1 } });
+      await Real.findByIdAndUpdate(realId, { $inc: { likeCount: -1 } });
 
       return res.status(200).json({ message: 'Post unliked successfully' });
     } else {
       // If the user has not liked the post, like it
-      await Like.create({ postId, userId, postType });
+      await Like.create({ postId:realId, userId, postType });
 
       // Increase the like count in the post document by 1
-      await Post.findByIdAndUpdate(postId, { $inc: { likeCount: 1 } });
+      await Real.findByIdAndUpdate(realId, { $inc: { likeCount: 1 } });
 
       return res.status(201).json({ message: 'Post liked successfully' });
     }
