@@ -14,7 +14,6 @@ const FirstSection = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [t,i18n]=useTranslation('global')
-console.log(data)
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);

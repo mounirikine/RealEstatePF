@@ -30,7 +30,6 @@ const RelatedItems = ({ catSlug, idItem }) => {
         const first3Items = shuffledData.slice(0, 3);
 
         setData(first3Items);
-        console.log(first3Items);
       } catch (error) {
         console.error("Error fetching data:", error);
         setError("Failed to fetch data. Please try again later.");

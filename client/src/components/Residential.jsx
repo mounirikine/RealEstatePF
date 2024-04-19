@@ -6,7 +6,6 @@ import ResidentCardCol from './ResidentCardCol';
 
 const Residential = ({ catSlug }) => {
   const [data, setData] = useState([]);
-      console.log(data)
   useEffect(() => {
     const fetchData = async () => {
       try {
