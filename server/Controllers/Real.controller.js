@@ -186,26 +186,32 @@ export const togglePostLike = async (req, res, next) => {
     const { realId, userId, postType } = req.body;
 
     // Find the existing like document
-    const existingLike = await Like.findOne({ postId:realId, userId, postType });
+    const existingLike = await Like.findOne({ postId: realId, userId, postType });
 
     if (existingLike) {
       // If the user has already liked the post, unlike it
-      await Like.findOneAndDelete({ postId:realId, userId, postType });
+      await Like.findOneAndDelete({ postId: realId, userId, postType });
 
       // Decrease the like count in the post document by 1
-      await Real.findByIdAndUpdate(realId, { $inc: { likeCount: -1 } });
+      const data = await Real.findByIdAndUpdate(realId, { $inc: { likeCount: -1 } }, { new: true });
 
-      return res.status(200).json({ message: 'Post unliked successfully' });
+      // Check if the like count is less than 0 and set it to 0 if necessary
+      const likeCount = data.likeCount < 0 ? 0 : data.likeCount;
+
+      return res.status(200).json(likeCount);
     } else {
       // If the user has not liked the post, like it
-      await Like.create({ postId:realId, userId, postType });
+      await Like.create({ postId: realId, userId, postType });
 
       // Increase the like count in the post document by 1
-      await Real.findByIdAndUpdate(realId, { $inc: { likeCount: 1 } });
+      const data = await Real.findByIdAndUpdate(realId, { $inc: { likeCount: 1 } }, { new: true });
 
-      return res.status(201).json({ message: 'Post liked successfully' });
+      // No need to check for negative like count here
+
+      return res.status(201).json(data.likeCount);
     }
   } catch (error) {
     next(error);
   }
 };
+
