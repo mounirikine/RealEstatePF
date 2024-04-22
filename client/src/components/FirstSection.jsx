@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaBuilding } from "react-icons/fa";
+import { FaBuilding, FaRandom } from "react-icons/fa";
 import { MdOutlineVilla, MdOutlineApartment } from "react-icons/md";
 import { GiOfficeChair } from "react-icons/gi";
 import { IoCarSport } from "react-icons/io5";
 import Residential from "./Residential";
 import CarCard from "./CarCard";
 import {useTranslation} from 'react-i18next'
+import OtherCard from "./OtherCard";
 
 const FirstSection = () => {
   const [activeTab, setActiveTab] = useState("Residential");
@@ -60,6 +61,7 @@ const FirstSection = () => {
             { tab: "Apartment", icon: <MdOutlineApartment className="text-xl" /> },
             { tab: "Office space", icon: <GiOfficeChair className="text-xl" /> },
             { tab: "Cars", icon: <IoCarSport className="text-xl" /> },
+            { tab: "Other Products", icon: <FaRandom className="text-xl" /> },
           ].map((item) => (
             <li key={item.tab} className="me-2">
               <Link
@@ -91,6 +93,7 @@ const FirstSection = () => {
         {activeTab === "Villa" && <Residential catSlug="villa" />}
         {activeTab === "Apartment" && <Residential catSlug="Apartment" />}
         {activeTab === "Office space" && <Residential catSlug="Office" />}
+        {activeTab === "Other Products" && <OtherCard catSlug="product" />}
         {activeTab === "Cars" && (
   <div className="grid grid-cols-1 md:px-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
     {data.map((item, index) => (

@@ -29,7 +29,7 @@ export const getProduct = async (req, res, next) => {
   export const getProducts = async (req, res, next) => {
     try {
         
-            const Products = await Other.find();
+            const Products = await Other.find().populate('userRef', 'avatar').populate('likes');
             if (!Products || Products.length === 0) {
                 return next(errorHandler(404, 'Products not found!'));
             }
@@ -75,4 +75,36 @@ export const deleteProduct = async(req,res,next)=>{
       next(error);
     }
   };
+  export const togglePostLike = async (req, res, next) => {
+    try {
+      const { otherId, userId } = req.body;
   
+      // Find the real estate document
+      const other = await Other.findById(otherId);
+  
+      if (!other) {
+        return res.status(404).json({ error: 'Product not found' });
+      }
+  
+      // Check if the user has already liked the property
+      const isLiked = other.likes.includes(userId);
+  
+      if (isLiked) {
+        // If the user has already liked the property, remove their like
+        other.likes = other.likes.filter((id) => id.toString() !== userId);
+      } else {
+        // If the user has not liked the property, add their like
+        other.likes.push(userId);
+      }
+  
+      // Save the updated document
+      const updatedReal = await other.save();
+  
+      return res.status(200).json({
+    
+        likes: updatedReal.likes,
+      });
+    } catch (error) {
+      next(error);
+    }
+  };

@@ -31,6 +31,8 @@ import MoreQuestions from "./components/MoreQuestions";
 
 import CreateAccountStore from "./pages/CreateAccountStore";
 import SingleStore from "./pages/SingleStore";
+import Others from "./components/form/Others";
+import OthersDetails from "./pages/OthersDetails.jsx";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -97,7 +99,8 @@ function App() {
           {/* Routes */}
           <Routes>
           <Route path="/PropertieDetails/:id" element={<PropertieDetails userInfo={userInfo} />} />
-         
+          <Route path="/OthersDetails/:id" element={<OthersDetails userInfo={userInfo} />} />
+
           <Route path="/cardDetails/:id" element={<CarDetails userInfo={userInfo} />} />
             <Route path="/" element={<Home userInfo={userInfo} />} />
             <Route path="/login" element={<Login />} />
@@ -118,6 +121,12 @@ function App() {
               <Route path="/CreateApartment" element={<CreateApartment userInfo={userInfo} />} />
               <Route path="/CreateCar" element={<CreateCar userInfo={userInfo} />} />
               <Route path="/CreateOffice" element={<CreateOffice userInfo={userInfo} />} />
+              <Route path="/CreateBycicle" element={<Others catSlug={'bycicle'} userInfo={userInfo} />} />
+              <Route path="/CreateDevices" element={<Others catSlug={'devices'} userInfo={userInfo} />} />
+              <Route path="/CreateClothes" element={<Others catSlug={'clothes'} userInfo={userInfo} />} />
+              <Route path="/CreateMusicInstruments" element={<Others catSlug={'musicInstruments'} userInfo={userInfo} />} />
+              <Route path="/CreateHomefurnishings" element={<Others catSlug={'homefurnishings'} userInfo={userInfo} />} />
+
               <Route path="/create-account-store" element={<CreateAccountStore userInfo={userInfo} />} />
 
               <Route path="/create" element={<CreateForm userInfo={userInfo} />} />
