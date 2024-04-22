@@ -151,6 +151,8 @@ const carSchema = new mongoose.Schema(
     type: Boolean,
     required: false,
   },
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], // Array of user IDs who liked the property
+
  },
   { timestamps: true }
 );

@@ -165,10 +165,7 @@ const RealestateSchema = new mongoose.Schema(
         type: String,
         required: false,
       },
-      likeCount: {
-        type: Number,
-        default: 0, // Default value is 0
-      },
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], // Array of user IDs who liked the property
   },
   { timestamps: true }
 );

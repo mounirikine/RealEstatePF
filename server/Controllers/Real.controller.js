@@ -72,12 +72,12 @@ export const deleteReal = async(req,res,next)=>{
       if (catSlug !== undefined) {
           let listings;
           if (catSlug !== 'car') {
-              listings = await Real.find({ catSlug }).populate('userRef', 'avatar');
+              listings = await Real.find({ catSlug }).populate('userRef', 'avatar').populate('likes');
               if (!listings || listings.length === 0) {
                   return next(errorHandler(404, 'Reals not found!'));
               }
           } else if (catSlug === 'car') {
-              listings = await Car.find({ catSlug }).populate('userRef', 'avatar');
+              listings = await Car.find({ catSlug }).populate('userRef', 'avatar').populate('likes');
               if (!listings || listings.length === 0) {
                   return next(errorHandler(404, 'Cars not found!'));
               }
@@ -181,37 +181,38 @@ export const getListingsby = async (req, res, next) => {
     next(error);
   }
 };
+
+
 export const togglePostLike = async (req, res, next) => {
   try {
-    const { realId, userId, postType } = req.body;
+    const { realId, userId } = req.body;
 
-    // Find the existing like document
-    const existingLike = await Like.findOne({ postId: realId, userId, postType });
+    // Find the real estate document
+    const real = await Real.findById(realId);
 
-    if (existingLike) {
-      // If the user has already liked the post, unlike it
-      await Like.findOneAndDelete({ postId: realId, userId, postType });
-
-      // Decrease the like count in the post document by 1
-      const data = await Real.findByIdAndUpdate(realId, { $inc: { likeCount: -1 } }, { new: true });
-
-      // Check if the like count is less than 0 and set it to 0 if necessary
-      const likeCount = data.likeCount < 0 ? 0 : data.likeCount;
-
-      return res.status(200).json(likeCount);
-    } else {
-      // If the user has not liked the post, like it
-      await Like.create({ postId: realId, userId, postType });
-
-      // Increase the like count in the post document by 1
-      const data = await Real.findByIdAndUpdate(realId, { $inc: { likeCount: 1 } }, { new: true });
-
-      // No need to check for negative like count here
-
-      return res.status(201).json(data.likeCount);
+    if (!real) {
+      return res.status(404).json({ error: 'Property not found' });
     }
+
+    // Check if the user has already liked the property
+    const isLiked = real.likes.includes(userId);
+
+    if (isLiked) {
+      // If the user has already liked the property, remove their like
+      real.likes = real.likes.filter((id) => id.toString() !== userId);
+    } else {
+      // If the user has not liked the property, add their like
+      real.likes.push(userId);
+    }
+
+    // Save the updated document
+    const updatedReal = await real.save();
+
+    return res.status(200).json({
+  
+      likes: updatedReal.likes,
+    });
   } catch (error) {
     next(error);
   }
 };
-

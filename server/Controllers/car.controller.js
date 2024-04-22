@@ -84,3 +84,38 @@ export const updateCar = async (req, res, next) => {
     next(error);
   }
 };
+
+
+export const togglePostLike = async (req, res, next) => {
+  try {
+    const { carId, userId } = req.body;
+
+    // Find the real estate document
+    const car = await Car.findById(carId);
+
+    if (!car) {
+      return res.status(404).json({ error: 'Property not found' });
+    }
+
+    // Check if the user has already liked the property
+    const isLiked = car.likes.includes(userId);
+
+    if (isLiked) {
+      // If the user has already liked the property, remove their like
+      car.likes = car.likes.filter((id) => id.toString() !== userId);
+    } else {
+      // If the user has not liked the property, add their like
+      car.likes.push(userId);
+    }
+
+    // Save the updated document
+    const updatedCar = await car.save();
+
+    return res.status(200).json({
+  
+      likes: updatedCar.likes,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
