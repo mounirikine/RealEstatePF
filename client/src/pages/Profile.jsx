@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import PhoneInput from 'react-phone-input-2';
 import Footer from '../components/Footer'
+import 'react-phone-input-2/lib/style.css'
 import {
   getDownloadURL,
   getStorage,
@@ -120,7 +122,12 @@ const Profile = ({ userInfo }) => {
       toast.error("Email Not Deleted! Try Again");
     }
   };
-
+  const handlePhoneChange = (value) => {
+    setFormData(prevState => ({
+      ...prevState,
+      phoneNumber: value // Update phoneNumber in the formData state when the phone number changes
+    }));
+  };
   return (
     <>
       <Header userInfo={userInfo} />
@@ -262,23 +269,19 @@ const Profile = ({ userInfo }) => {
                     />
                   </div>
                   <div className="mb-2 sm:mb-6">
-                    <label
-                      htmlFor="phoneNumber"
-                      className="block mb-2 text-sm font-medium "
-                    >
-                      Your phone number
-                    </label>
-                    <input
-                      type="text"
-                      id="phoneNumber"
-                      onChange={handleChange}
-                      disabled={active}
-                      defaultValue={userInfo?.phoneNumber}
-                      placeholder={userInfo?.phoneNumber}
-                      
-                      className="bg-violet-100 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
-                      required
-                    />
+                   
+                    <PhoneInput
+        inputProps={{
+          name: 'phone',
+          className:"bg-violet-100 pl-10 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
+          // Assign the name attribute to the underlying input element
+        }}
+
+        country={'us'}
+        value={userInfo && userInfo?.phoneNumber} // Use phoneNumber from formData as value
+        onChange={handlePhoneChange} // Update phoneNumber in the formData state with the entered phone number
+      />
+
                   </div>
                   <div className="mb-6">
                     <label
