@@ -14,7 +14,7 @@ const newLang = window.localStorage.getItem('lng');
 
 i18next.init({
   interpolation: { escapeValue: false },
-  lng: newLang,
+  lng:newLang || 'en',
   resources: {
     en: {
       global: linksEn,

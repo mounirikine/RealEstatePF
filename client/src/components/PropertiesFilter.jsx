@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import FilterCard from "./FilterCard";
 import CarCard from "./CarCard";
 import ResidentCardCol from "./ResidentCardCol";
+import OtherCard from "./OtherCard";
 
-const PropertiesFilter = ({ catSlug }) => {
+const PropertiesFilter = ({ catSlug ,minPrice,country,maxPrice}) => {
   const [data, setData] = useState({ cars: [], reals: [] });
   const [loading, setLoading] = useState(false);
-console.log(data)
-     
+
+     console.log(catSlug ,minPrice,country,maxPrice)
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -20,7 +21,7 @@ console.log(data)
       try {
    
         const response = await fetch(
-          `http://localhost:4000/api/real/Listingsby?catSlug=${catSlug || ""}`
+          `http://localhost:4000/api/real/Listingsby?catSlug=${catSlug || ""}&country=${country || ""}&maxPrice=${maxPrice || ""}&minPrice=${minPrice}`
         );
   
         if (!response.ok) {
@@ -38,7 +39,7 @@ console.log(data)
     };
   
     fetchData();
-  }, [catSlug]);
+  }, [catSlug ,minPrice,country,maxPrice]);
   return (
 <section className="px-2 md:px-20 py-10 flex items-center justify-center">
   {loading ? (
@@ -51,7 +52,8 @@ console.log(data)
     (catSlug === "house" && <ResidentCardCol key={item._id} data={item} catSlug="house" />) ||
     (catSlug === "villa" && <ResidentCardCol key={item._id} data={item} catSlug="villa" />) ||
     (catSlug === "Apartment" && <ResidentCardCol key={item._id} data={item} catSlug="Apartment" />) ||
-    (catSlug === "Office space" && <ResidentCardCol key={item._id} data={item} catSlug="Office" />) 
+    (catSlug === "Office space" && <ResidentCardCol key={item._id} data={item} catSlug="Office" />)|| 
+    (catSlug === "Other Products" && <OtherCard   key={item._id} data={item} catSlug={catSlug} />)
   ))
 ) : (
   data.cars.map((item) => (

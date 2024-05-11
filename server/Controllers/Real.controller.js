@@ -1,6 +1,7 @@
 
 import Car from "../Models/Car.model.js";
-import Like from "../Models/Like.model.js";
+
+import Other from "../Models/Other.model.js";
 import Real from "../Models/Realestate.model.js";
 import { errorHandler } from "../utils/error.js";
 
@@ -141,40 +142,43 @@ export const getListingsby = async (req, res, next) => {
   maxPrice = maxPrice || null;
 
   try {
-    let cars, reals;
+    let cars, reals ,others;
 
     // If any of the parameters are empty, fetch all cars and reals
     if (country || catSlug || minPrice || maxPrice) {
      
       cars = await Car.find({
-        $or: [
+        $and: [
           { country },
           { catSlug },
           { price: { $gte: minPrice, $lte: maxPrice } }
         ]
       });
-
+     
       // Find reals within the specified country, catSlug, and price range
       reals = await Real.find({
-        $or: [
+        $and: [
           { country },
           { catSlug },
           { regularPrice: { $gte: minPrice, $lte: maxPrice } }
         ]
       });
+
+
+      others = await Other.find({
+        $and: [
+          { country },
+          { catSlug },
+          { price: { $gte: minPrice, $lte: maxPrice } }
+        ]
+      });
     } else {
-      // Find cars within the specified country, catSlug, and price range
-      cars = await Car.find();
-      reals = await Real.find();
+     return ;
     }
     // Combine the results into a single object
-     const allListings = { cars, reals };
+     const allListings = { cars, reals,others };
 
-    // If both cars and reals arrays are empty, return a 404 error
-    if (!cars.length && !reals.length) {
-      return next(errorHandler(404, 'Listings not found!'));
-    }
-
+  
     // Return the combined listings
     res.status(200).json(allListings);
   } catch (error) {
