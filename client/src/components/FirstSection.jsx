@@ -45,16 +45,16 @@ const FirstSection = () => {
   return (
     <motion.section className="py-10 md:py-5">
       <div className="flex items-center">
-        <h1 className="text-center mt-8 mx-auto font-bold text-3xl px-5 md:text-5xl uppercase pt-20 md:pt-0">
+        <h1 className="text-center mt-8 mx-auto font-bold text-3xl text-black px-5 md:text-5xl uppercase pt-20 md:pt-0">
           {t('FirstSectionTitle')}
         </h1>
       </div>
-      <p className="text-center mx-auto py-7 w-9/12">
+      <p className="text-center mx-auto py-7 w-9/12 text-gray-500">
         {t('FirstSectionDes')}
       </p>
 
       <div className="w-12/12 flex items-center justify-center">
-        <ul className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 flex-wrap text-sm font-medium text-center mx-auto text-gray-500 dark:text-gray-400   py-1 rounded-2xl">
+        <ul className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 flex-wrap text-sm font-medium text-center mx-auto text-gray-500 :text-gray-400   py-1 rounded-2xl">
           {[
             { tab: "Residential", icon: <FaBuilding className="text-xl"/> },
             { tab: "Villa", icon: <MdOutlineVilla className="text-xl" /> },
@@ -67,12 +67,12 @@ const FirstSection = () => {
               <Link
                 onClick={() => handleTabClick(item.tab)}
                 role="tab"
-                className={`px-14 py-4 rounded-xl flex items-center gap-1 border dark:hover:bg-gray-800 dark:hover:text-white ${
+                className={`px-5 py-2 rounded-xl flex items-center gap-2 border :hover:bg-gray-800 :hover:text-white ${
                   activeTab === item.tab ? "tab-active button text-base" : "text-base bg-violet-100"
                 }`}
               >
                 <span className="bg-white text-black p-1 rounded-full">{item.icon}</span>
-                <span className="flex flex-col items-center justify-center"><span>{item.tab}</span>  </span>
+                <span className="flex flex-col items-center justify-center text-sm"><span>{item.tab}</span>  </span>
               </Link>
             </li>
           ))}
@@ -81,13 +81,7 @@ const FirstSection = () => {
 
       <motion.div
         className="px-10 py-10"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1 },
-        }}
-        initial="hidden"
-        animate="visible"
-        transition={{ duration: 0.5, delay: 0.25 }}
+    
       >
         {activeTab === "Residential" && <Residential catSlug="house" />}
         {activeTab === "Villa" && <Residential catSlug="villa" />}
@@ -95,7 +89,7 @@ const FirstSection = () => {
         {activeTab === "Office space" && <Residential catSlug="Office" />}
         {activeTab === "Other Products" && <OtherCard catSlug="product" />}
         {activeTab === "Cars" && (
-  <div className="grid grid-cols-1 md:px-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+  <div className="grid grid-cols-1 md:px-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
     {data.map((item, index) => (
       <CarCard key={index} data={item} />
     ))}

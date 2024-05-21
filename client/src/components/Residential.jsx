@@ -29,13 +29,13 @@ const Residential = ({ catSlug }) => {
 
   return (
     <div>
-      <main className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-4  sm:px-6 md:px-8 lg:px-20 xl:px-20">
+      <main className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-4  sm:px-6 md:px-8 lg:px-20 ">
         {data.length > 0 && (
           <>
             <Link to={`/PropertieDetails/${data[0]._id}`} className="lg:grid grid-cols-1  hidden ">
               <ResidentCard key={data[0]._id} data={data[0]} />
             </Link>
-            <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-4 w-10/12 mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-4  mx-auto">
               {data.slice(1).map((item) => (
                 <ResidentCardCol key={item._id} data={item} />
               ))}
@@ -43,8 +43,8 @@ const Residential = ({ catSlug }) => {
           </>
         )}
       </main>
-      <div className='w-full flex items-center justify-center py-10'>
-        <Link to='/properties' className=' px-14 py-4 text-2xl hover:translate-x-1 rounded-xl flex items-center gap-2 text-black '>Load More Listing  <FaArrowRight /> </Link>
+      <div className='w-full flex items-center justify-center py-5'>
+        <Link to='/properties' className=' px-14 py-4 text-lg hover:translate-x-1 rounded-xl flex items-center gap-2 text-black transition-all '>Load More Listing  <FaArrowRight /> </Link>
       </div>
     </div>
   );

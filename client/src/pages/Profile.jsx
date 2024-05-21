@@ -131,10 +131,10 @@ const Profile = ({ userInfo }) => {
   return (
     <>
       <Header userInfo={userInfo} />
-      <div className="w-full  gap-5 px-3 md:px-16 lg:px-28 md:flex-row hero  ">
+      <div className="w-full  gap-5 px-3 md:px-16 lg:px-28 md:flex-row  hero ">
         <main className="w-full  md:w-3/3 lg:w-4/4">
         
-            <div className="w-full border-2 border-black px-6 mx-auto pb-8 mt-8 sm:max-w-xl sm:rounded-lg bg-white mb-14">
+            <div className="w-full border-2 border-black px-6 mx-auto pb-8 mt-8 sm:max-w-6xl sm:rounded-lg bg-white mb-14">
               <div className="grid max-w-3xl mx-auto  ">
                 <div className=" flex-col items-center justify-center gird py-5 w-full space-y-5 sm:flex-row sm:space-y-0">
                   <input
@@ -168,13 +168,13 @@ const Profile = ({ userInfo }) => {
                       type="button"
                       onClick={() => fileRef.current.click()}
                       disabled={active}
-                      className="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-black rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 "
+                      className="py-3.5 px-7 w-6/12 mx-auto text-base font-medium text-indigo-100 focus:outline-none bg-black rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 "
                     >
                       Change picture
                     </button>
 
                     <button
-                      className="btn py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-black focus:z-10 focus:ring-4 focus:ring-indigo-200 "
+                      className="btn py-3.5 px-7 w-6/12 mx-auto text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-black focus:z-10 focus:ring-4 focus:ring-indigo-200 "
                       onClick={() =>
                         document.getElementById("my_modal_1").showModal()
                       }
@@ -193,7 +193,7 @@ const Profile = ({ userInfo }) => {
                     <div className=" mx-auto">
                       {userInfo && userInfo.avatar && (
                         <img
-                          className="object-cover w-100 h-100 rounded-full   ring-2 ring-indigo-300 dark:ring-indigo-500"
+                          className="object-cover w-100 h-100 rounded-full   ring-2 ring-indigo-300 :ring-indigo-500"
                           src={userInfo.avatar}
                           alt="Bordered avatar"
                           style={{ width: "100%", height: "100%" }} // Set width and height explicitly
@@ -234,7 +234,7 @@ const Profile = ({ userInfo }) => {
                     <div className="w-full ">
                       <label
                         htmlFor="username"
-                        className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
+                        className="block mb-2 text-sm font-medium text-indigo-900 :text-white"
                       >
                         Your first name
                       </label>
@@ -286,7 +286,7 @@ const Profile = ({ userInfo }) => {
                   <div className="mb-6">
                     <label
                       htmlFor="message"
-                      className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
+                      className="block mb-2 text-sm font-medium text-indigo-900 :text-white"
                     >
                       Bio
                     </label>
@@ -301,7 +301,7 @@ const Profile = ({ userInfo }) => {
                   <div className="flex justify-end">
                     <button
                       onClick={handleRegister}
-                      className="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
+                      className="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center :bg-indigo-600 :hover:bg-indigo-700 :focus:ring-indigo-800"
                       disabled={active}
                     >
                       {loading ? (

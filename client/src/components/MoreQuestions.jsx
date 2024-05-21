@@ -18,39 +18,39 @@ const MoreQuestions = () => {
             <p className="pt-5 text-black text-lg">If you have any QUESTIONS you put it here   </p>                  
             </div>
 
-            <section className="relative border mt-5 bg-violet-100 z-10 overflow-hidden  rounded-2xl md:mx-5 dark:bg-dark px-10 py-10 lg:py-[120px]">
+            <section className="relative border mt-5 bg-violet-100 z-10 overflow-hidden  rounded-2xl md:mx-5 :bg- px-10 py-10 lg:py-[120px]">
             <div className="container mx-auto">
               <div className="flex flex-wrap -mx-4 lg:justify-between">
                
                 <div className="w-full">
-                  <div className="relative p-8 bg-white rounded-lg shadow-lg dark:bg-dark-2 sm:p-12">
+                  <div className="relative p-8 bg-white rounded-lg shadow-lg :bg--2 sm:p-12">
                     <form>
                       <div className="mb-6">
                         <input
                           type="text"
                           placeholder="Your Name"
-                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+                          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                         />
                       </div>
                       <div className="mb-6">
                         <input
                           type="email"
                           placeholder="Your Email"
-                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+                          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                         />
                       </div>
                       <div className="mb-6">
                         <input
                           type="text"
                           placeholder="Your Phone"
-                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+                          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                         />
                       </div>
                       <div className="mb-6">
                         <textarea
                           rows="6"
                           placeholder="Your Questions"
-                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none"
+                          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none"
                         ></textarea>
                       </div>
                       <div>

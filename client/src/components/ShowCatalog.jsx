@@ -7,7 +7,7 @@ const ShowCatalog = () => {
   const [t,i18n]=useTranslation('global')
 
   return (
-    <>      <section className="flex items-center gap-8 lg:gap-1  py-14 px-5 sm:px-0 lg:px-10">
+    <>      <section className="flex items-center gap-8 lg:gap-1  py-14 px-5 sm:px-0 lg:px-10 text-black">
         <motion.div
           initial={{ x: 0, opacity: 0 }}
           whileInView={{ x: 107, opacity: 1 }}
@@ -31,12 +31,12 @@ const ShowCatalog = () => {
             {t('CatalogeTitle')}{" "}
             
           </h1>
-          <p className=" sm:text-lg  pb-5 sm:pb-10">
+          <p className=" sm:text-base  pb-5  text-gray-500 ">
 {t('CatalogDes')}          </p>
 
           <Link
             to="/"
-            className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl gap-2 text-xl   hover:translate-x-1  text-black font-bold  flex items-center justify-center "
+            className="mx-auto px-6 sm:px-1 py-3  mt-4 rounded-xl gap-2 text-lg   hover:gap-5  text-black font-meduim  transition-all  flex items-center  "
           >
             To Catalog
             <FaArrowRight />

@@ -15,14 +15,8 @@ const CarCard = ({data}) => {
     <>
     <motion.div
         to={`PropertieDetails/${data._id}`}
-        className="flex flex-col rounded-xl bg-white shadow-xl h-[450px] overflow-hidden"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1 }
-        }}
-        initial='hidden'
-        animate='visible'
-        transition={{ duration: 0.8, delay: 0.75 }}
+        className="flex flex-col rounded-xl bg-white shadow-xl h-[450px] overflow-hidden p-4"
+      
       >
         <Link to={`/cardDetails/${data._id}`} className="relative flex-shrink-0">
           <img
@@ -31,7 +25,7 @@ const CarCard = ({data}) => {
             alt=""
           />
           <div className="absolute top-1 left-1">
-            <span className="text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 bg-white rounded dark:bg-green-900 dark:text-green-500">
+            <span className="text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 bg-white rounded :bg-green-900 :text-green-500">
               {data.color}
             </span>
           </div>

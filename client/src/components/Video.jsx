@@ -17,7 +17,7 @@ const Video = () => {
   return (
     <>
 
-    <section className="flex flex-row lg:flex-col items-center pt-56 pb-72 lg:py-1 justify-center relative px-10">
+    <section className="flex flex-row lg:flex-col items-center pt-56 pb-72 text-black lg:py-1 justify-center relative px-10">
       <img src={img} alt="img"  className="w-[900px]" />
       <div className=" absolute flex-col lg:flex  w-[80%] mx-auto  ">
         <div className="w-full g:w-6/12 pt-5">
@@ -27,14 +27,14 @@ const Video = () => {
           }}
           initial="hidden"
           whileInView="show"
-          transition={{ duration: 0.5, delay: 0.25 }}  className="text-4xl lg:text-5xl font-bold mb-4 text-center lg:text-left w-full">{t('OfferesTitle')}</motion.h1>
+          transition={{ duration: 0.5, delay: 0.25 }}  className="text-4xl lg:text-5xl text-center text-black font-bold mb-4  w-full">{t('OfferesTitle')}</motion.h1>
           <motion.p                    variants={{
             hidden: { opacity: 0,x:-33  },
             show: { opacity: 1,x:0  },
           }}
           initial="hidden"
           whileInView="show"
-          transition={{ duration: 0.5, delay: 0.75 }} className="lg:text-lg text-sm mt-3 mb-5 text-center lg:text-left">{t('OfferesDesc')}</motion.p>
+          transition={{ duration: 0.5, delay: 0.75 }} className="lg:text-lg text-sm mt-3 text-gray-500 mb-5 text-center w-11/12 mx-auto">{t('OfferesDesc')}</motion.p>
         </div>
         <div className=" w-full g:w-6/12">
           <motion.div 
@@ -45,7 +45,7 @@ const Video = () => {
           initial="hidden"
           whileInView="show"
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="flex mb-4 gap-3 items-center border bg-white py-5 px-5 rounded-xl border-black"> 
+          className="flex mb-4 gap-3 items-center border bg-white text-black py-5 px-5 rounded-xl border-black"> 
             <div><RiMoneyDollarCircleFill className="text-5xl" /></div>
             <div>
               <h1 className="text-2xl font-bold">Affordable Price</h1>

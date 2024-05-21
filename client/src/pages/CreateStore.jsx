@@ -23,17 +23,17 @@ const CreateStore = ({ userInfo }) => {
             </div>
           </div>
 
-          <section className=" dark:bg-gray-900">
+          <section className=" :bg-gray-900">
             <div className=" px-4 mx-auto max-w-screen-xl  lg:px-6">
               <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 mb-20">
-                <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow :border-gray-600 xl:p-8 :bg-gray-800 :text-white">
                   <h3 className="mb-4 text-2xl font-semibold">Free</h3>
-                  <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                  <p className="font-light text-gray-500 sm:text-lg :text-gray-400">
                     Best option for personal use & for your next project.
                   </p>
                   <div className="flex justify-center items-baseline my-8">
                     <span className="mr-2 text-5xl font-extrabold">$0</span>
-                    <span className="text-gray-500 dark:text-gray-400">
+                    <span className="text-gray-500 :text-gray-400">
                       
                     </span>
                   </div>
@@ -41,7 +41,7 @@ const CreateStore = ({ userInfo }) => {
                   <ul role="list" className="mb-8 space-y-4 text-left">
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +89,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +107,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -129,14 +129,14 @@ const CreateStore = ({ userInfo }) => {
                   </Link>
                 </div>
 
-                <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-violet-100 rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-violet-100 rounded-lg border border-gray-100 shadow :border-gray-600 xl:p-8 :bg-gray-800 :text-white">
                   <h3 className="mb-4 text-2xl font-semibold">Company</h3>
-                  <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                  <p className="font-light text-gray-500 sm:text-lg :text-gray-400">
                     Relevant for multiple users, extended & premium support.
                   </p>
                   <div className="flex justify-center items-baseline my-8">
                     <span className="mr-2 text-5xl font-extrabold">$99</span>
-                    <span className="text-gray-500 dark:text-gray-400">
+                    <span className="text-gray-500 :text-gray-400">
                       /month
                     </span>
                   </div>
@@ -144,7 +144,7 @@ const CreateStore = ({ userInfo }) => {
                   <ul role="list" className="mb-8 space-y-4 text-left">
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +159,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -174,7 +174,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -192,7 +192,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -210,7 +210,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -232,15 +232,15 @@ const CreateStore = ({ userInfo }) => {
                   </a>
                 </div>
 
-                <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
+                <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow :border-gray-600 xl:p-8 :bg-gray-800 :text-white">
                   <h3 className="mb-4 text-2xl font-semibold">Enterprise</h3>
-                  <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                  <p className="font-light text-gray-500 sm:text-lg :text-gray-400">
                     Best for large scale uses and extended redistribution
                     rights.
                   </p>
                   <div className="flex justify-center items-baseline my-8">
                     <span className="mr-2 text-5xl font-extrabold">$499</span>
-                    <span className="text-gray-500 dark:text-gray-400">
+                    <span className="text-gray-500 :text-gray-400">
                       /month
                     </span>
                   </div>
@@ -248,7 +248,7 @@ const CreateStore = ({ userInfo }) => {
                   <ul role="list" className="mb-8 space-y-4 text-left">
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -263,7 +263,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -278,7 +278,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -296,7 +296,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +314,7 @@ const CreateStore = ({ userInfo }) => {
                     </li>
                     <li className="flex items-center space-x-3">
                       <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 :text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"

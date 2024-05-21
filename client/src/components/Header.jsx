@@ -71,9 +71,9 @@ const Header = ({ userInfo }) => {
     <>
       <header
         id=""
-        className=" dark:bg-gray-900   bg-white    w-full z-20 top-0 start-0 primary_text dark:border-gray-600 py-4 "
+        className=" :bg-gray-900   bg-white    w-full z-20 top-0 start-0 primary_text :border-gray-600 py-4 "
       >
-        <nav className="   px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+        <nav className="   px-4 lg:px-6 py-2.5 :bg-gray-800">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <Link to="/" className=" items-center">
               <img src={logof} alt="" width={130} />
@@ -116,7 +116,7 @@ const Header = ({ userInfo }) => {
                         aria-label="close sidebar"
                         className="drawer-overlay"
                       ></label>
-                      <ul className="menu p-4 w-80 min-h-full bg-white text-base-content">
+                      <ul className="menu p-4 w-80 min-h-full bg-white text-black">
                         {/* Sidebar content here */}
 
                         <div className="pb-10 pt-2 px-3">
@@ -183,7 +183,7 @@ const Header = ({ userInfo }) => {
                 <>
                   <Link
                     to="/login"
-                    className=" bg-black hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 border  text-white"
+                    className=" bg-black hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 :bg-primary-600 :hover:bg-primary-700 focus:outline-none :focus:ring-primary-800 border  text-white"
                   >
                     {t('get_started')}
                   </Link>
@@ -193,7 +193,7 @@ const Header = ({ userInfo }) => {
               <button
                 onClick={handleOpen}
                 type="button"
-                className="inline-flex items-center p-2 ml-1 text-sm border  rounded-lg lg:hidden :bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="inline-flex items-center p-2 ml-1 text-sm border  rounded-lg lg:hidden :bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 :text-gray-400 :hover:bg-gray-700 :focus:ring-gray-600"
               >
                 <span className="sr-only">Open main menu</span>
                 {open ? (
@@ -208,7 +208,7 @@ const Header = ({ userInfo }) => {
               className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
               id="mobile-menu-2"
             >
-              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-1 lg:mt-0">
                 {navItems.map((item) => (
                   <li
                   key={item.label}
@@ -217,14 +217,14 @@ const Header = ({ userInfo }) => {
                     location.pathname === item.path
                       ? "bg-white text-black"
                       : "text-black"
-                  } px-5 py-1 rounded-xl`}
+                  } px-5 py-1 rounded-xl `}
                 >
                   <NavLink
                     to={item.path}
                     activeClassName="bg-white text-black" // Pass activeClassName to NavLink
                     className={`${
                       location.pathname === item.path ? "bg-white text-black" : "text-black"
-                    } px-5 py-1 rounded-xl block font-semibold bg-primary-700 lg:text-primary-700 lg:p-0 dark:text-white`}
+                    } px-5 py-1 rounded-lg block  bg-primary-700 lg:text-primary-700 lg:p-0 :text-white`}
                   >
                     {item.label}
                   </NavLink>
@@ -254,7 +254,7 @@ const Header = ({ userInfo }) => {
                     <NavLink
                       to={item.path}
                       activeClassName="bg-white text-black"
-                      className="block py-2 pr-4 pl-3 font-semibold rounded bg-primary-700 lg:text-primary-700 lg:p-0 dark:text-white"
+                      className="block py-2 pr-4 pl-3 font-semibold rounded bg-primary-700 lg:text-primary-700 lg:p-0 :text-white"
                     >
                       {item.label}
                     </NavLink>

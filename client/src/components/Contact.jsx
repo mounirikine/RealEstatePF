@@ -40,7 +40,7 @@ const Contact = () => {
   return (
     <div className=""> 
 <section
-   className="relative z-10 overflow-hidden bg-violet-300 rounded-2xl md:mx-5 dark:bg-dark px-10 py-10 lg:py-[120px]"
+   className="relative z-10 overflow-hidden bg-violet-600 rounded-2xl md:mx-5 :bg- px-10 py-10 lg:py-[120px] text-white mb-10"
   
    >
 
@@ -52,20 +52,18 @@ const Contact = () => {
                Contact Us
                </span>
                <h2
-                  className="text-dark dark:text-white mb-6 text-[20px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]"
+                  className="text- :text-white mb-6 text-[20px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]"
                   >
                   GET IN TOUCH WITH US
                </h2>
                <p
-                  className="text-base leading-relaxed text-body-color dark:text-dark-6 mb-9"
+                  className="text-base leading-relaxed text-body-color :text--6 mb-9"
                   >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eius tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                  adiqua minim veniam quis nostrud exercitation ullamco
+                  We are here to assist you with any inquiries or support you might need. Whether you have questions about our services, need help with an order, or want to provide feedback, feel free to reach out. Our dedicated team is committed to ensuring your satisfaction and will respond promptly to your message.
                </p>
                <div className="mb-8 flex w-full max-w-[370px]">
                   <div
-                     className="bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"
+                     className="bg-primary/5  mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"
                      >
                      <svg
                         width="32"
@@ -81,17 +79,17 @@ const Contact = () => {
                      </svg>
                   </div>
                   <div className="w-full">
-                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
+                     <h4 className="mb-1 text-xl font-bold text- :text-white">
                         Our Location
                      </h4>
-                     <p className="text-base text-body-color dark:text-dark-6">
+                     <p className="text-base text-body-color :text--6">
                         99 S.t Jomblo Park Pekanbaru 28292. Indonesia
                      </p>
                   </div>
                </div>
                <div className="mb-8 flex w-full max-w-[370px]">
                   <div
-                     className="bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"
+                     className="bg-primary/5  mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"
                      >
                      <svg
                         width="32"
@@ -122,17 +120,17 @@ const Contact = () => {
                      </svg>
                   </div>
                   <div className="w-full">
-                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
+                     <h4 className="mb-1 text-xl font-bold text- :text-white">
                         Phone Number
                      </h4>
-                     <p className="text-base text-body-color dark:text-dark-6">
+                     <p className="text-base text-body-color :text--6">
                         (+62)81 414 257 9980
                      </p>
                   </div>
                </div>
                <div className="mb-8 flex w-full max-w-[370px]">
                   <div
-                     className="bg-primary/5 text-primary mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"
+                     className="bg-primary/5  mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded sm:h-[70px] sm:max-w-[70px]"
                      >
                      <svg
                         width="32"
@@ -148,10 +146,10 @@ const Contact = () => {
                      </svg>
                   </div>
                   <div className="w-full">
-                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
+                     <h4 className="mb-1 text-xl font-bold text- :text-white">
                         Email Address
                      </h4>
-                     <p className="text-base text-body-color dark:text-dark-6">
+                     <p className="text-base text-body-color :text--6">
                      finderteam6@gmail.com
                      </p>
                   </div>
@@ -160,7 +158,7 @@ const Contact = () => {
          </div>
          <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
             <div
-               className="relative p-8 bg-white rounded-lg shadow-lg dark:bg-dark-2 sm:p-12"
+               className="relative p-8 bg-white rounded-lg shadow-lg :bg--2 sm:p-12"
                >
               <form onSubmit={handleSubmit}>
       <div className="mb-6">
@@ -170,7 +168,7 @@ const Contact = () => {
           value={formData.name}
           onChange={handleChange}
           placeholder="Your Name"
-          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full rounded-xl border-2 py-3 px-[14px] text-base outline-none bg-gray-100 text-black "
         />
       </div>
       <div className="mb-6">
@@ -180,8 +178,7 @@ const Contact = () => {
           value={formData.email}
           onChange={handleChange}
           placeholder="Your Email"
-          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
-        />
+          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full rounded-xl border-2 py-3 px-[14px] text-base outline-none bg-gray-100 text-black "        />
       </div>
       <div className="mb-6">
         <input
@@ -190,8 +187,7 @@ const Contact = () => {
           value={formData.phone}
           onChange={handleChange}
           placeholder="Your Phone"
-          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
-        />
+          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full rounded-xl border-2 py-3 px-[14px] text-base outline-none bg-gray-100 text-black "        />
       </div>
       <div className="mb-6">
         <textarea
@@ -200,13 +196,12 @@ const Contact = () => {
           value={formData.message}
           onChange={handleChange}
           placeholder="Your Message"
-          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none"
-        ></textarea>
+          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full rounded-xl border-2 py-3 px-[14px] text-base outline-none bg-gray-100 text-black "        ></textarea>
       </div>
       <div>
       <button
                 type="submit"
-                className="w-full block bg-black  focus:bg-indigo-400 text-white font-semibold rounded-lg
+                className="w-full block bg-black  focus:bg-indigo-400 hover:scale-105 transition-all text-white font-meduim rounded-lg
             px-4 py-3 mt-6"
               >
                 {loader ? (

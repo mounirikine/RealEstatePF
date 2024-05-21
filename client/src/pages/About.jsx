@@ -52,7 +52,7 @@ export default function About({ userInfo }) {
       <Header userInfo={userInfo} />
 
       {/* Hero Section */}
-      <section className=" py-20 dark:bg-gray-900">
+      <section className=" py-20 :bg-gray-900 text-black">
         <main className="flex flex-col lg:flex-row justify-between px-5 lg:px-10">
           <div className="w-full lg:w-6/12 px-5 lg:px-10 mb-10 lg:mb-0">
             <motion.h1
@@ -277,7 +277,7 @@ export default function About({ userInfo }) {
 </main>
 
         <main className="py-10 px-5">
-          <section className="relative z-10 overflow-hidden bg-violet-300 rounded-2xl md:mx-5 dark:bg-dark px-10 py-10 lg:py-[120px]">
+          <section className="relative z-10 overflow-hidden bg-violet-300 rounded-2xl md:mx-5 :bg- px-10 py-10 lg:py-[120px]">
             <div className="container mx-auto">
               <div className="flex flex-wrap -mx-4 lg:justify-between">
                 <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
@@ -285,10 +285,10 @@ export default function About({ userInfo }) {
                     <span className="block mb-4 text-base font-semibold ">
                       Contact Us
                     </span>
-                    <h2 className="text-dark dark:text-white mb-6 text-[20px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]">
+                    <h2 className="text- :text-white mb-6 text-[20px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]">
                       GET IN TOUCH WITH US
                     </h2>
-                    <p className="text-base leading-relaxed text-body-color dark:text-dark-6 mb-9">
+                    <p className="text-base leading-relaxed text-body-color :text--6 mb-9">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eius tempor incididunt ut labore et dolore magna
                       aliqua. Ut enim adiqua minim veniam quis nostrud
@@ -310,10 +310,10 @@ export default function About({ userInfo }) {
                         </svg>
                       </div>
                       <div className="w-full">
-                        <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
+                        <h4 className="mb-1 text-xl font-bold text- :text-white">
                           Our Location
                         </h4>
-                        <p className="text-base text-body-color dark:text-dark-6">
+                        <p className="text-base text-body-color :text--6">
                           99 S.t Jomblo Park Pekanbaru 28292. Indonesia
                         </p>
                       </div>
@@ -349,10 +349,10 @@ export default function About({ userInfo }) {
                         </svg>
                       </div>
                       <div className="w-full">
-                        <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
+                        <h4 className="mb-1 text-xl font-bold text- :text-white">
                           Phone Number
                         </h4>
-                        <p className="text-base text-body-color dark:text-dark-6">
+                        <p className="text-base text-body-color :text--6">
                           (+62)81 414 257 9980
                         </p>
                       </div>
@@ -373,10 +373,10 @@ export default function About({ userInfo }) {
                         </svg>
                       </div>
                       <div className="w-full">
-                        <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
+                        <h4 className="mb-1 text-xl font-bold text- :text-white">
                           Email Address
                         </h4>
-                        <p className="text-base text-body-color dark:text-dark-6">
+                        <p className="text-base text-body-color :text--6">
                           finder@yourdomain.com
                         </p>
                       </div>
@@ -384,34 +384,34 @@ export default function About({ userInfo }) {
                   </div>
                 </div>
                 <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
-                  <div className="relative p-8 bg-white rounded-lg shadow-lg dark:bg-dark-2 sm:p-12">
+                  <div className="relative p-8 bg-white rounded-lg shadow-lg :bg--2 sm:p-12">
                     <form>
                       <div className="mb-6">
                         <input
                           type="text"
                           placeholder="Your Name"
-                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+                          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                         />
                       </div>
                       <div className="mb-6">
                         <input
                           type="email"
                           placeholder="Your Email"
-                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+                          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                         />
                       </div>
                       <div className="mb-6">
                         <input
                           type="text"
                           placeholder="Your Phone"
-                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
+                          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full rounded border py-3 px-[14px] text-base outline-none"
                         />
                       </div>
                       <div className="mb-6">
                         <textarea
                           rows="6"
                           placeholder="Your Message"
-                          className="border-stroke dark:border-dark-3 dark:text-dark-6 dark:bg-dark text-body-color focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none"
+                          className="border-stroke :border--3 :text--6 :bg- text-body-color focus:border-primary w-full resize-none rounded border py-3 px-[14px] text-base outline-none"
                         ></textarea>
                       </div>
                       <div>

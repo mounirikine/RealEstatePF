@@ -7,8 +7,8 @@ import MoreQuestions from "./MoreQuestions";
 const Question = () => {
   return (
 
-    <div className=" px-2 lg:px-20 sm:px-20 py-14">
-      <h1 className="text-5xl lg:px-24 lg:text-6xl font-bold mb-2 w-full text-center lg:text-left">
+    <div className=" px-2 lg:px-20 sm:px-20 py-14 text-black ">
+      <h1 className="text-5xl lg:px-24 lg:text-5xl font-bold mb-10 w-full text-center  ">
         Frequently asked questions
       </h1>
       <div className="flex items-center justify-center">
@@ -75,8 +75,8 @@ const Question = () => {
           </div>
         </div>
       </motion.div>
-      <div className="flex items-center justify-center py-10">
-      <Link to={"/MoreQuestions"} className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl text-xl hover:translate-x-1   font-bold flex items-center justify-center   ">More Questions   <FaArrowRight /> </Link>
+      <div className="flex items-center justify-center py-3">
+      <Link to={"/MoreQuestions"} className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl text-lg hover:translate-x-2 transition-all   font-meduim flex items-center justify-center   ">More Questions   <FaArrowRight /> </Link>
 
       </div>
 

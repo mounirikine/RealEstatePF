@@ -11,7 +11,8 @@ export default {
       'serif': ['ui-serif', 'Georgia', 'serif'],
       'mono': ['ui-monospace', 'SFMono-Regular', 'monospace'],
       'display': ['Oswald', 'sans-serif'],
-      'Syne': ['Syne', 'sans-serif'], // Add Teko font
+      'Syne': ['Syne', 'sans-serif'],
+      'Popins': ["Poppins", 'sans-serif'],
     }
   },
   plugins: [require("daisyui")],

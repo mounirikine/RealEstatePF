@@ -11,86 +11,86 @@ const ResidentCard = ({ data }) => {
 
   return (
     <motion.div
-    initial={{ y: -22, opacity: 0 }}
-    whileInView={{ y: 0, opacity: 1 }}
-    transition={{ duration: 0.6, delay: 0.5 }}
-    to={`/PropertieDetails/${data._id}`}
-    className="card  lg:card-side bg-base-100 shadow-xl"
-  >
-    <img
-      src={imageUrl}
-      alt=""
-      className={`h-72 md:h-auto w-2/6 rounded-t-lg md:rounded-none md:rounded-l-lg object-cover`}
-    />
-    <div className="flex flex-col  justify-between w-4/6 p-6 ">
-      <div className="flex   justify-between">
-          <span className="text-xl lg:text-5xl flex  items-end">
-            ${data.regularPrice}/<p className="text-lg">month</p>
+
+      to={`/PropertieDetails/${data._id}`}
+      className="card  lg:card-side bg-gray-100 shadow-xmd border border-violet-200 p-5"
+    >
+      <img
+        src={imageUrl}
+        alt=""
+        className={`h-72 md:h-auto w-2/6 rounded-t-lg hover:scale-105 transition-all md:rounded-none md:rounded-l-lg object-cover`}
+      />
+      <div className="flex flex-col  justify-between w-4/6 p-6 ">
+        <div className="flex   justify-between">
+          <span className="text-xl lg:text-3xl flex text-black font-meduim  items-center">
+            ${data.regularPrice}/<p className="text-sm">month</p>
           </span>
-              <span className="flex items-center  gap-3">
-                <div className="avatar">
-                          <div className="w-14 mask mask-hexagon">
-                           <img src={data.userRef.avatar} />
-                          </div>
-                        </div>
-                  <div>
-                    <h1>Edwin Martins</h1>
-                  </div>
-                  <div>
-                    <a
-                      href={`https://wa.me/${data.userNumber}?text=Hello How Can I Get More Info About This ?`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-black bg-violet-100 px-3 py-3 rounded-3xl cursor-pointer"
-                    >
-                      <FaWhatsapp className="text-xl" />
-                    </a>
-                  </div>
-              </span>
-      </div>
+          <span className="flex items-center  gap-3">
+            <div className="avatar">
+              <div className="w-14 mask mask-hexagon">
+                {data.userRef && data.userRef.avatar ? (
+                  <img src={data.userRef.avatar} />
+                ) : (
+                  // Provide a fallback if data.userRef or data.userRef.avatar is null or undefined
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyT-7zkjvBAJX2Nh9OhmF2B5HgLHTZgNgfSXNCPi3m35AEo4CHNC4TiLzXHhPwHTQnASU&usqp=CAU" alt="default avatar" />
+                )}
+              </div>
+            </div>
+            <div>
+              <h1 className="text-black">Edwin Martins</h1>
+            </div>
+            <div>
+              <a
+                href={`https://wa.me/${data.userNumber}?text=Hello How Can I Get More Info About This ?`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-black bg-green-600 px-3 py-3 rounded-3xl cursor-pointer"
+              >
+                <FaWhatsapp className="text-xl text-white font-bold" />
+              </a>
+            </div>
+          </span>
+        </div>
 
-      <h1 className="text-5xl mb-4 truncate">{data.title}</h1>
-      <div className="flex items-center gap-2 text-xl mb-5">
-        <span>
-          <FiMapPin />
-        </span>
-        <span>{data.address}</span>
-      </div>
-    
-        <span className=" w-6/6 truncate ">{data.description}</span>
-   
+        <h1 className="text-3xl text-black mb-4 truncate">{data.title}</h1>
+        <div className="flex items-center gap-2 text-xl mb-2">
+          <span>
+            <FiMapPin className="text-violet-500" />
+          </span>
+          <span className="text-black text-base">{data.address}</span>
+        </div>
 
-        <div className="bg-violet-100 w-full  rounded-xl px-6 py-4 flex flex-wrap lg:flex-wrap items-center justify-center lg:justify-between">
-        <span className="w-3/12 flex flex-col items-center justify-center">
-              <h1>Bedrooms</h1>
-              <h1 className="flex items-center gap-2 justify-center text-xl">
-                <FaBed className="text-2xl" /> {data.rooms}
-              </h1>
-            </span>
-            <span className="w-3/12 flex flex-col items-center justify-center">
-              <h1>Bathrooms</h1>
-              <h1 className="flex items-center gap-2 justify-center text-xl">
-                <FaBath className="text-2xl" /> {data.bathrooms}
-              </h1>
-            </span>
-            <span className="w-3/12 flex flex-col items-center justify-center">
-              <h1>Square Area</h1>
-              <span className="flex items-center gap-2 justify-center text-xl">
-                <FaRegSquare className="text-2xl" />
-                {data.area}m²{" "}
-              </span>
-            </span>
-            <span className="w-3/12 flex flex-col items-center justify-center">
-              <h1>Kitchen</h1>
-              <h1 className="flex items-center gap-2 justify-center text-xl">
-                <TbToolsKitchen3 className="text-2xl" /> {data.kitchen}
-              </h1>
-            </span>
-      </div>
+        <span className=" w-5/6 truncate clear-start  mb-5 text-gray-500">{data.description}</span>
 
-  </div>
-  </motion.div>
-  
+        <div className="bg-violet-200 w-full  rounded-xl px-6 py-2 flex flex-wrap text-black lg:flex-wrap items-center justify-center lg:justify-between">
+          <span className="w-3/12 flex flex-col items-center justify-center">
+            <h1 className="text-sm">Bedrooms</h1>
+            <h1 className="flex items-center gap-2 justify-center text-xl">
+              <FaBed className="text-2xl text-violet-700" /> {data.rooms}
+            </h1>
+          </span>
+          <span className="w-3/12 flex flex-col items-center justify-center">
+            <h1 className="text-sm">Bathrooms</h1>
+            <h1 className="flex items-center gap-2 justify-center text-xl">
+              <FaBath className="text-2xl text-violet-700" /> {data.bathrooms}
+            </h1>
+          </span>
+          <span className="w-3/12 flex flex-col items-center justify-center">
+            <h1 className="text-sm">Square Area</h1>
+            <span className="flex items-center gap-2 justify-center text-lg">
+              <FaRegSquare className="text-xl text-violet-700" />
+              {data.area}m²{" "}
+            </span>
+          </span>
+          <span className="w-3/12 flex flex-col items-center justify-center">
+            <h1 className="text-sm">Kitchen</h1>
+            <h1 className="flex items-center gap-2 justify-center text-xl">
+              <TbToolsKitchen3 className="text-2xl text-violet-700" /> {data.kitchen}
+            </h1>
+          </span>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 

@@ -349,10 +349,10 @@ const toggleLike = async () => {
               </h1>
               <table className="w-full my-10  bg-violet-50 rounded-sm ">
                 <tbody>
-                  <tr className="  dark:bg-gray-800 dark:border-gray-700 border-b">
+                  <tr className="  :bg-gray-800 :border-gray-700 border-b">
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white"
                     >
                       <span className="flex items-center gap-2 justify-between">
                         <FaCarSide /> <span>Body</span>
@@ -369,7 +369,7 @@ const toggleLike = async () => {
                   <tr className=" border-b ">
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white"
                     >
                       <span className="flex items-center gap-2 justify-between">
                         <FaRoad /> <span>Mileage</span>
@@ -386,7 +386,7 @@ const toggleLike = async () => {
                   <tr className=" border-b">
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white"
                     >
                       <span className="flex items-center gap-2 justify-between">
                         <FaPalette /> <span>Color</span>
@@ -403,7 +403,7 @@ const toggleLike = async () => {
                   <tr className=" border-b">
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white"
                     >
                       <span className="flex items-center gap-2 justify-between">
                         <FaKey /> <span>VIN</span>

@@ -7,10 +7,12 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
+    
+  
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Teko:wght@300..700&display=swap');
+
 
 .primary_text{
     @apply text-[#000]
@@ -38,9 +40,9 @@
 }
 
 body{
-    font-family: "Syne", sans-serif;
     font-optical-sizing: auto;
-    background: #ffffffef;
+    background: #ffff;
+    @apply font-Popins
 }
 
 .left{

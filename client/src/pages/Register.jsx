@@ -61,16 +61,16 @@ const Register = () => {
   };
   return (
     <>
-      <section className="flex  flex-col pt-40  md:flex-row h-screen items-center">
+      <section className="flex  flex-col  py-10 justify-center text-black  md:flex-row min-h-screen items-center hero bg-violet-700 px-2 ">
         <div
-          className="bg-white w-full  lg:w-6/12   md:mx-0   h-screen px-6 lg:px-16 xl:px-12
+          className="bg-white w-full  lg:w-4/12   md:mx-0    py-10 rounded-2xl  px-6 lg:px-12 xl:px-12
       flex items-center justify-center"
         >
           <div className="w-full h-100">
             <div>
-              <img src={finder} width={300} alt="" />
+              <img src={finder} width={150} alt="" />
             </div>
-            <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">
+            <h1 className="text-xl md:text-xl font-meduim leading-tight mt-5">
               {t('create_your_account')}
             </h1>
 
@@ -137,7 +137,7 @@ const Register = () => {
 
               <button
                 type="submit"
-                className="w-full block bg-black   text-white font-semibold rounded-lg
+                className="w-full block bg-black  hover:scale-105 transition-all  text-white font-semibold rounded-lg
             px-4 py-3 mt-6"
               >
                 {loading ? (
@@ -148,23 +148,25 @@ const Register = () => {
               </button>
             </form>
 
+            <div className="flex items-center justify-center gap-3">
+            <hr className="my-6 border-gray-300 w-full " />
+            <h1 className="text-gray-500">Or</h1>
             <hr className="my-6 border-gray-300 w-full" />
+            </div>
 
           <OAuth/>
             <p className="mt-8">
-              {t('already_have_account')}?{" "}
+              {t('already have account')}?{" "}
               <Link
                 to="/login"
-                className="text-blue-500 hover:text-blue-700 font-semibold"
+                className="text-blue-500 hover:text-blue-800 font-meduim"
               >
-               {t('login')}
+               {t(' login')}
               </Link>
             </p>
           </div>
         </div>
-        <div className="hidden hero bg-violet-300 w-5/12 lg:w-6/12 min-h-screen h-[130vh] lg:flex items-center justify-center">
-          
-        </div>
+        
       </section>
 
       

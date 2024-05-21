@@ -49,16 +49,16 @@ const Login = () => {
  
   return (
     <>
-      <section className="flex flex-col  md:flex-row h-screen items-center">
+      <section className="flex  min-h-screen items-center justify-center py-10 hero bg-violet-700 px-2">
         <div
-          className="bg-white w-full  lg:w-6/12   md:mx-0   h-screen px-6 lg:px-16 xl:px-12
+          className="bg-white w-full  text-black lg:w-4/12    rounded-xl md:mx-0   py-10 px-6 lg:px-16 xl:px-12
       flex items-center justify-center"
         >
           <div className="w-full h-100">
             <div>
-              <img src={finder} width={300} alt="" />
+              <img src={finder} width={150} alt="" />
             </div>
-            <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">
+            <h1 className="text-xl md:text-xl font-meduim leading-tight mt-5">
             {t('loginTitle')}
             </h1>
 
@@ -104,7 +104,7 @@ const Login = () => {
 
               <button
                 type="submit"
-                className="w-full block bg-black  focus:bg-indigo-400 text-white font-semibold rounded-lg
+                className="w-full block bg-black hover:scale-105 transition-all  focus:bg-indigo-400 text-white font-semibold rounded-lg
             px-4 py-3 mt-6"
               >
                 {loading ? (
@@ -115,21 +115,24 @@ const Login = () => {
               </button>
             </form>
 
+            <div className="flex items-center justify-center gap-3">
+            <hr className="my-6 border-gray-300 w-full " />
+            <h1 className="text-gray-500">Or</h1>
             <hr className="my-6 border-gray-300 w-full" />
+            </div>
             <OAuth />
             <p className="mt-8">
-            {t('need_an_account')}
+            {t('need an account?')}
               <Link
                 to="/register"
-                className="text-blue-500 hover:text-blue-700 font-semibold"
+                className="text-blue-600 hover:text-blue-700 font-meduim"
               >
-                 {t('register')}
+                 {t(' register')}
               </Link>
             </p>
           </div>
         </div>
-        <div className=" hidden hero bg-violet-300 w-5/12 lg:w-6/12 h-screen lg:flex items-center justify-center">
-        </div>
+      
       </section>
     </>
   );

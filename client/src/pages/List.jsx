@@ -101,13 +101,13 @@ console.log(data)
   return (
     <>
       <Header userInfo={userInfo} />
-      <section className="bg-white min-h-screen">
+      <section className="bg-white min-h-screen text-black">
         <main className="py-10 px-10">
           <h1 className="py-10 text-xl lg:text-5xl font-bold text-center">Your List Property</h1>
 
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-              <thead className="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 :text-gray-400">
+              <thead className="text-sm text-gray-700 uppercase bg-gray-50 :bg-gray-700 :text-gray-400">
                 <tr>
                   <th scope="col" className="px-6 py-3">
                     Property Name
@@ -131,9 +131,9 @@ console.log(data)
                 {data.cars.map((item, index) => (
                   <tr
                     key={index}
-                    className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                    className="odd:bg-white odd::bg-gray-900 even:bg-gray-50 even::bg-gray-800 border-b :border-gray-700"
                   >
-                    <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                       {item.title}
                     </td>
                     <td className="px-6 py-4">{item.createdAt}</td>
@@ -143,13 +143,13 @@ console.log(data)
                
                             <button 
                               onClick={() => handleDeleteCar(item._id)}
-                              className="font-medium py-3 rounded-full bg-violet-200 px-3 dark:text-blue-500 hover:underline"
+                              className="font-medium py-3 rounded-full bg-violet-200 px-3 :text-blue-500 hover:underline"
                             >
                               <FaRegTrashAlt className="text-black text-lg" />
                             </button>
                             <Link
                               to={`/Update/${item._id}`}
-                              className="font-medium py-3 px-3 rounded-full bg-black text-white dark:text-blue-500 hover:underline"
+                              className="font-medium py-3 px-3 rounded-full bg-black text-white :text-blue-500 hover:underline"
                             >
                               <FaEdit className=" text-lg" />
                             </Link>
@@ -161,9 +161,9 @@ console.log(data)
                 {data.reals.map((item, index) => (
                   <tr
                     key={index}
-                    className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                    className="odd:bg-white odd::bg-gray-900 even:bg-gray-50 even::bg-gray-800 border-b :border-gray-700"
                   >
-                    <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                       {item.title}
                     </td>
                     <td className="px-6 py-4">{item.createdAt}</td>
@@ -175,13 +175,13 @@ console.log(data)
                          
                             <button 
                               onClick={() => handleDeleteReal(item._id)}
-                              className="font-medium py-3 rounded-full bg-green-600 px-3 dark:text-blue-500 hover:underline"
+                              className="font-medium py-3 rounded-full bg-green-600 px-3 :text-blue-500 hover:underline"
                             >
                               <FaRegTrashAlt className="text-black text-lg" />
                             </button>
                             <Link
                               to={`/Update0/${item._id}`}
-                              className="font-medium py-3 px-3 rounded-full bg-red-500 dark:text-blue-500 hover:underline"
+                              className="font-medium py-3 px-3 rounded-full bg-red-500 :text-blue-500 hover:underline"
                             >
                               <FaEdit className="text-black text-lg" />
                             </Link>

@@ -22,7 +22,7 @@ const Properties = ({ userInfo }) => {
   return (
     <>
       <Header userInfo={userInfo} />
-      <section>
+      <section className="text-black ">
         <div className="px-1 md:px-20 pt-5 pb-5">
           <div className="">
             <h1 className="text-center  font-bold text-4xl pb-4">
@@ -63,7 +63,7 @@ const Properties = ({ userInfo }) => {
                       placeholder="Country"
                       id="country"
                 defaultValue='United States'
-                      className="border p-2 rounded w-full"
+                      className="border p-2 rounded w-full bg-gray-100 "
                     >
                       <option value="" disabled>
                         Country
@@ -408,7 +408,7 @@ const Properties = ({ userInfo }) => {
                       name="price"
                       id="price"
                       defaultValue='0-9000000000000'
-                      className="border p-2 rounded w-full"
+                      className="border p-2 rounded w-full bg-gray-100"
                       onChange={(e) => {
                         const [min, max] = e.target.value.split("-");
                         setMinPrice(min);
@@ -433,93 +433,83 @@ const Properties = ({ userInfo }) => {
         <div className="flex  gap-4 mx-4 px-10 mt-4  overflow-x-auto    rounded-md py-1 ">
             <Link
               onClick={()=>{setCategories('house')}}
-              className={`px-10 rounded-xl ${category ==='house' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='house' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
-                <IoHomeSharp />
+                <IoHomeSharp className="text-3xl" />
               </span>{" "}
-              <span>Home</span>
             </Link>
             <Link
               onClick={()=>{setCategories('villa')}}
-              className={`px-10 rounded-xl ${category ==='villa' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='villa' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
-                <MdOutlineVilla />
+                <MdOutlineVilla className="text-3xl" />
               </span>{" "}
-              <span>Villa</span>
             </Link>
             <Link
               onClick={()=>{setCategories('apartment')}}
-              className={`px-10 rounded-xl ${category ==='apartment' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='apartment' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
-                <MdOutlineApartment />
+                <MdOutlineApartment className="text-3xl" />
               </span>{" "}
-              <span>Apartments</span>
             </Link>
             <Link
               onClick={()=>{setCategories('car')}}
-              className={`px-10 rounded-xl ${category ==='car' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='car' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
-                <IoCarSport />
+                <IoCarSport className="text-3xl" />
               </span>{" "}
-              <span>Car</span>
             </Link>
             <Link
               onClick={()=>{setCategories('office')}}
-              className={`px-10 rounded-xl ${category ==='office' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='office' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
-                <GiOfficeChair />
+                <GiOfficeChair className="text-3xl"  />
               </span>{" "}
-              <span>Office</span>
             </Link>
             <Link
               onClick={()=>{setCategories('bycicle')}}
-              className={`px-10 rounded-xl ${category ==='bycicle' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5  py-3 bg-violet-500 rounded-xl ${category ==='bycicle' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
-                <PiBicycleBold />
+                <PiBicycleBold className="text-3xl" />
               </span>{" "}
-              <span>Bycicle</span>
             </Link>
             <Link
               onClick={()=>{setCategories('devices')}}
-              className={`px-10 rounded-xl ${category ==='devices' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='devices' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
-                <MdOutlineDevices />
+                <MdOutlineDevices className="text-3xl" />
               </span>{" "}
-              <span>Devices</span>
             </Link>
             <Link
               onClick={()=>{setCategories('clothes')}}
-              className={`px-10 rounded-xl ${category ==='clothes' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='clothes' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
-                <GiClothes />
+                <GiClothes className="text-3xl" />
               </span>{" "}
-              <span>Clothes</span>
             </Link>
             <Link
               onClick={()=>{setCategories('music')}}
-              className={`px-10 rounded-xl ${category ==='music' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='music' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
-                <PiGuitar />
+                <PiGuitar className="text-3xl" />
               </span>{" "}
-              <span>Music</span>
             </Link>
             <Link
               onClick={()=>{setCategories('furnishing')}}
-              className={`px-10 rounded-xl ${category ==='furnishing' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3 bg-violet-500  rounded-2xl ${category ==='furnishing' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
             >
               <span>
-                <LuArmchair />
+                <LuArmchair className="text-3xl" />
               </span>{" "}
-              <span>Furnishing</span>
             </Link>
  
 
