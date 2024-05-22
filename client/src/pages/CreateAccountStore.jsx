@@ -313,7 +313,7 @@ const handleChange = (e) => {
                   
                 <button
                     type="submit"
-                    className="w-full py-3 rounded bg-black text-white hover:bg-black focus:outline-none transition-colors"
+                    className="w-full py-3 rounded bg-violet-600 text-white hover:bg-violet-600 focus:outline-none transition-colors"
                   >
                     {loading ? (
                       <span className="loading loading-spinner loading-md "></span>

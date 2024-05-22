@@ -231,7 +231,7 @@ const toggleLike = async () => {
           <div className="h-screen bg-white px-2 sm:px-10">
             <form method="dialog" className="modal-backdrop py-7">
               <button className="text-white">
-                <span className="bg-black px-14 py-3 rounded-lg">Close</span>
+                <span className="bg-violet-600 px-14 py-3 rounded-lg">Close</span>
               </button>
             </form>
 
@@ -248,7 +248,7 @@ const toggleLike = async () => {
             </div>
             <div className="flex justify-center w-full py-2 gap-2">
               {data[0].imageUrls.map((item, index) => (
-                <a key={index} href={`#item${index}`} className="px-5 bg-black text-white rounded-md">
+                <a key={index} href={`#item${index}`} className="px-5 bg-violet-600 text-white rounded-md">
                   {index + 1} 
                 </a>
               ))}
@@ -455,7 +455,7 @@ const toggleLike = async () => {
                     }?text=Hello How Can I Get More Info About This ?`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center text-white  gap-1  bg-black px-3 py-3 rounded-3xl cursor-pointer"
+                    className="flex items-center justify-center text-white  gap-1  bg-violet-600 px-3 py-3 rounded-3xl cursor-pointer"
                   >
                     Send Message <FaWhatsapp className="text-xl" />
                   </a>

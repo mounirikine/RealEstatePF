@@ -168,7 +168,7 @@ const Profile = ({ userInfo }) => {
                       type="button"
                       onClick={() => fileRef.current.click()}
                       disabled={active}
-                      className="py-3.5 px-7 w-6/12 mx-auto text-base font-medium text-indigo-100 focus:outline-none bg-black rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 "
+                      className="py-3.5 px-7 w-6/12 mx-auto text-base font-medium text-indigo-100 focus:outline-none bg-violet-600 rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 "
                     >
                       Change picture
                     </button>
@@ -218,7 +218,7 @@ const Profile = ({ userInfo }) => {
                           <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
                             <button
-                              className="btn bg-black text-white"
+                              className="btn bg-violet-600 text-white"
                               onClick={handleDeletePic}
                             >
                               Yes Delete It{" "}

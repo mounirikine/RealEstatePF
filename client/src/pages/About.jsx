@@ -52,7 +52,7 @@ export default function About({ userInfo }) {
       <Header userInfo={userInfo} />
 
       {/* Hero Section */}
-      <section className=" py-20 :bg-gray-900 text-black">
+      <section className=" py-20 :bg-gray-900 text-black pt-40">
         <main className="flex flex-col lg:flex-row justify-between px-5 lg:px-10">
           <div className="w-full lg:w-6/12 px-5 lg:px-10 mb-10 lg:mb-0">
             <motion.h1
@@ -267,16 +267,16 @@ export default function About({ userInfo }) {
   </motion.div>
 
   {/* <div className="items-center flex lg:hidden justify-center gap-3">
-    <button className="px-4 py-2 bg-black text-white" onClick={handlePrev}>
+    <button className="px-4 py-2 bg-violet-600 text-white" onClick={handlePrev}>
       <FaArrowLeft />
     </button>
-    <button className="px-4 py-2 bg-black text-white" onClick={handleNext}>
+    <button className="px-4 py-2 bg-violet-600 text-white" onClick={handleNext}>
       <FaArrowRight />
     </button>
   </div> */}
 </main>
 
-        <main className="py-10 px-5">
+        <main className="py-10 px-5 ">
           <section className="relative z-10 overflow-hidden bg-violet-300 rounded-2xl md:mx-5 :bg- px-10 py-10 lg:py-[120px]">
             <div className="container mx-auto">
               <div className="flex flex-wrap -mx-4 lg:justify-between">
@@ -417,7 +417,7 @@ export default function About({ userInfo }) {
                       <div>
                         <button
                           type="submit"
-                          className="w-full p-3 text-white transition border rounded  bg-black  hover:bg-opacity-90"
+                          className="w-full p-3 text-white transition border rounded  bg-violet-600  hover:bg-opacity-90"
                         >
                           Send Message
                         </button>

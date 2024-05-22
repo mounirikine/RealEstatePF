@@ -31,13 +31,33 @@
     @apply bg-black text-white
 }
 
-.hero{
-   
-    background-image: url(./assets/newhero.svg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
+.hero {
+  position: relative;
+  background-image: url("./assets/heiro.avif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh; /* Equivalent to @apply min-h-screen */
 }
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value to control the darkness */
+  pointer-events: none; /* Ensure the overlay does not interfere with interactions */
+  z-index: 1; /* Make sure the overlay is on top */
+}
+
+/* Optional: If you have content inside .hero and you want it to be above the overlay */
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
 
 body{
     font-optical-sizing: auto;

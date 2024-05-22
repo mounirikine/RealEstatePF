@@ -59,7 +59,7 @@ const ForgotPass = () => {
 
           <button
             type="submit"
-            className="w-full bg-black   text-white font-semibold rounded-lg px-4 py-3 mt-6"
+            className="w-full bg-violet-600   text-white font-semibold rounded-lg px-4 py-3 mt-6"
             disabled={loading}
           >
             {loading ? (

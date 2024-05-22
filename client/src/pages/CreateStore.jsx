@@ -124,7 +124,7 @@ const CreateStore = ({ userInfo }) => {
                       </span>
                     </li>
                   </ul>
-                  <Link to='/create-account-store' href="#" className="bg-black py-3 text-white">
+                  <Link to='/create-account-store' href="#" className="bg-violet-600 py-3 text-white">
                     Get started
                   </Link>
                 </div>
@@ -227,7 +227,7 @@ const CreateStore = ({ userInfo }) => {
                       </span>
                     </li>
                   </ul>
-                  <a href="#" className="bg-black py-3 text-white">
+                  <a href="#" className="bg-violet-600 py-3 text-white">
                     Get started
                   </a>
                 </div>
@@ -331,7 +331,7 @@ const CreateStore = ({ userInfo }) => {
                       </span>
                     </li>
                   </ul>
-                  <a href="#" className="bg-black py-3 text-white">
+                  <a href="#" className="bg-violet-600 py-3 text-white">
                     Get started
                   </a>
                 </div>

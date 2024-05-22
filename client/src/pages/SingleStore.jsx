@@ -51,7 +51,7 @@ const SingleStore = ({ userInfo }) => {
             <div className="mt-4">
               <Link
                 to="/create-store"
-                className="px-6 py-3 bg-black text-white rounded-lg text-lg md:text-sm"
+                className="px-6 py-3 bg-violet-600 text-white rounded-lg text-lg md:text-sm"
               >
                 Add Element
               </Link>
@@ -72,7 +72,7 @@ export default SingleStore;
 //           <div className="flex py-3 flex-col border  gap-4  px-10 mt-4  w-full   ">
 //             <Link
 //               onClick={()=>{setCategories('house')}}
-//               className={`px-10 rounded-xl ${category ==='house' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
+//               className={`px-10 rounded-xl ${category ==='house' ? 'bg-violet-600 text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
 //             >
 //               <span>
 //                 <IoHomeSharp />
@@ -81,7 +81,7 @@ export default SingleStore;
 //             </Link>
 //             <Link
 //               onClick={()=>{setCategories('villa')}}
-//               className={`px-10 rounded-xl ${category ==='villa' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
+//               className={`px-10 rounded-xl ${category ==='villa' ? 'bg-violet-600 text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
 //             >
 //               <span>
 //                 <MdOutlineVilla />
@@ -90,7 +90,7 @@ export default SingleStore;
 //             </Link>
 //             <Link
 //               onClick={()=>{setCategories('apartment')}}
-//               className={`px-10 rounded-xl ${category ==='apartment' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
+//               className={`px-10 rounded-xl ${category ==='apartment' ? 'bg-violet-600 text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
 //             >
 //               <span>
 //                 <MdOutlineApartment />
@@ -99,7 +99,7 @@ export default SingleStore;
 //             </Link>
 //             <Link
 //               onClick={()=>{setCategories('car')}}
-//               className={`px-10 rounded-xl ${category ==='car' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
+//               className={`px-10 rounded-xl ${category ==='car' ? 'bg-violet-600 text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
 //             >
 //               <span>
 //                 <IoCarSport />
@@ -108,7 +108,7 @@ export default SingleStore;
 //             </Link>
 //             <Link
 //               onClick={()=>{setCategories('office')}}
-//               className={`px-10 rounded-xl ${category ==='office' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  flex gap-1 items-center justify-center `}
+//               className={`px-10 rounded-xl ${category ==='office' ? 'bg-violet-600 text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  flex gap-1 items-center justify-center `}
 //             >
 //               <span>
 //                 <GiOfficeChair />
@@ -117,7 +117,7 @@ export default SingleStore;
 //             </Link>
 //             <Link
 //               onClick={()=>{setCategories('bycicle')}}
-//               className={`px-10 rounded-xl ${category ==='bycicle' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  flex gap-1 items-center justify-center `}
+//               className={`px-10 rounded-xl ${category ==='bycicle' ? 'bg-violet-600 text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  flex gap-1 items-center justify-center `}
 //             >
 //               <span>
 //                 <PiBicycleBold />
@@ -126,7 +126,7 @@ export default SingleStore;
 //             </Link>
 //             <Link
 //               onClick={()=>{setCategories('devices')}}
-//               className={`px-10 rounded-xl ${category ==='devices' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
+//               className={`px-10 rounded-xl ${category ==='devices' ? 'bg-violet-600 text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
 //             >
 //               <span>
 //                 <MdOutlineDevices />
@@ -135,7 +135,7 @@ export default SingleStore;
 //             </Link>
 //             <Link
 //               onClick={()=>{setCategories('clothes')}}
-//               className={`px-10 rounded-xl ${category ==='clothes' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
+//               className={`px-10 rounded-xl ${category ==='clothes' ? 'bg-violet-600 text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
 //             >
 //               <span>
 //                 <GiClothes />
@@ -144,7 +144,7 @@ export default SingleStore;
 //             </Link>
 //             <Link
 //               onClick={()=>{setCategories('music')}}
-//               className={`px-10 rounded-xl ${category ==='music' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
+//               className={`px-10 rounded-xl ${category ==='music' ? 'bg-violet-600 text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
 //             >
 //               <span>
 //                 <PiGuitar />
@@ -153,7 +153,7 @@ export default SingleStore;
 //             </Link>
 //             <Link
 //               onClick={()=>{setCategories('furnishing')}}
-//               className={`px-10 rounded-xl ${category ==='furnishing' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
+//               className={`px-10 rounded-xl ${category ==='furnishing' ? 'bg-violet-600 text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
 //             >
 //               <span>
 //                 <LuArmchair />

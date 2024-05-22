@@ -201,7 +201,7 @@ const Contact = () => {
       <div>
       <button
                 type="submit"
-                className="w-full block bg-black  focus:bg-indigo-400 hover:scale-105 transition-all text-white font-meduim rounded-lg
+                className="w-full block bg-violet-600  focus:bg-indigo-400 hover:scale-105 transition-all text-white font-meduim rounded-lg
             px-4 py-3 mt-6"
               >
                 {loader ? (

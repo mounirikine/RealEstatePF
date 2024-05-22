@@ -56,7 +56,7 @@ const MoreQuestions = () => {
                       <div>
                         <button
                           type="submit"
-                          className="w-full p-3 text-white transition border rounded  bg-black  hover:bg-opacity-90"
+                          className="w-full p-3 text-white transition border rounded  bg-violet-600  hover:bg-opacity-90"
                         >
                           Send Questions
                         </button>

@@ -22,7 +22,7 @@ const Properties = ({ userInfo }) => {
   return (
     <>
       <Header userInfo={userInfo} />
-      <section className="text-black ">
+      <section className="text-black pt-32 ">
         <div className="px-1 md:px-20 pt-5 pb-5">
           <div className="">
             <h1 className="text-center  font-bold text-4xl pb-4">

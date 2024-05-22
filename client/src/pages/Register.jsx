@@ -137,7 +137,7 @@ const Register = () => {
 
               <button
                 type="submit"
-                className="w-full block bg-black  hover:scale-105 transition-all  text-white font-semibold rounded-lg
+                className="w-full block bg-violet-600  hover:scale-105 transition-all  text-white font-semibold rounded-lg
             px-4 py-3 mt-6"
               >
                 {loading ? (

@@ -149,7 +149,7 @@ console.log(data)
                             </button>
                             <Link
                               to={`/Update/${item._id}`}
-                              className="font-medium py-3 px-3 rounded-full bg-black text-white :text-blue-500 hover:underline"
+                              className="font-medium py-3 px-3 rounded-full bg-violet-600 text-white :text-blue-500 hover:underline"
                             >
                               <FaEdit className=" text-lg" />
                             </Link>

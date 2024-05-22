@@ -37,16 +37,16 @@ const CreateForm = ({userInfo}) => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mx-4 px-20 py-20">
-            <Link to='/CreateHome'  className="px-10 rounded-xl  hover:bg-violet-500 text-xl hover:text-white border py-4 bg-black text-white shadow-lg flex gap-1 items-center justify-center"><span><IoHomeSharp /></span> <span>Home</span></Link>
-            <Link to='/CreateVilla'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-black text-white flex gap-1 items-center justify-center"><span><MdOutlineVilla /></span> <span>Villa</span></Link>
-            <Link to='/CreateApartment'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-black text-white shadow-lg flex gap-1 items-center justify-center"><span><MdOutlineApartment /></span> <span>Apartments</span></Link>
-            <Link to='/CreateCar'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-black text-white shadow-lg flex gap-1 items-center justify-center"><span><IoCarSport /></span> <span>Car</span></Link>
-            <Link to='/CreateOffice'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-black text-white shadow-lg flex gap-1 items-center justify-center"><span><GiOfficeChair /></span> <span>Office</span></Link>
-            <Link to='/CreateBycicle'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-black text-white shadow-lg flex gap-1 items-center justify-center"><span><PiBicycleBold /></span> <span>Bycicle</span></Link>
-            <Link to='/CreateDevices'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-black text-white shadow-lg flex gap-1 items-center justify-center"><span><MdOutlineDevices /></span> <span>Devices</span></Link>
-            <Link to='/CreateClothes'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-black text-white shadow-lg flex gap-1 items-center justify-center"><span><GiClothes  /></span> <span>Clothes</span></Link>
-            <Link to='/CreateMusicInstruments'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-black text-white shadow-lg flex gap-1 items-center justify-center"><span><PiGuitar /></span> <span>Music Instruments</span></Link>
-            <Link to='/CreateHomefurnishings'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-black text-white shadow-lg flex gap-1 items-center justify-center"><span><LuArmchair /></span> <span>Home furnishings</span></Link>
+            <Link to='/CreateHome'  className="px-10 rounded-xl  hover:bg-violet-500 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><IoHomeSharp /></span> <span>Home</span></Link>
+            <Link to='/CreateVilla'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white flex gap-1 items-center justify-center"><span><MdOutlineVilla /></span> <span>Villa</span></Link>
+            <Link to='/CreateApartment'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><MdOutlineApartment /></span> <span>Apartments</span></Link>
+            <Link to='/CreateCar'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><IoCarSport /></span> <span>Car</span></Link>
+            <Link to='/CreateOffice'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><GiOfficeChair /></span> <span>Office</span></Link>
+            <Link to='/CreateBycicle'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><PiBicycleBold /></span> <span>Bycicle</span></Link>
+            <Link to='/CreateDevices'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><MdOutlineDevices /></span> <span>Devices</span></Link>
+            <Link to='/CreateClothes'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><GiClothes  /></span> <span>Clothes</span></Link>
+            <Link to='/CreateMusicInstruments'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><PiGuitar /></span> <span>Music Instruments</span></Link>
+            <Link to='/CreateHomefurnishings'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><LuArmchair /></span> <span>Home furnishings</span></Link>
           </div>
       </div>
 

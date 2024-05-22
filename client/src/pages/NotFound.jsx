@@ -6,7 +6,7 @@ const NotFound = ({userInfo}) => {
     <>
       <Header  userInfo={userInfo}/>
 
-      <section className="hero h-[90vh]">
+      <section className="hero h-[90vh] text-white">
         <main className="flex items-center justify-center">
           <div>
             <h1 className="text-[10rem] text-center font-bold text-violet-500">404</h1>
@@ -14,7 +14,7 @@ const NotFound = ({userInfo}) => {
             <p className="text-lg text-center mt-5">The page you are looking for doesn't exist or has been moved.</p>
 
             <div className="flex items-center justify-center pt-10">
-            <Link to='/'  className="mx-auto bg-black text-white px-14 py-3 rounded-xl" >Back To HomePage</Link>
+            <Link to='/'  className="mx-auto bg-violet-600 text-white px-14 py-3 rounded-xl" >Back To Home Page</Link>
             </div>
           </div>
         </main>
