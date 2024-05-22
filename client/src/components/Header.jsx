@@ -70,7 +70,7 @@ const Header = ({ userInfo }) => {
         className={`${location.pathname == "/" ?" bg-transparent":"bg-black"} fixed w-full z-20 top-0 start-0  py-1 transition-all ${headerBg}`}
       >
         <nav className="px-4 lg:px-6 py-2.5">
-          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl ">
             <Link to="/" className="items-center">
               <img src={logof} alt="" width={130} />
             </Link>
@@ -83,7 +83,7 @@ const Header = ({ userInfo }) => {
                       type="checkbox"
                       className="drawer-toggle"
                     />
-                    <div className="drawer-content rounded-2xl">
+                    <div className="drawer-content rounded-2xl ">
                       <label
                         htmlFor="my-drawer"
                         className="btn bg-violet-600 hover:bg-violet-600 drawer-button border-none"
@@ -111,7 +111,7 @@ const Header = ({ userInfo }) => {
                         aria-label="close sidebar"
                         className="drawer-overlay"
                       ></label>
-                      <ul className="menu p-4 w-80 min-h-full bg-white text-white">
+                      <ul className="menu p-4 w-80 min-h-full bg-white text-black">
                         <div className="pb-10 pt-2 px-3">
                           <Link to="/" className="items-center">
                             <img src={logof} alt="" width={130} />
@@ -141,7 +141,7 @@ const Header = ({ userInfo }) => {
                           </Link>
                         </li>
                         <li className="hover:bg-white focus:bg-white">
-                          <Link className="text-white hover:bg-white focus:bg-white mb-1">
+                          <Link className=" hover:bg-white focus:bg-white mb-1 text-black">
                             <HiOutlineLanguage className="text-lg" />
                             Languages
                           </Link>

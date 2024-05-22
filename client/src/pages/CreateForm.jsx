@@ -28,7 +28,7 @@ const CreateForm = ({userInfo}) => {
   return (
     <>
     <Header userInfo={userInfo} />
-      <div className="lg:min-h-screen sm:min-h-screen ">
+      <div className="lg:min-h-screen sm:min-h-screen pt-44 ">
           <div className="pt-10 pb-5">
               <h1 className="text-center text-5xl font-bold uppercase primary_text">Choose a category</h1>
           </div>
@@ -46,7 +46,6 @@ const CreateForm = ({userInfo}) => {
             <Link to='/CreateDevices'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><MdOutlineDevices /></span> <span>Devices</span></Link>
             <Link to='/CreateClothes'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><GiClothes  /></span> <span>Clothes</span></Link>
             <Link to='/CreateMusicInstruments'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><PiGuitar /></span> <span>Music Instruments</span></Link>
-            <Link to='/CreateHomefurnishings'  className="px-10 rounded-xl  hover:bg-violet-600 text-xl hover:text-white border py-4 bg-violet-600 text-white shadow-lg flex gap-1 items-center justify-center"><span><LuArmchair /></span> <span>Home furnishings</span></Link>
           </div>
       </div>
 

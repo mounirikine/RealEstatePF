@@ -131,11 +131,11 @@ const Profile = ({ userInfo }) => {
   return (
     <>
       <Header userInfo={userInfo} />
-      <div className="w-full  gap-5 px-3 md:px-16 lg:px-28 md:flex-row  hero ">
+      <div className="w-full  gap-5 px-3 md:px-16 lg:px-28 md:flex-row  hero pt-44">
         <main className="w-full  md:w-3/3 lg:w-4/4">
         
-            <div className="w-full border-2 border-black px-6 mx-auto pb-8 mt-8 sm:max-w-6xl sm:rounded-lg bg-white mb-14">
-              <div className="grid max-w-3xl mx-auto  ">
+            <div className="w-full border-2 border-black px-6 mx-auto pb-8 mt-8 sm:max-w-2xl sm:rounded-lg bg-white mb-14">
+              <div className="grid max-w-2xl mx-auto  ">
                 <div className=" flex-col items-center justify-center gird py-5 w-full space-y-5 sm:flex-row sm:space-y-0">
                   <input
                     onChange={(e) => setFile(e.target.files[0])}
