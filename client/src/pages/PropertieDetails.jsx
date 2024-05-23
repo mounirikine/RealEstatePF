@@ -167,7 +167,7 @@ console.log(likes)
   return (
     <>
       <Header userInfo={userInfo} />
-      <section className="py-20 md:py-14 bg-white min-h-screen">
+      <section className="py-20 md:py-14 bg-white min-h-screen md:pt-44 text-black " >
         <main className="px-4 md:px-4 lg:px-32 flex flex-col md:flex-row items-center justify-center gap-6">
           <div className="md:w-9/12">
             {data.length > 0 && data[0].imageUrls && (
@@ -189,11 +189,11 @@ console.log(likes)
                 <div className="relative">
                   <img
                     src={data[0].imageUrls[1]}
-                    className="w-full rounded-xl h-[240px]"
+                    className="w-full rounded-xl h-[240px] "
                     alt=""
                   />
                    <button
-          className="absolute bottom-4 right-3 px-3 lg:px-6 bg-white py-3 rounded-lg font-bold"
+          className="absolute bottom-4 right-3 px-3 lg:px-6 border bg-gray-100 py-3 rounded-lg font-bold"
           onClick={() => document.getElementById("my_modal_2").showModal()}
         >
           Show All Images
@@ -203,10 +203,10 @@ console.log(likes)
           id="my_modal_2"
           className="modal mt-5 flex items-center justify-center w-11/12 mx-auto"
         >
-          <div className="h-screen bg-white px-2 sm:px-10">
-            <form method="dialog" className="modal-backdrop py-7">
-              <button className="text-white">
-                <span className="bg-violet-600 px-14 py-3 rounded-lg">Close</span>
+          <div className=" bg-white px-2 rounded-3xl sm:px-10">
+            <form method="dialog" className="modal-backdrop py-3">
+              <button className="text-white flex  justify-end">
+                <span className=" px-7 bg-gray-100 py-1 rounded-lg text-black border">Close</span>
               </button>
             </form>
 
@@ -223,7 +223,7 @@ console.log(likes)
             </div>
             <div className="flex justify-center w-full py-2 gap-2">
               {data[0].imageUrls.map((item, index) => (
-                <a key={index} href={`#item${index}`} className="px-5 bg-violet-600 text-white rounded-md">
+                <a key={index} href={`#item${index}`} className="px-3 bg-violet-600 text-white rounded-md">
                   {index + 1} 
                 </a>
               ))}
@@ -424,18 +424,18 @@ console.log(likes)
                       placeholder="Comment"
                       onChange={(e)=>setText(e.target.value)}
                       value={text}
-                      className="textarea textarea-bordered textarea-xs w-full max-w-xs lg:max-w-full"
+                      className="textarea textarea-bordered textarea-xs w-full max-w-xs lg:max-w-full text-black bg-gray-100"
                     ></textarea>
-                    <h5 onClick={handleComment} className="btn text-2xl rounded-xl ml-1" >{loading ? (
+                    <h5 onClick={handleComment} className="btn text-2xl rounded-xl ml-1 bg-violet-300 text-black hover:bg-violet-400 border-none" >{loading ? (
                       <span className="loading loading-spinner loading-md "></span>
                     ) : (
                       <FiPlus />
                     )}</h5>
                   </div>
                   {comments.map((item)=>(
-                    <div key={item._id} className="flex items-center justify-center lg:justify-start mb-4">
+                    <div key={item._id} className="flex items-center justify-center lg:justify-start mb-4 px-10 mt-10" >
                     <div className="avatar">
-                      <div className="w-12 mr-2 rounded-full">
+                      <div className="w-10 mr-2 rounded-full">
                         <img src={item.userRef?.avatar} />
                       </div>
                     </div>
@@ -443,7 +443,7 @@ console.log(likes)
                     <p
                     
                       
-                      className="textarea textarea-bordered textarea-xs w-full max-w-xs lg:max-w-full"
+                      className="textarea textarea-bordered bg-white flex items-center text-lg border-none  textarea-xs w-full max-w-xs lg:max-w-full"
                     >{item.text}</p>
                    
                   </div>
@@ -455,7 +455,7 @@ console.log(likes)
 
 
           </div>
-          <div className="md:w-3/12">
+          <div className="md:w-3/12  ">
             <main className="flex py-10">
               <div className="w-full  border-2 px-5 py-6 rounded-xl bg-violet-50 border-black">
                 <h1>Price</h1>

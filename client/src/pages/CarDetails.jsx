@@ -191,7 +191,7 @@ const toggleLike = async () => {
     <>
       <Header userInfo={userInfo} />
 
-      <section className="py-20 md:py-14 bg-white min-h-screen">
+      <section className="py-20 md:py-14 bg-white min-h-screen md:pt-44 text-black">
         <main className="px-4 md:px-4 lg:px-32 flex flex-col md:flex-row items-center justify-center gap-6">
           <div className="md:w-9/12">
             {data.length > 0 && data[0].imageUrls && (
@@ -445,7 +445,7 @@ const toggleLike = async () => {
                 <hr className="my-5 border border-black" />
 
                 <div>
-                  <h1 className="text-xl font-bold">Request a home tour</h1>
+                  <h1 className="text-xl font-bold">Request a car tour</h1>
                 </div>
 
                 <div className="pt-10">
@@ -653,18 +653,18 @@ const toggleLike = async () => {
                       placeholder="Comment"
                       onChange={(e)=>setText(e.target.value)}
                       value={text}
-                      className="textarea textarea-bordered textarea-xs w-full max-w-xs lg:max-w-full"
+                      className="textarea textarea-bordered bg-gray-100 textarea-xs text-black w-full max-w-xs lg:max-w-full"
                     ></textarea>
-                    <h5 onClick={handleComment} className="btn text-2xl rounded-xl ml-1" >{loading ? (
+                    <h5 onClick={handleComment} className="btn text-2xl rounded-xl ml-1 bg-violet-400 hover:bg-violet-500 text-black border-none" >{loading ? (
                       <span className="loading loading-spinner loading-md "></span>
                     ) : (
                       <FiPlus />
                     )}</h5>
                   </div>
                   {comments.map((item)=>(
-                    <div key={item._id} className="flex items-center justify-center lg:justify-start mb-4">
+                    <div key={item._id} className="flex items-center justify-center lg:justify-start mb-4 px-20 ">
                     <div className="avatar">
-                      <div className="w-12 mr-2 rounded-full">
+                      <div className="w-10 mr-2 rounded-full">
                         <img src={item.userRef?.avatar} />
                       </div>
                     </div>
@@ -672,7 +672,7 @@ const toggleLike = async () => {
                     <p
                     
                       
-                      className="textarea textarea-bordered textarea-xs w-full max-w-xs lg:max-w-full"
+                      className="textarea textarea-bordered textarea-xs bg-white border-none flex items-center text-lg w-full max-w-xs lg:max-w-full"
                     >{item.text}</p>
                    
                   </div>

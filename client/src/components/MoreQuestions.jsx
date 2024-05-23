@@ -2,13 +2,13 @@ import Footer from "./Footer"
 import Header from "./Header"
 
 
-const MoreQuestions = () => {
+const MoreQuestions = ({userInfo}) => {
   return (
     <>
 
-    <Header />
+    <Header userInfo={userInfo} />
         <section>
-          <main className="px-32 pt-10 pb-32 min-h-screen">
+          <main className="px-32 pt-32 pb-32 min-h-screen">
             <div className="flex  justify-center ">
               <h1 className="text-6xl font-bold text-black">More Questions</h1> 
               

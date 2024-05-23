@@ -111,7 +111,7 @@ function App() {
             <Route path="/*" element={<NotFound  userInfo={userInfo}/>} />
             <Route path='/forgot-Pass' element={<ForgotPass/>}/>
             <Route path='/forgot-Pass/:id/:token' element={<NewPass/>}/>
-            <Route path='/MoreQuestions' element={<MoreQuestions/>}/>
+            <Route path='/MoreQuestions' element={<MoreQuestions userInfo={userInfo}/>}/>
 
             {/* Use Routes inside PrivateRoutes */}
             <Route element={<PrivateRoutes />}>
