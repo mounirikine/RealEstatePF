@@ -14,9 +14,9 @@ import { LuArmchair } from "react-icons/lu";
 import { FaDollarSign } from "react-icons/fa";
 const Properties = ({ userInfo }) => {
   const [category,setCategories] = useState('house');
-  const [minPrice, setMinPrice] = useState('0');
-  const [maxPrice, setMaxPrice] = useState('9000000000000');
-  const [location,setLocation] = useState('United States');
+  const [minPrice, setMinPrice] = useState(undefined);
+  const [maxPrice, setMaxPrice] = useState(undefined);
+  const [location,setLocation] = useState(undefined);
 
 
   return (
@@ -62,7 +62,7 @@ const Properties = ({ userInfo }) => {
                     onChange={(e)=>setLocation(e.target.value)}
                       placeholder="Country"
                       id="country"
-                defaultValue='United States'
+               
                       className="border p-2 rounded w-full bg-gray-100 "
                     >
                       <option value="" disabled>
@@ -407,7 +407,7 @@ const Properties = ({ userInfo }) => {
                     <select
                       name="price"
                       id="price"
-                      defaultValue='0-9000000000000'
+                     
                       className="border p-2 rounded w-full bg-gray-100"
                       onChange={(e) => {
                         const [min, max] = e.target.value.split("-");

@@ -5,18 +5,14 @@ import ResidentCardCol from "./ResidentCardCol";
 import OtherCard from "./OtherCard";
 
 const PropertiesFilter = ({ catSlug ,minPrice,country,maxPrice}) => {
-  const [data, setData] = useState({ cars: [], reals: [] });
+  const [data, setData] = useState({ cars: [], reals: [] ,others:[]});
   const [loading, setLoading] = useState(false);
 
      console.log(catSlug ,minPrice,country,maxPrice)
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const countryParam = urlParams.get("country") || null;
-    // const catSlugParam = urlParams.get("catSlug") || null;
-    // const minPrice = urlParams.get("minPrice") || null;
-    // const maxPrice = urlParams.get("maxPrice") || null;
+
   
       try {
    

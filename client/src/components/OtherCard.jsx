@@ -7,6 +7,7 @@ import OtherCardCol from './OtherCardCol';
 
 const OtherCard = ({ catSlug }) => {
   const [data, setData] = useState([]);
+  console.log(data)
   useEffect(() => {
     const fetchData = async () => {
       try {
