@@ -5,15 +5,16 @@ const Contactus = ({ userInfo }) => {
   return (
     <>
       <Header userInfo={userInfo} />
-      <section className="text-black pt-40">
-        <main className="py-10">
-          <div>
-            <h1 className="text-center text-5xl font-bold mb-5">Contact Us</h1>
-            <h1 className="text-center text-lg">
+      <section className="flex items-center flex-col justify-center py-40 hero">
+      <h1 className="text-center text-5xl font-bold mb-5 text-white">Contact Us</h1>
+            <h1 className="text-center text-lg text-white">
               Have any question? Fill out the form and we'll love to hear, we'll
               in touch shortly
             </h1>
-          </div>
+      </section>
+      <section className="text-black pt-10">
+        <main className="py-10">
+        
 
           <section className="relative border mt-5 bg-violet-100 z-10 overflow-hidden  rounded-2xl md:mx-5 :bg- px-10 py-10 lg:py-[120px]">
             <div className="container mx-auto">

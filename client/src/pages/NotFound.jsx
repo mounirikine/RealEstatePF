@@ -6,8 +6,8 @@ const NotFound = ({userInfo}) => {
     <>
       <Header  userInfo={userInfo}/>
 
-      <section className="hero h-[90vh] text-white">
-        <main className="flex items-center justify-center">
+      <section className="hero  text-white ">
+        <main className="flex items-center justify-center min-h-screen">
           <div>
             <h1 className="text-[10rem] text-center font-bold text-violet-500">404</h1>
             <h1 className="text-center text-4xl font-bold">Oops! Page can’t be found.</h1>

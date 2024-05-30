@@ -5,7 +5,7 @@ import { FaPowerOff, FaStore } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import logof from "../assets/finder.png";
+import logof from "../assets/logof1.png";
 import { HiOutlineLanguage } from "react-icons/hi2";
 import { useTranslation } from 'react-i18next';
 
@@ -67,14 +67,14 @@ const Header = ({ userInfo }) => {
     <>
       <header
         id="header"
-        className={`${location.pathname == "/" ?" bg-transparent":"bg-black"} fixed w-full z-20 top-0 start-0  py-1 transition-all ${headerBg}`}
+        className={`${location.pathname == "/" ?" bg-transparent":""} fixed w-full z-20 top-0 start-0   py-1 transition-all ${headerBg}`}
       >
         <nav className="px-4 lg:px-6 py-2.5">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl ">
             <Link to="/" className="items-center">
               <img src={logof} alt="" width={130} />
             </Link>
-            <div className="items-center lg:order-2 flex">
+            <div className="items-center lg:order-2 flex ">
               {cookies.access_token ? (
                 <>
                   <div className="drawer z-[9999999999]">
@@ -86,7 +86,7 @@ const Header = ({ userInfo }) => {
                     <div className="drawer-content rounded-2xl ">
                       <label
                         htmlFor="my-drawer"
-                        className="btn bg-violet-600 hover:bg-violet-600 drawer-button border-none"
+                        className="btn bg-transparent hover:bg-transparent drawer-button border-none"
                       >
                         {userInfo && userInfo.avatar && (
                           <>
@@ -98,18 +98,18 @@ const Header = ({ userInfo }) => {
                               style={{ width: "30px", height: "30px" }}
                               alt="User Avatar"
                             />
-                            <div className="badge hidden sm:block badge-ghost bg-violet-600 border-none text-white">
+                            <div className=" hidden sm:block badge-ghost  bg-transparent border-none text-white">
                               {userInfo.username}
                             </div>
                           </>
                         )}
                       </label>
                     </div>
-                    <div className="drawer-side">
+                    <div className="drawer-side ">
                       <label
                         htmlFor="my-drawer"
                         aria-label="close sidebar"
-                        className="drawer-overlay"
+                        className="drawer-overlay "
                       ></label>
                       <ul className="menu p-4 w-80 min-h-full bg-white text-black">
                         <div className="pb-10 pt-2 px-3">
@@ -168,20 +168,20 @@ const Header = ({ userInfo }) => {
               <button
                 onClick={handleOpen}
                 type="button"
-                className="inline-flex items-center p-2 ml-1 text-sm border rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-gray-200"
+                className="inline-flex  items-center p-2 ml-1 text-sm border rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-gray-200"
               >
                 <span className="sr-only">Open main menu</span>
                 <IoMenuOutline className="w-6 h-6" />
               </button>
             </div>
-            <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1">
-              <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-1 lg:mt-0">
+            <div className="hidden  justify-between items-center w-full lg:flex lg:w-auto lg:order-1">
+              <ul className="flex  flex-col mt-4 font-medium lg:flex-row lg:space-x-1 lg:mt-0">
                 {navItems.map((item) => (
                   <li
                     key={item.label}
                     onClick={() => setOpen(true)}
                     className={`${
-                      location.pathname === item.path ? "bg-white text-black" : "text-black"
+                      location.pathname === item.path ? "bg-white text-black" : "text-black "
                     } px-5 py-1 rounded-xl`}
                   >
                     <NavLink
@@ -197,14 +197,14 @@ const Header = ({ userInfo }) => {
                 ))}
               </ul>
             </div>
-            <div className={` ${open ? "hidden" : "flex"} lg:hidden justify-between items-center w-full lg:w-auto lg:order-1`}>
+            <div className={` ${open ? "hidden" : "flex"} lg:hidden justify-between items-center w-full lg:w-auto lg:order-1 bg-violet-500 mt-5 rounded-md px-10   `}>
               <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 w-full h-screen rounded-3xl mb-10 pt-10 pb-6">
                 {navItems.map((item) => (
                   <li
                     key={item.label}
                     onClick={() => setActive(item.label)}
                     className={`${
-                      location.pathname === item.path ? "bg-violet-600 text-white flex items-center justify-center" : "text-white flex items-center justify-center"
+                      location.pathname === item.path ? "bg-white text-black flex items-center justify-center" : "text-white flex items-center justify-center"
                     } px-5 py-1 rounded-xl`}
                   >
                     <NavLink

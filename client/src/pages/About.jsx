@@ -52,7 +52,12 @@ export default function About({ userInfo }) {
       <Header userInfo={userInfo} />
 
       {/* Hero Section */}
-      <section className=" py-20 :bg-gray-900 text-black pt-40">
+      <section className="flex items-center justify-center py-40 hero">
+      <h1 className="text-center  font-bold text-4xl pb-4 text-white">
+              About Us
+            </h1>
+      </section>
+      <section className=" py-20 :bg-gray-900 text-black pt-40 ">
         <main className="flex flex-col lg:flex-row justify-between px-5 lg:px-10">
           <div className="w-full lg:w-6/12 px-5 lg:px-10 mb-10 lg:mb-0">
             <motion.h1

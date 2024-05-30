@@ -22,13 +22,13 @@ const Properties = ({ userInfo }) => {
   return (
     <>
       <Header userInfo={userInfo} />
-      <section className="text-black pt-32 ">
+      <section className="text-black pt-32 hero  overflow-hidden mb-20 ">
         <div className="px-1 md:px-20 pt-5 pb-5">
           <div className="">
-            <h1 className="text-center  font-bold text-4xl pb-4">
+            <h1 className="text-center  font-bold text-4xl pb-4 text-white">
               Property Types
             </h1>
-            <p className="text-center w-11/12 md:w-8/12 mx-auto ">
+            <p className="text-center w-11/12 md:w-8/12 mx-auto  text-white">
             Here you can find your categories that you are simply looking for and be the first to take them
             </p>
           </div>
@@ -36,7 +36,10 @@ const Properties = ({ userInfo }) => {
         </div>
         
 
-        <div className="mb-3   bg-violet-100 border-2 border-black w-10/12 mx-auto flex flex-col items-center justify-center px-4 py-2 rounded-2xl  ">
+  
+      </section>
+      <section className="text-black">
+      <div className="mb-3   bg-violet-100 border-2 border-black w-10/12 mx-auto flex flex-col items-center justify-center px-4 py-2 rounded-2xl  ">
           <div className="text-center py-1">
             <h1 className="text-xl font-bold">Filter Property</h1>
           </div>
@@ -429,11 +432,11 @@ const Properties = ({ userInfo }) => {
             
             </motion.div>
         </div>
-        <div className="flex items-center justify-center lg:px-20">
+        <div className="flex items-center justify-center lg:px-10">
         <div className="flex  gap-4 mx-4 px-10 mt-4  overflow-x-auto    rounded-md py-1 ">
             <Link
               onClick={()=>{setCategories('house')}}
-              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='house' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3  rounded-xl ${category ==='house' ? 'border-2 border-black text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
             >
               <span>
                 <IoHomeSharp className="text-3xl" />
@@ -441,7 +444,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('villa')}}
-              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='villa' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3  rounded-xl ${category ==='villa' ? 'border-2 border-black text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
             >
               <span>
                 <MdOutlineVilla className="text-3xl" />
@@ -449,7 +452,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('apartment')}}
-              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='apartment' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3  rounded-xl ${category ==='apartment' ? 'border-2 border-black text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
             >
               <span>
                 <MdOutlineApartment className="text-3xl" />
@@ -457,7 +460,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('car')}}
-              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='car' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3  rounded-xl ${category ==='car' ? 'border-2 border-black text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
             >
               <span>
                 <IoCarSport className="text-3xl" />
@@ -465,7 +468,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('office')}}
-              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='office' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3  rounded-xl ${category ==='office' ? 'border-2 border-black text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
             >
               <span>
                 <GiOfficeChair className="text-3xl"  />
@@ -473,7 +476,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('bycicle')}}
-              className={`px-5  py-3 bg-violet-500 rounded-xl ${category ==='bycicle' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5  py-3  rounded-xl ${category ==='bycicle' ? 'border-2 border-black text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
             >
               <span>
                 <PiBicycleBold className="text-3xl" />
@@ -481,7 +484,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('devices')}}
-              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='devices' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3  rounded-xl ${category ==='devices' ? 'border-2 border-black text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
             >
               <span>
                 <MdOutlineDevices className="text-3xl" />
@@ -489,7 +492,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('clothes')}}
-              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='clothes' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3  rounded-xl ${category ==='clothes' ? 'border-2 border-black text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
             >
               <span>
                 <GiClothes className="text-3xl" />
@@ -497,7 +500,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('music')}}
-              className={`px-5 py-3 bg-violet-500 rounded-xl ${category ==='music' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3  rounded-xl ${category ==='music' ? 'border-2 border-black text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
             >
               <span>
                 <PiGuitar className="text-3xl" />
@@ -505,7 +508,7 @@ const Properties = ({ userInfo }) => {
             </Link>
             <Link
               onClick={()=>{setCategories('furnishing')}}
-              className={`px-5 py-3 bg-violet-500  rounded-2xl ${category ==='furnishing' ? 'bg-black text-white' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1  shadow-lg flex gap-1 items-center justify-center `}
+              className={`px-5 py-3   rounded-2xl ${category ==='furnishing' ? 'border-2 border-black text-black' : 'bg-white hover:bg-slate-100 ' }  text-lg border py-1   flex gap-1 items-center justify-center `}
             >
               <span>
                 <LuArmchair className="text-3xl" />

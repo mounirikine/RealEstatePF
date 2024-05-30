@@ -28,7 +28,7 @@ const CreateForm = ({userInfo}) => {
   return (
     <>
     <Header userInfo={userInfo} />
-      <div className="lg:min-h-screen sm:min-h-screen pt-44 ">
+      <div className="lg:min-h-screen sm:min-h-screen pt-44  hero">
           <div className="pt-10 pb-5">
               <h1 className="text-center text-5xl font-bold uppercase primary_text">Choose a category</h1>
           </div>

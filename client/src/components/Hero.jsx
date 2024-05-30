@@ -9,7 +9,7 @@ const Hero = () => {
   const [t,i18n]=useTranslation('global')
   return (
     <>
-      <section className="hero min-h-screen pb-5 w-full  lg:mt-0 pt-20">
+      <section className="hero min-h-screen pb-5 w-full  lg:mt-0 pt-20 ">
         <main className="flex flex-col lg:flex-row items-center w-full   px-4 lg:px-0 ">
           <div className=" lg:w-7/12   mb-8 lg:mb-0   relative">
             <motion.h1

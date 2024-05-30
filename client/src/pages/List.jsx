@@ -101,8 +101,8 @@ console.log(data)
   return (
     <>
       <Header userInfo={userInfo} />
-      <section className="bg-white min-h-screen text-black pt-44">
-        <main className="py-10 px-10">
+      <section className="hero min-h-screen text-white pt-44">
+        <main className="py-10 px-10 ">
           <h1 className="py-10 text-xl lg:text-5xl font-bold text-center">Your List Property</h1>
 
           <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
