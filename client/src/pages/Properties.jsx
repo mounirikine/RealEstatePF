@@ -12,6 +12,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { PiBicycleBold, PiGuitar } from "react-icons/pi";
 import { LuArmchair } from "react-icons/lu";
 import { FaDollarSign } from "react-icons/fa";
+import logo from '../assets/finder.png'
 const Properties = ({ userInfo }) => {
   const [category,setCategories] = useState('house');
   const [minPrice, setMinPrice] = useState(undefined);
@@ -22,8 +23,9 @@ const Properties = ({ userInfo }) => {
   return (
     <>
       <Header userInfo={userInfo} />
+    
       <section className="text-black pt-32 hero  overflow-hidden mb-20 ">
-        <div className="px-1 md:px-20 pt-5 pb-5">
+        <div className="px-1 md:px-20 pt-5 pb-10">
           <div className="">
             <h1 className="text-center  font-bold text-4xl pb-4 text-white">
               Property Types
@@ -521,6 +523,37 @@ const Properties = ({ userInfo }) => {
         
             <PropertiesFilter catSlug={category}  minPrice={minPrice} country={location} maxPrice={maxPrice} />
       </section>
+      <footer className="w-full">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="py-20">
+            <a href="https://pagedone.io/" className="flex justify-center ">
+              <img src={logo}  className="w-32" alt="" />
+            </a>
+            <div className="py-8 text-center">
+                <h3 className="font-manrope text-3xl text-gray-900 font-bold mb-4">Having revenue problem? We’ve got skills.</h3>
+                <p className="text-gray-500">Joined over 400+ startups already growing with pagedone. what's holding you back?</p>
+            </div> 
+            <div className="flex justify-center items-center gap-3">
+                <a href="#" className="border border-gray-300 rounded-full shadow-md py-3 px-6 flex items-center gap-2 transition-all duration-500 text-sm text-gray-900 hover:bg-gray-100"><svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.81276 4.76453C11.7709 5.92474 12.75 6.50484 12.75 7.375C12.75 8.24516 11.7709 8.82526 9.81276 9.98547L5.90586 12.3003C3.9477 13.4605 2.96862 14.0406 2.23431 13.6055C1.5 13.1705 1.5 12.0103 1.5 9.68984L1.5 5.06016C1.5 2.73974 1.5 1.57953 2.23431 1.14445C2.96862 0.709374 3.9477 1.28948 5.90586 2.44969L9.81276 4.76453Z" stroke="#111827" stroke-width="1.8"/>
+                    </svg>
+                    View demo</a>
+                    <a href="#" className="bg-violet-600 rounded-full shadow-md py-3 px-6 flex items-center gap-2 transition-all duration-500  text-sm text-white hover:bg-indigo-700">Get started</a>    
+            </div>  
+            </div>
+            <div className="py-7 border-t border-gray-200">
+                <div className="flex items-center justify-center flex-col gap-7 lg:justify-between lg:flex-row">
+                    <span className="text-sm text-gray-500 ">©<a href="https://pagedone.io/">pagedone</a> 2024, All rights reserved.</span>
+                    <ul className="flex items-center text-sm text-gray-500 gap-9">
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+                                            
 
       <Footer />
     </>

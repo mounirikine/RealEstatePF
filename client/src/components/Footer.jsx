@@ -4,93 +4,126 @@ import logo1 from '../assets/finder.png'
 const Footer = () => {
   return (
     <>
-    <footer className=" ">
-    <div className="container p-6 mx-auto text-black">
-        <div className="lg:flex">
-            <div className="w-full -mx-6 lg:w-2/5">
-                <div className="px-6">
-                    <Link to="/" className="">
-                                     
-                    <img src={logo1} alt="" width={200} className="mb-10"/>
-       
-                                     
-                    </Link>
-
-                    <p className="max-w-sm mt-2  :text-gray-400">Join 31,000+ other and never miss out on new tips, tutorials, and more.</p>
-
-                    <div className="flex mt-6 -mx-2">
-                        <Link to="#"
-                            className="mx-2  transition-colors duration-300 :text-gray-300 hover:text-blue-500 :hover:text-blue-400"
-                            aria-label="Reddit">
-                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C21.9939 17.5203 17.5203 21.9939 12 22ZM6.807 10.543C6.20862 10.5433 5.67102 10.9088 5.45054 11.465C5.23006 12.0213 5.37133 12.6558 5.807 13.066C5.92217 13.1751 6.05463 13.2643 6.199 13.33C6.18644 13.4761 6.18644 13.6229 6.199 13.769C6.199 16.009 8.814 17.831 12.028 17.831C15.242 17.831 17.858 16.009 17.858 13.769C17.8696 13.6229 17.8696 13.4761 17.858 13.33C18.4649 13.0351 18.786 12.3585 18.6305 11.7019C18.475 11.0453 17.8847 10.5844 17.21 10.593H17.157C16.7988 10.6062 16.458 10.7512 16.2 11C15.0625 10.2265 13.7252 9.79927 12.35 9.77L13 6.65L15.138 7.1C15.1931 7.60706 15.621 7.99141 16.131 7.992C16.1674 7.99196 16.2038 7.98995 16.24 7.986C16.7702 7.93278 17.1655 7.47314 17.1389 6.94094C17.1122 6.40873 16.6729 5.991 16.14 5.991C16.1022 5.99191 16.0645 5.99491 16.027 6C15.71 6.03367 15.4281 6.21641 15.268 6.492L12.82 6C12.7983 5.99535 12.7762 5.993 12.754 5.993C12.6094 5.99472 12.4851 6.09583 12.454 6.237L11.706 9.71C10.3138 9.7297 8.95795 10.157 7.806 10.939C7.53601 10.6839 7.17843 10.5422 6.807 10.543ZM12.18 16.524C12.124 16.524 12.067 16.524 12.011 16.524C11.955 16.524 11.898 16.524 11.842 16.524C11.0121 16.5208 10.2054 16.2497 9.542 15.751C9.49626 15.6958 9.47445 15.6246 9.4814 15.5533C9.48834 15.482 9.52348 15.4163 9.579 15.371C9.62737 15.3318 9.68771 15.3102 9.75 15.31C9.81233 15.31 9.87275 15.3315 9.921 15.371C10.4816 15.7818 11.159 16.0022 11.854 16C11.9027 16 11.9513 16 12 16C12.059 16 12.119 16 12.178 16C12.864 16.0011 13.5329 15.7863 14.09 15.386C14.1427 15.3322 14.2147 15.302 14.29 15.302C14.3653 15.302 14.4373 15.3322 14.49 15.386C14.5985 15.4981 14.5962 15.6767 14.485 15.786V15.746C13.8213 16.2481 13.0123 16.5208 12.18 16.523V16.524ZM14.307 14.08H14.291L14.299 14.041C13.8591 14.011 13.4994 13.6789 13.4343 13.2429C13.3691 12.8068 13.6162 12.3842 14.028 12.2269C14.4399 12.0697 14.9058 12.2202 15.1478 12.5887C15.3899 12.9572 15.3429 13.4445 15.035 13.76C14.856 13.9554 14.6059 14.0707 14.341 14.08H14.306H14.307ZM9.67 14C9.11772 14 8.67 13.5523 8.67 13C8.67 12.4477 9.11772 12 9.67 12C10.2223 12 10.67 12.4477 10.67 13C10.67 13.5523 10.2223 14 9.67 14Z">
-                                </path>
-                            </svg>
-                        </Link>
-                    
-                        <Link to="#"
-                            className="mx-2  transition-colors duration-300 :text-gray-300 hover:text-blue-500 :hover:text-blue-400"
-                            aria-label="Facebook">
-                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M2.00195 12.002C2.00312 16.9214 5.58036 21.1101 10.439 21.881V14.892H7.90195V12.002H10.442V9.80204C10.3284 8.75958 10.6845 7.72064 11.4136 6.96698C12.1427 6.21332 13.1693 5.82306 14.215 5.90204C14.9655 5.91417 15.7141 5.98101 16.455 6.10205V8.56104H15.191C14.7558 8.50405 14.3183 8.64777 14.0017 8.95171C13.6851 9.25566 13.5237 9.68693 13.563 10.124V12.002H16.334L15.891 14.893H13.563V21.881C18.8174 21.0506 22.502 16.2518 21.9475 10.9611C21.3929 5.67041 16.7932 1.73997 11.4808 2.01722C6.16831 2.29447 2.0028 6.68235 2.00195 12.002Z">
-                                </path>
-                            </svg>
-                        </Link>
-                    
-                        <Link to="#"
-                            className="mx-2  transition-colors duration-300 :text-gray-300 hover:text-blue-500 :hover:text-blue-400"
-                            aria-label="Github">
-                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z">
-                                </path>
-                            </svg>
-                        </Link>
+                                                <footer className="w-full py-1">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div
+                className="flex items-center justify-center lg:justify-between flex-col lg:flex-row pb-12 gap-7 lg:gap-0 border-b border-gray-200">
+                <a href="/" className="flex justify-center lg:justify-start">
+                  <img src={logo1} className="w-44" alt="" />
+                </a>
+                <a href="/contact"
+                    className="flex items-center gap-2 py-3.5 px-7 rounded-full bg-gray-900 shadow-md text-white font-semibold hover:bg-gray-800">Contac
+                    us <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1.5 6L14.8333 6M10.6667 11L15.0774 6.58926C15.3552 6.31148 15.4941 6.17259 15.4941 6C15.4941 5.82741 15.3552 5.68852 15.0774 5.41074L10.6667 1"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+            <div className="flex justify-between flex-col py-8 min-[500px]:py-14 gap-8 min-[500px]:gap-16 lg:gap-0 lg:flex-row">
+                <div
+                    className="flex flex-col items-center max-lg:justify-center min-[500px]:items-start min-[500px]:flex-row gap-8 sm:gap-12 xl:gap-24">
+                    <div className="block">
+                        <h4
+                            className="text-lg text-gray-900 font-medium mb-4 min-[500px]:mb-7 text-center min-[500px]:text-left">
+                            Pagedone</h4>
+                        <ul className="grid gap-4 min-[500px]:gap-6 text-center min-[500px]:text-left">
+                            <li><a href="j/" className="text-gray-600 hover:text-gray-900">Home</a></li>
+                            <li><a href="/about" className="text-gray-600 hover:text-gray-900">About</a></li>
+                            <li><a href="/properties" className="text-gray-600 hover:text-gray-900">Properties</a></li>
+                            <li><a href="/contact" className="text-gray-600 hover:text-gray-900">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div className="block">
+                        <h4
+                            className="text-lg text-gray-900 font-medium mb-4 min-[500px]:mb-7 text-center min-[500px]:text-left">
+                            Authentication</h4>
+                        <ul className="grid gap-4 min-[500px]:gap-6 text-center min-[500px]:text-left">
+                            <li><a href="/login" className="text-gray-600 hover:text-gray-900">Sign In</a>
+                            </li>
+                            <li><a href="/register" className="text-gray-600 hover:text-gray-900">Sign Up</a></li>
+                          
+                        </ul>
+                    </div>
+                    <div className="block">
+                        <h4
+                            className="text-lg text-gray-900 font-medium mb-4 min-[500px]:mb-7 text-center min-[500px]:text-left">
+                            Resources</h4>
+                        <ul className="grid gap-4 min-[500px]:gap-6 text-center min-[500px]:text-left">
+                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">FAQs</a></li>
+                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">Quick Start</a></li>
+                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">Documentation</a></li>
+                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">User Guide</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="block lg:max-w-md">
+                    <h3
+                        className="font-manrope font-semibold text-2xl text-gray-900 leading-9 mb-8 text-center lg:text-left">
+                        Join the newsletter and read the new posts first</h3>
+                    <div
+                        className="lg:bg-gray-100 lg:rounded-full lg:h-16 lg:p-1.5 lg:flex-row gap-6 lg:gap-0 flex-col flex items-center justify-between">
+                        <input type="text" name="email"
+                            className="py-3 px-6 bg-gray-100 rounded-full text-gray-900 placeholder:text-gray-500 focus:outline-none flex-1 w-full max-w-xl mx-auto lg:w-auto lg:py-5 lg:px-7 lg:bg-transparent"
+                            placeholder="Your email here..." />
+                        <button type="submit"
+                            className="py-3.5 px-7 bg-violet-600 shadow-md rounded-full text-white font-semibold hover:bg-indigo-700">Subscribe</button>
                     </div>
                 </div>
             </div>
+            <div className="py-9 border-t border-gray-200">
+                <div className="flex items-center justify-center flex-col gap-8 lg:gap-0 lg:flex-row lg:justify-between">
+                    <span className="text-sm text-gray-500 ">©<a href="https://www.selerions.com/">Sellerions</a> 2024, All rights reserved.</span>
+                    <div className="flex mt-4 space-x-4 sm:justify-center sm:mt-0 ">
+                        <a href="javascript:;"
+                            className="w-9 h-9 rounded-full bg-gray-700 flex justify-center items-center hover:bg-violet-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                                fill="none">
+                                <g id="Social Media">
+                                    <path id="Vector"
+                                        d="M11.3214 8.93654L16.4919 3.05554H15.2667L10.7772 8.16193L7.1914 3.05554H3.05566L8.47803 10.7773L3.05566 16.9444H4.28097L9.022 11.5519L12.8088 16.9444H16.9446L11.3211 8.93654H11.3214ZM9.64322 10.8453L9.09382 10.0764L4.72246 3.95809H6.60445L10.1322 8.89578L10.6816 9.66469L15.2672 16.0829H13.3852L9.64322 10.8456V10.8453Z"
+                                        fill="white" />
+                                </g>
+                            </svg>
 
-            <div className="mt-6 lg:mt-0 lg:flex-1">
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                    <div>
-                        <h3 className="uppercase :text-white">About</h3>
-                        <Link to="#" className="block mt-2 text-sm   hover:underline">Company</Link>
-                        <Link to="#" className="block mt-2 text-sm   hover:underline">community</Link>
-                        <Link to="#" className="block mt-2 text-sm   hover:underline">Careers</Link>
-                    </div>
+                        </a>
+                        <a href="javascript:;"
+                            className="w-9 h-9 rounded-full bg-gray-700 flex justify-center items-center hover:bg-violet-600">
+                            <svg className="w-[1.25rem] h-[1.125rem] text-white" viewBox="0 0 15 15" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M4.70975 7.93663C4.70975 6.65824 5.76102 5.62163 7.0582 5.62163C8.35537 5.62163 9.40721 6.65824 9.40721 7.93663C9.40721 9.21502 8.35537 10.2516 7.0582 10.2516C5.76102 10.2516 4.70975 9.21502 4.70975 7.93663ZM3.43991 7.93663C3.43991 9.90608 5.05982 11.5025 7.0582 11.5025C9.05658 11.5025 10.6765 9.90608 10.6765 7.93663C10.6765 5.96719 9.05658 4.37074 7.0582 4.37074C5.05982 4.37074 3.43991 5.96719 3.43991 7.93663ZM9.97414 4.22935C9.97408 4.39417 10.0236 4.55531 10.1165 4.69239C10.2093 4.82946 10.3413 4.93633 10.4958 4.99946C10.6503 5.06259 10.8203 5.07916 10.9844 5.04707C11.1484 5.01498 11.2991 4.93568 11.4174 4.81918C11.5357 4.70268 11.6163 4.55423 11.649 4.39259C11.6817 4.23095 11.665 4.06339 11.6011 3.91109C11.5371 3.7588 11.4288 3.6286 11.2898 3.53698C11.1508 3.44536 10.9873 3.39642 10.8201 3.39635H10.8197C10.5955 3.39646 10.3806 3.48424 10.222 3.64043C10.0635 3.79661 9.97434 4.00843 9.97414 4.22935ZM4.21142 13.5892C3.52442 13.5584 3.15101 13.4456 2.90286 13.3504C2.57387 13.2241 2.33914 13.0738 2.09235 12.8309C1.84555 12.588 1.69278 12.3569 1.56527 12.0327C1.46854 11.7882 1.3541 11.4201 1.32287 10.7431C1.28871 10.0111 1.28189 9.79119 1.28189 7.93669C1.28189 6.08219 1.28927 5.86291 1.32287 5.1303C1.35416 4.45324 1.46944 4.08585 1.56527 3.84069C1.69335 3.51647 1.84589 3.28513 2.09235 3.04191C2.3388 2.79869 2.57331 2.64813 2.90286 2.52247C3.1509 2.42713 3.52442 2.31435 4.21142 2.28358C4.95417 2.24991 5.17729 2.24319 7.0582 2.24319C8.9391 2.24319 9.16244 2.25047 9.90582 2.28358C10.5928 2.31441 10.9656 2.42802 11.2144 2.52247C11.5434 2.64813 11.7781 2.79902 12.0249 3.04191C12.2717 3.2848 12.4239 3.51647 12.552 3.84069C12.6487 4.08513 12.7631 4.45324 12.7944 5.1303C12.8285 5.86291 12.8354 6.08219 12.8354 7.93669C12.8354 9.79119 12.8285 10.0105 12.7944 10.7431C12.7631 11.4201 12.6481 11.7881 12.552 12.0327C12.4239 12.3569 12.2714 12.5882 12.0249 12.8309C11.7784 13.0736 11.5434 13.2241 11.2144 13.3504C10.9663 13.4457 10.5928 13.5585 9.90582 13.5892C9.16306 13.6229 8.93994 13.6296 7.0582 13.6296C5.17645 13.6296 4.95395 13.6229 4.21142 13.5892ZM4.15307 1.03424C3.40294 1.06791 2.89035 1.18513 2.4427 1.3568C1.9791 1.53408 1.58663 1.77191 1.19446 2.1578C0.802277 2.54369 0.56157 2.93108 0.381687 3.38797C0.207498 3.82941 0.0885535 4.3343 0.0543922 5.07358C0.0196672 5.81402 0.0117188 6.05074 0.0117188 7.93663C0.0117188 9.82252 0.0196672 10.0592 0.0543922 10.7997C0.0885535 11.539 0.207498 12.0439 0.381687 12.4853C0.56157 12.9419 0.802334 13.3297 1.19446 13.7155C1.58658 14.1012 1.9791 14.3387 2.4427 14.5165C2.89119 14.6881 3.40294 14.8054 4.15307 14.839C4.90479 14.8727 5.1446 14.8811 7.0582 14.8811C8.9718 14.8811 9.212 14.8732 9.96332 14.839C10.7135 14.8054 11.2258 14.6881 11.6737 14.5165C12.137 14.3387 12.5298 14.1014 12.9219 13.7155C13.3141 13.3296 13.5543 12.9419 13.7347 12.4853C13.9089 12.0439 14.0284 11.539 14.062 10.7997C14.0962 10.0587 14.1041 9.82252 14.1041 7.93663C14.1041 6.05074 14.0962 5.81402 14.062 5.07358C14.0278 4.33424 13.9089 3.82913 13.7347 3.38797C13.5543 2.93135 13.3135 2.5443 12.9219 2.1578C12.5304 1.7713 12.137 1.53408 11.6743 1.3568C11.2258 1.18513 10.7135 1.06735 9.96388 1.03424C9.21256 1.00058 8.97236 0.992188 7.05876 0.992188C5.14516 0.992188 4.90479 1.00002 4.15307 1.03424Z"
+                                    fill="currentColor"></path>
+                            </svg>
 
-                    <div>
-                        <h3 className=" uppercase :text-white">Blog</h3>
-                        <Link to="#" className="block mt-2 text-sm   hover:underline">Tec</Link>
-                        <Link to="#" className="block mt-2 text-sm   hover:underline">Music</Link>
-                        <Link to="#" className="block mt-2 text-sm   hover:underline">Videos</Link>
-                    </div>
+                        </a>
+                        <a href="javascript:;"
+                            className="w-9 h-9 rounded-full bg-gray-700 flex justify-center items-center hover:bg-violet-600">
+                            <svg className="w-[1rem] h-[1rem] text-white" viewBox="0 0 13 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2.8794 11.5527V3.86835H0.318893V11.5527H2.87967H2.8794ZM1.59968 2.81936C2.4924 2.81936 3.04817 2.2293 3.04817 1.49188C3.03146 0.737661 2.4924 0.164062 1.61666 0.164062C0.74032 0.164062 0.167969 0.737661 0.167969 1.49181C0.167969 2.22923 0.723543 2.8193 1.5829 2.8193H1.59948L1.59968 2.81936ZM4.29668 11.5527H6.85698V7.26187C6.85698 7.03251 6.87369 6.80255 6.94134 6.63873C7.12635 6.17968 7.54764 5.70449 8.25514 5.70449C9.18141 5.70449 9.55217 6.4091 9.55217 7.44222V11.5527H12.1124V7.14672C12.1124 4.78652 10.8494 3.68819 9.16483 3.68819C7.78372 3.68819 7.17715 4.45822 6.84014 4.98267H6.85718V3.86862H4.29681C4.33023 4.5895 4.29661 11.553 4.29661 11.553L4.29668 11.5527Z"
+                                    fill="currentColor"></path>
+                            </svg>
 
-                    <div>
-                        <h3 className="uppercase :text-white">Products</h3>
-                        <Link to="#" className="block mt-2 text-sm   hover:underline">Mega cloud</Link>
-                        <Link to="#" className="block mt-2 text-sm   hover:underline">Aperion UI</Link>
-                        <Link to="#" className="block mt-2 text-sm   hover:underline">Meraki UI</Link>
-                    </div>
+                        </a>
+                        <a href="javascript:;"
+                            className="w-9 h-9 rounded-full bg-gray-700 flex justify-center items-center hover:bg-violet-600">
+                            <svg className="w-[1.25rem] h-[0.875rem] text-white" viewBox="0 0 16 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M13.9346 1.13529C14.5684 1.30645 15.0665 1.80588 15.2349 2.43896C15.5413 3.58788 15.5413 5.98654 15.5413 5.98654C15.5413 5.98654 15.5413 8.3852 15.2349 9.53412C15.0642 10.1695 14.5661 10.669 13.9346 10.8378C12.7886 11.1449 8.19058 11.1449 8.19058 11.1449C8.19058 11.1449 3.59491 11.1449 2.44657 10.8378C1.81277 10.6666 1.31461 10.1672 1.14622 9.53412C0.839844 8.3852 0.839844 5.98654 0.839844 5.98654C0.839844 5.98654 0.839844 3.58788 1.14622 2.43896C1.31695 1.80353 1.81511 1.30411 2.44657 1.13529C3.59491 0.828125 8.19058 0.828125 8.19058 0.828125C8.19058 0.828125 12.7886 0.828125 13.9346 1.13529ZM10.541 5.98654L6.72178 8.19762V3.77545L10.541 5.98654Z"
+                                    fill="currentColor"></path>
+                            </svg>
 
-                    <div>
-                        <h3 className="uppercase :text-white">Contact</h3>
-                        <span className="block mt-2 text-sm   hover:underline">+1 526 654 8965</span>
-                        <span className="block mt-2 text-sm   hover:underline">finder@email.com</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <hr className="h-px my-6 bg-gray-200 border-none :bg-gray-700" />
-
-        <div>
-            <p className="text-center ">© Brand 2020 - All rights reserved</p>
-        </div>
-    </div>
-</footer>
+    </footer>
+                                            
+                                            
     </>
   )
 }

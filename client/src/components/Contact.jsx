@@ -40,7 +40,7 @@ const Contact = () => {
   return (
     <div className=""> 
 <section
-   className="relative z-10 overflow-hidden hero rounded-2xl md:mx-5 :bg- px-10 py-10 lg:py-[120px] text-white mb-10"
+   className="relative z-10 overflow-hidden hero1 bg-black bg-opacity-50 backdrop-blur-sm rounded-2xl md:mx-5 :bg- px-10 py-10 lg:py-[120px] text-white mb-10"
   
    >
 

@@ -38,6 +38,13 @@
   background-repeat: no-repeat;
   width: 100%;
 }
+.hero1 {
+  position: relative;
+  background-image: url("./assets/heiro.avif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
 
 .hero::before {
   content: '';
@@ -50,6 +57,7 @@
   pointer-events: none; /* Ensure the overlay does not interfere with interactions */
   z-index: 1; /* Make sure the overlay is on top */
 }
+
 
 .dark-overlay {
   position: relative;
@@ -115,15 +123,15 @@ body{
   
   /* Track */
   /* ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
+    box-shadow: inset 0 0 5px rgb(251, 251, 251); 
     border-radius: 10px;
   } */
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    border-radius: 3px;
+    border-radius: 0px;
     padding-inline: 1px;
-    @apply bg-black
+    @apply bg-violet-950
     
 
   }
@@ -134,3 +142,28 @@ body{
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-black }
+
+
+
+    .blur-background {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .blur-background::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #000000fb; /* Equivalent color to bg-violet-950 */
+      z-index: -1;
+      filter: blur(10px); /* Adjust the blur level as needed */
+    }
+    
+    .blur-background > * {
+      position: relative;
+      z-index: 1;
+    }
+    

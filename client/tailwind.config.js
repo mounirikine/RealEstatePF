@@ -13,6 +13,7 @@ export default {
       'display': ['Oswald', 'sans-serif'],
       'Syne': ['Syne', 'sans-serif'],
       'Popins': ["Poppins", 'sans-serif'],
+      'Inter': ["Inter", 'sans-serif'],
     }
   },
   plugins: [require("daisyui")],

@@ -23,7 +23,7 @@ const ResidentCard = ({ data }) => {
       <div className="flex flex-col  justify-between w-4/6 p-6 ">
         <div className="flex   justify-between">
           <span className="text-xl lg:text-3xl flex text-black font-meduim  items-center">
-            ${data.regularPrice}/<p className="text-sm">month</p>
+            ${data.regularPrice}<p className="text-sm"></p>
           </span>
           <span className="flex items-center  gap-3">
             <div className="avatar">
@@ -62,7 +62,7 @@ const ResidentCard = ({ data }) => {
 
         <span className=" w-5/6 truncate clear-start  mb-5 text-gray-500">{data.description}</span>
 
-        <div className="bg-violet-200 w-full  rounded-xl px-6 py-2 flex flex-wrap text-black lg:flex-wrap items-center justify-center lg:justify-between">
+        <div className="bg-violet-200  w-full  rounded-xl px-6 py-2 flex flex-wrap text-black lg:flex-wrap items-center justify-center lg:justify-between">
           <span className="w-3/12 flex flex-col items-center justify-center">
             <h1 className="text-sm">Bedrooms</h1>
             <h1 className="flex items-center gap-2 justify-center text-xl">

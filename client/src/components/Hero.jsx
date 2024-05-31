@@ -1,9 +1,12 @@
 import React from "react";
 import { FaEdit, FaMapMarkerAlt } from "react-icons/fa";
+import { IoArrowForward } from "react-icons/io5";
+
 import R1 from "../assets/r1.webp";
 import R2 from "../assets/r2.webp";
 import { motion } from "framer-motion";
 import {Link} from 'react-router-dom'
+import icon from '../assets/ic.png'
 import {useTranslation} from 'react-i18next'
 const Hero = () => {
   const [t,i18n]=useTranslation('global')
@@ -32,7 +35,7 @@ const Hero = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 1.2, delay: 0.75 }}
-              className=" lg:px-24 lg:text-lg text-gray-200 text-center lg:text-left"
+              className=" lg:px-24  text-gray-300 text-center lg:text-left"
             >
               {t('description')}
             </motion.p>
@@ -45,11 +48,13 @@ const Hero = () => {
             initial="hidden"
             animate="visible"
             transition={{ duration: 1, delay: 1 }}
-             className=" w-full flex items-center justify-center lg:justify-start  sm:px-24 py-10">
-                  <Link to='/create' className="px-16 py-3 hover:scale-105 transition-all  bg-violet-600 text-white rounded-lg flex items-center justify-center gap-2"><span>{t('button')}</span> <FaEdit /> </Link>
+             className=" w-full flex items-center gap-1 justify-center lg:justify-start  sm:px-24 py-10">
+                  <Link to='/create' className="px-11 py-2  transition-all  bg-white text-black rounded-full flex items-center justify-center gap-2"><span>{t('button')}</span> </Link>
+                  <Link to='/create' className=" p-3 hover:scale-105 transition-all  bg-white text-black rounded-full flex items-center justify-center gap-2 -rotate-45 hover:rotate-0 "> <IoArrowForward  /></Link>
+
             </motion.button>
           </div>
-
+          
           
         </main>
       </section>

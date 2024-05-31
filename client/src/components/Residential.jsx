@@ -3,6 +3,8 @@ import ResidentCard from './ResidentCard';
 import { FaArrowRight } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import ResidentCardCol from './ResidentCardCol';
+import { IoArrowForward } from "react-icons/io5";
+
 
 const Residential = ({ catSlug }) => {
   const [data, setData] = useState([]);
@@ -43,8 +45,10 @@ const Residential = ({ catSlug }) => {
           </>
         )}
       </main>
-      <div className='w-full flex items-center justify-center py-5'>
-        <Link to='/properties' className=' px-14 py-4 text-lg hover:translate-x-1 rounded-xl flex items-center gap-2 text-black transition-all '>Load More Listing  <FaArrowRight /> </Link>
+      <div className='w-full flex items-center justify-center py-5 gap-1'>
+        <Link to='/properties' className=' px-10 bg-black py-2   rounded-full flex items-center gap-2 text-white transition-all '>Load More Listing   </Link>
+        <Link to='/properties' className=" p-3 hover:scale-105 transition-all  bg-black text-white rounded-full flex items-center justify-center gap-2 -rotate-45 hover:rotate-0 "> <IoArrowForward  /></Link>
+
       </div>
     </div>
   );

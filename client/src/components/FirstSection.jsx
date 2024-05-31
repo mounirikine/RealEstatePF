@@ -43,25 +43,25 @@ const FirstSection = () => {
   }, [activeTab]);
 
   return (
-    <motion.section className="py-10 md:py-5">
+    <motion.section className="py-10 md:py-10 px-5">
       <div className="flex items-center">
-        <h1 className="text-center mt-8 mx-auto font-bold text-3xl text-black px-5 md:text-5xl uppercase pt-20 md:pt-0">
+        <h1 className="text-center mt-3 mx-auto font-bold text-2xl text-black px-5 md:text-3xl uppercase pt-20 md:pt-0">
           {t('FirstSectionTitle')}
         </h1>
       </div>
-      <p className="text-center mx-auto py-7 w-9/12 text-gray-500">
+      <p className="text-center mx-auto py-7 lg:w-9/12 text-gray-500">
         {t('FirstSectionDes')}
       </p>
 
       <div className="w-12/12 flex items-center justify-center">
-        <ul className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 flex-wrap text-sm font-medium text-center mx-auto text-gray-500 :text-gray-400   py-1 rounded-2xl">
+        <ul className="grid grid-cols-2  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 flex-wrap text-sm font-medium text-center mx-auto text-gray-500 :text-gray-400   py-1 rounded-2xl">
           {[
             { tab: "Residential", icon: <FaBuilding className="text-xl"/> },
             { tab: "Villa", icon: <MdOutlineVilla className="text-xl" /> },
             { tab: "Apartment", icon: <MdOutlineApartment className="text-xl" /> },
-            { tab: "Office space", icon: <GiOfficeChair className="text-xl" /> },
+            { tab: "OfficeSpace", icon: <GiOfficeChair className="text-xl" /> },
             { tab: "Cars", icon: <IoCarSport className="text-xl" /> },
-            { tab: "Other Products", icon: <FaRandom className="text-xl" /> },
+            { tab: "Other", icon: <FaRandom className="text-xl" /> },
           ].map((item) => (
             <li key={item.tab} className="me-2">
               <Link
@@ -80,7 +80,7 @@ const FirstSection = () => {
       </div>
 
       <motion.div
-        className="px-10 py-10"
+        className=" lg:px-10 py-10"
     
       >
         {activeTab === "Residential" && <Residential catSlug="house" />}

@@ -5,7 +5,7 @@ const Contactus = ({ userInfo }) => {
   return (
     <>
       <Header userInfo={userInfo} />
-      <section className="flex items-center flex-col justify-center py-40 hero">
+      <section className="flex items-center flex-col justify-center py-40 hero ">
       <h1 className="text-center text-5xl font-bold mb-5 text-white">Contact Us</h1>
             <h1 className="text-center text-lg text-white">
               Have any question? Fill out the form and we'll love to hear, we'll

@@ -37,11 +37,11 @@ const PropertiesFilter = ({ catSlug ,minPrice,country,maxPrice}) => {
     fetchData();
   }, [catSlug ,minPrice,country,maxPrice]);
   return (
-<section className="px-2 md:px-20 py-10 flex items-center justify-center">
+<section className="px-2 md:px-20 py-10 flex items-center justify-center min-h-screen">
   {loading ? (
     <span className="loading loading-spinner loading-lg text-black"></span>
   ) : (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 px-4 sm:px-6 md:px-8 lg:px-20 xl:px-20 ">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 px-4 sm:px-6 md:px-8 lg:px-20 xl:px-20 ">
      
      {catSlug && catSlug !== 'car' ? (
   data.reals.map((item) => (

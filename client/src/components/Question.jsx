@@ -2,22 +2,21 @@ import { Link } from "react-router-dom";
 import {motion} from 'framer-motion'
 import { FaArrowRight } from "react-icons/fa";
 import MoreQuestions from "./MoreQuestions";
+import { IoArrowForward } from "react-icons/io5";
 
 
 const Question = () => {
   return (
 
     <div className=" px-2 lg:px-20 sm:px-20 py-14 text-black ">
-      <h1 className="text-5xl lg:px-24 lg:text-5xl font-bold mb-10 w-full text-center  ">
+      <h1 className="text-center mt-3 mx-auto font-bold text-2xl text-black px-5 md:text-3xl uppercase pt-20 md:pt-0">
         Frequently asked questions
       </h1>
       <div className="flex items-center justify-center">
        
       </div>
       <motion.div className="join join-vertical text-black w-full" 
-         initial={{x:5 ,opacity:0}}
-         whileInView={{x:0,opacity:1 }}
-         transition={{duration:0.8 ,delay:0.75}} 
+        
       >
         <div className="collapse collapse-arrow join-item border bg-white border-base-300">
           <input type="radio" name="my-accordion-4" />
@@ -75,8 +74,9 @@ const Question = () => {
           </div>
         </div>
       </motion.div>
-      <div className="flex items-center justify-center py-3">
-      <Link to={"/MoreQuestions"} className="mx-auto px-6 sm:px-8 py-3 mt-6 sm:mt-8 rounded-xl text-lg hover:translate-x-2 transition-all   font-meduim flex items-center justify-center   ">More Questions   <FaArrowRight /> </Link>
+      <div className="flex items-center justify-center py-3 gap-1">
+      <Link to={"/MoreQuestions"} className=" bg-black  px-6 sm:px-8 py-2 mt-6 sm:mt-8 rounded-full  transition-all   font-meduim flex items-center justify-center  text-white  ">More Questions</Link>
+      <Link to={"/MoreQuestions"} className=" bg-black  px-3 sm:px-3 py-3 mt-6 sm:mt-8 rounded-full -rotate-45  hover:rotate-0 transition-all   font-meduim flex items-center justify-center  text-white  "><IoArrowForward /> </Link>
 
       </div>
 

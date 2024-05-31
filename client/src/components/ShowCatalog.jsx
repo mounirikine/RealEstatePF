@@ -10,20 +10,18 @@ const ShowCatalog = () => {
   return (
     <>
       <section className=" min-h-screen   mt-20">
-        <div className="w-11/12 relative mx-auto">
+        <div className="w-11/12 relative mx-auto  ">
         <video 
           src={vid} 
           autoPlay 
           loop 
           muted 
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          className="absolute top-0 left-0 w-full h-full object-cover rounded"
         ></video>
         <main className="relative z-10 w-11/12 mx-auto flex items-center justify-center min-h-screen">
           <motion.div
-            initial={{ x: 5, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.75 }}
-            className="w-full lg:w-2/2 px-5 text-center lg:text-left"
+
+            className="w-full lg:w-2/2 px-5 text-center  text-white "
           >
             <h1 className="font-bold text-3xl uppercase sm:text-5xl py-5 sm:py-10">
               {t('CatalogeTitle')}

@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ClipLoader from "react-spinners/ClockLoader";
-import finder from './assets/finder.png'
+import finder from './assets/logof1.png'
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -39,7 +39,7 @@ function App() {
   const userId = window.localStorage.getItem("userID");
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(false);
-  const [color, setColor] = useState("#782DF3");
+  const [color, setColor] = useState("#FFFF");
 
   useEffect(() => {
     const getUser = async () => {
@@ -89,7 +89,7 @@ function App() {
               aria-label="Loading Spinner"
               data-testid="loader"
             />
-            <img src={finder} width={130} className="mt-3" alt="" />
+            <img src={finder} width={150} className="mt-3" alt="" />
           </div>
         </div>
       ) : (

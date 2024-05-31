@@ -164,23 +164,25 @@ const Profile = ({ userInfo }) => {
                     )}
                   </p>
                   <div className="flex flex-col space-y-5 sm:ml-8">
+                    <div className="flex items-center justify-center">
                     <button
                       type="button"
                       onClick={() => fileRef.current.click()}
                       disabled={active}
-                      className="py-3.5 px-7 w-6/12 mx-auto text-base font-medium text-indigo-100 focus:outline-none bg-violet-600 rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 "
+                      className="py-3.5 px-7 w-4/12 mx-auto text-base font-medium text-indigo-100 focus:outline-none bg-violet-600 rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 "
                     >
                       Change picture
                     </button>
 
                     <button
-                      className="btn py-3.5 px-7 w-6/12 mx-auto text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-black focus:z-10 focus:ring-4 focus:ring-indigo-200 "
+                      className=" py-3.5 px-7 w-4/12 mx-auto text-base font-medium  focus:outline-none bg-red-600 rounded-lg border border-indigo-200 text-white   focus:z-10 focus:ring-4  "
                       onClick={() =>
                         document.getElementById("my_modal_1").showModal()
                       }
                     >
                       Delete picture
                     </button>
+                    </div>
 
                     <div className=" w-full flex items-center justify-center">
                     <div
