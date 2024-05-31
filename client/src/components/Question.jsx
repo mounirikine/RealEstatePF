@@ -3,14 +3,18 @@ import {motion} from 'framer-motion'
 import { FaArrowRight } from "react-icons/fa";
 import MoreQuestions from "./MoreQuestions";
 import { IoArrowForward } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
 
 
 const Question = () => {
+
+  const [t, i18n] = useTranslation("global");
+
   return (
 
     <div className=" px-2 lg:px-20 sm:px-20 py-14 text-black ">
       <h1 className="text-center mt-3 mx-auto font-bold text-2xl text-black px-5 md:text-3xl uppercase pt-20 md:pt-0">
-        Frequently asked questions
+        {t('The_Populare_Quetions')}
       </h1>
       <div className="flex items-center justify-center">
        

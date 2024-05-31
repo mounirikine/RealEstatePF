@@ -27,7 +27,17 @@ export const linksEn = {
     'OfferesTitle':'Comfort Is Our Top Priority For You',
     'OfferesDesc':'We guarantee that the products we sell will make our customers happy because we are very concerned about our consumer satisfaction',
     'CatalogeTitle':'DISCOVER PROPERTIES THAT WILL IMPROVE YOUR LIFE AND THAT OF YOUR FAMILY',
-    'CatalogDes':'refers to the act of actively seeking out real estate assets or living spaces that offer beneficial features and amenities to enhance the well-being, comfort, and overall quality of life for both yourself and your family members. This could encompass various factors such as location, size, layout, amenities, safety, community atmosphere, and potential for future growth or investment value. The aim is to find properties that align with your specific needs, preferences, and long-term goals, thereby contributing positively to your everyday experiences and fostering a fulfilling family life'
-}
+    'CatalogDes':'refers to the act of actively seeking out real estate assets or living spaces that offer beneficial features and amenities to enhance the well-being, comfort, and overall quality of life for both yourself and your family members. This could encompass various factors such as location, size, layout, amenities, safety, community atmosphere, and potential for future growth or investment value. The aim is to find properties that align with your specific needs, preferences, and long-term goals, thereby contributing positively to your everyday experiences and fostering a fulfilling family life',
+    'Residential':'Residential',
+    'Affordable_Price':'Affordable Price',
+    'desc1':'We provide the best for you. The price we offer accordance with the quality we provide',
+    'Clear Legality':'Affordable Price',
+    'desc2':'Put your trust in us. We are a legal entity with official legality in the relevant government    ',
+    'Experienced Agent':'Experienced Agent',
+    'desc3':'We always work wih agents in their fields so that we can provide the best quality',
+    "The_Populare_Quetions": "The Populare Quetions"
+
+
+  }
 
 

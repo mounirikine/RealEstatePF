@@ -34,11 +34,10 @@ const Video = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-violet-700">
-                  Affordable Price
+                {t("Affordable_Price")}
                 </h1>
                 <h1>
-                  We provide the best for you. The price we offer accordance
-                  with the quality we provide
+                  {t("desc1")}
                 </h1>
               </div>
             </motion.div>
@@ -48,11 +47,10 @@ const Video = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-violet-700">
-                  Clear Legality
+                  {t("Clear_Legality")}
                 </h1>
                 <h1>
-                  Put your trust in us. We are a legal entity with official
-                  legality in the relevant government
+                  {t("desc2")}
                 </h1>
               </div>
             </motion.div>
@@ -67,11 +65,10 @@ const Video = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-violet-700">
-                  Experienced Agent
+                  {t('Experienced_Agent')}
                 </h1>
                 <h1>
-                  We always work wih agents in their fields so that we can
-                  provide the best quality
+              {t('desc3')}
                 </h1>
               </div>
             </motion.div>

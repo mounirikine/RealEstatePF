@@ -19,6 +19,7 @@ const FirstSection = () => {
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
+  
 
   useEffect(() => {
     const fetchData = async () => {

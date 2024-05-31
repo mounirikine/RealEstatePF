@@ -1,7 +1,11 @@
 import {motion} from 'framer-motion'
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 const Contact = () => {
+
+  const [t, i18n] = useTranslation("global");
+
     const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -49,7 +53,7 @@ const Contact = () => {
          <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
             <div className="mb-12 max-w-[570px] lg:mb-0">
                <span className="block mb-4 text-base font-semibold ">
-               Contact Us
+               {t('Contact')}
                </span>
                <h2
                   className="text- :text-white mb-6 text-[20px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]"

@@ -32,4 +32,13 @@ export const linksFr = {
     "DÉCOUVREZ DES PROPRIÉTÉS QUI AMÉLIORERONT VOTRE VIE ET CELLE DE VOTRE FAMILLE",
   CatalogDes:
     "Fait référence à l'acte de rechercher activement des biens immobiliers ou des espaces de vie offrant des caractéristiques et des commodités bénéfiques pour améliorer le bien-être, le confort et la qualité de vie générale, tant pour vous que pour les membres de votre famille. Cela pourrait englober divers facteurs tels que l'emplacement, la taille, la disposition, les commodités, la sécurité, l'atmosphère communautaire et le potentiel de croissance future ou la valeur d'investissement. L'objectif est de trouver des propriétés qui correspondent à vos besoins spécifiques, préférences et objectifs à long terme, contribuant ainsi positivement à vos expériences quotidiennes et favorisant une vie familiale épanouissante.",
+  'Residential':'Résidentiel',
+  'Affordable_Price':'Prix ​​abordable',
+  "desc1": "Nous vous offrons le meilleur. Le prix que nous proposons correspond à la qualité que nous offrons.",
+  "Clear_Legality": "Prix abordable",
+  "desc2": "Faites-nous confiance. Nous sommes une entité légale avec une légalité officielle auprès du gouvernement concerné.",
+  "Experienced_Agent": "Agent expérimenté",
+  "desc3": "Nous travaillons toujours avec des agents dans leur domaine afin de fournir la meilleure qualité.",
+  "The_Populare_Quetions": "Les questions populaires"
+
 };
