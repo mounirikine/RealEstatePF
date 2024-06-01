@@ -57,12 +57,12 @@ const FirstSection = () => {
       <div className="w-12/12 flex items-center justify-center">
         <ul className="grid grid-cols-2  sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 flex-wrap text-sm font-medium text-center mx-auto text-gray-500 :text-gray-400   py-1 rounded-2xl">
           {[
-            { tab: "Residential", icon: <FaBuilding className="text-xl"/> },
-            { tab: "Villa", icon: <MdOutlineVilla className="text-xl" /> },
-            { tab: "Apartment", icon: <MdOutlineApartment className="text-xl" /> },
-            { tab: "OfficeSpace", icon: <GiOfficeChair className="text-xl" /> },
-            { tab: "Cars", icon: <IoCarSport className="text-xl" /> },
-            { tab: "Other", icon: <FaRandom className="text-xl" /> },
+            { tab: t("Residential"), icon: <FaBuilding className="text-xl"/> },
+            { tab: t("Villa"), icon: <MdOutlineVilla className="text-xl" /> },
+            { tab: t("Apartment"), icon: <MdOutlineApartment className="text-xl" /> },
+            { tab: t("OfficeSpace"), icon: <GiOfficeChair className="text-xl" /> },
+            { tab: t("Cars"), icon: <IoCarSport className="text-xl" /> },
+            { tab: t("Other"), icon: <FaRandom className="text-xl" /> },
           ].map((item) => (
             <li key={item.tab} className="me-2">
               <Link
@@ -87,8 +87,8 @@ const FirstSection = () => {
         {activeTab === "Residential" && <Residential catSlug="house" />}
         {activeTab === "Villa" && <Residential catSlug="villa" />}
         {activeTab === "Apartment" && <Residential catSlug="Apartment" />}
-        {activeTab === "Office space" && <Residential catSlug="Office" />}
-        {activeTab === "Other Products" && <OtherCard catSlug="product" />}
+        {activeTab === "OfficeSpace" && <Residential catSlug="Office" />}
+        {activeTab === "Other" && <OtherCard catSlug="product" />}
         {activeTab === "Cars" && (
   <div className="grid grid-cols-1 md:px-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
     {data.map((item, index) => (

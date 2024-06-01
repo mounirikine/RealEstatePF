@@ -18,6 +18,8 @@ export const linksEn = {
     "About":"About",
     "Contact":"Contact",
     'Notifications':'Notifications',
+    "Clear_Legality":"Clear Legality",
+    "Experienced_Agent" : "Experienced Agent",
     
     'Title':'We help people to realize their dream property',
     'description':'We are creative people who provide the best way to you who want to have a new comfortable and suitable place to live',
@@ -35,7 +37,11 @@ export const linksEn = {
     'desc2':'Put your trust in us. We are a legal entity with official legality in the relevant government    ',
     'Experienced Agent':'Experienced Agent',
     'desc3':'We always work wih agents in their fields so that we can provide the best quality',
-    "The_Populare_Quetions": "The Populare Quetions"
+    "The_Populare_Quetions": "The Populare Quetions",
+    "Description":"Description",
+  
+
+  
 
 
   }

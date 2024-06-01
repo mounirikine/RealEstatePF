@@ -13,12 +13,13 @@ import { PiBicycleBold, PiGuitar } from "react-icons/pi";
 import { LuArmchair } from "react-icons/lu";
 import { FaDollarSign } from "react-icons/fa";
 import logo from '../assets/finder.png'
+import { useTranslation } from "react-i18next";
 const Properties = ({ userInfo }) => {
   const [category,setCategories] = useState('house');
   const [minPrice, setMinPrice] = useState(undefined);
   const [maxPrice, setMaxPrice] = useState(undefined);
   const [location,setLocation] = useState(undefined);
-
+  const { t } = useTranslation('global');
 
   return (
     <>
@@ -28,10 +29,10 @@ const Properties = ({ userInfo }) => {
         <div className="px-1 md:px-20 pt-5 pb-10">
           <div className="">
             <h1 className="text-center  font-bold text-4xl pb-4 text-white">
-              Property Types
+              {t('Property Types')}
             </h1>
             <p className="text-center w-11/12 md:w-8/12 mx-auto  text-white">
-            Here you can find your categories that you are simply looking for and be the first to take them
+            {t('Here you can find your categories that you are simply looking for and be the first to take them')}
             </p>
           </div>
           
@@ -43,7 +44,7 @@ const Properties = ({ userInfo }) => {
       <section className="text-black">
       <div className="mb-3   bg-violet-100 border-2 border-black w-10/12 mx-auto flex flex-col items-center justify-center px-4 py-2 rounded-2xl  ">
           <div className="text-center py-1">
-            <h1 className="text-xl font-bold">Filter Property</h1>
+            <h1 className="text-xl font-bold">{t('Filter Property')}</h1>
           </div>
           <motion.div
             variants={{
@@ -70,7 +71,7 @@ const Properties = ({ userInfo }) => {
                
                       className="border p-2 rounded w-full bg-gray-100 "
                     >
-                      <option value="" disabled>
+                      <option value="" >
                         Country
                       </option>
                       <option value="Afghanistan">Afghanistan</option>
@@ -530,24 +531,24 @@ const Properties = ({ userInfo }) => {
               <img src={logo}  className="w-32" alt="" />
             </a>
             <div className="py-8 text-center">
-                <h3 className="font-manrope text-3xl text-gray-900 font-bold mb-4">Having revenue problem? We’ve got skills.</h3>
-                <p className="text-gray-500">Joined over 400+ startups already growing with pagedone. what's holding you back?</p>
+                <h3 className="font-manrope text-3xl text-gray-900 font-bold mb-4">{t('Having revenue problem? We’ve got skills.')}</h3>
+                <p className="text-gray-500">{t("Joined over 400+ startups already growing with pagedone. what's holding you back?")}</p>
             </div> 
             <div className="flex justify-center items-center gap-3">
                 <a href="#" className="border border-gray-300 rounded-full shadow-md py-3 px-6 flex items-center gap-2 transition-all duration-500 text-sm text-gray-900 hover:bg-gray-100"><svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.81276 4.76453C11.7709 5.92474 12.75 6.50484 12.75 7.375C12.75 8.24516 11.7709 8.82526 9.81276 9.98547L5.90586 12.3003C3.9477 13.4605 2.96862 14.0406 2.23431 13.6055C1.5 13.1705 1.5 12.0103 1.5 9.68984L1.5 5.06016C1.5 2.73974 1.5 1.57953 2.23431 1.14445C2.96862 0.709374 3.9477 1.28948 5.90586 2.44969L9.81276 4.76453Z" stroke="#111827" stroke-width="1.8"/>
                     </svg>
-                    View demo</a>
-                    <a href="#" className="bg-violet-600 rounded-full shadow-md py-3 px-6 flex items-center gap-2 transition-all duration-500  text-sm text-white hover:bg-indigo-700">Get started</a>    
+                    {t('View demo')}</a>
+                    <a href="#" className="bg-violet-600 rounded-full shadow-md py-3 px-6 flex items-center gap-2 transition-all duration-500  text-sm text-white hover:bg-indigo-700">{t('Get started')}</a>    
             </div>  
             </div>
             <div className="py-7 border-t border-gray-200">
                 <div className="flex items-center justify-center flex-col gap-7 lg:justify-between lg:flex-row">
-                    <span className="text-sm text-gray-500 ">©<a href="https://pagedone.io/">pagedone</a> 2024, All rights reserved.</span>
+                    <span className="text-sm text-gray-500 ">©<a href="https://pagedone.io/">{t('pagedone')}</a> {t('2024, All rights reserved.')}</span>
                     <ul className="flex items-center text-sm text-gray-500 gap-9">
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#">{t('Terms')}</a></li>
+                        <li><a href="#">{t('Privacy')}</a></li>
+                        <li><a href="#">{t('Cookies')}</a></li>
                     </ul>
                 </div>
             </div>

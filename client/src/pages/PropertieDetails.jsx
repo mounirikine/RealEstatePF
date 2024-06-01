@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import RelatedItems from "../components/RelatedItems";
 import { FiPlus } from "react-icons/fi";
 import { IoArrowForward } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
 
 
 
@@ -27,6 +28,7 @@ const PropertyDetails = ({ userInfo }) => {
   const [text,setText] = useState('');
   const [like,setLike] = useState(null)
   const [likes,setLikes] = useState([]);
+  const { t } = useTranslation('global');
 
   useEffect(() => {
     const fetchDataAndComments = async () => {
@@ -202,7 +204,7 @@ console.log(likes)
           className="absolute bottom-4 right-3 px-3 lg:px-6 border bg-gray-100 py-3 rounded-lg font-bold"
           onClick={() => document.getElementById("my_modal_2").showModal()}
         >
-          Show All Images
+          {t('Show All Images')}
         </button>
 
         <dialog
@@ -212,7 +214,7 @@ console.log(likes)
           <div className=" bg-white px-2 rounded-3xl sm:px-10">
             <form method="dialog" className="modal-backdrop py-3">
               <button className="text-white flex  justify-end">
-                <span className=" px-7 bg-gray-100 py-1 rounded-lg text-black border">Close</span>
+                <span className=" px-7 bg-gray-100 py-1 rounded-lg text-black border">{t('Close')}</span>
               </button>
             </form>
 
@@ -277,7 +279,7 @@ console.log(likes)
 
 
   <button className="flex items-center justify-between gap-2 font-bold border px-6 py-2 rounded-lg border-black">
-    Share
+    {t('Share')}
     <FaShareAlt />
   </button>
 </div>
@@ -286,28 +288,28 @@ console.log(likes)
 
             <div className="bg-violet-950 text-white w-full border rounded-xl px-6 py-4 flex flex-wrap items-center justify-center lg:justify-between">
               <div className="w-full lg:w-3/12 flex flex-col items-center justify-center mb-4 lg:mb-0">
-                <h1 className="text-center lg:text-left">Bedrooms</h1>
+                <h1 className="text-center lg:text-left">{t('Bedrooms')}</h1>
                 <h1 className="flex items-center gap-2 justify-center text-xl">
                   <FaBed className="text-2xl" />{" "}
                   {data.length > 0 && data[0].rooms}
                 </h1>
               </div>
               <div className="w-full lg:w-3/12 flex flex-col items-center justify-center mb-4 lg:mb-0">
-                <h1 className="text-center lg:text-left">Bathrooms</h1>
+                <h1 className="text-center lg:text-left">{t('Bathrooms')}</h1>
                 <h1 className="flex items-center gap-2 justify-center text-xl">
                   <FaBath className="text-2xl" />{" "}
                   {data.length > 0 && data[0].bathrooms}
                 </h1>
               </div>
               <div className="w-full lg:w-3/12 flex flex-col items-center justify-center mb-4 lg:mb-0">
-                <h1 className="text-center lg:text-left">Square Area</h1>
+                <h1 className="text-center lg:text-left">{t('Square Area')}</h1>
                 <span className="flex items-center gap-2 justify-center text-xl">
                   <FaRegSquare className="text-2xl" />
                   {data.length > 0 && data[0].area}m²
                 </span>
               </div>
               <div className="w-full lg:w-3/12 flex flex-col items-center justify-center">
-                <h1 className="text-center lg:text-left">Kitchen</h1>
+                <h1 className="text-center lg:text-left">{t('Kitchen')}</h1>
                 <h1 className="flex items-center gap-2 justify-center text-xl">
                   <TbToolsKitchen3 className="text-2xl" />{" "}
                   {data.length > 0 && data[0].kitchen}
@@ -316,7 +318,7 @@ console.log(likes)
             </div>
 
             <div className="py-10">
-              <h1 className="text-3xl mt-5">Description</h1>
+              <h1 className="text-3xl mt-5">{t('Description')}</h1>
 
               <p className="pt-10 ">{data.length > 0 && data[0].description}</p>
             </div>
@@ -327,19 +329,19 @@ console.log(likes)
 
             <div className="py-5">
               <h1 className="text-3xl font-bold text-center lg:text-left">
-                Property Details
+                {t('Property Details')}
               </h1>
 
               <div className="w-full mb-4 rounded-xl mt-6">
                 <div className="w-full bg-violet-950 text-white px-5 rounded-e-full py-3 text-xl text-center lg:text-left">
-                  Interior Details
+                  {t('Interior Details')}
                 </div>
                 <div className="w-full py-3">
                   <table className="w-full table-auto">
                     <thead className="py-2">
                       <tr className="border-b">
-                        <th className="text-center">Bathrooms</th>
-                        <th className="text-center">Bedrooms</th>
+                        <th className="text-center">{t('Bathrooms')}</th>
+                        <th className="text-center">{t('Bedrooms')}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -358,13 +360,13 @@ console.log(likes)
 
               <div className="w-full mb-4 rounded-xl mt-6">
                 <div className="w-full bg-violet-950 text-white px-5 rounded-e-full py-3 text-xl text-center lg:text-left">
-                  Land Area Size
+                  {t('Land Area Size')}
                 </div>
                 <div className="w-full py-3">
                   <table className="w-full table-auto">
                     <thead className="py-2">
                       <tr className="border-b">
-                        <th className="text-center">Size</th>
+                        <th className="text-center">{t('Size')}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -381,13 +383,13 @@ console.log(likes)
 
               <div className="w-full mb-4 rounded-xl mt-6">
                 <div className="w-full bg-violet-950 text-white px-5 rounded-e-full py-3 text-xl text-center lg:text-left">
-                  Year Build
+                  {t('Year Build')}
                 </div>
                 <div className="w-full py-3">
                   <table className="w-full ">
                     <thead className="py-2">
                       <tr className="border-b">
-                        <th className="text-center">Established Since</th>
+                        <th className="text-center">{t('Established Since')}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -403,7 +405,7 @@ console.log(likes)
             </div>
             <div>
               <div className="py-5 text-center lg:text-left">
-                <h1 className="text-3xl font-bold">View Map</h1>
+                <h1 className="text-3xl font-bold">{t('View Map')}</h1>
               </div>
               <div className="relative aspect-w-16 w-full mb-14 ">
   <div className="w-full sm:w-full md:w-full lg:w-full xl:w-full">
@@ -418,7 +420,7 @@ console.log(likes)
             </div>
             <div>
               <div className="py-5 text-center lg:text-left">
-                <h1 className="text-3xl font-bold">Comments</h1>
+                <h1 className="text-3xl font-bold">{t('Comments')}</h1>
               </div>
                 <main className="w-full lg:w-10/12 mx-auto">
                   <div className="flex items-center justify-center lg:justify-start mb-4">
@@ -466,7 +468,7 @@ console.log(likes)
           <div className="md:w-3/12  ">
             <main className="flex py-10">
               <div className="w-full  border-2 px-5 py-6 rounded-xl bg-violet-50 border-black">
-                <h1>Price</h1>
+                <h1>{t('Price')}</h1>
 
                 <div className="text-4xl font-bold">
                   ${data.length > 0 && data[0].regularPrice}
@@ -475,7 +477,7 @@ console.log(likes)
                 <hr className="my-5 border border-black" />
 
                 <div>
-                  <h1 className="text-xl font-bold">Request a home tour</h1>
+                  <h1 className="text-xl font-bold">{t('Request a home tour')}</h1>
                 </div>
 
                 <div className="pt-10">
@@ -487,7 +489,7 @@ console.log(likes)
                     rel="noopener noreferrer"
                     className="flex items-center justify-center text-white  gap-1  bg-green-600 px-3 py-3 rounded-3xl cursor-pointer"
                   >
-                    Send Message <FaWhatsapp className="text-xl" />
+                    {t('Send Message')} <FaWhatsapp className="text-xl" />
                   </a>
                 </div>
               </div>
@@ -498,7 +500,7 @@ console.log(likes)
         
         <main className="py-14 px-6 md:px-12 lg:px-20 xl:px-32">
           <div className="py-5 text-center lg:text-left">
-            <h1 className="text-4xl lg:text-5xl font-bold">Similar Listings</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold">{t('Similar Listings')}</h1>
           </div>
 
           <div>
@@ -510,7 +512,7 @@ console.log(likes)
 
           <div className="w-full flex items-center justify-center py-10">
           <div className='w-full flex items-center justify-center py-5 gap-1'>
-        <Link to='/properties' className=' px-10 bg-black py-2   rounded-full flex items-center gap-2 text-white transition-all '>Load More Listing   </Link>
+        <Link to='/properties' className=' px-10 bg-black py-2   rounded-full flex items-center gap-2 text-white transition-all '>{t('Load More Listing')}   </Link>
         <Link to='/properties' className=" p-3 hover:scale-105 transition-all  bg-black text-white rounded-full flex items-center justify-center gap-2 -rotate-45 hover:rotate-0 "> <IoArrowForward  /></Link>
 
       </div>

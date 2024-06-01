@@ -5,10 +5,11 @@ import { TbToolsKitchen3 } from "react-icons/tb";
 import { FaBed, FaBath } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FiMapPin } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 
 const ResidentCard = ({ data }) => {
   const imageUrl = data.imageUrls[0]; // Using the first image URL
-
+  const [t, i18n] = useTranslation("global");
   return (
     <motion.div
 
@@ -64,26 +65,26 @@ const ResidentCard = ({ data }) => {
 
         <div className="bg-violet-200  w-full  rounded-xl px-6 py-2 flex flex-wrap text-black lg:flex-wrap items-center justify-center lg:justify-between">
           <span className="w-3/12 flex flex-col items-center justify-center">
-            <h1 className="text-sm">Bedrooms</h1>
+            <h1 className="text-sm">{t('Bedrooms')}</h1>
             <h1 className="flex items-center gap-2 justify-center text-xl">
               <FaBed className="text-2xl text-violet-700" /> {data.rooms}
             </h1>
           </span>
           <span className="w-3/12 flex flex-col items-center justify-center">
-            <h1 className="text-sm">Bathrooms</h1>
+            <h1 className="text-sm">{t('Bathrooms')}</h1>
             <h1 className="flex items-center gap-2 justify-center text-xl">
               <FaBath className="text-2xl text-violet-700" /> {data.bathrooms}
             </h1>
           </span>
           <span className="w-3/12 flex flex-col items-center justify-center">
-            <h1 className="text-sm">Square Area</h1>
+            <h1 className="text-sm">{t('Square Area')}</h1>
             <span className="flex items-center gap-2 justify-center text-lg">
               <FaRegSquare className="text-xl text-violet-700" />
               {data.area}m²{" "}
             </span>
           </span>
           <span className="w-3/12 flex flex-col items-center justify-center">
-            <h1 className="text-sm">Kitchen</h1>
+            <h1 className="text-sm">{t('Kitchen')}</h1>
             <h1 className="flex items-center gap-2 justify-center text-xl">
               <TbToolsKitchen3 className="text-2xl text-violet-700" /> {data.kitchen}
             </h1>

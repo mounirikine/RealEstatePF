@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom"
 import logo1 from '../assets/finder.png'
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+    const { t, i18n } = useTranslation('global');
   return (
     <>
                                                 <footer className="w-full py-1">
@@ -12,8 +14,7 @@ const Footer = () => {
                   <img src={logo1} className="w-44" alt="" />
                 </a>
                 <a href="/contact"
-                    className="flex items-center gap-2 py-3.5 px-7 rounded-full bg-gray-900 shadow-md text-white font-semibold hover:bg-gray-800">Contac
-                    us <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    className="flex items-center gap-2 py-3.5 px-7 rounded-full bg-gray-900 shadow-md text-white font-semibold hover:bg-gray-800">{t('Contact us')} <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1.5 6L14.8333 6M10.6667 11L15.0774 6.58926C15.3552 6.31148 15.4941 6.17259 15.4941 6C15.4941 5.82741 15.3552 5.68852 15.0774 5.41074L10.6667 1"
                             stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -26,54 +27,54 @@ const Footer = () => {
                     <div className="block">
                         <h4
                             className="text-lg text-gray-900 font-medium mb-4 min-[500px]:mb-7 text-center min-[500px]:text-left">
-                            Pagedone</h4>
+                            Finder</h4>
                         <ul className="grid gap-4 min-[500px]:gap-6 text-center min-[500px]:text-left">
-                            <li><a href="j/" className="text-gray-600 hover:text-gray-900">Home</a></li>
-                            <li><a href="/about" className="text-gray-600 hover:text-gray-900">About</a></li>
-                            <li><a href="/properties" className="text-gray-600 hover:text-gray-900">Properties</a></li>
-                            <li><a href="/contact" className="text-gray-600 hover:text-gray-900">Contact</a></li>
+                            <li><a href="j/" className="text-gray-600 hover:text-gray-900">{t('Home')}</a></li>
+                            <li><a href="/about" className="text-gray-600 hover:text-gray-900">{t('About')}</a></li>
+                            <li><a href="/properties" className="text-gray-600 hover:text-gray-900">{t('Properties')}</a></li>
+                            <li><a href="/contact" className="text-gray-600 hover:text-gray-900">{t('Contact')}</a></li>
                         </ul>
                     </div>
                     <div className="block">
                         <h4
                             className="text-lg text-gray-900 font-medium mb-4 min-[500px]:mb-7 text-center min-[500px]:text-left">
-                            Authentication</h4>
+                            {t('Authentication')}</h4>
                         <ul className="grid gap-4 min-[500px]:gap-6 text-center min-[500px]:text-left">
-                            <li><a href="/login" className="text-gray-600 hover:text-gray-900">Sign In</a>
+                            <li><a href="/login" className="text-gray-600 hover:text-gray-900">{t('Sign In')}</a>
                             </li>
-                            <li><a href="/register" className="text-gray-600 hover:text-gray-900">Sign Up</a></li>
+                            <li><a href="/register" className="text-gray-600 hover:text-gray-900">{t('Sign Up')}</a></li>
                           
                         </ul>
                     </div>
                     <div className="block">
                         <h4
                             className="text-lg text-gray-900 font-medium mb-4 min-[500px]:mb-7 text-center min-[500px]:text-left">
-                            Resources</h4>
+                            {t('Resources')}</h4>
                         <ul className="grid gap-4 min-[500px]:gap-6 text-center min-[500px]:text-left">
-                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">FAQs</a></li>
-                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">Quick Start</a></li>
-                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">Documentation</a></li>
-                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">User Guide</a></li>
+                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">{t('FAQs')}</a></li>
+                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">{t('Quick Start')}</a></li>
+                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">{t('Documentation')}</a></li>
+                            <li><a href="javascript:;" className="text-gray-600 hover:text-gray-900">{t('User Guide')}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div className="block lg:max-w-md">
                     <h3
                         className="font-manrope font-semibold text-2xl text-gray-900 leading-9 mb-8 text-center lg:text-left">
-                        Join the newsletter and read the new posts first</h3>
+                        {t('Join the newsletter and read the new posts first')}</h3>
                     <div
                         className="lg:bg-gray-100 lg:rounded-full lg:h-16 lg:p-1.5 lg:flex-row gap-6 lg:gap-0 flex-col flex items-center justify-between">
                         <input type="text" name="email"
                             className="py-3 px-6 bg-gray-100 rounded-full text-gray-900 placeholder:text-gray-500 focus:outline-none flex-1 w-full max-w-xl mx-auto lg:w-auto lg:py-5 lg:px-7 lg:bg-transparent"
                             placeholder="Your email here..." />
                         <button type="submit"
-                            className="py-3.5 px-7 bg-violet-600 shadow-md rounded-full text-white font-semibold hover:bg-indigo-700">Subscribe</button>
+                            className="py-3.5 px-7 bg-violet-600 shadow-md rounded-full text-white font-semibold hover:bg-indigo-700">{t('Subscribe')}</button>
                     </div>
                 </div>
             </div>
             <div className="py-9 border-t border-gray-200">
                 <div className="flex items-center justify-center flex-col gap-8 lg:gap-0 lg:flex-row lg:justify-between">
-                    <span className="text-sm text-gray-500 ">©<a href="https://www.selerions.com/">Sellerions</a> 2024, All rights reserved.</span>
+                    <span className="text-sm text-gray-500 ">©<a href="https://www.selerions.com/">Selerions</a> 2024, All rights reserved.</span>
                     <div className="flex mt-4 space-x-4 sm:justify-center sm:mt-0 ">
                         <a href="javascript:;"
                             className="w-9 h-9 rounded-full bg-gray-700 flex justify-center items-center hover:bg-violet-600">

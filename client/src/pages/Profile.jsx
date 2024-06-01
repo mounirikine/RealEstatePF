@@ -12,6 +12,7 @@ import {
 } from "firebase/storage";
 import { app } from "../firebase";
 import Header from "../components/Header";
+import { useTranslation } from "react-i18next";
 
 const Profile = ({ userInfo }) => {
   const [active, setActive] = useState(false);
@@ -27,7 +28,7 @@ const Profile = ({ userInfo }) => {
   });
   const navigate = useNavigate();
   const fileRef = useRef(null);
-
+  const { t } = useTranslation('global');
   const deactivate = () => {
     setActive(false);
   };
@@ -171,7 +172,7 @@ const Profile = ({ userInfo }) => {
                       disabled={active}
                       className="py-3.5 px-7 w-4/12 mx-auto text-base font-medium text-indigo-100 focus:outline-none bg-violet-600 rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 "
                     >
-                      Change picture
+                      {t('Change picture')}
                     </button>
 
                     <button
@@ -180,7 +181,7 @@ const Profile = ({ userInfo }) => {
                         document.getElementById("my_modal_1").showModal()
                       }
                     >
-                      Delete picture
+                      {t('Delete picture')}
                     </button>
                     </div>
 
@@ -212,9 +213,9 @@ const Profile = ({ userInfo }) => {
 
                     <dialog id="my_modal_1" className="modal">
                       <div className="modal-box">
-                        <h3 className="font-bold text-lg">Are You Sure </h3>
+                        <h3 className="font-bold text-lg">{t('Are You Sure')} </h3>
                         <p className="py-4">
-                          Do Yo Want To Delete The Profile Image
+                          {t('Do Yo Want To Delete The Profile Image')}
                         </p>
                         <div className="modal-action">
                           <form method="dialog">
@@ -223,7 +224,7 @@ const Profile = ({ userInfo }) => {
                               className="btn bg-violet-600 text-white"
                               onClick={handleDeletePic}
                             >
-                              Yes Delete It{" "}
+                              {t('Yes Delete It')}{" "}
                             </button>
                           </form>
                         </div>
@@ -238,7 +239,7 @@ const Profile = ({ userInfo }) => {
                         htmlFor="username"
                         className="block mb-2 text-sm font-medium text-indigo-900 :text-white"
                       >
-                        Your first name
+                        {t('Your first name')}
                       </label>
                       <input
                         type="text"
@@ -257,7 +258,7 @@ const Profile = ({ userInfo }) => {
                       htmlFor="email"
                       className="block mb-2 text-sm font-medium "
                     >
-                      Your email
+                      {t('Your email')}
                     </label>
                     <input
                       type="email"
@@ -271,7 +272,12 @@ const Profile = ({ userInfo }) => {
                     />
                   </div>
                   <div className="mb-2 sm:mb-6">
-                   
+                  <label
+                      htmlFor="phonr"
+                      className="block mb-2 text-sm font-medium "
+                    >
+                      {t('Your phone number')}
+                    </label>
                     <PhoneInput
         inputProps={{
           name: 'phone',
@@ -290,7 +296,7 @@ const Profile = ({ userInfo }) => {
                       htmlFor="message"
                       className="block mb-2 text-sm font-medium text-indigo-900 :text-white"
                     >
-                      Bio
+                      {t('Bio')}
                     </label>
                     <textarea
                       id="message"
@@ -309,7 +315,7 @@ const Profile = ({ userInfo }) => {
                       {loading ? (
                         <span className="loading loading-spinner loading-sm"></span>
                       ) : (
-                        "Save Changes"
+                        t("Save Changes")
                       )}
                     </button>
                   </div>
