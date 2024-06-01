@@ -8,10 +8,10 @@ import { useCookies } from "react-cookie";
 import logof from "../assets/logof1.png";
 import logo from "../assets/finder.png";
 import { HiOutlineLanguage } from "react-icons/hi2";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const Header = ({ userInfo }) => {
-  const { t, i18n } = useTranslation('global');
+  const { t, i18n } = useTranslation("global");
   const [open, setOpen] = useState(true);
   const [cookies, setCookies] = useCookies(["access_token"]);
   const [headerBg, setHeaderBg] = useState("");
@@ -19,11 +19,11 @@ const Header = ({ userInfo }) => {
   const userId = window.localStorage.getItem("userID");
 
   const navItems = [
-    { path: "/", label: t('Home') },
-    { path: "/properties", label: t('Properties') },
-    { path: "/about", label: t('About') },
-    { path: "/contact", label: t('Contact') },
-    { path: "/notification", label: t('Notifications') },
+    { path: "/", label: t("Home") },
+    { path: "/properties", label: t("Properties") },
+    { path: "/about", label: t("About") },
+    { path: "/contact", label: t("Contact") },
+    { path: "/notification", label: t("Notifications") },
   ];
 
   const removeCookies = () => {
@@ -35,7 +35,7 @@ const Header = ({ userInfo }) => {
 
   const handleChange = (lang) => {
     i18n.changeLanguage(lang);
-    window.localStorage.setItem('lng', lang);
+    window.localStorage.setItem("lng", lang);
   };
 
   const handleOpen = () => {
@@ -67,12 +67,14 @@ const Header = ({ userInfo }) => {
     <>
       <header
         id="header"
-        className={`${location.pathname === "/" ? "bg-transparent" : ""} fixed w-full z-20 top-0 start-0 py-1 transition-all ${headerBg}`}
+        className={`${
+          location.pathname === "/" ? "bg-transparent" : ""
+        } fixed w-full z-20 top-0 start-0 py-1 transition-all ${headerBg}`}
       >
         <nav className=" lg:px-6 py-2.5">
           <div className=" flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <Link to="/" className="items-center ml-4">
-              <img src={logof} alt="Logo"  width={130} />
+              <img src={logof} alt="Logo" width={130} />
             </Link>
             <div className="items-center lg:order-2 flex mr-4">
               {cookies.access_token ? (
@@ -104,7 +106,7 @@ const Header = ({ userInfo }) => {
                         )}
                       </label>
                     </div>
-                  
+
                     <div className="drawer-side">
                       <label
                         htmlFor="my-drawer"
@@ -123,7 +125,10 @@ const Header = ({ userInfo }) => {
                           </Link>
                         </li>
                         <li>
-                          <Link to={`/list/${userId}`} className="py-4 bg-gray-100 mb-1">
+                          <Link
+                            to={`/list/${userId}`}
+                            className="py-4 bg-gray-100 mb-1"
+                          >
                             <CiBoxList className="text-lg" /> Your Properties
                           </Link>
                         </li>
@@ -136,31 +141,64 @@ const Header = ({ userInfo }) => {
                           </div>
                         </li>
                         <li>
-                          <Link onClick={removeCookies} className="py-4 bg-gray-100 mb-4     ">
+                          <Link
+                            onClick={removeCookies}
+                            className="py-4 bg-gray-100 mb-4     "
+                          >
                             <FaPowerOff className="text-lg" /> Logout
                           </Link>
                         </li>
-                        
                       </ul>
                     </div>
                   </div>
 
                   <div className="border-none bg-transparent">
-                    <select name="language" id="language" className="border-none bg-transparent text-white outline-none" onChange={(e) => handleChange(e.target.value)}>
-                      <option className="bg-transparent text-black" value="en">EN</option>
-                      <option className="bg-transparent text-black" value="ar">AR</option>
-                      <option className="bg-transparent text-black" value="fr">FR</option>
+                    <select
+                      name="language"
+                      id="language"
+                      className="border-none bg-transparent text-white outline-none"
+                      onChange={(e) => handleChange(e.target.value)}
+                    >
+                      <option className="bg-transparent text-black" value="en">
+                        EN
+                      </option>
+                      <option className="bg-transparent text-black" value="ar">
+                        AR
+                      </option>
+                      <option className="bg-transparent text-black" value="fr">
+                        FR
+                      </option>
                     </select>
                   </div>
                 </>
               ) : (
-                <Link
-                  to="/login"
-                  className="bg-white text-black hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 border-none"
-                >
-                  {t('get_started')}
-                </Link>
+                <div className="flex items-center">
+                  <Link
+                    to="/login"
+                    className="bg-white text-black hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 border-none"
+                  >
+                    {t("get_started")}
+                  </Link>
+
+                    <select
+                      name="language"
+                      id="language"
+                      className="border-none bg-transparent  text-white outline-none"
+                      onChange={(e) => handleChange(e.target.value)}
+                    >
+                      <option className="bg-transparent  text-black" value="en">
+                        EN
+                      </option>
+                      <option className="bg-transparent text-black" value="ar">
+                        AR
+                      </option>
+                      <option className="bg-transparent text-black" value="fr">
+                        FR
+                      </option>
+                    </select>
+                  </div>
               )}
+
               <button
                 onClick={handleOpen}
                 type="button"
@@ -176,12 +214,20 @@ const Header = ({ userInfo }) => {
                   <li
                     key={item.label}
                     onClick={() => setOpen(true)}
-                    className={`${location.pathname === item.path ? "bg-white text-black" : "text-black"} px-5 py-1 rounded-xl`}
+                    className={`${
+                      location.pathname === item.path
+                        ? "bg-white text-black"
+                        : "text-black"
+                    } px-5 py-1 rounded-xl`}
                   >
                     <NavLink
                       to={item.path}
                       activeClassName="bg-white text-white"
-                      className={`${location.pathname === item.path ? "bg-white text-black" : "text-white"} px-5 py-1 rounded-lg block bg-primary-700 lg:text-primary-700 lg:p-0`}
+                      className={`${
+                        location.pathname === item.path
+                          ? "bg-white text-black"
+                          : "text-white"
+                      } px-5 py-1 rounded-lg block bg-primary-700 lg:text-primary-700 lg:p-0`}
                     >
                       {item.label}
                     </NavLink>
@@ -189,13 +235,21 @@ const Header = ({ userInfo }) => {
                 ))}
               </ul>
             </div>
-            <div className={`${open ? "hidden" : "flex"} lg:hidden justify-between items-center w-full lg:w-auto lg:order-1 h-50vh   rounded-md `}>
-            <ul className="flex flex-col pt-44 font-medium lg:flex-row  mt-3 px-10 h-screen lg:mt-0 w-full mb-10 pb-6 blur-background">
+            <div
+              className={`${
+                open ? "hidden" : "flex"
+              } lg:hidden justify-between items-center w-full lg:w-auto lg:order-1 h-50vh   rounded-md `}
+            >
+              <ul className="flex flex-col pt-44 font-medium lg:flex-row  mt-3 px-10 h-screen lg:mt-0 w-full mb-10 pb-6 blur-background">
                 {navItems.map((item) => (
                   <li
                     key={item.label}
                     onClick={() => setOpen(true)}
-                    className={`${location.pathname === item.path ? "bg-white text-black flex items-center justify-center" : "text-white flex items-center justify-center"} px-5 py-1 rounded-xl`}
+                    className={`${
+                      location.pathname === item.path
+                        ? "bg-white text-black flex items-center justify-center"
+                        : "text-white flex items-center justify-center"
+                    } px-5 py-1 rounded-xl`}
                   >
                     <NavLink
                       to={item.path}
