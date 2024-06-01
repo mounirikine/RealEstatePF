@@ -72,7 +72,7 @@ const PropertyDetails = ({ userInfo }) => {
 
       setLoading(false);
     } catch (err) {
-      console.error(err);
+  
       setError("Error fetching data");
       setLoading(false);
     }
@@ -93,7 +93,7 @@ const PropertyDetails = ({ userInfo }) => {
 
       setLoading(false);
     } catch (err) {
-      console.error(err);
+
       setError("Error fetching data");
       setLoading(false);
     }
@@ -127,7 +127,7 @@ const handleComment = async (e) => {
     // Refetch comments after successful comment creation
     fetchComments();
   } catch (error) {
-    console.log(error);
+
   }
 
   setLoading(false);
@@ -164,9 +164,7 @@ const toggleLike = async () => {
     console.log(error);
   }
 };
-console.log(like)
 
-console.log(likes)
   return (
     <>
       <Header userInfo={userInfo} />

@@ -150,7 +150,7 @@ export const getListingsby = async (req, res, next) => {
       cars = await Car.find({
         $and: [
           { country },
-          { catSlug },
+    
           { price: { $gte: minPrice, $lte: maxPrice } }
         ]
       });
@@ -172,7 +172,7 @@ export const getListingsby = async (req, res, next) => {
       });
     } else {
       // Fetch listings only by category
-      cars = await Car.find({ catSlug });
+      cars = await Car.find();
       reals = await Real.find({ catSlug });
       others = await Other.find({ catSlug });
     }

@@ -12,7 +12,7 @@ import OtherCard from "./OtherCard";
 
 const FirstSection = () => {
   const [activeTab, setActiveTab] = useState("Residential");
-  const [data, setData] = useState([]);
+  
   const [loading, setLoading] = useState(true);
   const [t,i18n]=useTranslation('global')
 
@@ -21,27 +21,7 @@ const FirstSection = () => {
   };
   
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch("http://127.0.0.1:4000/api/car/Cars");
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        const res = await response.json();
-        setData(res);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [activeTab]);
+ 
 
   return (
     <motion.section className="py-10 md:py-10 px-5">
@@ -91,9 +71,9 @@ const FirstSection = () => {
         {activeTab === "Other" && <OtherCard catSlug="product" />}
         {activeTab === "Cars" && (
   <div className="grid grid-cols-1 md:px-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
-    {data.map((item, index) => (
-      <CarCard key={index} data={item} />
-    ))}
+   
+      <CarCard  />
+   
   </div>
 )}
 

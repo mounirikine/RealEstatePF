@@ -17,7 +17,7 @@ const PropertiesFilter = ({ catSlug ,minPrice,country,maxPrice}) => {
       try {
    
         const response = await fetch(
-          `http://localhost:4000/api/real/Listingsby?catSlug=${catSlug || ""}&country=${country || ""}&maxPrice=${maxPrice || ""}&minPrice=${minPrice}`
+          `http://localhost:4000/api/real/Listingsby?catSlug=${catSlug || ""}&country=${country || ""}&maxPrice=${maxPrice || ""}&minPrice=${minPrice || ""}`
         );
   
         if (!response.ok) {

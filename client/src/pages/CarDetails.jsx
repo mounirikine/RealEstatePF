@@ -190,8 +190,12 @@ const toggleLike = async () => {
   return (
     <>
       <Header userInfo={userInfo} />
-
-      <section className="py-20 md:py-14 bg-white min-h-screen md:pt-44 text-black">
+      <section className="hero py-32">
+      <h1 className="text-3xl lg:text-5xl font-bold text-white">
+                  {data.length > 0 && data[0].title}
+                </h1>
+</section>
+      <section className="py-20 md:py-14 bg-white min-h-screen md:pt-12 text-black">
         <main className="px-4 md:px-4 lg:px-32 flex flex-col md:flex-row items-center justify-center gap-6">
           <div className="md:w-9/12">
             {data.length > 0 && data[0].imageUrls && (
