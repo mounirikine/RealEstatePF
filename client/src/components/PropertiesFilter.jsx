@@ -3,6 +3,7 @@ import FilterCard from "./FilterCard";
 import CarCard from "./CarCard";
 import ResidentCardCol from "./ResidentCardCol";
 import OtherCard from "./OtherCard";
+import OtherCardCol from "./OtherCardCol";
 
 const PropertiesFilter = ({ catSlug ,minPrice,country,maxPrice}) => {
   const [data, setData] = useState({ cars: [], reals: [] ,others:[]});
@@ -41,23 +42,31 @@ const PropertiesFilter = ({ catSlug ,minPrice,country,maxPrice}) => {
   {loading ? (
     <span className="loading loading-spinner loading-lg text-black"></span>
   ) : (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 px-4 sm:px-6 md:px-8 lg:px-20 xl:px-20 ">
-     
-     {catSlug && catSlug !== 'car' ? (
-  data.reals.map((item) => (
-    (catSlug === "house" && <ResidentCardCol key={item._id} data={item} catSlug="house" />) ||
-    (catSlug === "villa" && <ResidentCardCol key={item._id} data={item} catSlug="villa" />) ||
-    (catSlug === "Apartment" && <ResidentCardCol key={item._id} data={item} catSlug="Apartment" />) ||
-    (catSlug === "Office space" && <ResidentCardCol key={item._id} data={item} catSlug="Office" />)|| 
-    (catSlug === "Other Products" && <OtherCard   key={item._id} data={item} catSlug={catSlug} />)
-  ))
-) : (
-  data.cars.map((item) => (
-    <CarCard key={item._id} data={item} />
-  ))
-)}
-
-      
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 px-4 sm:px-6 md:px-8 lg:px-20 xl:px-20">
+      {catSlug && catSlug !== 'car' ? (
+        data.reals.map((item) => {
+          if (catSlug === "house") {
+            return <ResidentCardCol key={item._id} data={item} catSlug="house" />;
+          } else if (catSlug === "villa") {
+            return <ResidentCardCol key={item._id} data={item} catSlug="villa" />;
+          } else if (catSlug === "Apartment") {
+            return <ResidentCardCol key={item._id} data={item} catSlug="Apartment" />;
+          } else if (catSlug === "Office space") {
+            return <ResidentCardCol key={item._id} data={item} catSlug="Office" />;
+          } else if (catSlug === "Other Products") {
+            return null; // Skip rendering others here, will be handled below
+          } else {
+            return null;
+          }
+        })
+      ) : (
+        data.cars.map((item) => (
+          <CarCard key={item._id} data={item} />
+        ))
+      )}
+       {(catSlug === "bycicle" || catSlug === "clothes" || catSlug === "music" || catSlug === "devices" || catSlug === "furnishing") && data.others.map((item) => (
+        <OtherCardCol key={item._id} data={item} />
+      ))}
     </div>
   )}
 </section>

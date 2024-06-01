@@ -15,7 +15,7 @@ const OtherCardCol = ({ data }) => {
               initial={{y:-22 ,opacity:0}}
               whileInView={{y:0,opacity:1 }}
               transition={{duration:0.8 ,delay:0.6}} 
-      
+      key={data._id}
       className="  justify-center rounded-xl border">
         <Link to={`/OthersDetails/${data._id}`} >
         <div className=" rounded-xl mx-h-[340px]">
