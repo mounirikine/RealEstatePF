@@ -434,7 +434,8 @@ const toggleLike = async () => {
                       value={text}
                       className="textarea textarea-bordered textarea-xs w-full max-w-xs lg:max-w-full text-black bg-gray-100"
                     ></textarea>
-                    <h5 onClick={handleComment} className="btn text-2xl rounded-xl ml-1 bg-violet-300 text-black hover:bg-violet-400 border-none" >{loading ? (
+                    <h5 onClick={handleComment} className="btn text-2xl rounded-xl ml-1 bg-violet-300 text-black hover:bg-violet-400 border-none" >
+                      {loading ? (
                       <span className="loading loading-spinner loading-md "></span>
                     ) : (
                       <FiPlus />

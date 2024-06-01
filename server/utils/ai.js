@@ -9,8 +9,8 @@ const genAI =  new GoogleGenerativeAI(process.env.AI_KEY);
 async function run() {
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-      const prompt = 'hello soulaimane is donky ?';
-      const result = await model.generateContent(prompt);
+      
+      const result = await model.generateContent(req.body.prompt);
       const response = await result.response;
       const text = response.text();
       console.log(text);

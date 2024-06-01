@@ -11,6 +11,7 @@ import storeRouter from '../server/Routes/store.route.js'
 import commentRouter from '../server/Routes/comment.route.js'
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import {GoogleGenerativeAI} from "@google/generative-ai" 
 dotenv.config()
 
 const app = express();
@@ -84,4 +85,21 @@ app.use((err,req,res,next)=>{
         message,
     })
 })
-
+const genAI =  new GoogleGenerativeAI(process.env.AI_KEY);
+app.post('/api/ai' , async(req,res,next)=>{
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    
+    const result = await model.generateContent(req.body.prompt);
+    const response = await result.response;
+    const text = response.text();
+    res.status(200).json(text);
+  } catch (error) {
+    if (error instanceof GoogleGenerativeAIResponseError && error.message.includes('SAFETY')) {
+      console.error('The prompt was blocked due to safety concerns. Please rephrase.');
+      // Optionally, provide alternative suggestions or handle differently based on your app's logic
+    } else {
+      console.error('An unexpected error occurred:', error);
+    }
+  }
+})
