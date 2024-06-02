@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -34,7 +34,7 @@ import SingleStore from "./pages/SingleStore";
 import Others from "./components/form/Others";
 import OthersDetails from "./pages/OthersDetails.jsx";
 import ai from './assets/ai.svg'
-import { FiPlus } from "react-icons/fi";
+import { FiPlus, FiSend } from "react-icons/fi";
 function App() {
   const [userInfo, setUserInfo] = useState(null);
   const userId = window.localStorage.getItem("userID");
@@ -44,8 +44,8 @@ function App() {
   const [color, setColor] = useState("#FFFF");
   const [isOpen, setIsOpen] = useState(false);
   const [prompt, setPrompt] = useState('');
-  const [response, setResponse] = useState('');
-
+  const [responses, setResponses] = useState([]); // To store history of responses
+  const chatEndRef = useRef(null);
   const toggleChat = () => {
     setIsOpen(!isOpen);
   };
@@ -55,7 +55,9 @@ function App() {
   };
 
   const handleSend = async () => {
-    setLoading3(true)
+    if (!prompt.trim()) return; // Prevent empty requests
+
+    setLoading3(true);
     try {
       const res = await fetch('http://localhost:4000/api/ai', {
         method: 'POST',
@@ -65,14 +67,19 @@ function App() {
         body: JSON.stringify({ prompt }),
       });
       const data = await res.json();
-      setLoading3(false)
-      setResponse(data);
-
+      setLoading3(false);
+      setResponses([...responses, data]); // Add new response to the history
+      setPrompt(''); // Clear the input field after sending
+      
     } catch (error) {
       console.error('Error:', error);
-      setLoading3(false)
-      setResponse('An error occurred. Please try again.');
+      setResponses([...responses, 'An error occurred. Please try again.']);
+    } finally {
+      setLoading3(false);
     }
+  };
+  const handleClear = () => {
+    setResponses([]);
   };
   useEffect(() => {
     const getUser = async () => {
@@ -107,6 +114,13 @@ function App() {
     }, 2000);
   }, []);
 
+  const scrollToBottom = () => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom(); // Scroll to bottom when responses change
+  }, [responses]);
   return (
     <>
       <ToastContainer position="top-center" />
@@ -171,44 +185,68 @@ function App() {
             </Route>
           </Routes>
           {/* create-store */}
-          <div className="fixed bottom-10 rounded-lg right-10 z-50">
-     
-      {isOpen ? (<>
-        <div className="w-[440px] h-96 bg-white   rounded-lg shadow-lg flex flex-col">
-          <div className="flex justify-between items-center p-4 bg-gray-100 ">
-            <h4 className="text-lg font-medium">AI Chat</h4>
-            <button className="text-gray-600" onClick={toggleChat}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-</svg>
-
-            </button>
-          </div>
-          <div className=" p-4 overflow-y-auto">
-    
-                  <textarea
-                      value={prompt}
-                      onChange={handleInputChange}
-                      placeholder="Type your prompt here..."
-                      className="textarea textarea-bordered textarea-xs w-full max-w-xs lg:max-w-full text-black bg-gray-100"
-                    ></textarea>
-                       <h5 onClick={handleSend} className="btn text-2xl rounded-xl ml-1 bg-violet-300 text-black hover:bg-violet-400 border-none" >
+          <div className="fixed bottom-10 right-10 z-50">
+      {isOpen ? (
+        <>
+          <div className="sm:w-[440px]  w-[300px] h-96 bg-white rounded-lg shadow-lg flex flex-col">
+            <div className="flex justify-between items-center p-4 bg-gray-100">
+              <h4 className="text-lg font-medium">AI Chat</h4>
+              <button className="text-gray-600" onClick={toggleChat}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="flex-1 p-4 overflow-y-auto">
+              <textarea
+                value={prompt}
+                onChange={handleInputChange}
+                placeholder="Type your prompt here..."
+                className="textarea textarea-bordered textarea-xs w-full max-w-xs lg:max-w-full text-black bg-gray-100"
+              ></textarea>
+              <h5 onClick={handleSend} className="btn text-2xl rounded-l-xl ml-1 bg-violet-300 text-white hover:bg-violet-400 border-none" >
                       {loading3 ? (
                       <span className="loading loading-spinner loading-md "></span>
                     ) : (
-                      <FiPlus />
+                      <FiSend />
                     )}</h5>
-            <div className="p-4 h-44 border-gray-300 bg-gray-50 rounded-2xl mt-2">
-            {response}
+                     <h5 onClick={handleClear} className="btn text-2xl rounded-r-xl ml-1 bg-violet-300 text-white hover:bg-violet-400 border-none" >
+                     
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                  </h5>
+                 
+              <div className="mt-4 space-y-2">
+                {responses.map((res, index) => (
+                  <div key={index} className="p-4  border-gray-300 bg-gray-50 rounded-2xl mt-2">
+                    {res}
+                  </div>
+                ))} 
+                <div onClick={scrollToBottom} className=" cursor-pointer text-black fixed bottom-12 text-center lift-10 z-50">
+              
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+</svg>
+
+                </div>
+                <div ref={chatEndRef} />
+              </div>
+            </div>
           </div>
-          </div>
-          
-        </div></>
-      ):(<>
-       <div className="cursor-pointer" onClick={toggleChat}>
-        <img src={ai} alt="AI Logo" className="w-12 h-12 rounded-full bg-slate-200 p-1" />
-      </div>
-      </>)}
+        </>
+      ) : (
+        <div className="cursor-pointer" onClick={toggleChat}>
+          <img src={ai} alt="AI Logo" className="w-12 h-12 rounded-full bg-slate-200 p-1" />
+        </div>
+      )}
     </div>
         </>
       )}
