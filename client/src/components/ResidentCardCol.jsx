@@ -18,7 +18,7 @@ const ResidentCardCol = ({ data }) => {
             <img
               src={imageUrl}
               alt=""
-              className="rounded-xl h-[350px] hover:scale-105 w-full transition-all object-cover"
+              className="rounded-xl  h-[350px] hover:scale-105 w-full transition-all object-cover"
             />
             <span className="absolute right-3 bottom-3 bg-black bg-opacity-50 backdrop-blur-sm text-white text-lg lg:text-2xl font-medium px-10 py-1 rounded-md">
               ${data.regularPrice}

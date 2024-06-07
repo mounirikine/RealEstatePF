@@ -19,7 +19,7 @@ const ResidentCard = ({ data }) => {
       <img
         src={imageUrl}
         alt=""
-        className={`h-72 md:h-auto w-2/6 rounded-t-lg hover:scale-105 transition-all md:rounded-none md:rounded-l-lg object-cover`}
+        className={`h-[350px]  w-2/6 rounded-t-lg hover:scale-105 transition-all md:rounded-none md:rounded-l-lg object-cover`}
       />
       <div className="flex flex-col  justify-between w-4/6 p-6 ">
         <div className="flex   justify-between">
