@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Header from "../Header";
 import logof from "../../assets/logof1.png";
 import Footer from "../Footer";
@@ -21,6 +21,7 @@ const CreateApartment = () => {
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [porcentageProgress, setPorcentageProgress] = useState(0);
+  const navigate= useNavigate()
 
 
 
@@ -134,7 +135,7 @@ const handleSubmit = async (e) => {
     });
 
     const data = await res.json();
-    toast.success(data)
+    navigate(`/`)
     
   
 
@@ -186,7 +187,7 @@ const handleChange =(e)=>{
           <div className="w-12/12">
             <div className="container mx-auto ">
               <div className="bg-white :bg-gray-700 shadow rounded-lg p-6">
-                <div className="py-6 bg-blue-700 px-10 m-5 rounded-lg">
+                <div className="py-6 bg-indigo-600 px-10 m-5 rounded-lg">
                   <img src={logof} alt="" width={200} />
                 </div>
                 <h1 className="text-3xl font-semibold mb-4 text-gray-900 :text-gray-100 uppercase">
@@ -834,7 +835,7 @@ const handleChange =(e)=>{
                 </div>)}
                 <button
                     type="submit"
-                    className="w-full py-3 rounded bg-blue-500 text-white hover:bg-blue-600 focus:outline-none transition-colors"
+                    className="w-full py-3 rounded bg-indigo-600 text-white hover:bg-indigo-600 focus:outline-none transition-colors"
                   >
                     {loading ? (
                       <span className="loading loading-spinner loading-md "></span>

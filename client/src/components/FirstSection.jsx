@@ -66,7 +66,7 @@ const FirstSection = () => {
       >
         {activeTab === "Residential" && <Residential catSlug="house" />}
         {activeTab === "Villa" && <Residential catSlug="villa" />}
-        {activeTab === "Apartment" && <Residential catSlug="Apartment" />}
+        {activeTab === "Apartment" && <Residential catSlug="apartment" />}
         {activeTab === "OfficeSpace" && <Residential catSlug="Office" />}
         {activeTab === "Other" && <OtherCard catSlug="product" />}
         {activeTab === "Cars" && (

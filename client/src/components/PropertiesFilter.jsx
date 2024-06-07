@@ -49,7 +49,7 @@ const PropertiesFilter = ({ catSlug ,minPrice,country,maxPrice}) => {
             return <ResidentCardCol key={item._id} data={item} catSlug="house" />;
           } else if (catSlug === "villa") {
             return <ResidentCardCol key={item._id} data={item} catSlug="villa" />;
-          } else if (catSlug === "Apartment") {
+          } else if (catSlug === "apartment") {
             return <ResidentCardCol key={item._id} data={item} catSlug="Apartment" />;
           } else if (catSlug === "Office space") {
             return <ResidentCardCol key={item._id} data={item} catSlug="Office" />;

@@ -42,7 +42,7 @@ const Properties = ({ userInfo }) => {
   
       </section>
       <section className="text-black">
-      <div className="mb-3   bg-violet-100 border-2 border-black w-10/12 mx-auto flex flex-col items-center justify-center px-4 py-2 rounded-2xl  ">
+      <div className="mb-3   bg-violet-100 border-2 -black w-10/12 mx-auto flex flex-col items-center justify-center px-4 py-2 rounded-2xl  ">
           <div className="text-center py-1">
             <h1 className="text-xl font-bold">{t('Filter Property')}</h1>
           </div>
@@ -54,7 +54,7 @@ const Properties = ({ userInfo }) => {
             initial="hidden"
             animate="visible"
             transition={{ duration: 0.5, delay: 0.4 }}
-             className="flex lg:mx-14 bg-white flex-col gap-5  lg:flex-row items-center lg:items-center w-11/12 mx-auto lg:w-full py-3 px-4 mt-6 rounded-xl border-2 border-black justify-center">
+             className="flex lg:mx-14 bg-white flex-col gap-5  lg:flex-row items-center lg:items-center w-11/12 mx-auto lg:w-full py-3 px-4 mt-6 rounded-xl border-2 -black justify-center">
             
             
             
