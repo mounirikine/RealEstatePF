@@ -244,7 +244,7 @@ function App() {
         </>
       ) : (
         <div className="cursor-pointer" onClick={toggleChat}>
-          <img src={ai} alt="AI Logo" className="w-12 h-12 rounded-full bg-slate-200 p-1" />
+          <img src="https://icones.pro/wp-content/uploads/2021/05/message-ballons-symbole-violet.png" alt="AI Logo" className="w-12 h-12 rounded-full bg-slate-200 p-2" />
         </div>
       )}
     </div>

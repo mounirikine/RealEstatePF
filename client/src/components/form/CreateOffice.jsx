@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Header from "../Header";
 import logof from "../../assets/logof1.png";
 import Footer from "../Footer";
@@ -21,7 +21,7 @@ const CreateOffice = () => {
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [porcentageProgress, setPorcentageProgress] = useState(0);
-
+  const navigate = useNavigate()
 
 
   
@@ -135,7 +135,8 @@ const handleSubmit = async (e) => {
 
     const data = await res.json();
     toast.success(data)
-    
+
+    navigate('/')
   
 
   } catch (error) {

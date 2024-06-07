@@ -67,7 +67,7 @@ const FirstSection = () => {
         {activeTab === "Residential" && <Residential catSlug="house" />}
         {activeTab === "Villa" && <Residential catSlug="villa" />}
         {activeTab === "Apartment" && <Residential catSlug="apartment" />}
-        {activeTab === "OfficeSpace" && <Residential catSlug="Office" />}
+        {activeTab === "OfficeSpace" && <Residential catSlug="office" />}
         {activeTab === "Other" && <OtherCard catSlug="product" />}
         {activeTab === "Cars" && (
   <div className="grid grid-cols-1 md:px-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
